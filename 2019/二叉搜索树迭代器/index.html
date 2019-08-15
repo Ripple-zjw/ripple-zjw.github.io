@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://example.com/2019/first/" />
+  
+  <link rel="canonical" href="https://example.com/2019/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BF%AD%E4%BB%A3%E5%99%A8/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           二叉搜索树迭代器 | LeaveIt
+       
+  </title>
+  <meta name="title" content="二叉搜索树迭代器 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/example.com"
+    },
+    "articleSection" : "posts",
+    "name" : "二叉搜索树迭代器",
+    "headline" : "二叉搜索树迭代器",
+    "description" : "题目：二叉搜索树迭代器  实现一个二叉搜索树迭代器。你将使用二叉搜索树的根节点初始化迭代器。 调用 next() 将返回二叉搜索树中的下一个最小的数。  示例： BSTIterator iterator = new BSTIterator(root); iterator.next(); \/\/ 返回 3 iterator.next(); \/\/ 返回 7 iterator.hasNext(); \/\/ 返回 true iterator.next(); \/\/ 返回 9 iterator.hasNext(); \/\/ 返回 true iterator.next(); \/\/ 返回 15 iterator.hasNext(); \/\/ 返回 true iterator.next(); \/\/ 返回 20 iterator.hasNext(); \/\/ 返回 false  提示：  next() 和 hasNext() 操作的时间复杂度是 O(1)，并使用O(h)内存，其中 h 是树的高度。 你可以假设 next() 调用总是有效的，也就是说，当调用 next() 时，BST 中至少存在一个下一个最小的数。  来源：力扣（LeetCode）第173题  链接：https:\/\/leetcode-cn.com\/problems\/binary-search-tree-iterator",
+    "inLanguage" : "en-us",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-08-15 16:42:03 \x2b0800 CST",
+    "dateModified" : "2019-08-15 16:42:03 \x2b0800 CST",
+    "url" : "https:\/\/example.com\/2019\/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BF%AD%E4%BB%A3%E5%99%A8\/",
+    "wordCount" : "139",
+    "keywords" : [ "算法求解思想","栈","二叉树","树", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://example.com">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://example.com">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">二叉搜索树迭代器</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://example.com" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-08-15 itemprop="datePublished">August 15, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://example.com/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h2 id="题目-二叉搜索树迭代器">题目：二叉搜索树迭代器</h2>
+
+<ul>
+<li>实现一个二叉搜索树迭代器。你将使用二叉搜索树的根节点初始化迭代器。</li>
+<li>调用 next() 将返回二叉搜索树中的下一个最小的数。</li>
+</ul>
+
+<h6 id="示例">示例：</h6>
+
+<pre><code>BSTIterator iterator = new BSTIterator(root);
+iterator.next();    // 返回 3
+iterator.next();    // 返回 7
+iterator.hasNext(); // 返回 true
+iterator.next();    // 返回 9
+iterator.hasNext(); // 返回 true
+iterator.next();    // 返回 15
+iterator.hasNext(); // 返回 true
+iterator.next();    // 返回 20
+iterator.hasNext(); // 返回 false
+</code></pre>
+
+<h6 id="提示">提示：</h6>
+
+<ul>
+<li>next() 和 hasNext() 操作的时间复杂度是 O(1)，并使用O(h)内存，其中 h 是树的高度。</li>
+<li>你可以假设 next() 调用总是有效的，也就是说，当调用 next() 时，BST 中至少存在一个下一个最小的数。</li>
+</ul>
+
+<h4 id="来源-力扣-leetcode-第173题">来源：力扣（LeetCode）第173题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/binary-search-tree-iterator" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/binary-search-tree-iterator</a></p>
+</blockquote>
+
+<h3 id="思路">思路:</h3>
+
+<ul>
+<li>二叉搜索树的性质，任何一个节点的左子树都比自己小，任何一个节点的右子树都比自己大。</li>
+<li>然后它还有一个性质，我在哪个地方看到的有点不记得了。就是将二叉搜索树中序遍历之后得到的值是从小到大排列的有序列表。</li>
+<li>所以将二叉搜索树中序遍历就能拿到它的最小值到最大值</li>
+</ul>
+
+<h3 id="看代码吧">看代码吧:</h3>
+
+<pre><code class="language-Python">class BSTIterator:
+    def __init__(self, root: TreeNode):
+        stack = []
+        self.ans = []  # 储存答案
+        tail = root
+        while stack or tail is not None:  # 中序遍历
+            if tail:
+                stack.append(tail)
+                tail = tail.right  # 注意和中序遍历稍有不同，因为我是用出栈的方式拿到最小值的，判断也是ans是否为空。所以我是反向的中序遍历，即中序遍历是左，中，右。而我是右，中，左。这样栈顶元素就是最小的值。
+            else:
+                tail = stack.pop()
+                self.ans.append(tail.val)
+                tail = tail.left  # 本质还是中序遍历，不用反向的应该也能做出来
+
+    def next(self) -&gt; int:
+        return self.ans.pop()  # 最小值出栈，绝对的O(1)
+        
+    def hasNext(self) -&gt; bool:
+        return len(self.ans) != 0  # 这就更不用说了
+</code></pre>
+
+<h3 id="复杂度分析">复杂度分析：</h3>
+
+<ul>
+<li>整个程序只有中序遍历耗点时，其它两个操作根本不耗时。</li>
+<li>while 循环遍历整个树，</li>
+<li>时间复杂度应该是 O(n) n为树的节点总和</li>
+</ul>
+
+<h1 id="总结">总结：</h1>
+
+<p>二叉搜索树的中序遍历就是将二叉搜索树从小到大排列。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://example.com/2019/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BF%AD%E4%BB%A3%E5%99%A8/>https://example.com/2019/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BF%AD%E4%BB%A3%E5%99%A8/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://example.com/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://example.com/tags/%E6%A0%88/">
+                    #栈</a></span>
+            
+            <span class="tag"><a href="https://example.com/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
+                    #二叉树</a></span>
+            
+            <span class="tag"><a href="https://example.com/tags/%E6%A0%91/">
+                    #树</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://example.com">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://example.com/2019/first/" class="prev" rel="prev" title="First"><i class="iconfont icon-left"></i>&nbsp;First</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://example.com">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

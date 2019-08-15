@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>树 on LeaveIt</title>
+    <link>https://example.com/tags/%E6%A0%91/</link>
+    <description>Recent content in 树 on LeaveIt</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 15 Aug 2019 16:42:03 +0800</lastBuildDate>
+    
+	<atom:link href="https://example.com/tags/%E6%A0%91/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>二叉搜索树迭代器</title>
+      <link>https://example.com/2019/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BF%AD%E4%BB%A3%E5%99%A8/</link>
+      <pubDate>Thu, 15 Aug 2019 16:42:03 +0800</pubDate>
+      
+      <guid>https://example.com/2019/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BF%AD%E4%BB%A3%E5%99%A8/</guid>
+      <description>题目：二叉搜索树迭代器  实现一个二叉搜索树迭代器。你将使用二叉搜索树的根节点初始化迭代器。 调用 next() 将返回二叉搜索树中的下一个最小的数。  示例： BSTIterator iterator = new BSTIterator(root); iterator.next(); // 返回 3 iterator.next(); // 返回 7 iterator.hasNext(); // 返回 true iterator.next(); // 返回 9 iterator.hasNext(); // 返回 true iterator.next(); // 返回 15 iterator.hasNext(); // 返回 true iterator.next(); // 返回 20 iterator.hasNext(); // 返回 false  提示：  next() 和 hasNext() 操作的时间复杂度是 O(1)，并使用O(h)内存，其中 h 是树的高度。 你可以假设 next() 调用总是有效的，也就是说，当调用 next() 时，BST 中至少存在一个下一个最小的数。  来源：力扣（LeetCode）第173题  链接：https://leetcode-cn.com/problems/binary-search-tree-iterator</description>
+    </item>
+    
+    <item>
+      <title>中序遍历二叉树</title>
+      <link>https://example.com/2019/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
+      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
+      
+      <guid>https://example.com/2019/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</guid>
+      <description>题目：二叉树的中序遍历 给定一个二叉树，返回它的中序遍历。
+示例: 输入: [1,null,2,3] 1 \ 2 / 3 输出: [1,3,2]   进阶: 递归算法很简单，你可以通过迭代算法完成吗？  来源：力扣（LeetCode）第94题  链接：https://leetcode-cn.com/problems/binary-tree-inorder-traversal
+ 分析: 两种方法，一种是最常用的递归遍历，非常简单。第二种是迭代遍历，需要用到栈。本文章分析第二种算法。
+思路: 维护一个栈，每次经过一个节点，就入栈，当节点的左节点没有值时出栈，并继续从出栈的那个节点找它的右节点。
+ 维护一个栈stack和要储存答案的列表ans 写一个循环，不停地将左节点一层一层的入栈 当左节点为None时，不要入栈，并且将栈顶节点弹出 拿到栈顶节点的value，并且进入该节点的右节点（因为中序遍历是左，中，右） 继续拿这个节点的左节点，重复2-4步 当节点值为None 或者 stack为空时结束循环  代码： # Definition for a binary tree node. # class TreeNode: # def __init__(self, x): # self.val = x # self.left = None # self.right = None class Solution: def inorderTraversal(self, root: TreeNode) -&amp;gt; List[int]: stack = [] ans = [] tail = root while tail is not None or stack: while tail is not None: stack.</description>
+    </item>
+    
+  </channel>
+</rss>

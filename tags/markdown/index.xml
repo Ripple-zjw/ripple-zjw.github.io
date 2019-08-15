@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Markdown on LeaveIt</title>
-    <link>https://ripple-zjw.github.io/tags/markdown/</link>
+    <link>https://example.com/tags/markdown/</link>
     <description>Recent content in Markdown on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 14 Aug 2019 13:22:20 +0800</lastBuildDate>
     
-	<atom:link href="https://ripple-zjw.github.io/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://example.com/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Markdown使用</title>
-      <link>https://ripple-zjw.github.io/2019/markdown%E8%AF%95%E7%94%A8/</link>
+      <link>https://example.com/2019/markdown%E8%AF%95%E7%94%A8/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://ripple-zjw.github.io/2019/markdown%E8%AF%95%E7%94%A8/</guid>
+      <guid>https://example.com/2019/markdown%E8%AF%95%E7%94%A8/</guid>
       <description> 一级标题 二级标题 三级标题 四级标题 五级标题 六级标题 倾斜字体
 ++下划线++
 删除线

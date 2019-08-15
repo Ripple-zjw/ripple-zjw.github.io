@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>双指针 on LeaveIt</title>
-    <link>https://ripple-zjw.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/</link>
+    <link>https://example.com/tags/%E5%8F%8C%E6%8C%87%E9%92%88/</link>
     <description>Recent content in 双指针 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 14 Aug 2019 13:22:20 +0800</lastBuildDate>
     
-	<atom:link href="https://ripple-zjw.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://example.com/tags/%E5%8F%8C%E6%8C%87%E9%92%88/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>双指针</title>
-      <link>https://ripple-zjw.github.io/2019/%E5%8F%8C%E6%8C%87%E9%92%88/</link>
+      <link>https://example.com/2019/%E5%8F%8C%E6%8C%87%E9%92%88/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://ripple-zjw.github.io/2019/%E5%8F%8C%E6%8C%87%E9%92%88/</guid>
+      <guid>https://example.com/2019/%E5%8F%8C%E6%8C%87%E9%92%88/</guid>
       <description>运用双指针解题 参考题目：LeetCode（26、27题）  https://leetcode-cn.com/problemset/all/
  使用场景： 需要遍历一个数组，在遍历过程中根据要求改变数组中元素的值、位置等一些关系。我们可以使用两个指针进行求解。
 例如：删除数组中的重复项，移除摸一个元素

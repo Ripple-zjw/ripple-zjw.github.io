@@ -1,19 +1,106 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>LeaveIt on LeaveIt</title>
-    <link>https://ripple-zjw.github.io/</link>
+    <link>https://example.com/</link>
     <description>Recent content in LeaveIt on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 15 Aug 2019 14:51:20 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 15 Aug 2019 16:42:03 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>二叉搜索树迭代器</title>
+      <link>https://example.com/2019/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BF%AD%E4%BB%A3%E5%99%A8/</link>
+      <pubDate>Thu, 15 Aug 2019 16:42:03 +0800</pubDate>
+      
+      <guid>https://example.com/2019/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BF%AD%E4%BB%A3%E5%99%A8/</guid>
+      <description>
+
+&lt;h2 id=&#34;题目-二叉搜索树迭代器&#34;&gt;题目：二叉搜索树迭代器&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;实现一个二叉搜索树迭代器。你将使用二叉搜索树的根节点初始化迭代器。&lt;/li&gt;
+&lt;li&gt;调用 next() 将返回二叉搜索树中的下一个最小的数。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h6 id=&#34;示例&#34;&gt;示例：&lt;/h6&gt;
+
+&lt;pre&gt;&lt;code&gt;BSTIterator iterator = new BSTIterator(root);
+iterator.next();    // 返回 3
+iterator.next();    // 返回 7
+iterator.hasNext(); // 返回 true
+iterator.next();    // 返回 9
+iterator.hasNext(); // 返回 true
+iterator.next();    // 返回 15
+iterator.hasNext(); // 返回 true
+iterator.next();    // 返回 20
+iterator.hasNext(); // 返回 false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h6 id=&#34;提示&#34;&gt;提示：&lt;/h6&gt;
+
+&lt;ul&gt;
+&lt;li&gt;next() 和 hasNext() 操作的时间复杂度是 O(1)，并使用O(h)内存，其中 h 是树的高度。&lt;/li&gt;
+&lt;li&gt;你可以假设 next() 调用总是有效的，也就是说，当调用 next() 时，BST 中至少存在一个下一个最小的数。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第173题&#34;&gt;来源：力扣（LeetCode）第173题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/binary-search-tree-iterator&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/binary-search-tree-iterator&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;思路&#34;&gt;思路:&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;二叉搜索树的性质，任何一个节点的左子树都比自己小，任何一个节点的右子树都比自己大。&lt;/li&gt;
+&lt;li&gt;然后它还有一个性质，我在哪个地方看到的有点不记得了。就是将二叉搜索树中序遍历之后得到的值是从小到大排列的有序列表。&lt;/li&gt;
+&lt;li&gt;所以将二叉搜索树中序遍历就能拿到它的最小值到最大值&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;看代码吧&#34;&gt;看代码吧:&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;class BSTIterator:
+    def __init__(self, root: TreeNode):
+        stack = []
+        self.ans = []  # 储存答案
+        tail = root
+        while stack or tail is not None:  # 中序遍历
+            if tail:
+                stack.append(tail)
+                tail = tail.right  # 注意和中序遍历稍有不同，因为我是用出栈的方式拿到最小值的，判断也是ans是否为空。所以我是反向的中序遍历，即中序遍历是左，中，右。而我是右，中，左。这样栈顶元素就是最小的值。
+            else:
+                tail = stack.pop()
+                self.ans.append(tail.val)
+                tail = tail.left  # 本质还是中序遍历，不用反向的应该也能做出来
+
+    def next(self) -&amp;gt; int:
+        return self.ans.pop()  # 最小值出栈，绝对的O(1)
+        
+    def hasNext(self) -&amp;gt; bool:
+        return len(self.ans) != 0  # 这就更不用说了
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;整个程序只有中序遍历耗点时，其它两个操作根本不耗时。&lt;/li&gt;
+&lt;li&gt;while 循环遍历整个树，&lt;/li&gt;
+&lt;li&gt;时间复杂度应该是 O(n) n为树的节点总和&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
+
+&lt;p&gt;二叉搜索树的中序遍历就是将二叉搜索树从小到大排列。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>关于博客</title>
-      <link>https://ripple-zjw.github.io/about/aboutblog/</link>
+      <link>https://example.com/about/aboutblog/</link>
       <pubDate>Thu, 15 Aug 2019 14:51:20 +0800</pubDate>
       
-      <guid>https://ripple-zjw.github.io/about/aboutblog/</guid>
+      <guid>https://example.com/about/aboutblog/</guid>
       <description>
 
 &lt;h1 id=&#34;关于博客&#34;&gt;关于博客&lt;/h1&gt;
@@ -32,10 +119,10 @@
     
     <item>
       <title>关于我</title>
-      <link>https://ripple-zjw.github.io/about/aboutme/</link>
+      <link>https://example.com/about/aboutme/</link>
       <pubDate>Thu, 15 Aug 2019 14:51:20 +0800</pubDate>
       
-      <guid>https://ripple-zjw.github.io/about/aboutme/</guid>
+      <guid>https://example.com/about/aboutme/</guid>
       <description>
 
 &lt;h1 id=&#34;关于我&#34;&gt;关于我&lt;/h1&gt;
@@ -60,10 +147,10 @@
     
     <item>
       <title>First</title>
-      <link>https://ripple-zjw.github.io/2019/first/</link>
+      <link>https://example.com/2019/first/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://ripple-zjw.github.io/2019/first/</guid>
+      <guid>https://example.com/2019/first/</guid>
       <description>
 
 &lt;h1 id=&#34;我的博客测试文本&#34;&gt;我的博客测试文本&lt;/h1&gt;
@@ -72,10 +159,10 @@
     
     <item>
       <title>Git</title>
-      <link>https://ripple-zjw.github.io/2019/git/</link>
+      <link>https://example.com/2019/git/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://ripple-zjw.github.io/2019/git/</guid>
+      <guid>https://example.com/2019/git/</guid>
       <description>
 
 &lt;h1 id=&#34;git-版本控制工具&#34;&gt;Git 版本控制工具&lt;/h1&gt;
@@ -384,10 +471,10 @@ push&lt;/p&gt;&lt;/li&gt;
     
     <item>
       <title>Markdown使用</title>
-      <link>https://ripple-zjw.github.io/2019/markdown%E8%AF%95%E7%94%A8/</link>
+      <link>https://example.com/2019/markdown%E8%AF%95%E7%94%A8/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://ripple-zjw.github.io/2019/markdown%E8%AF%95%E7%94%A8/</guid>
+      <guid>https://example.com/2019/markdown%E8%AF%95%E7%94%A8/</guid>
       <description>
 
 &lt;h1 id=&#34;一级标题&#34;&gt;一级标题&lt;/h1&gt;
@@ -445,10 +532,10 @@ int main(){
     
     <item>
       <title>bootstrap</title>
-      <link>https://ripple-zjw.github.io/2019/bootstrap/</link>
+      <link>https://example.com/2019/bootstrap/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://ripple-zjw.github.io/2019/bootstrap/</guid>
+      <guid>https://example.com/2019/bootstrap/</guid>
       <description>
 
 &lt;h3 id=&#34;bootstrap&#34;&gt;bootstrap&lt;/h3&gt;
@@ -517,10 +604,10 @@ pull的时候调整的是right，分13个等级（0到12）
     
     <item>
       <title>reset 三个参数--hard --soft --mixed的区别</title>
-      <link>https://ripple-zjw.github.io/2019/reset-%E4%B8%89%E4%B8%AA%E5%8F%82%E6%95%B0-hard-soft-mixed%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+      <link>https://example.com/2019/reset-%E4%B8%89%E4%B8%AA%E5%8F%82%E6%95%B0-hard-soft-mixed%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://ripple-zjw.github.io/2019/reset-%E4%B8%89%E4%B8%AA%E5%8F%82%E6%95%B0-hard-soft-mixed%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
+      <guid>https://example.com/2019/reset-%E4%B8%89%E4%B8%AA%E5%8F%82%E6%95%B0-hard-soft-mixed%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
       <description>
 
 &lt;h1 id=&#34;hard&#34;&gt;&amp;ndash;hard&lt;/h1&gt;
@@ -539,10 +626,10 @@ pull的时候调整的是right，分13个等级（0到12）
     
     <item>
       <title>中序遍历二叉树</title>
-      <link>https://ripple-zjw.github.io/2019/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
+      <link>https://example.com/2019/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://ripple-zjw.github.io/2019/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</guid>
+      <guid>https://example.com/2019/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</guid>
       <description>
 
 &lt;h1 id=&#34;题目-二叉树的中序遍历&#34;&gt;题目：二叉树的中序遍历&lt;/h1&gt;
@@ -667,10 +754,10 @@ class Solution:
     
     <item>
       <title>使括号有效的最少添加</title>
-      <link>https://ripple-zjw.github.io/2019/%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/</link>
+      <link>https://example.com/2019/%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://ripple-zjw.github.io/2019/%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/</guid>
+      <guid>https://example.com/2019/%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/</guid>
       <description>
 
 &lt;h1 id=&#34;题目&#34;&gt;题目：&lt;/h1&gt;
@@ -781,10 +868,10 @@ class Solution:
     
     <item>
       <title>双指针</title>
-      <link>https://ripple-zjw.github.io/2019/%E5%8F%8C%E6%8C%87%E9%92%88/</link>
+      <link>https://example.com/2019/%E5%8F%8C%E6%8C%87%E9%92%88/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://ripple-zjw.github.io/2019/%E5%8F%8C%E6%8C%87%E9%92%88/</guid>
+      <guid>https://example.com/2019/%E5%8F%8C%E6%8C%87%E9%92%88/</guid>
       <description>
 
 &lt;h1 id=&#34;运用双指针解题&#34;&gt;运用双指针解题&lt;/h1&gt;
@@ -843,10 +930,10 @@ class Solution:
     
     <item>
       <title>最小栈</title>
-      <link>https://ripple-zjw.github.io/2019/%E6%9C%80%E5%B0%8F%E6%A0%88/</link>
+      <link>https://example.com/2019/%E6%9C%80%E5%B0%8F%E6%A0%88/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://ripple-zjw.github.io/2019/%E6%9C%80%E5%B0%8F%E6%A0%88/</guid>
+      <guid>https://example.com/2019/%E6%9C%80%E5%B0%8F%E6%A0%88/</guid>
       <description>
 
 &lt;h2 id=&#34;设计一个支持-push-pop-top-操作-并能在常数时间内检索到最小元素的栈&#34;&gt;设计一个支持 push，pop，top 操作，并能在常数时间内检索到最小元素的栈：&lt;/h2&gt;
@@ -923,10 +1010,10 @@ class Solution:
     
     <item>
       <title>栈实现队列</title>
-      <link>https://ripple-zjw.github.io/2019/%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/</link>
+      <link>https://example.com/2019/%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://ripple-zjw.github.io/2019/%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/</guid>
+      <guid>https://example.com/2019/%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/</guid>
       <description>
 
 &lt;h2 id=&#34;使用栈实现队列的下列操作&#34;&gt;使用栈实现队列的下列操作：&lt;/h2&gt;
@@ -1004,10 +1091,10 @@ class Solution:
     
     <item>
       <title>滑动窗口问题</title>
-      <link>https://ripple-zjw.github.io/2019/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</link>
+      <link>https://example.com/2019/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://ripple-zjw.github.io/2019/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</guid>
+      <guid>https://example.com/2019/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</guid>
       <description>
 
 &lt;h1 id=&#34;给定一个字符串-请你找出其中不含有重复字符的-最长子串-的长度&#34;&gt;给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。&lt;/h1&gt;
@@ -1123,10 +1210,10 @@ class Solution:
     
     <item>
       <title>表现良好的最长时间段</title>
-      <link>https://ripple-zjw.github.io/2019/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/</link>
+      <link>https://example.com/2019/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://ripple-zjw.github.io/2019/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/</guid>
+      <guid>https://example.com/2019/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/</guid>
       <description>
 
 &lt;h1 id=&#34;题目&#34;&gt;题目：&lt;/h1&gt;
@@ -1233,142 +1320,6 @@ class Solution:
 &lt;h1 id=&#34;总结&#34;&gt;总结&lt;/h1&gt;
 
 &lt;p&gt;这道题的通过率只有14%，虽然是中等题但是还是挺难的。在使用栈来解题时考虑一下前缀问题也是一种思路。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>逆向工作法</title>
-      <link>https://ripple-zjw.github.io/2019/%E9%80%86%E5%90%91%E5%B7%A5%E4%BD%9C%E6%B3%95/</link>
-      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E9%80%86%E5%90%91%E5%B7%A5%E4%BD%9C%E6%B3%95/</guid>
-      <description>
-
-&lt;h1 id=&#34;逆向工作法&#34;&gt;逆向工作法：&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;逆向工作法，就是逆向思维，通过将问题反向思考求解。&lt;/li&gt;
-&lt;li&gt;逆向工作法用到了栈的思想，但不需要栈也能实现。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;例题&#34;&gt;例题：&lt;/h3&gt;
-
-&lt;p&gt;给定一个编码字符串 S。为了找出解码字符串并将其写入磁带，从编码字符串中每次读取一个字符，并采取以下步骤：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;如果所读的字符是字母，则将该字母写在磁带上。&lt;/li&gt;
-&lt;li&gt;如果所读的字符是数字（例如 d），则整个当前磁带总共会被重复写 d-1 次。
-现在，对于给定的编码字符串 S 和索引 K，查找并返回解码字符串中的第 K 个字母。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h6 id=&#34;示例-1&#34;&gt;示例 1：&lt;/h6&gt;
-
-&lt;pre&gt;&lt;code&gt;输入：S = &amp;quot;leet2code3&amp;quot;, K = 10
-输出：&amp;quot;o&amp;quot;
-解释：
-解码后的字符串为 &amp;quot;leetleetcodeleetleetcodeleetleetcode&amp;quot;。
-字符串中的第 10 个字母是 &amp;quot;o&amp;quot;。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h6 id=&#34;示例-2&#34;&gt;示例 2：&lt;/h6&gt;
-
-&lt;pre&gt;&lt;code&gt;输入：S = &amp;quot;ha22&amp;quot;, K = 5
-输出：&amp;quot;h&amp;quot;
-解释：
-解码后的字符串为 &amp;quot;hahahaha&amp;quot;。第 5 个字母是 &amp;quot;h&amp;quot;。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h6 id=&#34;示例-3&#34;&gt;示例 3：&lt;/h6&gt;
-
-&lt;pre&gt;&lt;code&gt;输入：S = &amp;quot;a2345678999999999999999&amp;quot;, K = 1
-输出：&amp;quot;a&amp;quot;
-解释：
-解码后的字符串为 &amp;quot;a&amp;quot; 重复 8301530446056247680 次。第 1 个字母是 &amp;quot;a&amp;quot;。
- 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h6 id=&#34;提示&#34;&gt;提示：&lt;/h6&gt;
-
-&lt;pre&gt;&lt;code&gt;2 &amp;lt;= S.length &amp;lt;= 100
-S 只包含小写字母与数字 2 到 9 。
-S 以字母开头。
-1 &amp;lt;= K &amp;lt;= 10^9
-解码后的字符串保证少于 2^63 个字母。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第880题&#34;&gt;来源：力扣（LeetCode）第880题&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/decoded-string-at-index&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/decoded-string-at-index&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;解析&#34;&gt;解析：&lt;/h3&gt;
-
-&lt;p&gt;首先先把题目要求的总长度算出来，这个比较容易，难点在于如何将第K个数从总长度中找出来。因为我们无法将整个数组都写出来，比如实例3，a的个数太多了，会导致内存不够的。所以我们只能找一种办法，在不用写出全部数组的情况下将第K个元素算出来。&lt;/p&gt;
-
-&lt;p&gt;如果每次都从前面思考，你会发现自己陷入瓶颈，找不到合适的方法满足要求。&lt;/p&gt;
-
-&lt;p&gt;可是如果反过来思考一下。我们刚才算出总长度用的方法是遍历数组，遇到字母+1，遇到数字就乘以这个数字。现在我们反过来思考，我们从后往前遍历，总长度遇到字母-1，遇到数字就除以这个数字。&lt;/p&gt;
-
-&lt;p&gt;假设我们遇到数字3，说明剩下的数字的总长度一定能正好分成3份，如果总长度是36，那么也就是说只有12个不同的答案，因为每一份的字母都是一样的。此时总长度为12，因此我们将K % 总长度12 ，看一下这个值是否等于0。如果不等于0，并且不是数字，就-1，直到K % 总长度 == 0，那么遍历到这个位置的S[i]就是所要求的元素。&lt;/p&gt;
-
-&lt;h3 id=&#34;上代码看一下&#34;&gt;上代码看一下：&lt;/h3&gt;
-
-&lt;p&gt;先来一个不用栈实现的官方解法&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;class Solution:
-    def decodeAtIndex(self, S: str, K: int) -&amp;gt; str:
-        size = 0
-        for c in S:
-            if c.isdigit():
-                size *= int(c)
-            else:
-                size += 1
-
-        for c in reversed(S):
-            K %= size
-            if K == 0 and c.isalpha():
-                return c
-            if c.isdigit():
-                size /= int(c)
-            else:
-                size -= 1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;然后是使用栈实现的，其实是一样的，从后往前遍历就是在模拟出栈，不过不用真的出栈，节省了时间&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;class Solution(object):
-    def decodeAtIndex(self, S, K):
-        stack = []
-        add = 0
-        for i in range(len(S)):
-            if S[i].isdigit():
-                add *= int(S[i])
-            else:
-                add += 1
-            stack.append(S[i])
-        while stack:
-            K = K % add
-            if K == 0 and stack[-1].isalpha():
-                return stack[-1]
-            
-            if stack[-1].isdigit():
-                add = add // int(stack.pop())
-            else:
-                add -= 1
-                stack.pop()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;时间复杂度：O(N)，其中 N 是 S 的长度。&lt;/li&gt;
-&lt;li&gt;空间复杂度：O(1)。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
-
-&lt;p&gt;根据题目所给的条件，来反向推导题目，有可能获得意想不到的效果。&lt;/p&gt;
 </description>
     </item>
     

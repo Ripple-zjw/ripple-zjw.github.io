@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>demo on LeaveIt</title>
-    <link>https://ripple-zjw.github.io/tags/demo/</link>
+    <link>https://example.com/tags/demo/</link>
     <description>Recent content in demo on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 14 Aug 2019 13:22:20 +0800</lastBuildDate>
     
-	<atom:link href="https://ripple-zjw.github.io/tags/demo/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://example.com/tags/demo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>First</title>
-      <link>https://ripple-zjw.github.io/2019/first/</link>
+      <link>https://example.com/2019/first/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://ripple-zjw.github.io/2019/first/</guid>
+      <guid>https://example.com/2019/first/</guid>
       <description> 我的博客测试文本 </description>
     </item>
     

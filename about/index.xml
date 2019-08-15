@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Abouts on LeaveIt</title>
-    <link>https://ripple-zjw.github.io/about/</link>
+    <link>https://example.com/about/</link>
     <description>Recent content in Abouts on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 15 Aug 2019 14:51:20 +0800</lastBuildDate>
     
-	<atom:link href="https://ripple-zjw.github.io/about/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://example.com/about/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>关于博客</title>
-      <link>https://ripple-zjw.github.io/about/aboutblog/</link>
+      <link>https://example.com/about/aboutblog/</link>
       <pubDate>Thu, 15 Aug 2019 14:51:20 +0800</pubDate>
       
-      <guid>https://ripple-zjw.github.io/about/aboutblog/</guid>
+      <guid>https://example.com/about/aboutblog/</guid>
       <description> 关于博客 感谢Leavelt的作者柳志超，这个基于hugo的博客框架非常的好。
   主题官方网址: https://themes.gohugo.io/leaveit/
  中文文档网址: https://liuzhichao.com/2018/hugo-theme-leaveit/
@@ -25,10 +25,10 @@
     
     <item>
       <title>关于我</title>
-      <link>https://ripple-zjw.github.io/about/aboutme/</link>
+      <link>https://example.com/about/aboutme/</link>
       <pubDate>Thu, 15 Aug 2019 14:51:20 +0800</pubDate>
       
-      <guid>https://ripple-zjw.github.io/about/aboutme/</guid>
+      <guid>https://example.com/about/aboutme/</guid>
       <description> 关于我 学生党一枚,我的网名叫:Ripple
 ​ 这是我的个人博客网站，主要写一些自己在学习编程过程中遇到的问题，以及解决的方法。同时，我也欢迎其他人来浏览我的学习成果，为我指出一些错误。如果你喜欢我的网站，可以按Ctrl + d 收藏该网站。希望在浏览的过程中我们一起学习，进步。谢谢！！！！！
   附上我的邮箱，在浏览过程中有任何问题，都可以发到我的邮箱里。1315294982@qq.com

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>平衡法 on LeaveIt</title>
-    <link>https://www.ripple-zjw.github.io/tags/%E5%B9%B3%E8%A1%A1%E6%B3%95/</link>
+    <link>https://ripple-zjw.github.io/tags/%E5%B9%B3%E8%A1%A1%E6%B3%95/</link>
     <description>Recent content in 平衡法 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 14 Aug 2019 13:22:20 +0800</lastBuildDate>
     
-	<atom:link href="https://www.ripple-zjw.github.io/tags/%E5%B9%B3%E8%A1%A1%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ripple-zjw.github.io/tags/%E5%B9%B3%E8%A1%A1%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>使括号有效的最少添加</title>
-      <link>https://www.ripple-zjw.github.io/2019/%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/</link>
+      <link>https://ripple-zjw.github.io/2019/%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://www.ripple-zjw.github.io/2019/%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/</guid>
+      <guid>https://ripple-zjw.github.io/2019/%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/</guid>
       <description>题目： 给定一个由 &amp;rsquo;(&amp;lsquo; 和 &amp;rsquo;)&amp;lsquo; 括号组成的字符串 S，我们需要添加最少的括号（ &amp;lsquo;(&amp;lsquo; 或是 &amp;rsquo;)&amp;lsquo;，可以在任何位置），以使得到的括号字符串有效。
 从形式上讲，只有满足下面几点之一，括号字符串才是有效的：
  它是一个空字符串，或者 它可以被写成 AB （A 与 B 连接）, 其中 A 和 B 都是有效字符串，或者 它可以被写作 (A)，其中 A 是有效字符串。 给定一个括号字符串，返回为使结果字符串有效而必须添加的最少括号数。   示例 1：

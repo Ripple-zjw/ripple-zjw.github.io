@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>算法求解思想 on LeaveIt</title>
-    <link>https://www.ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/</link>
+    <link>https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/</link>
     <description>Recent content in 算法求解思想 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 15 Aug 2019 16:42:03 +0800</lastBuildDate>
     
-	<atom:link href="https://www.ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>二叉搜索树迭代器</title>
-      <link>https://www.ripple-zjw.github.io/2019/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BF%AD%E4%BB%A3%E5%99%A8/</link>
+      <link>https://ripple-zjw.github.io/2019/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BF%AD%E4%BB%A3%E5%99%A8/</link>
       <pubDate>Thu, 15 Aug 2019 16:42:03 +0800</pubDate>
       
-      <guid>https://www.ripple-zjw.github.io/2019/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BF%AD%E4%BB%A3%E5%99%A8/</guid>
+      <guid>https://ripple-zjw.github.io/2019/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BF%AD%E4%BB%A3%E5%99%A8/</guid>
       <description>题目：二叉搜索树迭代器  实现一个二叉搜索树迭代器。你将使用二叉搜索树的根节点初始化迭代器。 调用 next() 将返回二叉搜索树中的下一个最小的数。  示例： BSTIterator iterator = new BSTIterator(root); iterator.next(); // 返回 3 iterator.next(); // 返回 7 iterator.hasNext(); // 返回 true iterator.next(); // 返回 9 iterator.hasNext(); // 返回 true iterator.next(); // 返回 15 iterator.hasNext(); // 返回 true iterator.next(); // 返回 20 iterator.hasNext(); // 返回 false  提示：  next() 和 hasNext() 操作的时间复杂度是 O(1)，并使用O(h)内存，其中 h 是树的高度。 你可以假设 next() 调用总是有效的，也就是说，当调用 next() 时，BST 中至少存在一个下一个最小的数。  来源：力扣（LeetCode）第173题  链接：https://leetcode-cn.com/problems/binary-search-tree-iterator</description>
     </item>
     
     <item>
       <title>中序遍历二叉树</title>
-      <link>https://www.ripple-zjw.github.io/2019/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
+      <link>https://ripple-zjw.github.io/2019/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://www.ripple-zjw.github.io/2019/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</guid>
+      <guid>https://ripple-zjw.github.io/2019/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</guid>
       <description>题目：二叉树的中序遍历 给定一个二叉树，返回它的中序遍历。
 示例: 输入: [1,null,2,3] 1 \ 2 / 3 输出: [1,3,2]   进阶: 递归算法很简单，你可以通过迭代算法完成吗？  来源：力扣（LeetCode）第94题  链接：https://leetcode-cn.com/problems/binary-tree-inorder-traversal
  分析: 两种方法，一种是最常用的递归遍历，非常简单。第二种是迭代遍历，需要用到栈。本文章分析第二种算法。
@@ -35,10 +35,10 @@
     
     <item>
       <title>使括号有效的最少添加</title>
-      <link>https://www.ripple-zjw.github.io/2019/%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/</link>
+      <link>https://ripple-zjw.github.io/2019/%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://www.ripple-zjw.github.io/2019/%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/</guid>
+      <guid>https://ripple-zjw.github.io/2019/%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/</guid>
       <description>题目： 给定一个由 &amp;rsquo;(&amp;lsquo; 和 &amp;rsquo;)&amp;lsquo; 括号组成的字符串 S，我们需要添加最少的括号（ &amp;lsquo;(&amp;lsquo; 或是 &amp;rsquo;)&amp;lsquo;，可以在任何位置），以使得到的括号字符串有效。
 从形式上讲，只有满足下面几点之一，括号字符串才是有效的：
  它是一个空字符串，或者 它可以被写成 AB （A 与 B 连接）, 其中 A 和 B 都是有效字符串，或者 它可以被写作 (A)，其中 A 是有效字符串。 给定一个括号字符串，返回为使结果字符串有效而必须添加的最少括号数。   示例 1：
@@ -56,10 +56,10 @@ Talk is cheap, show me the code.</description>
     
     <item>
       <title>双指针</title>
-      <link>https://www.ripple-zjw.github.io/2019/%E5%8F%8C%E6%8C%87%E9%92%88/</link>
+      <link>https://ripple-zjw.github.io/2019/%E5%8F%8C%E6%8C%87%E9%92%88/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://www.ripple-zjw.github.io/2019/%E5%8F%8C%E6%8C%87%E9%92%88/</guid>
+      <guid>https://ripple-zjw.github.io/2019/%E5%8F%8C%E6%8C%87%E9%92%88/</guid>
       <description>运用双指针解题 参考题目：LeetCode（26、27题）  https://leetcode-cn.com/problemset/all/
  使用场景： 需要遍历一个数组，在遍历过程中根据要求改变数组中元素的值、位置等一些关系。我们可以使用两个指针进行求解。
 例如：删除数组中的重复项，移除摸一个元素
@@ -70,10 +70,10 @@ c语言代码：（LeetCode 26题） int removeDuplicates(int* nums, int numsSiz
     
     <item>
       <title>最小栈</title>
-      <link>https://www.ripple-zjw.github.io/2019/%E6%9C%80%E5%B0%8F%E6%A0%88/</link>
+      <link>https://ripple-zjw.github.io/2019/%E6%9C%80%E5%B0%8F%E6%A0%88/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://www.ripple-zjw.github.io/2019/%E6%9C%80%E5%B0%8F%E6%A0%88/</guid>
+      <guid>https://ripple-zjw.github.io/2019/%E6%9C%80%E5%B0%8F%E6%A0%88/</guid>
       <description>设计一个支持 push，pop，top 操作，并能在常数时间内检索到最小元素的栈：  push(x) &amp;ndash; 将元素 x 推入栈中。 pop() &amp;ndash; 删除栈顶的元素。 top() &amp;ndash; 获取栈顶元素。 getMin() &amp;ndash; 检索栈中的最小元素。  来源：力扣（LeetCode）第155题  链接：https://leetcode-cn.com/problems/min-stack
  题目解析： 这道题需要用到一个辅助栈来帮忙，较为暴力的方法是使用python的内置函数min直接算出最小值，或者遍历整个栈将最小值算出。但是题目要求getMin的时间复杂度是常数级的，也就是O（1）。因此上述的方法行不通，需要奇妙的运用到栈的特性来解题。
 解题思路： 首先要有两个栈，一个是正常的数据栈（stack），另一个是只存最小值的辅助栈（minStack）。数据栈正常进，出数据，辅助栈在每次进栈和出栈时要判断。如果push的值比辅助栈的栈顶元素要小（或者相等），那么就把它压入辅助栈。同理，如果pop的值比辅助栈的栈顶元素要小（或者相等），那么就讲辅助栈的栈顶元素弹出。
@@ -90,10 +90,10 @@ getMin的值就是辅助栈的最小值
     
     <item>
       <title>栈实现队列</title>
-      <link>https://www.ripple-zjw.github.io/2019/%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/</link>
+      <link>https://ripple-zjw.github.io/2019/%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://www.ripple-zjw.github.io/2019/%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/</guid>
+      <guid>https://ripple-zjw.github.io/2019/%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/</guid>
       <description>使用栈实现队列的下列操作：  push(x) &amp;ndash; 将一个元素放入队列的尾部。 pop() &amp;ndash; 从队列首部移除元素。 peek() &amp;ndash; 返回队列首部的元素。 empty() &amp;ndash; 返回队列是否为空。  来源：力扣（LeetCode） 第232题  链接：https://leetcode-cn.com/problems/implement-queue-using-stacks
  题目解析： 这道题想要通过很容易，使用Python的话由于python的列表不仅就是一个现成的栈，而且Python的列表还支持栈所不支持的操作，比如队列的操作，但是时间复杂度可不低，所以Python还有一个双端列表，它可以支持从两端插入并且时间复杂度都是O（1）
 可是如果这样做的话和题目本身的意思有点不相符。如果只能使用栈的操作，即只能在列表的最后进行插入和删除以及取值，就需要使用到双栈来模拟队列的操作。具体的操作方法有很多，在这里只记录LeetCode上最高效的方法。
@@ -108,10 +108,10 @@ getMin的值就是辅助栈的最小值
     
     <item>
       <title>滑动窗口问题</title>
-      <link>https://www.ripple-zjw.github.io/2019/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</link>
+      <link>https://ripple-zjw.github.io/2019/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://www.ripple-zjw.github.io/2019/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</guid>
+      <guid>https://ripple-zjw.github.io/2019/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</guid>
       <description>给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。 示例 1: 输入: &amp;quot;abcabcbb&amp;quot; 输出: 3 解释: 因为无重复字符的最长子串是 &amp;quot;abc&amp;quot;，所以其长度为 3。  示例 2: 输入: &amp;quot;bbbbb&amp;quot; 输出: 1 解释: 因为无重复字符的最长子串是 &amp;quot;b&amp;quot;，所以其长度为 1。  示例 3: 输入: &amp;quot;pwwkew&amp;quot; 输出: 3 解释: 因为无重复字符的最长子串是 &amp;quot;wke&amp;quot;，所以其长度为 3。 请注意，你的答案必须是 子串 的长度，&amp;quot;pwke&amp;quot; 是一个子序列，不是子串。  来源：力扣（LeetCode）第三题  链接：https://leetcode-cn.com/problems/longest-substring-without-repeating-characters
  这是一个典型的滑动窗口问题。 解题思路：什么是滑动窗口？ 其实就是一个队列,比如例题中的 abcabcbb，进入这个队列（窗口）为 abc 满足题目要求，当再进入 a，队列变成了 abca，这时候不满足要求。所以，我们要移动这个队列！
 如何移动？ 我们只要把队列的左边的元素移出就行了，直到满足题目要求！ 一直维持这样的队列，找出队列出现最长的长度时候，求出解！ 时间复杂度：O(n)
@@ -122,10 +122,10 @@ class Solution: def lengthOfLongestSubstring(self, s: str) -&amp;gt; int: Max_le
     
     <item>
       <title>表现良好的最长时间段</title>
-      <link>https://www.ripple-zjw.github.io/2019/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/</link>
+      <link>https://ripple-zjw.github.io/2019/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://www.ripple-zjw.github.io/2019/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/</guid>
+      <guid>https://ripple-zjw.github.io/2019/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/</guid>
       <description>题目：  给你一份工作时间表hours，上面记录着某一位员工每天的工作小时数。 我们认为当员工一天中的工作小时数大于 8 小时的时候，那么这一天就是「劳累的一天」。 所谓「表现良好的时间段」，意味在这段时间内，「劳累的天数」是严格 大于「不劳累的天数」。 请你返回「表现良好时间段」的最大长度。  来源：力扣（LeetCode）第1124题  链接：https://leetcode-cn.com/problems/longest-well-performing-interval
  题目解析： 这题可以使用暴力法O(n^2),二分法O(nlogn),以及借助单调栈来实现O(n),使用暴力法由于时间太长而无法通过，使用单调栈的思路可以借鉴LeetCode上浏览第一的思路（虽然并不是最优解决方案）。
 题目的意思其实就是说从给定的数组中找一段数组，这段数组大于8的元素比小于等于8的元素多，而且是最长的一段。 &amp;gt; 传送门：https://leetcode-cn.com/problems/longest-well-performing-interval/solution/qian-zhui-he-dan-diao-zhan-python3-by-smoon1989/
@@ -146,10 +146,10 @@ class Solution: def lengthOfLongestSubstring(self, s: str) -&amp;gt; int: Max_le
     
     <item>
       <title>逆向工作法</title>
-      <link>https://www.ripple-zjw.github.io/2019/%E9%80%86%E5%90%91%E5%B7%A5%E4%BD%9C%E6%B3%95/</link>
+      <link>https://ripple-zjw.github.io/2019/%E9%80%86%E5%90%91%E5%B7%A5%E4%BD%9C%E6%B3%95/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://www.ripple-zjw.github.io/2019/%E9%80%86%E5%90%91%E5%B7%A5%E4%BD%9C%E6%B3%95/</guid>
+      <guid>https://ripple-zjw.github.io/2019/%E9%80%86%E5%90%91%E5%B7%A5%E4%BD%9C%E6%B3%95/</guid>
       <description>逆向工作法：  逆向工作法，就是逆向思维，通过将问题反向思考求解。 逆向工作法用到了栈的思想，但不需要栈也能实现。  例题： 给定一个编码字符串 S。为了找出解码字符串并将其写入磁带，从编码字符串中每次读取一个字符，并采取以下步骤：
  如果所读的字符是字母，则将该字母写在磁带上。 如果所读的字符是数字（例如 d），则整个当前磁带总共会被重复写 d-1 次。 现在，对于给定的编码字符串 S 和索引 K，查找并返回解码字符串中的第 K 个字母。  示例 1： 输入：S = &amp;quot;leet2code3&amp;quot;, K = 10 输出：&amp;quot;o&amp;quot; 解释： 解码后的字符串为 &amp;quot;leetleetcodeleetleetcodeleetleetcode&amp;quot;。 字符串中的第 10 个字母是 &amp;quot;o&amp;quot;。  示例 2： 输入：S = &amp;quot;ha22&amp;quot;, K = 5 输出：&amp;quot;h&amp;quot; 解释： 解码后的字符串为 &amp;quot;hahahaha&amp;quot;。第 5 个字母是 &amp;quot;h&amp;quot;。  示例 3： 输入：S = &amp;quot;a2345678999999999999999&amp;quot;, K = 1 输出：&amp;quot;a&amp;quot; 解释： 解码后的字符串为 &amp;quot;a&amp;quot; 重复 8301530446056247680 次。第 1 个字母是 &amp;quot;a&amp;quot;。  提示： 2 &amp;lt;= S.</description>
     </item>

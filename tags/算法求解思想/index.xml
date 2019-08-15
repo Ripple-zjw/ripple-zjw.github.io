@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>算法求解思想 on LeaveIt</title>
+    <link>https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/</link>
+    <description>Recent content in 算法求解思想 on LeaveIt</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 14 Aug 2019 13:22:20 +0800</lastBuildDate>
+    
+	<atom:link href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>中序遍历二叉树</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
+      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</guid>
+      <description>题目：二叉树的中序遍历 给定一个二叉树，返回它的中序遍历。
+示例: 输入: [1,null,2,3] 1 \ 2 / 3 输出: [1,3,2]   进阶: 递归算法很简单，你可以通过迭代算法完成吗？  来源：力扣（LeetCode）第94题  链接：https://leetcode-cn.com/problems/binary-tree-inorder-traversal
+ 分析: 两种方法，一种是最常用的递归遍历，非常简单。第二种是迭代遍历，需要用到栈。本文章分析第二种算法。
+思路: 维护一个栈，每次经过一个节点，就入栈，当节点的左节点没有值时出栈，并继续从出栈的那个节点找它的右节点。
+ 维护一个栈stack和要储存答案的列表ans 写一个循环，不停地将左节点一层一层的入栈 当左节点为None时，不要入栈，并且将栈顶节点弹出 拿到栈顶节点的value，并且进入该节点的右节点（因为中序遍历是左，中，右） 继续拿这个节点的左节点，重复2-4步 当节点值为None 或者 stack为空时结束循环  代码： # Definition for a binary tree node. # class TreeNode: # def __init__(self, x): # self.val = x # self.left = None # self.right = None class Solution: def inorderTraversal(self, root: TreeNode) -&amp;gt; List[int]: stack = [] ans = [] tail = root while tail is not None or stack: while tail is not None: stack.</description>
+    </item>
+    
+    <item>
+      <title>使括号有效的最少添加</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/</link>
+      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/</guid>
+      <description>题目： 给定一个由 &amp;rsquo;(&amp;lsquo; 和 &amp;rsquo;)&amp;lsquo; 括号组成的字符串 S，我们需要添加最少的括号（ &amp;lsquo;(&amp;lsquo; 或是 &amp;rsquo;)&amp;lsquo;，可以在任何位置），以使得到的括号字符串有效。
+从形式上讲，只有满足下面几点之一，括号字符串才是有效的：
+ 它是一个空字符串，或者 它可以被写成 AB （A 与 B 连接）, 其中 A 和 B 都是有效字符串，或者 它可以被写作 (A)，其中 A 是有效字符串。 给定一个括号字符串，返回为使结果字符串有效而必须添加的最少括号数。   示例 1：
+输入：&amp;quot;())&amp;quot; 输出：1  示例 2：
+输入：&amp;quot;(((&amp;quot; 输出：3  示例 3：
+输入：&amp;quot;()&amp;quot; 输出：0  示例 4：
+输入：&amp;quot;()))((&amp;quot; 输出：4   来源：力扣（LeetCode）第921题  链接：https://leetcode-cn.com/problems/minimum-add-to-make-parentheses-valid
+ 题目解析： 这题不是很难，比较容易就能想到，只要使用栈就能做出。在这里不讨论栈的方法，而是官方给出的一种更加巧妙和特别的方法，平衡法。
+解题思路： 维护两个变量ans(answer)和bal(balance)，ans是正常的结果，而bal则是题目可能发生的一种特殊情况。比如&amp;rdquo;)))(((&amp;ldquo;这种情况。这个答案应该是六，而不是0，因为右括号在前面，而左括号在后面，这就导致他们无法作为一对有效的括号。如果我们不用bal这个变量的话，应该是这样子的。
+先遍历整个字符串，如果是左括号的话，ans加一，如果是右括号的话，ans减一。看似这样做没什么毛病，但是就像我刚才举得例子，当右括号在左括号的前面或者又括号比左括号多，都会出问题，那怎么办呢？这时，我们bal变量就能派上用场。（可能有人会说用个绝对值就行了，同样是上面那个例子，你会发现用绝对值还是不行！！！！）
+还是刚才的思路，只是我们思考一下，如果右括号在前面或者右括号比左括号多的话，会导致ans的值为负数（出现了一次负数也是负数，不管它后面会不会变为正数）。一旦变成了负数（其实就是ans为-1，因为ans只有+1或-1的操作），那那个右括号一定是需要添加的括号，因为他一定是无效的括号。ans存的应该是需要添加的左括号和有效的两个括号，由于有效的两个括号一加一减没了，所以本质上就是存的无效左括号的次数，所以我们要把无效右括号的次数存在bal里面，同时为了不让右括号的-1导致左括号的次数不对，所以当ans值为-1时，bal要加一，同时ans也要加一，即相当于把ans的负数放在bal中。最后，我们只要将ans和bal相加即可得出答案。
+简单理解： 维护ans和bal两个变量，ans存的是无效的左括号，同时当左括号的后面找到右括号后，左括号变为有效，那么ans就减一，如果右括号太多，左括号都是有效的，那么就有了无效的右括号，把他存在bal里面，同时将它离开ans，也就是ans+1（因为右括号是-1，+1相当于ans-（-1）），这样子一左一右即可以使两边平衡，最后的答案只要把ans和bal（无效左括号和无效右括号）加起来就行了。
+Talk is cheap, show me the code.</description>
+    </item>
+    
+    <item>
+      <title>双指针</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%8F%8C%E6%8C%87%E9%92%88/</link>
+      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%8F%8C%E6%8C%87%E9%92%88/</guid>
+      <description>运用双指针解题 参考题目：LeetCode（26、27题）  https://leetcode-cn.com/problemset/all/
+ 使用场景： 需要遍历一个数组，在遍历过程中根据要求改变数组中元素的值、位置等一些关系。我们可以使用两个指针进行求解。
+例如：删除数组中的重复项，移除摸一个元素
+双指针使用思路： 一个数（i）作为已经过滤了的标记，另一个数（j）去寻找不符合条件的数，找到之后将两个元素进行交换。这样当j完全遍历一遍时，就可以把不符合要求的数都放到后面去，i之前的数都是符合规范的数。这种思路和插入排序很像，都是将一个指针作为排好序的部分，只不过插入排序还需要将排好序的部分再遍历一遍，把新的值插入进去。
+使用双指针的好处： 首先使用双指针是原地排序，不会需要额外的储存空间，空间复杂度是O（1）。而且被过滤的数并没有被移除，只是与后面符合要求的数进行交换，这样虽然是删除了这个数，但是不需要进行数据的搬移操作，大大节省了时间。
+c语言代码：（LeetCode 26题） int removeDuplicates(int* nums, int numsSize){ if(numsSize==0) return 0; int i, j; for(j = 1, i = 0; j &amp;lt; numsSize; j++){ if(nums[i] != nums[j]){ i++; nums[i] = nums[j]; } } return i + 1; }  python代码：（LeetCode 27题） class Solution: def removeElement(self, nums: List[int], val: int) -&amp;gt; int: i = 0 for j in range(len(nums)): if nums[j] !</description>
+    </item>
+    
+    <item>
+      <title>最小栈</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%9C%80%E5%B0%8F%E6%A0%88/</link>
+      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%9C%80%E5%B0%8F%E6%A0%88/</guid>
+      <description>设计一个支持 push，pop，top 操作，并能在常数时间内检索到最小元素的栈：  push(x) &amp;ndash; 将元素 x 推入栈中。 pop() &amp;ndash; 删除栈顶的元素。 top() &amp;ndash; 获取栈顶元素。 getMin() &amp;ndash; 检索栈中的最小元素。  来源：力扣（LeetCode）第155题  链接：https://leetcode-cn.com/problems/min-stack
+ 题目解析： 这道题需要用到一个辅助栈来帮忙，较为暴力的方法是使用python的内置函数min直接算出最小值，或者遍历整个栈将最小值算出。但是题目要求getMin的时间复杂度是常数级的，也就是O（1）。因此上述的方法行不通，需要奇妙的运用到栈的特性来解题。
+解题思路： 首先要有两个栈，一个是正常的数据栈（stack），另一个是只存最小值的辅助栈（minStack）。数据栈正常进，出数据，辅助栈在每次进栈和出栈时要判断。如果push的值比辅助栈的栈顶元素要小（或者相等），那么就把它压入辅助栈。同理，如果pop的值比辅助栈的栈顶元素要小（或者相等），那么就讲辅助栈的栈顶元素弹出。
+为什么要这样做呢？
+其实这很好理解。第一个入栈的元素进栈后，最小值肯定就是它，所以将它放入辅助栈，让它成为判断的目标。如果有比第一个入栈的元素大的元素进栈的话，那其实不用管它们，因为最小值不可能是它们，所以不用把它们放进辅助栈中。如果有栈的元素小于第一个入栈的元素的话，那么就只需要将小于的元素压入辅助栈中，使其成为栈顶元素。如此一来，我们就改变判断的目标，将后面push的元素与这个元素进行比较，直到辅助栈又有一个比它小的元素进栈。
+出栈也是一个道理，只要出栈的元素比辅助栈的栈顶元素小或相等的话。就将辅助栈的栈顶元素弹出。
+这么一来其实就很明朗了。辅助栈的栈顶元素永远都是最小的元素，而整个辅助栈的元素的值从上自下依次在逐渐变大，直到栈底元素，也就是数据栈中第一个入栈的元素。如果有元素比数据栈的栈底元素大的话，根本不用考虑，因为在出栈的过程中，它们永远都会比数据栈的栈底元素先出栈，所以它们直到数据栈中的数据弹光也不可能作为最小值。那么就不用放入栈中。
+简单理解： 使用两个栈，一个用于正常存储数据（stack），另一个用于把可能作为最小值的数据从大到小依次压入栈（minStack），也就是把每次比minStack的栈顶元素小的数压入minStack。
+然后pop操作的时候，只要关注一下当前栈的最小值有没有被弹出去，有的话minStack也要出栈。
+getMin的值就是辅助栈的最小值
+时间复杂度： 非常短，只要进行依次获取栈顶元素的操作即可。为O（1）
+实现代码：（Python） class MinStack: def __init__(self): self.stack = [] self.minStack = [] def push(self, x: int) -&amp;gt; None: if len(self.minStack) == 0 or x &amp;lt;= self.minStack[-1]: self.minStack.append(x) self.stack.append(x) def pop(self) -&amp;gt; None: if self.</description>
+    </item>
+    
+    <item>
+      <title>栈实现队列</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/</link>
+      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/</guid>
+      <description>使用栈实现队列的下列操作：  push(x) &amp;ndash; 将一个元素放入队列的尾部。 pop() &amp;ndash; 从队列首部移除元素。 peek() &amp;ndash; 返回队列首部的元素。 empty() &amp;ndash; 返回队列是否为空。  来源：力扣（LeetCode） 第232题  链接：https://leetcode-cn.com/problems/implement-queue-using-stacks
+ 题目解析： 这道题想要通过很容易，使用Python的话由于python的列表不仅就是一个现成的栈，而且Python的列表还支持栈所不支持的操作，比如队列的操作，但是时间复杂度可不低，所以Python还有一个双端列表，它可以支持从两端插入并且时间复杂度都是O（1）
+可是如果这样做的话和题目本身的意思有点不相符。如果只能使用栈的操作，即只能在列表的最后进行插入和删除以及取值，就需要使用到双栈来模拟队列的操作。具体的操作方法有很多，在这里只记录LeetCode上最高效的方法。
+解题思路： 我们声明两个栈，一个是In，另一个是Out。In代表每次push到栈内的元素，而Out代表pop和peek所取得的元素。
+首先，将push的元素都依次存放在In栈中。直到进行了一次pop或peek操作后，将In栈中的所有元素依次出栈，再把它们依次放进Out栈中，这样Out栈的栈顶元素就是我们所要取的元素，也就是队首元素。
+如果又有元素入队，那么In栈就继续进栈，如果又有元素出队，那么Out栈就继续弹出。
+可是，当Out栈中的元素都取完后，就不能再从Out栈中弹出元素了，这个时候，就需要从In栈中继续刚才的步骤，把In栈中的元素取出来放到Out栈里去，然后再去取元素。因此，在进行pop和peek操作时，务必要记得判断当前的Out栈内是否还有剩余的元素，如果没有了，可不能再出栈了，以免报错。
+简单理解： 就是拿出两个栈，一个用于进队（In），一个用于出队（Out），如果出队的栈没有元素了，就再从进队的栈中把元素搬过来。
+时间复杂度： 使用这种方法，用摊还分析法来计算的话时间复杂度无论是进队还是出队都是O（1），非常的高效。因为最好情况下push就是简单的进栈操作，而pop也是出栈操作。最坏情况下，push不变，而pop则需要将In栈中的所有元素都搬进来，时间复杂度为O（n）。平均一下即O（1）
+下面是代码演示（Python） class MyQueue: def __init__(self): self.stackIn = [] self.stackOut = [] def push(self, x: int) -&amp;gt; None: self.stackIn.append(x) def pop(self) -&amp;gt; int: if self.stackOut: return self.stackOut.pop() while self.stackIn: self.stackOut.append(self.stackIn.pop()) return self.stackOut.pop() def peek(self) -&amp;gt; int: if self.stackOut: return self.</description>
+    </item>
+    
+    <item>
+      <title>滑动窗口问题</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</guid>
+      <description>给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。 示例 1: 输入: &amp;quot;abcabcbb&amp;quot; 输出: 3 解释: 因为无重复字符的最长子串是 &amp;quot;abc&amp;quot;，所以其长度为 3。  示例 2: 输入: &amp;quot;bbbbb&amp;quot; 输出: 1 解释: 因为无重复字符的最长子串是 &amp;quot;b&amp;quot;，所以其长度为 1。  示例 3: 输入: &amp;quot;pwwkew&amp;quot; 输出: 3 解释: 因为无重复字符的最长子串是 &amp;quot;wke&amp;quot;，所以其长度为 3。 请注意，你的答案必须是 子串 的长度，&amp;quot;pwke&amp;quot; 是一个子序列，不是子串。  来源：力扣（LeetCode）第三题  链接：https://leetcode-cn.com/problems/longest-substring-without-repeating-characters
+ 这是一个典型的滑动窗口问题。 解题思路：什么是滑动窗口？ 其实就是一个队列,比如例题中的 abcabcbb，进入这个队列（窗口）为 abc 满足题目要求，当再进入 a，队列变成了 abca，这时候不满足要求。所以，我们要移动这个队列！
+如何移动？ 我们只要把队列的左边的元素移出就行了，直到满足题目要求！ 一直维持这样的队列，找出队列出现最长的长度时候，求出解！ 时间复杂度：O(n)
+这样做的时间复杂度会大幅度降低！！！！
+代码如下：（Python）
+class Solution: def lengthOfLongestSubstring(self, s: str) -&amp;gt; int: Max_len = 0 string = set() if len(s) == 1: # 字符串只有一个，直接返回，不要在算下去了 return 1 i = 0 for char in s: while char in string: # 如果遍历到一个已经有了的字符，说明这一段字符串结束，将其全部出队，从下一个不重复的字符开始重新运算。 if Max_len &amp;lt; len(string): # 该段字符串的长度如果比之前的大，那么就代替要返回的值，否则全部扔掉。 Max_len = len(string) string.</description>
+    </item>
+    
+    <item>
+      <title>表现良好的最长时间段</title>
+      <link>https://ripple-zjw.github.io/2019/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/</link>
+      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/</guid>
+      <description>题目：  给你一份工作时间表hours，上面记录着某一位员工每天的工作小时数。 我们认为当员工一天中的工作小时数大于 8 小时的时候，那么这一天就是「劳累的一天」。 所谓「表现良好的时间段」，意味在这段时间内，「劳累的天数」是严格 大于「不劳累的天数」。 请你返回「表现良好时间段」的最大长度。  来源：力扣（LeetCode）第1124题  链接：https://leetcode-cn.com/problems/longest-well-performing-interval
+ 题目解析： 这题可以使用暴力法O(n^2),二分法O(nlogn),以及借助单调栈来实现O(n),使用暴力法由于时间太长而无法通过，使用单调栈的思路可以借鉴LeetCode上浏览第一的思路（虽然并不是最优解决方案）。
+题目的意思其实就是说从给定的数组中找一段数组，这段数组大于8的元素比小于等于8的元素多，而且是最长的一段。 &amp;gt; 传送门：https://leetcode-cn.com/problems/longest-well-performing-interval/solution/qian-zhui-he-dan-diao-zhan-python3-by-smoon1989/
+解题思路： 根据题意，所谓最大表现良好的时间段其实就是包括两个重要的条件。再这之前，我们要把大于8的元素变为1，小于等于8的元素变为-1，使用for循环就能搞定。
+两个条件： 1. 所求的这一段数组他们的总和大于0（不能等于0） 1. 所求的数组是在满足上一个条件的情况下长度最长的数组
+首先先来解释一下这两个条件吧。第一个的意思是所求的数组里1的元素要比-1的多，这样他们的总和肯定是大于0的。符合题意。
+第二个的意思是在这些数组中（数组内的元素是可以重复的）找出最长的那个数组，因为题目要求我们找出最长的那个时间段而不是所有表现良好的时间段。
+先要找到最长的和大于0的数组，我们需要找到所有可能组成和大于0的数组，然后再比较他们的大小，得出答案。
+怎么找呢？我们需要引入前缀和这一概念，顾名思义前缀和就是从第一个开始到某一个元素（可以是任意元素只要不是最后一个元素，因为最后一个元素也算上的话就相当于整个元素了）为止，这一段元素的和。
+为什么要找前缀和呢？因为我们如果用整个元素减去这个数组中每一个前缀和（第一个，第一个加第二个，第一加第二加第三个，……）那么得到的就是这个数组中除去当前前缀后剩下的元素。然后计算他们的和，大于0（符合题意）就把它存起来，如果不大于0，那就把数组中最后一个去掉，再计算和，直到计算到前缀和的最后那个元素。这就表示当前前缀和的所有大于0的元素都计算完了。最长的那个也拿到了，再计算下一段前缀和中的元素是否有符合题意并且比我们从上一段前缀和中拿到的那个长度要长，如果有，就替换它。直到前缀和的长度比你储存的那个最大长度要小，那么剩下的无论怎样都不可能超过这段长度，就可以停止计算了。
+但是这样会有一个问题，并不是所有的前缀和我们都要计算，很多的前缀和其实根本不可能有。比如一个前缀和要比数组的总长度和要大，那么你用小元素减去大元素那肯定是负的，再比如当前前缀和算完后，它的后面（距离它有一段距离）有一段比当前前缀和大1的元素，但是中间的前缀和都是比他们两大的，那么就没有必要考虑，因为随着前缀和的推移，总会遇到与他们的和一样的前缀和，这个时候去计算这些前缀和就行了，因为这些前缀和的长度要比之前看到的那些长度要长。
+其实很明显了，我们只要再维护一个栈，这个栈中存储的是从0开始，顺序递减的前缀和的下标，比如前缀和会是0，-1，-2，-3，当然下标不一定是连着的，但前缀和的差值一定是连着的。我们修改前面的规则，每次检查的都是这个栈中的前缀和，从栈顶开始。
+简单理解： 这题没法很快就理解，需要思考一段时间。
+总的来说，首先要计算数组中每一个前缀和（别忘了第一个是从0开始的，也就是0个元素的前缀），然后维护一个栈，也是从0开始，遍历刚才的前缀和，让栈保持递减的原则，将符合的前缀和的下标依次入栈。（注意是下标，因为前缀和相等的有很多，你必须储存下标才能准确的知道你存的是哪个值），最后再用刚才的方法算出结果。
+时间复杂度： O(n)
+代码实现：（Python） class Solution: def longestWPI(self, hours: List[int]) -&amp;gt; int: n = len(hours) persum = [0] stack = [0] res = 0 for hour in hours: if hour &amp;gt; 8: res += 1 persum.</description>
+    </item>
+    
+    <item>
+      <title>逆向工作法</title>
+      <link>https://ripple-zjw.github.io/2019/%E9%80%86%E5%90%91%E5%B7%A5%E4%BD%9C%E6%B3%95/</link>
+      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E9%80%86%E5%90%91%E5%B7%A5%E4%BD%9C%E6%B3%95/</guid>
+      <description>逆向工作法：  逆向工作法，就是逆向思维，通过将问题反向思考求解。 逆向工作法用到了栈的思想，但不需要栈也能实现。  例题： 给定一个编码字符串 S。为了找出解码字符串并将其写入磁带，从编码字符串中每次读取一个字符，并采取以下步骤：
+ 如果所读的字符是字母，则将该字母写在磁带上。 如果所读的字符是数字（例如 d），则整个当前磁带总共会被重复写 d-1 次。 现在，对于给定的编码字符串 S 和索引 K，查找并返回解码字符串中的第 K 个字母。  示例 1： 输入：S = &amp;quot;leet2code3&amp;quot;, K = 10 输出：&amp;quot;o&amp;quot; 解释： 解码后的字符串为 &amp;quot;leetleetcodeleetleetcodeleetleetcode&amp;quot;。 字符串中的第 10 个字母是 &amp;quot;o&amp;quot;。  示例 2： 输入：S = &amp;quot;ha22&amp;quot;, K = 5 输出：&amp;quot;h&amp;quot; 解释： 解码后的字符串为 &amp;quot;hahahaha&amp;quot;。第 5 个字母是 &amp;quot;h&amp;quot;。  示例 3： 输入：S = &amp;quot;a2345678999999999999999&amp;quot;, K = 1 输出：&amp;quot;a&amp;quot; 解释： 解码后的字符串为 &amp;quot;a&amp;quot; 重复 8301530446056247680 次。第 1 个字母是 &amp;quot;a&amp;quot;。  提示： 2 &amp;lt;= S.</description>
+    </item>
+    
+  </channel>
+</rss>

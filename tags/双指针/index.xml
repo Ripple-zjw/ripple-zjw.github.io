@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>双指针 on LeaveIt</title>
+    <link>https://ripple-zjw.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/</link>
+    <description>Recent content in 双指针 on LeaveIt</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 14 Aug 2019 13:22:20 +0800</lastBuildDate>
+    
+	<atom:link href="https://ripple-zjw.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>双指针</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%8F%8C%E6%8C%87%E9%92%88/</link>
+      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%8F%8C%E6%8C%87%E9%92%88/</guid>
+      <description>运用双指针解题 参考题目：LeetCode（26、27题）  https://leetcode-cn.com/problemset/all/
+ 使用场景： 需要遍历一个数组，在遍历过程中根据要求改变数组中元素的值、位置等一些关系。我们可以使用两个指针进行求解。
+例如：删除数组中的重复项，移除摸一个元素
+双指针使用思路： 一个数（i）作为已经过滤了的标记，另一个数（j）去寻找不符合条件的数，找到之后将两个元素进行交换。这样当j完全遍历一遍时，就可以把不符合要求的数都放到后面去，i之前的数都是符合规范的数。这种思路和插入排序很像，都是将一个指针作为排好序的部分，只不过插入排序还需要将排好序的部分再遍历一遍，把新的值插入进去。
+使用双指针的好处： 首先使用双指针是原地排序，不会需要额外的储存空间，空间复杂度是O（1）。而且被过滤的数并没有被移除，只是与后面符合要求的数进行交换，这样虽然是删除了这个数，但是不需要进行数据的搬移操作，大大节省了时间。
+c语言代码：（LeetCode 26题） int removeDuplicates(int* nums, int numsSize){ if(numsSize==0) return 0; int i, j; for(j = 1, i = 0; j &amp;lt; numsSize; j++){ if(nums[i] != nums[j]){ i++; nums[i] = nums[j]; } } return i + 1; }  python代码：（LeetCode 27题） class Solution: def removeElement(self, nums: List[int], val: int) -&amp;gt; int: i = 0 for j in range(len(nums)): if nums[j] !</description>
+    </item>
+    
+  </channel>
+</rss>

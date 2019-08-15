@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           滑动窗口问题 | LeaveIt
+       
+  </title>
+  <meta name="title" content="滑动窗口问题 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io\/"
+    },
+    "articleSection" : "posts",
+    "name" : "滑动窗口问题",
+    "headline" : "滑动窗口问题",
+    "description" : "给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。 示例 1: 输入: \x26quot;abcabcbb\x26quot; 输出: 3 解释: 因为无重复字符的最长子串是 \x26quot;abc\x26quot;，所以其长度为 3。  示例 2: 输入: \x26quot;bbbbb\x26quot; 输出: 1 解释: 因为无重复字符的最长子串是 \x26quot;b\x26quot;，所以其长度为 1。  示例 3: 输入: \x26quot;pwwkew\x26quot; 输出: 3 解释: 因为无重复字符的最长子串是 \x26quot;wke\x26quot;，所以其长度为 3。 请注意，你的答案必须是 子串 的长度，\x26quot;pwke\x26quot; 是一个子序列，不是子串。  来源：力扣（LeetCode）第三题  链接：https:\/\/leetcode-cn.com\/problems\/longest-substring-without-repeating-characters\n 这是一个典型的滑动窗口问题。 解题思路：什么是滑动窗口？ 其实就是一个队列,比如例题中的 abcabcbb，进入这个队列（窗口）为 abc 满足题目要求，当再进入 a，队列变成了 abca，这时候不满足要求。所以，我们要移动这个队列！\n如何移动？ 我们只要把队列的左边的元素移出就行了，直到满足题目要求！ 一直维持这样的队列，找出队列出现最长的长度时候，求出解！ 时间复杂度：O(n)\n这样做的时间复杂度会大幅度降低！！！！\n代码如下：（Python）\nclass Solution: def lengthOfLongestSubstring(self, s: str) -\x26gt; int: Max_len = 0 string = set() if len(s) == 1: # 字符串只有一个，直接返回，不要在算下去了 return 1 i = 0 for char in s: while char in string: # 如果遍历到一个已经有了的字符，说明这一段字符串结束，将其全部出队，从下一个不重复的字符开始重新运算。 if Max_len \x26lt; len(string): # 该段字符串的长度如果比之前的大，那么就代替要返回的值，否则全部扔掉。 Max_len = len(string) string.",
+    "inLanguage" : "en-us",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-08-14 13:22:20 \x2b0800 CST",
+    "dateModified" : "2019-08-14 13:22:20 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98\/",
+    "wordCount" : "180",
+    "keywords" : [ "算法求解思想","滑动窗口", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io/">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io/">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">滑动窗口问题</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io/" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-08-14 itemprop="datePublished">August 14, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="给定一个字符串-请你找出其中不含有重复字符的-最长子串-的长度">给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。</h1>
+
+<pre><code>示例 1:
+输入: &quot;abcabcbb&quot;
+输出: 3 
+解释: 因为无重复字符的最长子串是 &quot;abc&quot;，所以其长度为 3。
+</code></pre>
+
+<pre><code>示例 2:
+输入: &quot;bbbbb&quot;
+输出: 1
+解释: 因为无重复字符的最长子串是 &quot;b&quot;，所以其长度为 1。
+</code></pre>
+
+<pre><code>示例 3:
+输入: &quot;pwwkew&quot;
+输出: 3
+解释: 因为无重复字符的最长子串是 &quot;wke&quot;，所以其长度为 3。
+请注意，你的答案必须是 子串 的长度，&quot;pwke&quot; 是一个子序列，不是子串。
+</code></pre>
+
+<h4 id="来源-力扣-leetcode-第三题">来源：力扣（LeetCode）第三题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/longest-substring-without-repeating-characters" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/longest-substring-without-repeating-characters</a></p>
+</blockquote>
+
+<h3 id="这是一个典型的滑动窗口问题">这是一个典型的滑动窗口问题。</h3>
+
+<h4 id="解题思路-什么是滑动窗口">解题思路：什么是滑动窗口？</h4>
+
+<p>其实就是一个队列,比如例题中的 abcabcbb，进入这个队列（窗口）为 abc 满足题目要求，当再进入 a，队列变成了 abca，这时候不满足要求。所以，我们要移动这个队列！</p>
+
+<h4 id="如何移动">如何移动？</h4>
+
+<p>我们只要把队列的左边的元素移出就行了，直到满足题目要求！
+一直维持这样的队列，找出队列出现最长的长度时候，求出解！
+时间复杂度：O(n)</p>
+
+<p><strong>这样做的时间复杂度会大幅度降低！！！！</strong></p>
+
+<p>代码如下：（Python）</p>
+
+<pre><code class="language-Python">class Solution:
+    def lengthOfLongestSubstring(self, s: str) -&gt; int:
+        Max_len = 0
+        string = set()
+        if len(s) == 1:  # 字符串只有一个，直接返回，不要在算下去了
+            return 1
+        i = 0
+        for char in s:
+            while char in string:  # 如果遍历到一个已经有了的字符，说明这一段字符串结束，将其全部出队，从下一个不重复的字符开始重新运算。
+                if Max_len &lt; len(string):  # 该段字符串的长度如果比之前的大，那么就代替要返回的值，否则全部扔掉。
+                    Max_len = len(string)
+                string.remove(s[i])
+                i += 1
+            string.add(char)
+            if s[-1] == char and Max_len &lt; len(string):  # 如果传入的字符串没有一个是重复的话
+                Max_len = len(string)
+        return Max_len
+
+</code></pre>
+
+<p>如果不使用队列解决方法的话，时间复杂度是O（n^3）</p>
+
+<p>代码如下：（Python）</p>
+
+<pre><code class="language-Python">class Solution:
+    def lengthOfLongestSubstring(self, s: str) -&gt; int:
+        Max_len = 0
+        if len(s) == 1:
+            return 1
+        for i in range(len(s)):
+            string = []
+            for char in s[i:]:
+                if char in string:
+                    if Max_len &lt; len(string):
+                        Max_len = len(string)
+                    break
+                string.append(char)
+                if s[-1] == char and Max_len &lt; len(string):
+                    Max_len = len(string)
+        return Max_len
+</code></pre>
+
+<hr />
+
+<p>可能直接看代码不是非常的直观，不知道第二种方法到底有多慢，我以Python为例，截取了一张所有使用Python的同学提交的代码的时间分布表。</p>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://note.youdao.com/yws/public/resource/b24fb04d698fc8a8cbd73c248269324a/xmlnote/WEB5d754edd1e7db60c7bb416a99b47a073/WEBRESOURCE7cc08259c78934fd341c8d97d5dcf125/2241" alt="image" class="lazyload"><figcaption class="image-caption">image</figcaption></figure></p>
+
+<p>由于LeetCode后期强制写了一个测试：一段几千字的字符串，还设置了代码执行时间限制。导致如果用第二种方法的话会不通过，所以后期所有人用的都是滑动窗口的方法。</p>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://note.youdao.com/yws/public/resource/b24fb04d698fc8a8cbd73c248269324a/xmlnote/WEB5d754edd1e7db60c7bb416a99b47a073/WEBRESOURCE3e31f7f16247fd4e3c0b6382d6ee797b/2248" alt="image" class="lazyload"><figcaption class="image-caption">image</figcaption></figure></p>
+
+<p>可以看到我写的代码只用了80ms，最短的用了44ms</p>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://note.youdao.com/yws/public/resource/b24fb04d698fc8a8cbd73c248269324a/xmlnote/WEB5d754edd1e7db60c7bb416a99b47a073/WEBRESOURCE11b64c972186ffd869e0db0a85f8487c/2256" alt="image" class="lazyload"><figcaption class="image-caption">image</figcaption></figure></p>
+
+<p>而如果使用第二种方法的话，</p>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://note.youdao.com/yws/public/resource/b24fb04d698fc8a8cbd73c248269324a/xmlnote/WEB5d754edd1e7db60c7bb416a99b47a073/WEBRESOURCE7e53f821fbd8b02a2824f6d927a001da/2252" alt="image" class="lazyload"><figcaption class="image-caption">image</figcaption></figure></p>
+
+<p>用了整整1456ms，这平均至少也相差了10倍左右的速度。</p>
+
+<h1 id="总结">总结：</h1>
+
+<p>在思考问题时，我们需要灵活的使用所学过的知识，尤其是数据结构，就比如这个问题，使用队列就可以很轻松的解决，并且运行效率非常的高效。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/>https://ripple-zjw.github.io/2019/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">
+                    #滑动窗口</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/" class="prev" rel="prev" title="表现良好的最长时间段"><i class="iconfont icon-left"></i>&nbsp;表现良好的最长时间段</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/" class="next" rel="next" title="栈实现队列">栈实现队列&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io/">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E5%8F%8C%E6%8C%87%E9%92%88/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           使括号有效的最少添加 | LeaveIt
+       
+  </title>
+  <meta name="title" content="使括号有效的最少添加 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io\/"
+    },
+    "articleSection" : "posts",
+    "name" : "使括号有效的最少添加",
+    "headline" : "使括号有效的最少添加",
+    "description" : "题目： 给定一个由 \x26rsquo;(\x26lsquo; 和 \x26rsquo;)\x26lsquo; 括号组成的字符串 S，我们需要添加最少的括号（ \x26lsquo;(\x26lsquo; 或是 \x26rsquo;)\x26lsquo;，可以在任何位置），以使得到的括号字符串有效。\n从形式上讲，只有满足下面几点之一，括号字符串才是有效的：\n 它是一个空字符串，或者 它可以被写成 AB （A 与 B 连接）, 其中 A 和 B 都是有效字符串，或者 它可以被写作 (A)，其中 A 是有效字符串。 给定一个括号字符串，返回为使结果字符串有效而必须添加的最少括号数。   示例 1：\n输入：\x26quot;())\x26quot; 输出：1  示例 2：\n输入：\x26quot;(((\x26quot; 输出：3  示例 3：\n输入：\x26quot;()\x26quot; 输出：0  示例 4：\n输入：\x26quot;()))((\x26quot; 输出：4   来源：力扣（LeetCode）第921题  链接：https:\/\/leetcode-cn.com\/problems\/minimum-add-to-make-parentheses-valid\n 题目解析： 这题不是很难，比较容易就能想到，只要使用栈就能做出。在这里不讨论栈的方法，而是官方给出的一种更加巧妙和特别的方法，平衡法。\n解题思路： 维护两个变量ans(answer)和bal(balance)，ans是正常的结果，而bal则是题目可能发生的一种特殊情况。比如\x26rdquo;)))(((\x26ldquo;这种情况。这个答案应该是六，而不是0，因为右括号在前面，而左括号在后面，这就导致他们无法作为一对有效的括号。如果我们不用bal这个变量的话，应该是这样子的。\n先遍历整个字符串，如果是左括号的话，ans加一，如果是右括号的话，ans减一。看似这样做没什么毛病，但是就像我刚才举得例子，当右括号在左括号的前面或者又括号比左括号多，都会出问题，那怎么办呢？这时，我们bal变量就能派上用场。（可能有人会说用个绝对值就行了，同样是上面那个例子，你会发现用绝对值还是不行！！！！）\n还是刚才的思路，只是我们思考一下，如果右括号在前面或者右括号比左括号多的话，会导致ans的值为负数（出现了一次负数也是负数，不管它后面会不会变为正数）。一旦变成了负数（其实就是ans为-1，因为ans只有\x2b1或-1的操作），那那个右括号一定是需要添加的括号，因为他一定是无效的括号。ans存的应该是需要添加的左括号和有效的两个括号，由于有效的两个括号一加一减没了，所以本质上就是存的无效左括号的次数，所以我们要把无效右括号的次数存在bal里面，同时为了不让右括号的-1导致左括号的次数不对，所以当ans值为-1时，bal要加一，同时ans也要加一，即相当于把ans的负数放在bal中。最后，我们只要将ans和bal相加即可得出答案。\n简单理解： 维护ans和bal两个变量，ans存的是无效的左括号，同时当左括号的后面找到右括号后，左括号变为有效，那么ans就减一，如果右括号太多，左括号都是有效的，那么就有了无效的右括号，把他存在bal里面，同时将它离开ans，也就是ans\x2b1（因为右括号是-1，\x2b1相当于ans-（-1）），这样子一左一右即可以使两边平衡，最后的答案只要把ans和bal（无效左括号和无效右括号）加起来就行了。\nTalk is cheap, show me the code.",
+    "inLanguage" : "en-us",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-08-14 13:22:20 \x2b0800 CST",
+    "dateModified" : "2019-08-14 13:22:20 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0\/",
+    "wordCount" : "141",
+    "keywords" : [ "算法求解思想","平衡法", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io/">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io/">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">使括号有效的最少添加</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io/" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-08-14 itemprop="datePublished">August 14, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目">题目：</h1>
+
+<p>给定一个由 &rsquo;(&lsquo; 和 &rsquo;)&lsquo; 括号组成的字符串 S，我们需要添加最少的括号（ &lsquo;(&lsquo; 或是 &rsquo;)&lsquo;，可以在任何位置），以使得到的括号字符串有效。</p>
+
+<p>从形式上讲，只有满足下面几点之一，括号字符串才是有效的：</p>
+
+<ul>
+<li>它是一个空字符串，或者</li>
+<li>它可以被写成 AB （A 与 B 连接）, 其中 A 和 B 都是有效字符串，或者</li>
+<li>它可以被写作 (A)，其中 A 是有效字符串。</li>
+<li>给定一个括号字符串，返回为使结果字符串有效而必须添加的最少括号数。</li>
+</ul>
+
+<hr />
+
+<ul>
+<li><p>示例 1：</p>
+
+<pre><code>输入：&quot;())&quot;
+输出：1
+</code></pre></li>
+
+<li><p>示例 2：</p>
+
+<pre><code>输入：&quot;(((&quot;
+输出：3
+</code></pre></li>
+
+<li><p>示例 3：</p>
+
+<pre><code>输入：&quot;()&quot;
+输出：0
+</code></pre></li>
+
+<li><p>示例 4：</p>
+
+<pre><code>输入：&quot;()))((&quot;
+输出：4
+</code></pre></li>
+</ul>
+
+<h4 id="来源-力扣-leetcode-第921题">来源：力扣（LeetCode）第921题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/minimum-add-to-make-parentheses-valid" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/minimum-add-to-make-parentheses-valid</a></p>
+</blockquote>
+
+<h3 id="题目解析">题目解析：</h3>
+
+<p>这题不是很难，比较容易就能想到，只要使用栈就能做出。在这里不讨论栈的方法，而是官方给出的一种更加巧妙和特别的方法，平衡法。</p>
+
+<h3 id="解题思路">解题思路：</h3>
+
+<p>维护两个变量ans(answer)和bal(balance)，ans是正常的结果，而bal则是题目可能发生的一种特殊情况。比如&rdquo;)))(((&ldquo;这种情况。这个答案应该是六，而不是0，因为右括号在前面，而左括号在后面，这就导致他们无法作为一对有效的括号。如果我们不用bal这个变量的话，应该是这样子的。</p>
+
+<p>先遍历整个字符串，如果是左括号的话，ans加一，如果是右括号的话，ans减一。看似这样做没什么毛病，但是就像我刚才举得例子，当右括号在左括号的前面或者又括号比左括号多，都会出问题，那怎么办呢？这时，我们bal变量就能派上用场。（可能有人会说用个绝对值就行了，同样是上面那个例子，你会发现用绝对值还是不行！！！！）</p>
+
+<p>还是刚才的思路，只是我们思考一下，如果右括号在前面或者右括号比左括号多的话，会导致ans的值为负数（出现了一次负数也是负数，不管它后面会不会变为正数）。一旦变成了负数（其实就是ans为-1，因为ans只有+1或-1的操作），那那个右括号一定是需要添加的括号，因为他一定是无效的括号。ans存的应该是需要添加的左括号和有效的两个括号，由于有效的两个括号一加一减没了，所以本质上就是存的无效左括号的次数，所以我们要把无效右括号的次数存在bal里面，同时为了不让右括号的-1导致左括号的次数不对，所以当ans值为-1时，bal要加一，同时ans也要加一，即相当于把ans的负数放在bal中。最后，我们只要将ans和bal相加即可得出答案。</p>
+
+<h4 id="简单理解">简单理解：</h4>
+
+<p>维护ans和bal两个变量，ans存的是无效的左括号，同时当左括号的后面找到右括号后，左括号变为有效，那么ans就减一，如果右括号太多，左括号都是有效的，那么就有了无效的右括号，把他存在bal里面，同时将它离开ans，也就是ans+1（因为右括号是-1，+1相当于ans-（-1）），这样子一左一右即可以使两边平衡，最后的答案只要把ans和bal（无效左括号和无效右括号）加起来就行了。</p>
+
+<h3 id="talk-is-cheap-show-me-the-code">Talk is cheap, show me the code.</h3>
+
+<p>平衡法：</p>
+
+<pre><code class="language-Python">class Solution(object):
+    def minAddToMakeValid(self, S):
+        ans = bal = 0
+        for char in S:
+            if char == '(':
+                ans += 1
+            else:
+                ans -= 1
+            if ans &lt; 0:
+                ans += 1
+                bal += 1
+        return ans + bal
+</code></pre>
+
+<p>顺便再附上栈的方法：</p>
+
+<pre><code class="language-Python">class Solution:
+    def minAddToMakeValid(self, S: str) -&gt; int:
+        validStack = []
+        for char in S:
+            if char == ')' and validStack and validStack[-1] == &quot;(&quot;:
+                validStack.pop()
+            else:
+                validStack.append(char)
+        return len(validStack)
+</code></pre>
+
+<h3 id="复杂度分析">复杂度分析：</h3>
+
+<p>平衡法
+- 时间复杂度：O(n) n为S的长度（代码中的S）
+- 空间复杂度：O(1)</p>
+
+<h1 id="总结">总结：</h1>
+
+<p>平衡法，我理解为把一个答案分成两类，就比如题目中把无效的括号分为无效左括号和无效右括号，分别求它们的答案，再把它们加在一起，有点像分治算法。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/>https://ripple-zjw.github.io/2019/%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%B9%B3%E8%A1%A1%E6%B3%95/">
+                    #平衡法</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E5%8F%8C%E6%8C%87%E9%92%88/" class="prev" rel="prev" title="双指针"><i class="iconfont icon-left"></i>&nbsp;双指针</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/" class="next" rel="next" title="中序遍历二叉树">中序遍历二叉树&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io/">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

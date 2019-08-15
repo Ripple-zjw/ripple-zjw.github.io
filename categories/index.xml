@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on LeaveIt</title>
+    <link>https://ripple-zjw.github.io/categories/</link>
+    <description>Recent content in Categories on LeaveIt</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 14 Aug 2019 13:22:20 +0800</lastBuildDate>
+    
+	<atom:link href="https://ripple-zjw.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Git</title>
+      <link>https://ripple-zjw.github.io/categories/git/</link>
+      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/categories/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Markdown</title>
+      <link>https://ripple-zjw.github.io/categories/markdown/</link>
+      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/categories/markdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bootstrap</title>
+      <link>https://ripple-zjw.github.io/categories/bootstrap/</link>
+      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/categories/bootstrap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>demo</title>
+      <link>https://ripple-zjw.github.io/categories/demo/</link>
+      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/categories/demo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>算法求解思想</title>
+      <link>https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/</link>
+      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

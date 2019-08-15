@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/markdown%E8%AF%95%E7%94%A8/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/first/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/git/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Git | LeaveIt
+       
+  </title>
+  <meta name="title" content="Git | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io\/"
+    },
+    "articleSection" : "posts",
+    "name" : "Git",
+    "headline" : "Git",
+    "description" : "Git 版本控制工具 学习目标 必备（项目开发中必定用到） * 能够克隆服务器上的分支并会切换分支\n拓展 * 本地git操作 * 远程仓库合并 * 学会看提示信息去掌握git的方法\n文档 中文权威文档：https:\/\/git-scm.com\/book\/zh\/v2\n如何在码云上生成并部署SSH key\n安装Git  git-scm https:\/\/git-scm.com\/  需要了解几个问题  为什么需要版本控制工具？ 了解版本控制工具的发展历程 了解本地版本控制系统、集中化版本控制系统和分布式版本控制系统的异同  为什么需要版本控制工具？  备份文件(U盘) 记录历史(历史书) 回到过去(时光机) 多端共享(百度云盘) 团队协作(复仇者联盟)  版本控制工具的发展历程 cvs(1985年) \x26mdash; svn(2000年) \x26mdash; git(2005)\nGit诞生 在2002年以前，世界各地的志愿者把源代码文件发给Linus，然后由Linus本人通过手工方式合并代码！\n因为Linus坚定地反对CVS和SVN，这些集中式的版本控制系统不但速度慢，而且必须联网才能使用。\n有一些商用的版本控制系统，虽然比CVS、SVN好用，但那是付费的，和Linux的开源精神不符。\n到了2002年，Linux系统已经发展了十年了，代码库之大让Linus很难继续通过手工方式管理了，社区的弟兄们也对这种方式表达了强烈不满，于是Linus选择了一个商业的版本控制系统BitKeeper，BitKeeper的东家BitMover公司出于人道主义精神，授权Linux社区免费使用这个版本控制系统。\n安定团结的大好局面在2005年就被打破了，原因是Linux社区牛人聚集，不免沾染了一些梁山好汉的江湖习气。开发Samba的Andrew试图破解BitKeeper的协议（这么干的其实也不只他一个），被BitMover公司发现了（监控工作做得不错！），于是BitMover公司怒了，要收回Linux社区的免费使用权。\nLinus可以向BitMover公司道个歉，保证以后严格管教弟兄们，嗯，这是不可能的。实际情况是这样的：\nLinus花了两周时间自己用C写了一个分布式版本控制系统，这就是Git！一个月之内，Linux系统的源码已经由Git管理了！牛是怎么定义的呢？大家可以体会一下。\nGit迅速成为最流行的分布式版本控制系统，尤其是2008年，GitHub网站上线了，它为开源项目免费提供Git存储，无数开源项目开始迁移至GitHub，包括jQuery，PHP，Ruby等等。\n历史就是这么偶然，如果不是当年BitMover公司威胁Linux社区，可能现在我们就没有免费而超级好用的Git了。\n集中式和分布式的区别  git-scm 官方说明\n 集中式：代码都保存在中央服务器，开发人员按需获取代码，修改完成后提交到中央服务器保存\n 优势： 方便权限和内容统一管理 可以按需检出代码，节省客户端硬盘空间 劣势： 连接不上服务器时，无法获取和提交更新  分布式：代码保存在每一个客户端中，开发人员在本地由完整的项目代码，修改完成后保存在本地仓库。在将来通过网络或其他方式，相互交换修改历史\n 优势： 分布式存储，不担心服务器故障导致的代码丢失 劣势：操作太灵活，有学习成本   Git的优势  分布式 强大的分支（支持非线性的开发模式） 灵活（甚至可以修改历史）  常用的操作  创建仓库",
+    "inLanguage" : "en-us",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-08-14 13:22:20 \x2b0800 CST",
+    "dateModified" : "2019-08-14 13:22:20 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/git\/",
+    "wordCount" : "246",
+    "keywords" : [ "Git", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io/">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io/">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Git</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io/" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-08-14 itemprop="datePublished">August 14, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/git/"> Git </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="git-版本控制工具">Git 版本控制工具</h1>
+
+<h2 id="学习目标">学习目标</h2>
+
+<p>必备（项目开发中必定用到）
+* 能够克隆服务器上的分支并会切换分支</p>
+
+<p>拓展
+* 本地git操作
+* 远程仓库合并
+* 学会看提示信息去掌握git的方法</p>
+
+<h2 id="文档">文档</h2>
+
+<p>中文权威文档：<a href="https://git-scm.com/book/zh/v2" rel="nofollow noreferrer" target="_blank">https://git-scm.com/book/zh/v2</a></p>
+
+<p><a href="http://git.mydoc.io/?t=154712" rel="nofollow noreferrer" target="_blank">如何在码云上生成并部署SSH key</a></p>
+
+<h3 id="安装git">安装Git</h3>
+
+<ul>
+<li>git-scm <a href="https://git-scm.com/downloads/guis" rel="nofollow noreferrer" target="_blank">https://git-scm.com/</a></li>
+</ul>
+
+<h2 id="需要了解几个问题">需要了解几个问题</h2>
+
+<ul>
+<li>为什么需要版本控制工具？</li>
+<li>了解版本控制工具的发展历程</li>
+<li>了解本地版本控制系统、集中化版本控制系统和分布式版本控制系统的异同</li>
+</ul>
+
+<h2 id="为什么需要版本控制工具">为什么需要版本控制工具？</h2>
+
+<ul>
+<li>备份文件(U盘)</li>
+<li>记录历史(历史书)</li>
+<li>回到过去(时光机)</li>
+<li>多端共享(百度云盘)</li>
+<li>团队协作(复仇者联盟)</li>
+</ul>
+
+<h2 id="版本控制工具的发展历程">版本控制工具的发展历程</h2>
+
+<p>cvs(1985年)  &mdash;  svn(2000年)  &mdash;   git(2005)</p>
+
+<h3 id="git诞生">Git诞生</h3>
+
+<p>在2002年以前，世界各地的志愿者把源代码文件发给Linus，然后由Linus本人通过手工方式合并代码！</p>
+
+<p>因为Linus坚定地反对CVS和SVN，这些集中式的版本控制系统不但速度慢，而且必须联网才能使用。</p>
+
+<p>有一些商用的版本控制系统，虽然比CVS、SVN好用，但那是付费的，和Linux的开源精神不符。</p>
+
+<p>到了2002年，Linux系统已经发展了十年了，代码库之大让Linus很难继续通过手工方式管理了，社区的弟兄们也对这种方式表达了强烈不满，于是Linus选择了一个商业的版本控制系统BitKeeper，BitKeeper的东家BitMover公司出于人道主义精神，授权Linux社区免费使用这个版本控制系统。</p>
+
+<p>安定团结的大好局面在2005年就被打破了，原因是Linux社区牛人聚集，不免沾染了一些梁山好汉的江湖习气。开发Samba的Andrew试图破解BitKeeper的协议（这么干的其实也不只他一个），被BitMover公司发现了（监控工作做得不错！），于是BitMover公司怒了，要收回Linux社区的免费使用权。</p>
+
+<p>Linus可以向BitMover公司道个歉，保证以后严格管教弟兄们，嗯，这是不可能的。实际情况是这样的：</p>
+
+<p>Linus花了两周时间自己用C写了一个分布式版本控制系统，这就是Git！一个月之内，Linux系统的源码已经由Git管理了！牛是怎么定义的呢？大家可以体会一下。</p>
+
+<p>Git迅速成为最流行的分布式版本控制系统，尤其是2008年，GitHub网站上线了，它为开源项目免费提供Git存储，无数开源项目开始迁移至GitHub，包括jQuery，PHP，Ruby等等。</p>
+
+<p>历史就是这么偶然，如果不是当年BitMover公司威胁Linux社区，可能现在我们就没有免费而超级好用的Git了。</p>
+
+<h2 id="集中式和分布式的区别">集中式和分布式的区别</h2>
+
+<ul>
+<li><p>git-scm <a href="https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%85%B3%E4%BA%8E%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6" rel="nofollow noreferrer" target="_blank">官方说明</a></p></li>
+
+<li><p>集中式：代码都保存在中央服务器，开发人员按需获取代码，修改完成后提交到中央服务器保存</p>
+
+<ul>
+<li>优势：</li>
+<li>方便权限和内容统一管理</li>
+<li>可以按需检出代码，节省客户端硬盘空间</li>
+<li>劣势：</li>
+<li>连接不上服务器时，无法获取和提交更新</li>
+</ul></li>
+
+<li><p>分布式：代码保存在每一个客户端中，开发人员在本地由<strong>完整的项目代码</strong>，修改完成后保存在本地仓库。在将来通过网络或其他方式，相互交换修改历史</p>
+
+<ul>
+<li>优势：</li>
+<li>分布式存储，不担心服务器故障导致的代码丢失</li>
+<li>劣势：操作<strong>太</strong>灵活，有学习成本</li>
+</ul></li>
+</ul>
+
+<h3 id="git的优势">Git的优势</h3>
+
+<ul>
+<li>分布式</li>
+<li><strong>强大的分支</strong>（支持非线性的开发模式）</li>
+<li>灵活（甚至可以修改历史）</li>
+</ul>
+
+<h3 id="常用的操作">常用的操作</h3>
+
+<ol>
+<li><p>创建仓库</p>
+
+<pre><code>git init # 在当面目录下创建仓库
+</code></pre></li>
+
+<li><p>设置昵称和邮箱</p>
+
+<pre><code>git config --global user.name &quot;Gavin&quot; # 设置昵称
+git config --global user.email &quot;Gavin@email.com&quot; # 设置邮箱
+</code></pre></li>
+</ol>
+
+<p>### 注意git的设置分为“当前仓库设置&rdquo;和&rdquo;全局设置&rdquo;，上面加了&ndash;global是对全局生效的</p>
+
+<ol>
+<li>创建或修改文件</li>
+</ol>
+
+<blockquote>
+<p>这个就略了吧。。</p>
+</blockquote>
+
+<ol>
+<li><p>将文件加入版本控制</p>
+
+<pre><code>git add xxx.md
+</code></pre></li>
+
+<li><p>提交此次修改</p>
+
+<pre><code>git commit -m &quot;增加了一个文件，并且修改了内容&quot;
+</code></pre></li>
+
+<li><p>查看修改历史</p>
+
+<pre><code>git log
+</code></pre></li>
+
+<li><p>创建新分支，进行实验性的操作</p>
+
+<pre><code>git checkout -b new_branch
+</code></pre></li>
+
+<li><p>合并分支</p>
+
+<pre><code>git checkout master # 切换到接收合并的分支
+git merge new_branch  # 接收new_branch 分支的合并
+</code></pre></li>
+
+<li><p>删除分支</p>
+
+<pre><code>git branch -d new_branch
+</code></pre></li>
+
+<li><p>切换版本</p>
+
+<pre><code>git reset --hard 1j284jf  # 切换到指定了历史中
+</code></pre>
+
+<h4 id="注意-以上命令都是你的本地仓库进行的">注意！以上命令都是你的本地仓库进行的！！！！</h4>
+
+<h4 id="注意-以上命令掌握之后-日常使用gui完成操作">注意！以上命令掌握之后，日常使用GUI完成操作！</h4>
+
+<blockquote>
+<p>为什么？</p>
+</blockquote></li>
+</ol>
+
+<hr />
+
+<h3 id="如何和他人交换代码-其实就是交换history">如何和他人交换代码（其实就是交换History）</h3>
+
+<ul>
+<li><p>git托管平台</p>
+
+<ul>
+<li>github # 全球最大的同性交友网站</li>
+<li>gitlab # 开源的高度定制化的托管平台</li>
+<li>gogs# 国人使用go开发的开源<strong>精简</strong>平台</li>
+<li>bitbucket # 国外的免费私有库平台</li>
+<li>gitee # 国内的免费私有库平台</li>
+</ul></li>
+
+<li><p>注册<br />
+<a href="https://gitee.com/signup" rel="nofollow noreferrer" target="_blank">https://gitee.com/signup</a></p></li>
+
+<li><p>创建远程仓库<br />
+<a href="https://gitee.com/projects/new" rel="nofollow noreferrer" target="_blank">https://gitee.com/projects/new</a></p></li>
+
+<li><p>获取仓库地址</p></li>
+
+<li><p>推送<br />
+push</p></li>
+</ul>
+
+<blockquote>
+<p>思考，既然是分布式的，那么现在远程仓库和本地仓库的内容是一摸一样吗<br />
+  对于已经push 的分支来说是的。但是对于没有push的分支，远程仓库是没有的</p>
+</blockquote>
+
+<ul>
+<li><p>fork</p>
+
+<ul>
+<li>派生一个远程仓库（注意远程仓库，是指托管平台中的仓库，本地仓库是指你电脑中的仓库）</li>
+</ul></li>
+
+<li><p>Pull Request</p>
+
+<ul>
+<li>远程仓库建的合并（请求目标仓库合并自己的仓库）</li>
+<li>前提：有fork关系</li>
+<li>本质将一个仓库的某分支合并到另一个的仓库的某分支</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>说明，获取代码是整个仓库，交换代码（更新）是以分支为单位的<br />
+所以，新功能一般在新分支开发，然后把整个分支合并到主分支上</p>
+</blockquote>
+
+<h2 id="git工作流程">Git工作流程</h2>
+
+<ol>
+<li><p>获取代码</p>
+
+<ol>
+<li>如果没有克隆仓库，先克隆仓库
+<code>git clone git@gitee.com:DN_Ian/Vip1710.git</code></li>
+<li>获取最新数据，使本地仓库与远程仓库一致
+<code>git fetch</code> # 注意pull命令fetch命令的区别,fetch/pull,抓取/拉取， **pull ==  fetch +  merge **</li>
+</ol></li>
+
+<li><p>开发代码</p>
+
+<ol>
+<li><p>切换到要开发的分支 (假设要对gavin分支进行开发)<br />
+<code>git checkout  origin/gavin</code></p></li>
+
+<li><p>新建私有分支，进行开发<br />
+<code>git checkout -b my_branch</code></p></li>
+
+<li><p>开发代码<br />
+<code>(略)</code></p></li>
+
+<li><p>提交<br />
+<code>git commit -a</code>（在私有分支<code>my_branch</code>上）</p></li>
+</ol></li>
+
+<li><p>上传代码</p>
+
+<ol>
+<li>保存好正在开发的代码<br /></li>
+
+<li><p>获取最新数据，使本地仓库与远程仓库一致<br />
+<code>git fetch origin</code></p></li>
+
+<li><p>切换到要开发的分支 (假设要对gavin分支进行开发)<br />
+<code>git checkout  origin/gavin</code><br />
+// 切到一个临时分支，没有名字, 版本与远程gavin分支相同</p></li>
+
+<li><p>将开发完成的私有分支合并, 如果有冲突，使用gui处理冲突<br />
+<code>git merge my_branch</code></p></li>
+
+<li><p>上传修改后的gavin分支到远程仓库</p></li>
+</ol>
+
+<p><code>git push origin my_branch:gavin  #1，推送到属于自己的派生仓库，2.推送到目标分支</code><br />
+  // 如果恰好此时远程仓库的gavin分支发生变化，会提示冲突。则重新操作</p></li>
+</ol>
+
+<h3 id="注意区别">注意区别</h3>
+
+<p>本地和本地—— checkout/merge<br />
+本地和远程—— clone/pull/fetch/push<br />
+远程和远程—— fork/pull reuqets</p>
+
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>本地</th>
+<th>远程</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>本地</td>
+<td>checkout/merge</td>
+<td>clone/fetch/push</td>
+</tr>
+
+<tr>
+<td>远程</td>
+<td>clone/fetch/push</td>
+<td>fork/pull reuqets</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/git/>https://ripple-zjw.github.io/2019/git/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/git/">
+                    #Git</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/markdown%E8%AF%95%E7%94%A8/" class="prev" rel="prev" title="Markdown使用"><i class="iconfont icon-left"></i>&nbsp;Markdown使用</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/first/" class="next" rel="next" title="First">First&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io/">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on LeaveIt</title>
+    <link>https://ripple-zjw.github.io/categories/git/</link>
+    <description>Recent content in Git on LeaveIt</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 14 Aug 2019 13:22:20 +0800</lastBuildDate>
+    
+	<atom:link href="https://ripple-zjw.github.io/categories/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Git</title>
+      <link>https://ripple-zjw.github.io/2019/git/</link>
+      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/git/</guid>
+      <description>Git 版本控制工具 学习目标 必备（项目开发中必定用到） * 能够克隆服务器上的分支并会切换分支
+拓展 * 本地git操作 * 远程仓库合并 * 学会看提示信息去掌握git的方法
+文档 中文权威文档：https://git-scm.com/book/zh/v2
+如何在码云上生成并部署SSH key
+安装Git  git-scm https://git-scm.com/  需要了解几个问题  为什么需要版本控制工具？ 了解版本控制工具的发展历程 了解本地版本控制系统、集中化版本控制系统和分布式版本控制系统的异同  为什么需要版本控制工具？  备份文件(U盘) 记录历史(历史书) 回到过去(时光机) 多端共享(百度云盘) 团队协作(复仇者联盟)  版本控制工具的发展历程 cvs(1985年) &amp;mdash; svn(2000年) &amp;mdash; git(2005)
+Git诞生 在2002年以前，世界各地的志愿者把源代码文件发给Linus，然后由Linus本人通过手工方式合并代码！
+因为Linus坚定地反对CVS和SVN，这些集中式的版本控制系统不但速度慢，而且必须联网才能使用。
+有一些商用的版本控制系统，虽然比CVS、SVN好用，但那是付费的，和Linux的开源精神不符。
+到了2002年，Linux系统已经发展了十年了，代码库之大让Linus很难继续通过手工方式管理了，社区的弟兄们也对这种方式表达了强烈不满，于是Linus选择了一个商业的版本控制系统BitKeeper，BitKeeper的东家BitMover公司出于人道主义精神，授权Linux社区免费使用这个版本控制系统。
+安定团结的大好局面在2005年就被打破了，原因是Linux社区牛人聚集，不免沾染了一些梁山好汉的江湖习气。开发Samba的Andrew试图破解BitKeeper的协议（这么干的其实也不只他一个），被BitMover公司发现了（监控工作做得不错！），于是BitMover公司怒了，要收回Linux社区的免费使用权。
+Linus可以向BitMover公司道个歉，保证以后严格管教弟兄们，嗯，这是不可能的。实际情况是这样的：
+Linus花了两周时间自己用C写了一个分布式版本控制系统，这就是Git！一个月之内，Linux系统的源码已经由Git管理了！牛是怎么定义的呢？大家可以体会一下。
+Git迅速成为最流行的分布式版本控制系统，尤其是2008年，GitHub网站上线了，它为开源项目免费提供Git存储，无数开源项目开始迁移至GitHub，包括jQuery，PHP，Ruby等等。
+历史就是这么偶然，如果不是当年BitMover公司威胁Linux社区，可能现在我们就没有免费而超级好用的Git了。
+集中式和分布式的区别  git-scm 官方说明
+ 集中式：代码都保存在中央服务器，开发人员按需获取代码，修改完成后提交到中央服务器保存
+ 优势： 方便权限和内容统一管理 可以按需检出代码，节省客户端硬盘空间 劣势： 连接不上服务器时，无法获取和提交更新  分布式：代码保存在每一个客户端中，开发人员在本地由完整的项目代码，修改完成后保存在本地仓库。在将来通过网络或其他方式，相互交换修改历史
+ 优势： 分布式存储，不担心服务器故障导致的代码丢失 劣势：操作太灵活，有学习成本   Git的优势  分布式 强大的分支（支持非线性的开发模式） 灵活（甚至可以修改历史）  常用的操作  创建仓库</description>
+    </item>
+    
+    <item>
+      <title>reset 三个参数--hard --soft --mixed的区别</title>
+      <link>https://ripple-zjw.github.io/2019/reset-%E4%B8%89%E4%B8%AA%E5%8F%82%E6%95%B0-hard-soft-mixed%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/reset-%E4%B8%89%E4%B8%AA%E5%8F%82%E6%95%B0-hard-soft-mixed%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
+      <description>&amp;ndash;hard 工作区，暂存区，本地库三者同时更新
+&amp;ndash;mixed 只有本地库更新，导致本地库和（暂存区，工作区）的指针不一样，但是暂存区和工作区的文件一样。所以暂存区的文件标为绿色，表示暂存区的文件可以提交到本地库。
+&amp;ndash;soft 本地库和暂存区更新，导致暂存区的文件标为红色，表示工作区的文件和本地库的文件不一样，可以进行add到暂存区，然后进行提交。</description>
+    </item>
+    
+  </channel>
+</rss>

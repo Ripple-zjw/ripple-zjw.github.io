@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E9%80%86%E5%90%91%E5%B7%A5%E4%BD%9C%E6%B3%95/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           表现良好的最长时间段 | LeaveIt
+       
+  </title>
+  <meta name="title" content="表现良好的最长时间段 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io\/"
+    },
+    "articleSection" : "posts",
+    "name" : "表现良好的最长时间段",
+    "headline" : "表现良好的最长时间段",
+    "description" : "题目：  给你一份工作时间表hours，上面记录着某一位员工每天的工作小时数。 我们认为当员工一天中的工作小时数大于 8 小时的时候，那么这一天就是「劳累的一天」。 所谓「表现良好的时间段」，意味在这段时间内，「劳累的天数」是严格 大于「不劳累的天数」。 请你返回「表现良好时间段」的最大长度。  来源：力扣（LeetCode）第1124题  链接：https:\/\/leetcode-cn.com\/problems\/longest-well-performing-interval\n 题目解析： 这题可以使用暴力法O(n^2),二分法O(nlogn),以及借助单调栈来实现O(n),使用暴力法由于时间太长而无法通过，使用单调栈的思路可以借鉴LeetCode上浏览第一的思路（虽然并不是最优解决方案）。\n题目的意思其实就是说从给定的数组中找一段数组，这段数组大于8的元素比小于等于8的元素多，而且是最长的一段。 \x26gt; 传送门：https:\/\/leetcode-cn.com\/problems\/longest-well-performing-interval\/solution\/qian-zhui-he-dan-diao-zhan-python3-by-smoon1989\/\n解题思路： 根据题意，所谓最大表现良好的时间段其实就是包括两个重要的条件。再这之前，我们要把大于8的元素变为1，小于等于8的元素变为-1，使用for循环就能搞定。\n两个条件： 1. 所求的这一段数组他们的总和大于0（不能等于0） 1. 所求的数组是在满足上一个条件的情况下长度最长的数组\n首先先来解释一下这两个条件吧。第一个的意思是所求的数组里1的元素要比-1的多，这样他们的总和肯定是大于0的。符合题意。\n第二个的意思是在这些数组中（数组内的元素是可以重复的）找出最长的那个数组，因为题目要求我们找出最长的那个时间段而不是所有表现良好的时间段。\n先要找到最长的和大于0的数组，我们需要找到所有可能组成和大于0的数组，然后再比较他们的大小，得出答案。\n怎么找呢？我们需要引入前缀和这一概念，顾名思义前缀和就是从第一个开始到某一个元素（可以是任意元素只要不是最后一个元素，因为最后一个元素也算上的话就相当于整个元素了）为止，这一段元素的和。\n为什么要找前缀和呢？因为我们如果用整个元素减去这个数组中每一个前缀和（第一个，第一个加第二个，第一加第二加第三个，……）那么得到的就是这个数组中除去当前前缀后剩下的元素。然后计算他们的和，大于0（符合题意）就把它存起来，如果不大于0，那就把数组中最后一个去掉，再计算和，直到计算到前缀和的最后那个元素。这就表示当前前缀和的所有大于0的元素都计算完了。最长的那个也拿到了，再计算下一段前缀和中的元素是否有符合题意并且比我们从上一段前缀和中拿到的那个长度要长，如果有，就替换它。直到前缀和的长度比你储存的那个最大长度要小，那么剩下的无论怎样都不可能超过这段长度，就可以停止计算了。\n但是这样会有一个问题，并不是所有的前缀和我们都要计算，很多的前缀和其实根本不可能有。比如一个前缀和要比数组的总长度和要大，那么你用小元素减去大元素那肯定是负的，再比如当前前缀和算完后，它的后面（距离它有一段距离）有一段比当前前缀和大1的元素，但是中间的前缀和都是比他们两大的，那么就没有必要考虑，因为随着前缀和的推移，总会遇到与他们的和一样的前缀和，这个时候去计算这些前缀和就行了，因为这些前缀和的长度要比之前看到的那些长度要长。\n其实很明显了，我们只要再维护一个栈，这个栈中存储的是从0开始，顺序递减的前缀和的下标，比如前缀和会是0，-1，-2，-3，当然下标不一定是连着的，但前缀和的差值一定是连着的。我们修改前面的规则，每次检查的都是这个栈中的前缀和，从栈顶开始。\n简单理解： 这题没法很快就理解，需要思考一段时间。\n总的来说，首先要计算数组中每一个前缀和（别忘了第一个是从0开始的，也就是0个元素的前缀），然后维护一个栈，也是从0开始，遍历刚才的前缀和，让栈保持递减的原则，将符合的前缀和的下标依次入栈。（注意是下标，因为前缀和相等的有很多，你必须储存下标才能准确的知道你存的是哪个值），最后再用刚才的方法算出结果。\n时间复杂度： O(n)\n代码实现：（Python） class Solution: def longestWPI(self, hours: List[int]) -\x26gt; int: n = len(hours) persum = [0] stack = [0] res = 0 for hour in hours: if hour \x26gt; 8: res \x2b= 1 persum.",
+    "inLanguage" : "en-us",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-08-14 13:22:20 \x2b0800 CST",
+    "dateModified" : "2019-08-14 13:22:20 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5\/",
+    "wordCount" : "182",
+    "keywords" : [ "算法求解思想","单调栈","栈", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io/">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io/">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">表现良好的最长时间段</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io/" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-08-14 itemprop="datePublished">August 14, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目">题目：</h1>
+
+<ul>
+<li>给你一份工作时间表hours，上面记录着某一位员工每天的工作小时数。</li>
+<li>我们认为当员工一天中的工作小时数大于 8 小时的时候，那么这一天就是「劳累的一天」。</li>
+<li>所谓「表现良好的时间段」，意味在这段时间内，「劳累的天数」是严格 大于「不劳累的天数」。</li>
+<li>请你返回「表现良好时间段」的最大长度。</li>
+</ul>
+
+<h4 id="来源-力扣-leetcode-第1124题">来源：力扣（LeetCode）第1124题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/longest-well-performing-interval" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/longest-well-performing-interval</a></p>
+</blockquote>
+
+<h3 id="题目解析">题目解析：</h3>
+
+<p>这题可以使用暴力法O(n^2),二分法O(nlogn),以及借助单调栈来实现O(n),使用暴力法由于时间太长而无法通过，使用单调栈的思路可以借鉴LeetCode上浏览第一的思路（虽然并不是最优解决方案）。</p>
+
+<p>题目的意思其实就是说从给定的数组中找一段数组，这段数组大于8的元素比小于等于8的元素多，而且是最长的一段。
+&gt; 传送门：<a href="https://leetcode-cn.com/problems/longest-well-performing-interval/solution/qian-zhui-he-dan-diao-zhan-python3-by-smoon1989/" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/longest-well-performing-interval/solution/qian-zhui-he-dan-diao-zhan-python3-by-smoon1989/</a></p>
+
+<h3 id="解题思路">解题思路：</h3>
+
+<p>根据题意，所谓最大表现良好的时间段其实就是包括两个重要的条件。再这之前，我们要把大于8的元素变为1，小于等于8的元素变为-1，使用for循环就能搞定。</p>
+
+<p>两个条件：
+1. 所求的这一段数组他们的总和大于0（不能等于0）
+1. 所求的数组是在满足上一个条件的情况下长度最长的数组</p>
+
+<p>首先先来解释一下这两个条件吧。第一个的意思是所求的数组里1的元素要比-1的多，这样他们的总和肯定是大于0的。符合题意。</p>
+
+<p>第二个的意思是在这些数组中（数组内的元素是可以重复的）找出最长的那个数组，因为题目要求我们找出最长的那个时间段而不是所有表现良好的时间段。</p>
+
+<p>先要找到最长的和大于0的数组，我们需要找到所有可能组成和大于0的数组，然后再比较他们的大小，得出答案。</p>
+
+<p>怎么找呢？我们需要引入前缀和这一概念，顾名思义前缀和就是从第一个开始到某一个元素（可以是任意元素只要不是最后一个元素，因为最后一个元素也算上的话就相当于整个元素了）为止，这一段元素的和。</p>
+
+<p>为什么要找前缀和呢？因为我们如果用整个元素减去这个数组中每一个前缀和（第一个，第一个加第二个，第一加第二加第三个，……）那么得到的就是这个数组中除去当前前缀后剩下的元素。然后计算他们的和，大于0（符合题意）就把它存起来，如果不大于0，那就把数组中最后一个去掉，再计算和，直到计算到前缀和的最后那个元素。这就表示当前前缀和的所有大于0的元素都计算完了。最长的那个也拿到了，再计算下一段前缀和中的元素是否有符合题意并且比我们从上一段前缀和中拿到的那个长度要长，如果有，就替换它。直到前缀和的长度比你储存的那个最大长度要小，那么剩下的无论怎样都不可能超过这段长度，就可以停止计算了。</p>
+
+<p>但是这样会有一个问题，并不是所有的前缀和我们都要计算，很多的前缀和其实根本不可能有。比如一个前缀和要比数组的总长度和要大，那么你用小元素减去大元素那肯定是负的，再比如当前前缀和算完后，它的后面（距离它有一段距离）有一段比当前前缀和大1的元素，但是中间的前缀和都是比他们两大的，那么就没有必要考虑，因为随着前缀和的推移，总会遇到与他们的和一样的前缀和，这个时候去计算这些前缀和就行了，因为这些前缀和的长度要比之前看到的那些长度要长。</p>
+
+<p>其实很明显了，我们只要再维护一个栈，这个栈中存储的是从0开始，顺序递减的前缀和的下标，比如前缀和会是0，-1，-2，-3，当然下标不一定是连着的，但前缀和的差值一定是连着的。我们修改前面的规则，每次检查的都是这个栈中的前缀和，从栈顶开始。</p>
+
+<h4 id="简单理解">简单理解：</h4>
+
+<p>这题没法很快就理解，需要思考一段时间。</p>
+
+<p>总的来说，首先要计算数组中每一个前缀和（别忘了第一个是从0开始的，也就是0个元素的前缀），然后维护一个栈，也是从0开始，遍历刚才的前缀和，让栈保持递减的原则，将符合的前缀和的下标依次入栈。（注意是下标，因为前缀和相等的有很多，你必须储存下标才能准确的知道你存的是哪个值），最后再用刚才的方法算出结果。</p>
+
+<h3 id="时间复杂度">时间复杂度：</h3>
+
+<p>O(n)</p>
+
+<h3 id="代码实现-python">代码实现：（Python）</h3>
+
+<pre><code class="language-Python">class Solution:
+    def longestWPI(self, hours: List[int]) -&gt; int:
+        n = len(hours)
+        persum = [0]
+        stack = [0]
+        res = 0
+        for hour in hours:
+            if hour &gt; 8:
+                res += 1
+                persum.append(res)
+            else:
+                res -= 1
+                persum.append(res)
+        for i in range(1, n + 1):
+            if persum[stack[-1]] &gt; persum[i]:
+                stack.append(i)
+        maxLen = 0
+        i = n
+        while i &gt; maxLen:
+            while stack and persum[stack[-1]] &lt; persum[i]:
+                maxLen = max(maxLen, i - stack[-1])
+                stack.pop()
+            i -= 1
+        return maxLen
+</code></pre>
+
+<p>这段代码还可以优化，使用散列表代替栈。</p>
+
+<pre><code class="language-Python">class Solution:
+    def longestWPI(self, hours: List[int]) -&gt; int:
+        maxLen = persum = 0
+        seen = {0: -1}
+        for i,v in enumerate(hours):
+            persum = persum + 1 if v &gt; 8 else persum - 1
+            if persum &gt; 0:
+                maxLen = i + 1
+            if persum not in seen:
+                seen[persum] = i
+            if persum - 1 in seen:
+                maxLen = max(maxLen, i - seen[persum -1])
+        return maxLen
+</code></pre>
+
+<p>优化效果一般般</p>
+
+<h1 id="总结">总结</h1>
+
+<p>这道题的通过率只有14%，虽然是中等题但是还是挺难的。在使用栈来解题时考虑一下前缀问题也是一种思路。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/>https://ripple-zjw.github.io/2019/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8D%95%E8%B0%83%E6%A0%88/">
+                    #单调栈</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E6%A0%88/">
+                    #栈</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E9%80%86%E5%90%91%E5%B7%A5%E4%BD%9C%E6%B3%95/" class="prev" rel="prev" title="逆向工作法"><i class="iconfont icon-left"></i>&nbsp;逆向工作法</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/" class="next" rel="next" title="滑动窗口问题">滑动窗口问题&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io/">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

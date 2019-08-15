@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/1/pipenv/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E9%80%86%E5%90%91%E5%B7%A5%E4%BD%9C%E6%B3%95/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           逆向工作法 | LeaveIt
+       
+  </title>
+  <meta name="title" content="逆向工作法 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io\/"
+    },
+    "articleSection" : "posts",
+    "name" : "逆向工作法",
+    "headline" : "逆向工作法",
+    "description" : "逆向工作法：  逆向工作法，就是逆向思维，通过将问题反向思考求解。 逆向工作法用到了栈的思想，但不需要栈也能实现。  例题： 给定一个编码字符串 S。为了找出解码字符串并将其写入磁带，从编码字符串中每次读取一个字符，并采取以下步骤：\n 如果所读的字符是字母，则将该字母写在磁带上。 如果所读的字符是数字（例如 d），则整个当前磁带总共会被重复写 d-1 次。 现在，对于给定的编码字符串 S 和索引 K，查找并返回解码字符串中的第 K 个字母。  示例 1： 输入：S = \x26quot;leet2code3\x26quot;, K = 10 输出：\x26quot;o\x26quot; 解释： 解码后的字符串为 \x26quot;leetleetcodeleetleetcodeleetleetcode\x26quot;。 字符串中的第 10 个字母是 \x26quot;o\x26quot;。  示例 2： 输入：S = \x26quot;ha22\x26quot;, K = 5 输出：\x26quot;h\x26quot; 解释： 解码后的字符串为 \x26quot;hahahaha\x26quot;。第 5 个字母是 \x26quot;h\x26quot;。  示例 3： 输入：S = \x26quot;a2345678999999999999999\x26quot;, K = 1 输出：\x26quot;a\x26quot; 解释： 解码后的字符串为 \x26quot;a\x26quot; 重复 8301530446056247680 次。第 1 个字母是 \x26quot;a\x26quot;。  提示： 2 \x26lt;= S.",
+    "inLanguage" : "en-us",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-08-14 13:22:20 \x2b0800 CST",
+    "dateModified" : "2019-08-14 13:22:20 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E9%80%86%E5%90%91%E5%B7%A5%E4%BD%9C%E6%B3%95\/",
+    "wordCount" : "217",
+    "keywords" : [ "算法求解思想","逆向思维", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io/">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io/">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">逆向工作法</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io/" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-08-14 itemprop="datePublished">August 14, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="逆向工作法">逆向工作法：</h1>
+
+<ul>
+<li>逆向工作法，就是逆向思维，通过将问题反向思考求解。</li>
+<li>逆向工作法用到了栈的思想，但不需要栈也能实现。</li>
+</ul>
+
+<h3 id="例题">例题：</h3>
+
+<p>给定一个编码字符串 S。为了找出解码字符串并将其写入磁带，从编码字符串中每次读取一个字符，并采取以下步骤：</p>
+
+<ul>
+<li>如果所读的字符是字母，则将该字母写在磁带上。</li>
+<li>如果所读的字符是数字（例如 d），则整个当前磁带总共会被重复写 d-1 次。
+现在，对于给定的编码字符串 S 和索引 K，查找并返回解码字符串中的第 K 个字母。</li>
+</ul>
+
+<h6 id="示例-1">示例 1：</h6>
+
+<pre><code>输入：S = &quot;leet2code3&quot;, K = 10
+输出：&quot;o&quot;
+解释：
+解码后的字符串为 &quot;leetleetcodeleetleetcodeleetleetcode&quot;。
+字符串中的第 10 个字母是 &quot;o&quot;。
+</code></pre>
+
+<h6 id="示例-2">示例 2：</h6>
+
+<pre><code>输入：S = &quot;ha22&quot;, K = 5
+输出：&quot;h&quot;
+解释：
+解码后的字符串为 &quot;hahahaha&quot;。第 5 个字母是 &quot;h&quot;。
+</code></pre>
+
+<h6 id="示例-3">示例 3：</h6>
+
+<pre><code>输入：S = &quot;a2345678999999999999999&quot;, K = 1
+输出：&quot;a&quot;
+解释：
+解码后的字符串为 &quot;a&quot; 重复 8301530446056247680 次。第 1 个字母是 &quot;a&quot;。
+ 
+</code></pre>
+
+<h6 id="提示">提示：</h6>
+
+<pre><code>2 &lt;= S.length &lt;= 100
+S 只包含小写字母与数字 2 到 9 。
+S 以字母开头。
+1 &lt;= K &lt;= 10^9
+解码后的字符串保证少于 2^63 个字母。
+</code></pre>
+
+<h4 id="来源-力扣-leetcode-第880题">来源：力扣（LeetCode）第880题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/decoded-string-at-index" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/decoded-string-at-index</a></p>
+</blockquote>
+
+<h3 id="解析">解析：</h3>
+
+<p>首先先把题目要求的总长度算出来，这个比较容易，难点在于如何将第K个数从总长度中找出来。因为我们无法将整个数组都写出来，比如实例3，a的个数太多了，会导致内存不够的。所以我们只能找一种办法，在不用写出全部数组的情况下将第K个元素算出来。</p>
+
+<p>如果每次都从前面思考，你会发现自己陷入瓶颈，找不到合适的方法满足要求。</p>
+
+<p>可是如果反过来思考一下。我们刚才算出总长度用的方法是遍历数组，遇到字母+1，遇到数字就乘以这个数字。现在我们反过来思考，我们从后往前遍历，总长度遇到字母-1，遇到数字就除以这个数字。</p>
+
+<p>假设我们遇到数字3，说明剩下的数字的总长度一定能正好分成3份，如果总长度是36，那么也就是说只有12个不同的答案，因为每一份的字母都是一样的。此时总长度为12，因此我们将K % 总长度12 ，看一下这个值是否等于0。如果不等于0，并且不是数字，就-1，直到K % 总长度 == 0，那么遍历到这个位置的S[i]就是所要求的元素。</p>
+
+<h3 id="上代码看一下">上代码看一下：</h3>
+
+<p>先来一个不用栈实现的官方解法</p>
+
+<pre><code class="language-Python">class Solution:
+    def decodeAtIndex(self, S: str, K: int) -&gt; str:
+        size = 0
+        for c in S:
+            if c.isdigit():
+                size *= int(c)
+            else:
+                size += 1
+
+        for c in reversed(S):
+            K %= size
+            if K == 0 and c.isalpha():
+                return c
+            if c.isdigit():
+                size /= int(c)
+            else:
+                size -= 1
+</code></pre>
+
+<p>然后是使用栈实现的，其实是一样的，从后往前遍历就是在模拟出栈，不过不用真的出栈，节省了时间</p>
+
+<pre><code class="language-Python">class Solution(object):
+    def decodeAtIndex(self, S, K):
+        stack = []
+        add = 0
+        for i in range(len(S)):
+            if S[i].isdigit():
+                add *= int(S[i])
+            else:
+                add += 1
+            stack.append(S[i])
+        while stack:
+            K = K % add
+            if K == 0 and stack[-1].isalpha():
+                return stack[-1]
+            
+            if stack[-1].isdigit():
+                add = add // int(stack.pop())
+            else:
+                add -= 1
+                stack.pop()
+</code></pre>
+
+<h3 id="复杂度分析">复杂度分析：</h3>
+
+<ul>
+<li>时间复杂度：O(N)，其中 N 是 S 的长度。</li>
+<li>空间复杂度：O(1)。</li>
+</ul>
+
+<h1 id="总结">总结：</h1>
+
+<p>根据题目所给的条件，来反向推导题目，有可能获得意想不到的效果。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E9%80%86%E5%90%91%E5%B7%A5%E4%BD%9C%E6%B3%95/>https://ripple-zjw.github.io/2019/%E9%80%86%E5%90%91%E5%B7%A5%E4%BD%9C%E6%B3%95/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E9%80%86%E5%90%91%E6%80%9D%E7%BB%B4/">
+                    #逆向思维</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/1/pipenv/" class="prev" rel="prev" title=""><i class="iconfont icon-left"></i>&nbsp;</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/" class="next" rel="next" title="表现良好的最长时间段">表现良好的最长时间段&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io/">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  
+  <link rel="next" href="https://ripple-zjw.github.io/1/pipenv/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/1/wsgi/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            | LeaveIt
+       
+  </title>
+  <meta name="title" content=" | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io\/"
+    },
+    "articleSection" : "posts",
+    "name" : "",
+    "headline" : "",
+    "description" : "WSGI (Web Server Gateway Interface) 接口介绍 了解了HTTP协议和HTML文档，我们其实就明白了一个Web应用的本质就是： * 浏览器发送一个HTTP请求；\n 服务器收到请求，生成一个HTML文档；\n 服务器把HTML文档作为HTTP响应的Body发送给浏览器；\n 浏览器收到HTTP响应，从HTTP Body取出HTML文档并显示。\n  所以，最简单的Web应用就是先把HTML用文件保存好，用一个现成的HTTP服务器软件，接收用户请求，从文件中读取HTML，返回。Apache、Nginx、Lighttpd等这些常见的静态服务器就是干这件事情的。\n如果要动态生成HTML，就需要把上述步骤自己来实现。不过，接受HTTP请求、解析HTTP请求、发送HTTP响应都是苦力活，如果我们自己来写这些底层代码，还没开始写动态HTML呢，就得花个把月去读HTTP规范。\n正确的做法是底层代码由专门的服务器软件实现，我们用Python专注于生成HTML文档。因为我们不希望接触到TCP连接、HTTP原始请求和响应格式，所以，需要一个统一的接口，让我们专心用Python编写Web业务。 这个接口就是WSGI：Web Server Gateway Interface。\nWSGI接口定义非常简单，它只要求Web开发者实现一个函数，就可以响应HTTP请求。我们来看一个最简单的Web版本的“Hello, web!”：\ndef application(environ, start_response): start_response(\x27200 OK\x27, [(\x27Content-Type\x27, \x27text\/html\x27)]) return [b\x27\x26lt;h1\x26gt;Hello, web!\x26lt;\/h1\x26gt;\x27]  上面的application()函数就是符合WSGI标准的一个HTTP处理函数，它接收两个参数：\n environ：一个包含所有HTTP请求信息的dict对象；\n start_response：一个发送HTTP响应的函数。\n  在application()函数中，调用：\nstart_response(\x27200 OK\x27, [(\x27Content-Type\x27, \x27text\/html\x27)])  就发送了HTTP响应的Header，注意Header只能发送一次，也就是只能调用一次 start_response()函数。start_response()函数接收两个参数， 一个是HTTP响应码，一个是一组list表示的HTTP Header， 每个Header用一个包含两个str的tuple表示。\n通常情况下，都应该把Content-Type头发送给浏览器。其他很多常用的HTTP Header也应该发送。\n然后，函数的返回值b\x27\x26lt;h1\x26gt;Hello, web!\x26lt;\/h1\x26gt;\x27将作为HTTP响应的Body发送给浏览器。\n有了WSGI，我们关心的就是如何从environ这个dict对象拿到HTTP请求信息，然后构造HTML， 通过start_response()发送Header，最后返回Body。\n整个application()函数本身没有涉及到任何解析HTTP的部分，也就是说， 底层代码不需要我们自己编写，我们只负责在更高层次上考虑如何响应请求就可以了。\n不过，等等，这个application()函数怎么调用？如果我们自己调用， 两个参数environ和start_response我们没法提供，返回的bytes也没法发给浏览器。\n所以application()函数必须由WSGI服务器来调用。有很多符合WSGI规范的服务器， 我们可以挑选一个来用。但是现在，我们只想尽快测试一下我们编写的application() 函数真的可以把HTML输出到浏览器，所以，要赶紧找一个最简单的WSGI服务器， 把我们的Web应用程序跑起来。",
+    "inLanguage" : "en-us",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "0001",
+    "datePublished": "0001-01-01 00:00:00 \x2b0000 UTC",
+    "dateModified" : "0001-01-01 00:00:00 \x2b0000 UTC",
+    "url" : "https:\/\/ripple-zjw.github.io\/1\/wsgi\/",
+    "wordCount" : "111",
+    "keywords" : [  "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io/">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io/">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline"></h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io/" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=0001-01-01 itemprop="datePublished">January 1, 0001</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h2 id="wsgi-web-server-gateway-interface">WSGI  (Web Server Gateway Interface)</h2>
+
+<h3 id="接口介绍">接口介绍</h3>
+
+<p>了解了HTTP协议和HTML文档，我们其实就明白了一个Web应用的本质就是：
+* 浏览器发送一个HTTP请求；</p>
+
+<ul>
+<li><p>服务器收到请求，生成一个HTML文档；</p></li>
+
+<li><p>服务器把HTML文档作为HTTP响应的Body发送给浏览器；</p></li>
+
+<li><p>浏览器收到HTTP响应，从HTTP Body取出HTML文档并显示。</p></li>
+</ul>
+
+<p>所以，最简单的Web应用就是先把HTML用文件保存好，用一个现成的HTTP服务器软件，接收用户请求，从文件中读取HTML，返回。Apache、Nginx、Lighttpd等这些常见的静态服务器就是干这件事情的。</p>
+
+<p>如果要动态生成HTML，就需要把上述步骤自己来实现。不过，接受HTTP请求、解析HTTP请求、发送HTTP响应都是苦力活，如果我们自己来写这些底层代码，还没开始写动态HTML呢，就得花个把月去读HTTP规范。</p>
+
+<p>正确的做法是底层代码由专门的服务器软件实现，我们用Python专注于生成HTML文档。因为我们不希望接触到TCP连接、HTTP原始请求和响应格式，所以，需要一个统一的接口，让我们专心用Python编写Web业务。
+这个接口就是WSGI：Web Server Gateway Interface。</p>
+
+<p>WSGI接口定义非常简单，它只要求Web开发者实现一个函数，就可以响应HTTP请求。我们来看一个最简单的Web版本的“Hello, web!”：</p>
+
+<pre><code class="language-python">def application(environ, start_response):
+    start_response('200 OK', [('Content-Type', 'text/html')])
+    return [b'&lt;h1&gt;Hello, web!&lt;/h1&gt;']
+</code></pre>
+
+<p>上面的application()函数就是符合WSGI标准的一个HTTP处理函数，它接收两个参数：</p>
+
+<ul>
+<li><p>environ：一个包含所有HTTP请求信息的dict对象；</p></li>
+
+<li><p>start_response：一个发送HTTP响应的函数。</p></li>
+</ul>
+
+<p>在application()函数中，调用：</p>
+
+<pre><code class="language-python">start_response('200 OK', [('Content-Type', 'text/html')])
+</code></pre>
+
+<p>就发送了HTTP响应的Header，注意Header只能发送一次，也就是只能调用一次
+<code>start_response()</code>函数。<code>start_response()</code>函数接收两个参数，
+一个是HTTP响应码，一个是一组<code>list</code>表示的HTTP Header，
+每个Header用一个包含两个str的tuple表示。</p>
+
+<p>通常情况下，都应该把Content-Type头发送给浏览器。其他很多常用的HTTP Header也应该发送。</p>
+
+<p>然后，函数的返回值<code>b'&lt;h1&gt;Hello, web!&lt;/h1&gt;'</code>将作为HTTP响应的Body发送给浏览器。</p>
+
+<p>有了WSGI，我们关心的就是如何从environ这个dict对象拿到HTTP请求信息，然后构造HTML，
+通过start_response()发送Header，最后返回Body。</p>
+
+<p>整个application()函数本身没有涉及到任何解析HTTP的部分，也就是说，
+底层代码不需要我们自己编写，我们只负责在更高层次上考虑如何响应请求就可以了。</p>
+
+<p>不过，等等，这个<code>application()</code>函数怎么调用？如果我们自己调用，
+两个参数<code>environ</code>和<code>start_response</code>我们没法提供，返回的bytes也没法发给浏览器。</p>
+
+<p>所以<code>application()</code>函数必须由WSGI服务器来调用。有很多符合WSGI规范的服务器，
+我们可以挑选一个来用。但是现在，我们只想尽快测试一下我们编写的<code>application()</code>
+函数真的可以把HTML输出到浏览器，所以，要赶紧找一个最简单的WSGI服务器，
+把我们的Web应用程序跑起来。</p>
+
+<p>好消息是Python内置了一个WSGI服务器，这个模块叫<code>wsgiref</code>，
+它是用纯Python编写的WSGI服务器的参考实现。
+所谓“参考实现”是指该实现完全符合WSGI标准，但是不考虑任何运行效率，
+仅供开发和测试使用。</p>
+
+<h3 id="运行wsgi服务">运行WSGI服务</h3>
+
+<p>我们先编写<code>app.py</code>，实现Web应用程序的WSGI处理函数：</p>
+
+<pre><code class="language-python"># app.py
+
+def application(environ, start_response):
+    start_response('200 OK', [('Content-Type', 'text/html')])
+    return [b'&lt;h1&gt;Hello, web!&lt;/h1&gt;']
+</code></pre>
+
+<p>然后，再编写一个<code>server.py</code>，负责启动WSGI服务器，加载<code>application()</code>函数：</p>
+
+<pre><code class="language-python"># server.py
+# 从wsgiref模块导入:
+from wsgiref.simple_server import make_server
+# 导入我们自己编写的application函数:
+from app import application
+
+# 创建一个服务器，IP地址为空，端口是8000，处理函数是application:
+print('Serving HTTP on port 8000...')
+httpd = make_server('', 8000, application)
+# 开始监听HTTP请求:
+httpd.serve_forever()
+</code></pre>
+
+<p>确保以上两个文件在同一个目录下，然后在命令行输入<code>python server.py</code>来启动WSGI服务器：</p>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="img/wsgi_start_hello_web.png" alt="启动wsgi服务" class="lazyload"><figcaption class="image-caption">启动wsgi服务</figcaption></figure></p>
+
+<p>注意：如果8000端口已被其他程序占用，启动将失败，请修改成其他端口。</p>
+
+<p>启动成功后，打开浏览器，输入<a href="http://localhost:8000/，就可以看到结果了：" rel="nofollow noreferrer" target="_blank">http://localhost:8000/，就可以看到结果了：</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/1/wsgi/>https://ripple-zjw.github.io/1/wsgi/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+         
+        
+        <a href="https://ripple-zjw.github.io/1/pipenv/" class="next" rel="next" title="">&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io/">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

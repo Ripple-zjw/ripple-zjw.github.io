@@ -1,7 +1,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>LeaveIt on LeaveIt</title>
-    <link>https://example.com/</link>
+    <link>https://www.ripple-zjw.github.io/</link>
     <description>Recent content in LeaveIt on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,10 +10,10 @@
     
     <item>
       <title>二叉搜索树迭代器</title>
-      <link>https://example.com/2019/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BF%AD%E4%BB%A3%E5%99%A8/</link>
+      <link>https://www.ripple-zjw.github.io/2019/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BF%AD%E4%BB%A3%E5%99%A8/</link>
       <pubDate>Thu, 15 Aug 2019 16:42:03 +0800</pubDate>
       
-      <guid>https://example.com/2019/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BF%AD%E4%BB%A3%E5%99%A8/</guid>
+      <guid>https://www.ripple-zjw.github.io/2019/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BF%AD%E4%BB%A3%E5%99%A8/</guid>
       <description>
 
 &lt;h2 id=&#34;题目-二叉搜索树迭代器&#34;&gt;题目：二叉搜索树迭代器&lt;/h2&gt;
@@ -97,10 +97,10 @@ iterator.hasNext(); // 返回 false
     
     <item>
       <title>关于博客</title>
-      <link>https://example.com/about/aboutblog/</link>
+      <link>https://www.ripple-zjw.github.io/about/aboutblog/</link>
       <pubDate>Thu, 15 Aug 2019 14:51:20 +0800</pubDate>
       
-      <guid>https://example.com/about/aboutblog/</guid>
+      <guid>https://www.ripple-zjw.github.io/about/aboutblog/</guid>
       <description>
 
 &lt;h1 id=&#34;关于博客&#34;&gt;关于博客&lt;/h1&gt;
@@ -119,10 +119,10 @@ iterator.hasNext(); // 返回 false
     
     <item>
       <title>关于我</title>
-      <link>https://example.com/about/aboutme/</link>
+      <link>https://www.ripple-zjw.github.io/about/aboutme/</link>
       <pubDate>Thu, 15 Aug 2019 14:51:20 +0800</pubDate>
       
-      <guid>https://example.com/about/aboutme/</guid>
+      <guid>https://www.ripple-zjw.github.io/about/aboutme/</guid>
       <description>
 
 &lt;h1 id=&#34;关于我&#34;&gt;关于我&lt;/h1&gt;
@@ -147,10 +147,10 @@ iterator.hasNext(); // 返回 false
     
     <item>
       <title>First</title>
-      <link>https://example.com/2019/first/</link>
+      <link>https://www.ripple-zjw.github.io/2019/first/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://example.com/2019/first/</guid>
+      <guid>https://www.ripple-zjw.github.io/2019/first/</guid>
       <description>
 
 &lt;h1 id=&#34;我的博客测试文本&#34;&gt;我的博客测试文本&lt;/h1&gt;
@@ -159,10 +159,10 @@ iterator.hasNext(); // 返回 false
     
     <item>
       <title>Git</title>
-      <link>https://example.com/2019/git/</link>
+      <link>https://www.ripple-zjw.github.io/2019/git/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://example.com/2019/git/</guid>
+      <guid>https://www.ripple-zjw.github.io/2019/git/</guid>
       <description>
 
 &lt;h1 id=&#34;git-版本控制工具&#34;&gt;Git 版本控制工具&lt;/h1&gt;
@@ -471,10 +471,10 @@ push&lt;/p&gt;&lt;/li&gt;
     
     <item>
       <title>Markdown使用</title>
-      <link>https://example.com/2019/markdown%E8%AF%95%E7%94%A8/</link>
+      <link>https://www.ripple-zjw.github.io/2019/markdown%E8%AF%95%E7%94%A8/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://example.com/2019/markdown%E8%AF%95%E7%94%A8/</guid>
+      <guid>https://www.ripple-zjw.github.io/2019/markdown%E8%AF%95%E7%94%A8/</guid>
       <description>
 
 &lt;h1 id=&#34;一级标题&#34;&gt;一级标题&lt;/h1&gt;
@@ -532,10 +532,10 @@ int main(){
     
     <item>
       <title>bootstrap</title>
-      <link>https://example.com/2019/bootstrap/</link>
+      <link>https://www.ripple-zjw.github.io/2019/bootstrap/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://example.com/2019/bootstrap/</guid>
+      <guid>https://www.ripple-zjw.github.io/2019/bootstrap/</guid>
       <description>
 
 &lt;h3 id=&#34;bootstrap&#34;&gt;bootstrap&lt;/h3&gt;
@@ -604,10 +604,10 @@ pull的时候调整的是right，分13个等级（0到12）
     
     <item>
       <title>reset 三个参数--hard --soft --mixed的区别</title>
-      <link>https://example.com/2019/reset-%E4%B8%89%E4%B8%AA%E5%8F%82%E6%95%B0-hard-soft-mixed%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+      <link>https://www.ripple-zjw.github.io/2019/reset-%E4%B8%89%E4%B8%AA%E5%8F%82%E6%95%B0-hard-soft-mixed%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://example.com/2019/reset-%E4%B8%89%E4%B8%AA%E5%8F%82%E6%95%B0-hard-soft-mixed%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
+      <guid>https://www.ripple-zjw.github.io/2019/reset-%E4%B8%89%E4%B8%AA%E5%8F%82%E6%95%B0-hard-soft-mixed%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
       <description>
 
 &lt;h1 id=&#34;hard&#34;&gt;&amp;ndash;hard&lt;/h1&gt;
@@ -626,10 +626,10 @@ pull的时候调整的是right，分13个等级（0到12）
     
     <item>
       <title>中序遍历二叉树</title>
-      <link>https://example.com/2019/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
+      <link>https://www.ripple-zjw.github.io/2019/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://example.com/2019/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</guid>
+      <guid>https://www.ripple-zjw.github.io/2019/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</guid>
       <description>
 
 &lt;h1 id=&#34;题目-二叉树的中序遍历&#34;&gt;题目：二叉树的中序遍历&lt;/h1&gt;
@@ -754,10 +754,10 @@ class Solution:
     
     <item>
       <title>使括号有效的最少添加</title>
-      <link>https://example.com/2019/%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/</link>
+      <link>https://www.ripple-zjw.github.io/2019/%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://example.com/2019/%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/</guid>
+      <guid>https://www.ripple-zjw.github.io/2019/%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/</guid>
       <description>
 
 &lt;h1 id=&#34;题目&#34;&gt;题目：&lt;/h1&gt;
@@ -868,10 +868,10 @@ class Solution:
     
     <item>
       <title>双指针</title>
-      <link>https://example.com/2019/%E5%8F%8C%E6%8C%87%E9%92%88/</link>
+      <link>https://www.ripple-zjw.github.io/2019/%E5%8F%8C%E6%8C%87%E9%92%88/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://example.com/2019/%E5%8F%8C%E6%8C%87%E9%92%88/</guid>
+      <guid>https://www.ripple-zjw.github.io/2019/%E5%8F%8C%E6%8C%87%E9%92%88/</guid>
       <description>
 
 &lt;h1 id=&#34;运用双指针解题&#34;&gt;运用双指针解题&lt;/h1&gt;
@@ -930,10 +930,10 @@ class Solution:
     
     <item>
       <title>最小栈</title>
-      <link>https://example.com/2019/%E6%9C%80%E5%B0%8F%E6%A0%88/</link>
+      <link>https://www.ripple-zjw.github.io/2019/%E6%9C%80%E5%B0%8F%E6%A0%88/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://example.com/2019/%E6%9C%80%E5%B0%8F%E6%A0%88/</guid>
+      <guid>https://www.ripple-zjw.github.io/2019/%E6%9C%80%E5%B0%8F%E6%A0%88/</guid>
       <description>
 
 &lt;h2 id=&#34;设计一个支持-push-pop-top-操作-并能在常数时间内检索到最小元素的栈&#34;&gt;设计一个支持 push，pop，top 操作，并能在常数时间内检索到最小元素的栈：&lt;/h2&gt;
@@ -1010,10 +1010,10 @@ class Solution:
     
     <item>
       <title>栈实现队列</title>
-      <link>https://example.com/2019/%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/</link>
+      <link>https://www.ripple-zjw.github.io/2019/%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://example.com/2019/%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/</guid>
+      <guid>https://www.ripple-zjw.github.io/2019/%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/</guid>
       <description>
 
 &lt;h2 id=&#34;使用栈实现队列的下列操作&#34;&gt;使用栈实现队列的下列操作：&lt;/h2&gt;
@@ -1091,10 +1091,10 @@ class Solution:
     
     <item>
       <title>滑动窗口问题</title>
-      <link>https://example.com/2019/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</link>
+      <link>https://www.ripple-zjw.github.io/2019/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://example.com/2019/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</guid>
+      <guid>https://www.ripple-zjw.github.io/2019/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</guid>
       <description>
 
 &lt;h1 id=&#34;给定一个字符串-请你找出其中不含有重复字符的-最长子串-的长度&#34;&gt;给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。&lt;/h1&gt;
@@ -1210,10 +1210,10 @@ class Solution:
     
     <item>
       <title>表现良好的最长时间段</title>
-      <link>https://example.com/2019/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/</link>
+      <link>https://www.ripple-zjw.github.io/2019/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/</link>
       <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
       
-      <guid>https://example.com/2019/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/</guid>
+      <guid>https://www.ripple-zjw.github.io/2019/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/</guid>
       <description>
 
 &lt;h1 id=&#34;题目&#34;&gt;题目：&lt;/h1&gt;

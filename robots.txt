@@ -63,4 +63,4 @@ Disallow: /
 User-agent: ZoominfoBot
 Disallow: /
 
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://www.ripple-zjw.github.io/sitemap.xml

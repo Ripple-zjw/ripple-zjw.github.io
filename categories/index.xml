@@ -6,15 +6,24 @@
     <description>Recent content in Categories on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 15 Aug 2019 16:42:03 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 17 Aug 2019 18:58:39 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>博客框架搭建</title>
+      <link>https://ripple-zjw.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Sat, 17 Aug 2019 18:58:39 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>算法求解思想</title>
       <link>https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/</link>
-      <pubDate>Thu, 15 Aug 2019 16:42:03 +0800</pubDate>
+      <pubDate>Sat, 17 Aug 2019 18:51:43 +0800</pubDate>
       
       <guid>https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/</guid>
       <description></description>

@@ -6,10 +6,58 @@
     <description>Recent content in 算法求解思想 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 15 Aug 2019 16:42:03 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 17 Aug 2019 18:51:43 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>字符串解码</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81/</link>
+      <pubDate>Sat, 17 Aug 2019 18:51:43 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81/</guid>
+      <description>题目：字符串解码  给定一个经过编码的字符串，返回它解码后的字符串。 编码规则为: k[encoded_string]，表示其中方括号内部的 encoded_string 正好重复 k 次。注意 k 保证为正整数。 你可以认为输入字符串总是有效的；输入字符串中没有额外的空格，且输入的方括号总是符合格式要求的。 此外，你可以认为原始数据不包含数字，所有的数字只表示重复的次数 k ，例如不会出现像 3a 或 2[4] 的输入。  示例: s = &amp;quot;3[a]2[bc]&amp;quot;, 返回 &amp;quot;aaabcbc&amp;quot;. s = &amp;quot;3[a2[c]]&amp;quot;, 返回 &amp;quot;accaccacc&amp;quot;. s = &amp;quot;2[abc]3[cd]ef&amp;quot;, 返回 &amp;quot;abcabccdcdcdef&amp;quot;.  来源：力扣（LeetCode）第394题  链接：https://leetcode-cn.com/problems/decode-string
+ 分析： 两种方法，辅助栈法和递归法，递归法相对思路清晰，比较好做。其实本质两种方法是一样的，因为函数的递归调用其实也是用栈来实现的。
+思路：  递归法：  遍历整个字符串 同时要用到stack列表，tmp列表，还有一个表示下标的变量i 每次递归之后stack都是该函数的stack，与外面的stack不同 每次遍历字符时，tmp都要将里面的值清空 遇到字母，压入stack 遇到]字符,结束函数并将stack返回 遇到数字首先判断该数字后是否还有数字，有的话一起加入tmp，然后递归调用函数。  辅助栈法：  遍历整个字符串 res表示当前字符串，multi表示当前数字，stack储存答案 遇到字母，与res拼接起来 遇到数字，放入multi，注意由于两个数字放在一起要变成两位数，以此类推，所以res 写成res = res * 10 + 当前数字 遇到[，将res，multi同时入栈，用一个列表或元祖，并行的，不是先后入栈。 遇到右括号，栈顶元素出栈，并将栈顶元素的multi与当前字符相乘，然后再与栈顶的res相加   上代码：  递归法：</description>
+    </item>
+    
+    <item>
+      <title>下一个更大元素</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0ii/</link>
+      <pubDate>Sat, 17 Aug 2019 18:50:56 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0ii/</guid>
+      <description>题目：下一个更大元素 II 给定一个循环数组（最后一个元素的下一个元素是数组的第一个元素），输出每个元素的下一个更大元素。数字 x 的下一个更大的元素是按数组遍历顺序，这个数字之后的第一个比它更大的数，这意味着你应该循环地搜索它的下一个更大的数。如果不存在，则输出 -1。
+示例 1: 输入: [1,2,1] 输出: [2,-1,2] 解释: 第一个 1 的下一个更大的数是 2； 数字 2 找不到下一个更大的数； 第二个 1 的下一个最大的数需要循环搜索，结果也是 2。  来源：力扣（LeetCode）第503题  链接：https://leetcode-cn.com/problems/next-greater-element-ii
+ 分析： 循环数组和循环队列的样子差不多，这道题主要是单调栈，同样涉及两种解法，暴力法和单调栈法。这题的难点不在于单调栈，而是循环数组什么时候停下来。
+思路：  由于是循环数组，如果只遍历一遍无法完全找到答案，所以我们遍历两边数组，使得数组较后的元素能与前面的元素比对。 当下表(i)比数组的最后一个下表大时，i % len(数组) 初始化所有答案均为-1(如果找不到最大的是-1，所以先全部等于-1) 维护一个单调递减栈，入栈元素将比它小的栈内元素全部出栈，出栈元素的答案就是入栈元素。 如此循环两次，如果栈内元素在两次循环之后均未能出栈(找到比它大的元素),那么它们就是数组中最大的元素，又由于我们初始化答案全部为-1，所以不用改变它们。  上代码: class Solution(object): def nextGreaterElements(self, nums): &amp;quot;&amp;quot;&amp;quot; :type nums: List[int] :rtype: List[int] &amp;quot;&amp;quot;&amp;quot; stack = [] n = len(nums) res = [-1 for _ in nums] for i in range(2 * n): while stack and nums[i % n] &amp;gt; nums[stack[-1]]: res[stack.</description>
+    </item>
+    
+    <item>
+      <title>扁平化嵌套列表迭代器</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%89%81%E5%B9%B3%E5%8C%96%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8%E8%BF%AD%E4%BB%A3%E5%99%A8/</link>
+      <pubDate>Sat, 17 Aug 2019 18:50:30 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%89%81%E5%B9%B3%E5%8C%96%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8%E8%BF%AD%E4%BB%A3%E5%99%A8/</guid>
+      <description>题目:扁平化嵌套列表迭代器  给定一个嵌套的整型列表。设计一个迭代器，使其能够遍历这个整型列表中的所有整数。 列表中的项或者为一个整数，或者是另一个列表。  示例 1: 输入: [[1,1],2,[1,1]] 输出: [1,1,2,1,1] 解释: 通过重复调用 next 直到 hasNext 返回false，next 返回的元素的顺序应该是: [1,1,2,1,1]。  示例 2: 输入: [1,[4,[6]]] 输出: [1,4,6] 解释: 通过重复调用 next 直到 hasNext 返回false，next 返回的元素的顺序应该是: [1,4,6]。  来源：力扣（LeetCode）第341题  链接：https://leetcode-cn.com/problems/flatten-nested-list-iterator
+ 分析： 递归调用，不是很难。唯一要注意的是要看清题目，list里面是NestedIterator，需要使用他给你的方法调用才能得到integer或者list。
+思路：  从后往前遍历 判断是否是integer，是 入栈 不是 递归进去 返回栈，结束。  代码： # &amp;quot;&amp;quot;&amp;quot; # This is the interface that allows for creating nested lists. # You should not implement it, or speculate about its implementation # &amp;quot;&amp;quot;&amp;quot; #class NestedInteger(object): # def isInteger(self): # &amp;quot;&amp;quot;&amp;quot; # @return True if this NestedInteger holds a single integer, rather than a nested list.</description>
+    </item>
+    
+    <item>
+      <title>二叉树的锯齿形层次遍历</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%94%AF%E9%BD%BF%E5%BD%A2%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/</link>
+      <pubDate>Sat, 17 Aug 2019 18:48:01 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%94%AF%E9%BD%BF%E5%BD%A2%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/</guid>
+      <description>题目: 二叉树的锯齿形层次遍历 给定一个二叉树，返回其节点值的锯齿形层次遍历。（即先从左往右，再从右往左进行下一层遍历，以此类推，层与层之间交替进行）。
+例如： 给定二叉树 [3,9,20,null,null,15,7],
+ 3 / \ 9 20 / \ 15 7  返回锯齿形层次遍历如下：
+[ [3], [20,9], [15,7] ]  来源：力扣（LeetCode）第103题  链接：https://leetcode-cn.com/problems/binary-tree-zigzag-level-order-traversal
+ 分析: 层次遍历比较简单，主要是锯齿形，就是单数层从左到右，双数层从右到左。网上有很多题解，看了他们的之后觉得没有自己的好，他们基本都是使用了反转列表的操作，理论上会很耗时间。所以，我讲的是自己写的思路。
+思路:  运用双栈法，分别储存单数层和双数层两种情况。 ans为返回的总列表，res为每一层的答案，stack和helper是两个栈，方法和之前的前、中序遍历差不多。 写一个主循环while，再写两个循环放在主循环中，一个遍历单数层，一个遍历双数层。 两个循环里把双栈中的节点拿出来，同时也把节点的两个子节点(stack或者helper)以及他们的值(res)也存起来。 最后将res的值加到ans中。主循环结束，ans值也都进去了。  代码: # Definition for a binary tree node. # class TreeNode: # def __init__(self, x): # self.val = x # self.left = None # self.right = None class Solution: def zigzagLevelOrder(self, root: TreeNode) -&amp;gt; List[List[int]]: if root is None: return [] stack = [] helper = [root] res = [] ans = [[root.</description>
+    </item>
     
     <item>
       <title>二叉搜索树迭代器</title>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E6%89%81%E5%B9%B3%E5%8C%96%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8%E8%BF%AD%E4%BB%A3%E5%99%A8/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0ii/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           下一个更大元素 | LeaveIt
+       
+  </title>
+  <meta name="title" content="下一个更大元素 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "下一个更大元素",
+    "headline" : "下一个更大元素",
+    "description" : "题目：下一个更大元素 II 给定一个循环数组（最后一个元素的下一个元素是数组的第一个元素），输出每个元素的下一个更大元素。数字 x 的下一个更大的元素是按数组遍历顺序，这个数字之后的第一个比它更大的数，这意味着你应该循环地搜索它的下一个更大的数。如果不存在，则输出 -1。\n示例 1: 输入: [1,2,1] 输出: [2,-1,2] 解释: 第一个 1 的下一个更大的数是 2； 数字 2 找不到下一个更大的数； 第二个 1 的下一个最大的数需要循环搜索，结果也是 2。  来源：力扣（LeetCode）第503题  链接：https:\/\/leetcode-cn.com\/problems\/next-greater-element-ii\n 分析： 循环数组和循环队列的样子差不多，这道题主要是单调栈，同样涉及两种解法，暴力法和单调栈法。这题的难点不在于单调栈，而是循环数组什么时候停下来。\n思路：  由于是循环数组，如果只遍历一遍无法完全找到答案，所以我们遍历两边数组，使得数组较后的元素能与前面的元素比对。 当下表(i)比数组的最后一个下表大时，i % len(数组) 初始化所有答案均为-1(如果找不到最大的是-1，所以先全部等于-1) 维护一个单调递减栈，入栈元素将比它小的栈内元素全部出栈，出栈元素的答案就是入栈元素。 如此循环两次，如果栈内元素在两次循环之后均未能出栈(找到比它大的元素),那么它们就是数组中最大的元素，又由于我们初始化答案全部为-1，所以不用改变它们。  上代码: class Solution(object): def nextGreaterElements(self, nums): \x26quot;\x26quot;\x26quot; :type nums: List[int] :rtype: List[int] \x26quot;\x26quot;\x26quot; stack = [] n = len(nums) res = [-1 for _ in nums] for i in range(2 * n): while stack and nums[i % n] \x26gt; nums[stack[-1]]: res[stack.",
+    "inLanguage" : "en-us",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-08-17 18:50:56 \x2b0800 CST",
+    "dateModified" : "2019-08-17 18:50:56 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0ii\/",
+    "wordCount" : "158",
+    "keywords" : [ "算法求解思想","栈","单调栈", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">下一个更大元素</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-08-17 itemprop="datePublished">August 17, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-下一个更大元素-ii">题目：下一个更大元素 II</h1>
+
+<p>给定一个循环数组（最后一个元素的下一个元素是数组的第一个元素），输出每个元素的下一个更大元素。数字 x 的下一个更大的元素是按数组遍历顺序，这个数字之后的第一个比它更大的数，这意味着你应该循环地搜索它的下一个更大的数。如果不存在，则输出 -1。</p>
+
+<h6 id="示例-1">示例 1:</h6>
+
+<pre><code>输入: [1,2,1]
+输出: [2,-1,2]
+解释: 第一个 1 的下一个更大的数是 2；
+数字 2 找不到下一个更大的数； 
+第二个 1 的下一个最大的数需要循环搜索，结果也是 2。
+</code></pre>
+
+<h4 id="来源-力扣-leetcode-第503题">来源：力扣（LeetCode）第503题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/next-greater-element-ii" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/next-greater-element-ii</a></p>
+</blockquote>
+
+<h3 id="分析">分析：</h3>
+
+<p>循环数组和循环队列的样子差不多，这道题主要是单调栈，同样涉及两种解法，暴力法和单调栈法。这题的难点不在于单调栈，而是循环数组什么时候停下来。</p>
+
+<h3 id="思路">思路：</h3>
+
+<ul>
+<li>由于是循环数组，如果只遍历一遍无法完全找到答案，所以我们遍历两边数组，使得数组较后的元素能与前面的元素比对。</li>
+<li>当下表(i)比数组的最后一个下表大时，i % len(数组)</li>
+<li>初始化所有答案均为-1(如果找不到最大的是-1，所以先全部等于-1)</li>
+<li>维护一个单调递减栈，入栈元素将比它小的栈内元素全部出栈，出栈元素的答案就是入栈元素。</li>
+<li>如此循环两次，如果栈内元素在两次循环之后均未能出栈(找到比它大的元素),那么它们就是数组中最大的元素，又由于我们初始化答案全部为-1，所以不用改变它们。</li>
+</ul>
+
+<h3 id="上代码">上代码:</h3>
+
+<pre><code class="language-python">class Solution(object):
+    def nextGreaterElements(self, nums):
+        &quot;&quot;&quot;
+        :type nums: List[int]
+        :rtype: List[int]
+        &quot;&quot;&quot;
+        stack = []
+        n = len(nums)
+        res = [-1 for _ in nums]
+        for i in range(2 * n):
+            while stack and nums[i % n] &gt; nums[stack[-1]]:
+                res[stack.pop()] = nums[i % n]
+            stack.append(i % n)
+        return res
+</code></pre>
+
+<p>一并给出暴力法(时间太长，会超时)</p>
+
+<pre><code class="language-python">class Solution:
+    def nextGreaterElements(self, nums: List[int]) -&gt; List[int]:
+        n = len(nums)
+        ans = []
+        for i in range(n):
+            j = i
+            while True:
+                j = (j + 1) % n
+                if nums[j] &gt; nums[i]:
+                    ans.append(nums[j])
+                    break
+                if j + 1 == i:
+                    ans.append(-1)
+                    break
+        return ans
+</code></pre>
+
+<h3 id="复杂地分析">复杂地分析:</h3>
+
+<ul>
+<li>暴力法:<br />
+
+<ul>
+<li>时间复杂地：O(n^2^)</li>
+<li>空间复杂度：O(n)</li>
+</ul></li>
+<li>单调栈法:
+
+<ul>
+<li>时间复杂度：O(n) n为数组长度
+
+<ul>
+<li>最好情况 n = 3n</li>
+<li>最差情况 n = 4n</li>
+</ul></li>
+<li>空间复杂度：O(n) n为数组长度 n = 2n(最差)</li>
+</ul></li>
+</ul>
+
+<h1 id="总结">总结：</h1>
+
+<ul>
+<li>使用单调栈解这类题目非常合适。</li>
+<li>如果实在无法找到结束循环点，不妨全部再遍历一遍数组。</li>
+<li>单调栈不一定要全部将栈中的元素都拿出来，如果有元素没有合适的答案，留在栈中也是可以的。</li>
+<li>初始化答案数组是一个不错方法，保证数组内的元素在找不到合适的答案时也能满足题目要求。(比如这道题说如果没有比它大的元素，那么它的答案为-1，所以我们就全部初始化为-1)</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0ii/>https://ripple-zjw.github.io/2019/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0ii/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E6%A0%88/">
+                    #栈</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8D%95%E8%B0%83%E6%A0%88/">
+                    #单调栈</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E6%89%81%E5%B9%B3%E5%8C%96%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8%E8%BF%AD%E4%BB%A3%E5%99%A8/" class="prev" rel="prev" title="扁平化嵌套列表迭代器"><i class="iconfont icon-left"></i>&nbsp;扁平化嵌套列表迭代器</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81/" class="next" rel="next" title="字符串解码">字符串解码&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

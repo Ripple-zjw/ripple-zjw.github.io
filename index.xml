@@ -5,8 +5,533 @@
     <description>Recent content in LeaveIt on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 15 Aug 2019 16:42:03 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 17 Aug 2019 18:58:39 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>搭建Hugo时需要注意的坑</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%90%AD%E5%BB%BAhugo%E6%97%B6%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9D%91/</link>
+      <pubDate>Sat, 17 Aug 2019 18:58:39 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%90%AD%E5%BB%BAhugo%E6%97%B6%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9D%91/</guid>
+      <description>
+
+&lt;h1 id=&#34;搭建hugo时需要注意的坑&#34;&gt;搭建Hugo时需要注意的坑&lt;/h1&gt;
+
+&lt;p&gt;Hugo是一种博客框架，可以说是非常优秀的博客框架。基于go语言，网页生成的速度非常的快，而且下载简单，在GitHub上就能下载，还有官方的中文文档，操作也是很简单。但是对于刚开始搭建博客的小白，还是会遇到各种各样的问题，在这里我把我遇到的坑分享给各位读者。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;从GitHub上把Hugo下载下来会慢，当然也有人网速没问题。这个问题可以找网上的一些方法，比如改hosts文件。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;可能有人和我一样下载完解压后在终端输入&lt;code&gt;hugo xxx&lt;/code&gt;的命令无效，那是因为系统找不到你要输的是什么东西，有两种解决方法。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;第一种是每次输入命令都带上你&lt;code&gt;hugo.exe&lt;/code&gt;文件的绝对路径，但是这样太麻烦了。&lt;/li&gt;
+&lt;li&gt;第二种是将&lt;code&gt;hugo.exe&lt;/code&gt;添加到你系统的环境变量中，这样直接输入hugo就能启动命令了。&lt;/li&gt;
+&lt;li&gt;设置方法为：&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;控制面板 &amp;gt; 系统和安全 &amp;gt; 系统 &amp;gt; 高级系统设置 &amp;gt; 高级 &amp;gt; 环境变量&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;上下两个一个是用户变量，一个是系统变量，建议两个都设置。&lt;/li&gt;
+&lt;li&gt;点击&lt;code&gt;Path&lt;/code&gt;变量，然后点击&lt;code&gt;新建&lt;/code&gt;，将你&lt;code&gt;hugo.exe&lt;/code&gt;的绝对路径目录添加进去，注意是目录。不要把&lt;code&gt;hugo.exe&lt;/code&gt;带进去。例如：你的目录为&lt;code&gt;c:/xxx/xxx/hugo.exe&lt;/code&gt;，你只要添加&lt;code&gt;c:/xxx/xxx&lt;/code&gt;就行了。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;主题是下载到&lt;code&gt;themes\&lt;/code&gt;文件夹中的，用git clone。如果不会使用git，请参考我关于git的文章&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;下载完之后，里面基本都会有一个&lt;code&gt;exampleSite\&lt;/code&gt;文件夹，里面放的是一个样式，你可以直接把里面的&lt;code&gt;config.toml&lt;/code&gt;中的内容复制到你的博客主目录的&lt;code&gt;config.toml&lt;/code&gt;中。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;你博客根目录的&lt;code&gt;config.toml&lt;/code&gt;文件里要把&lt;code&gt;baseURL&lt;/code&gt;参数换成你的博客网站网址，如果你还没有部署到网上，可以填你的本地网址，就是那个默认端口1313的那个。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;你部署好之后，如果想要继续添加文章，首先使用&lt;code&gt;hugo&lt;/code&gt;命令重新生成&lt;code&gt;public/&lt;/code&gt;文件夹，然后在里面用git添加，提交，上传就行了。与第一次部署时的操作一样。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;### 以上差不多就是我遇到的坑。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>字符串解码</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81/</link>
+      <pubDate>Sat, 17 Aug 2019 18:51:43 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-字符串解码&#34;&gt;题目：字符串解码&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;给定一个经过编码的字符串，返回它解码后的字符串。&lt;/li&gt;
+&lt;li&gt;编码规则为: k[encoded_string]，表示其中方括号内部的 encoded_string 正好重复 k 次。注意 k 保证为正整数。&lt;/li&gt;
+&lt;li&gt;你可以认为输入字符串总是有效的；输入字符串中没有额外的空格，且输入的方括号总是符合格式要求的。&lt;/li&gt;
+&lt;li&gt;此外，你可以认为原始数据不包含数字，所有的数字只表示重复的次数 k ，例如不会出现像 3a 或 2[4] 的输入。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h6 id=&#34;示例&#34;&gt;示例:&lt;/h6&gt;
+
+&lt;pre&gt;&lt;code&gt;s = &amp;quot;3[a]2[bc]&amp;quot;, 返回 &amp;quot;aaabcbc&amp;quot;.
+s = &amp;quot;3[a2[c]]&amp;quot;, 返回 &amp;quot;accaccacc&amp;quot;.
+s = &amp;quot;2[abc]3[cd]ef&amp;quot;, 返回 &amp;quot;abcabccdcdcdef&amp;quot;.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第394题&#34;&gt;来源：力扣（LeetCode）第394题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/decode-string&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/decode-string&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;分析&#34;&gt;分析：&lt;/h3&gt;
+
+&lt;p&gt;两种方法，辅助栈法和递归法，递归法相对思路清晰，比较好做。其实本质两种方法是一样的，因为函数的递归调用其实也是用栈来实现的。&lt;/p&gt;
+
+&lt;h3 id=&#34;思路&#34;&gt;思路：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;递归法：
+
+&lt;ul&gt;
+&lt;li&gt;遍历整个字符串&lt;/li&gt;
+&lt;li&gt;同时要用到stack列表，tmp列表，还有一个表示下标的变量i&lt;/li&gt;
+&lt;li&gt;每次递归之后stack都是该函数的stack，与外面的stack不同&lt;/li&gt;
+&lt;li&gt;每次遍历字符时，tmp都要将里面的值清空&lt;/li&gt;
+&lt;li&gt;遇到字母，压入stack&lt;/li&gt;
+&lt;li&gt;遇到&lt;code&gt;]&lt;/code&gt;字符,结束函数并将stack返回&lt;/li&gt;
+&lt;li&gt;遇到数字首先判断该数字后是否还有数字，有的话一起加入tmp，然后递归调用函数。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;辅助栈法：
+
+&lt;ul&gt;
+&lt;li&gt;遍历整个字符串&lt;/li&gt;
+&lt;li&gt;res表示当前字符串，multi表示当前数字，stack储存答案&lt;/li&gt;
+&lt;li&gt;遇到字母，与res拼接起来&lt;/li&gt;
+&lt;li&gt;遇到数字，放入multi，注意由于两个数字放在一起要变成两位数，以此类推，所以res 写成&lt;code&gt;res = res * 10 + 当前数字&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;遇到&lt;code&gt;[&lt;/code&gt;，将res，multi同时入栈，用一个列表或元祖，并行的，不是先后入栈。&lt;/li&gt;
+&lt;li&gt;遇到右括号，栈顶元素出栈，并将栈顶元素的multi与当前字符相乘，然后再与栈顶的res相加&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;上代码&#34;&gt;上代码：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;递归法：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+    def decodeString(self, s: str) -&amp;gt; str:
+        self.i = 0
+        return &#39;&#39;.join(self.recursion(s))
+            
+    def recursion(self, s: str) -&amp;gt; list:
+        stack = []
+        while self.i &amp;lt; len(s):
+            tmp = []
+            if s[self.i].isalpha():
+                stack.append(s[self.i])
+            elif s[self.i] == &#39;]&#39;:
+                return stack
+            elif s[self.i].isdigit():
+                tmp.append(s[self.i])
+                while s[self.i + 1].isdigit():
+                    tmp.append(s[self.i + 1])
+                    self.i += 1
+                self.i += 2
+                stack += (int(&#39;&#39;.join(tmp)) * self.recursion(s))
+            self.i += 1
+        return stack
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;辅助栈法：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+    def decodeString(self, s: str) -&amp;gt; str:
+        stack, res, multi = [], &amp;quot;&amp;quot;, 0
+        for c in s:
+            if c == &#39;[&#39;:
+                stack.append([multi, res])
+                res, multi = &amp;quot;&amp;quot;, 0
+            elif c == &#39;]&#39;:
+                cur_multi, last_res = stack.pop()
+                res = last_res + cur_multi * res
+            elif &#39;0&#39; &amp;lt;= c &amp;lt;= &#39;9&#39;:
+                multi = multi * 10 + int(c)            
+            else:
+                res += c
+        return res
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;辅助栈法不是我自己写的，可以参考LeetCode上的作者：
+&amp;gt; &lt;a href=&#34;https://leetcode-cn.com/problems/decode-string/solution/decode-string-fu-zhu-zhan-fa-di-gui-fa-by-jyd/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/decode-string/solution/decode-string-fu-zhu-zhan-fa-di-gui-fa-by-jyd/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;递归法：
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(n) n为字符串长度&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(n)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;辅助栈法：
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(n) n为字符串长度&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(n)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;递归是一种不错的尝试，很多时候递归的时间耗时并不是非常高，而且解题方便。&lt;/li&gt;
+&lt;li&gt;写这种题目前需要理清各种情况时的行为。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>下一个更大元素</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0ii/</link>
+      <pubDate>Sat, 17 Aug 2019 18:50:56 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0ii/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-下一个更大元素-ii&#34;&gt;题目：下一个更大元素 II&lt;/h1&gt;
+
+&lt;p&gt;给定一个循环数组（最后一个元素的下一个元素是数组的第一个元素），输出每个元素的下一个更大元素。数字 x 的下一个更大的元素是按数组遍历顺序，这个数字之后的第一个比它更大的数，这意味着你应该循环地搜索它的下一个更大的数。如果不存在，则输出 -1。&lt;/p&gt;
+
+&lt;h6 id=&#34;示例-1&#34;&gt;示例 1:&lt;/h6&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: [1,2,1]
+输出: [2,-1,2]
+解释: 第一个 1 的下一个更大的数是 2；
+数字 2 找不到下一个更大的数； 
+第二个 1 的下一个最大的数需要循环搜索，结果也是 2。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第503题&#34;&gt;来源：力扣（LeetCode）第503题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/next-greater-element-ii&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/next-greater-element-ii&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;分析&#34;&gt;分析：&lt;/h3&gt;
+
+&lt;p&gt;循环数组和循环队列的样子差不多，这道题主要是单调栈，同样涉及两种解法，暴力法和单调栈法。这题的难点不在于单调栈，而是循环数组什么时候停下来。&lt;/p&gt;
+
+&lt;h3 id=&#34;思路&#34;&gt;思路：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;由于是循环数组，如果只遍历一遍无法完全找到答案，所以我们遍历两边数组，使得数组较后的元素能与前面的元素比对。&lt;/li&gt;
+&lt;li&gt;当下表(i)比数组的最后一个下表大时，i % len(数组)&lt;/li&gt;
+&lt;li&gt;初始化所有答案均为-1(如果找不到最大的是-1，所以先全部等于-1)&lt;/li&gt;
+&lt;li&gt;维护一个单调递减栈，入栈元素将比它小的栈内元素全部出栈，出栈元素的答案就是入栈元素。&lt;/li&gt;
+&lt;li&gt;如此循环两次，如果栈内元素在两次循环之后均未能出栈(找到比它大的元素),那么它们就是数组中最大的元素，又由于我们初始化答案全部为-1，所以不用改变它们。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;上代码&#34;&gt;上代码:&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution(object):
+    def nextGreaterElements(self, nums):
+        &amp;quot;&amp;quot;&amp;quot;
+        :type nums: List[int]
+        :rtype: List[int]
+        &amp;quot;&amp;quot;&amp;quot;
+        stack = []
+        n = len(nums)
+        res = [-1 for _ in nums]
+        for i in range(2 * n):
+            while stack and nums[i % n] &amp;gt; nums[stack[-1]]:
+                res[stack.pop()] = nums[i % n]
+            stack.append(i % n)
+        return res
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;一并给出暴力法(时间太长，会超时)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+    def nextGreaterElements(self, nums: List[int]) -&amp;gt; List[int]:
+        n = len(nums)
+        ans = []
+        for i in range(n):
+            j = i
+            while True:
+                j = (j + 1) % n
+                if nums[j] &amp;gt; nums[i]:
+                    ans.append(nums[j])
+                    break
+                if j + 1 == i:
+                    ans.append(-1)
+                    break
+        return ans
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;复杂地分析&#34;&gt;复杂地分析:&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;暴力法:&lt;br /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂地：O(n^2^)&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(n)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;单调栈法:
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(n) n为数组长度
+
+&lt;ul&gt;
+&lt;li&gt;最好情况 n = 3n&lt;/li&gt;
+&lt;li&gt;最差情况 n = 4n&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(n) n为数组长度 n = 2n(最差)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;使用单调栈解这类题目非常合适。&lt;/li&gt;
+&lt;li&gt;如果实在无法找到结束循环点，不妨全部再遍历一遍数组。&lt;/li&gt;
+&lt;li&gt;单调栈不一定要全部将栈中的元素都拿出来，如果有元素没有合适的答案，留在栈中也是可以的。&lt;/li&gt;
+&lt;li&gt;初始化答案数组是一个不错方法，保证数组内的元素在找不到合适的答案时也能满足题目要求。(比如这道题说如果没有比它大的元素，那么它的答案为-1，所以我们就全部初始化为-1)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>扁平化嵌套列表迭代器</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%89%81%E5%B9%B3%E5%8C%96%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8%E8%BF%AD%E4%BB%A3%E5%99%A8/</link>
+      <pubDate>Sat, 17 Aug 2019 18:50:30 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%89%81%E5%B9%B3%E5%8C%96%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8%E8%BF%AD%E4%BB%A3%E5%99%A8/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-扁平化嵌套列表迭代器&#34;&gt;题目:扁平化嵌套列表迭代器&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;给定一个嵌套的整型列表。设计一个迭代器，使其能够遍历这个整型列表中的所有整数。&lt;/li&gt;
+&lt;li&gt;列表中的项或者为一个整数，或者是另一个列表。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h6 id=&#34;示例-1&#34;&gt;示例 1:&lt;/h6&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: [[1,1],2,[1,1]]
+输出: [1,1,2,1,1]
+解释: 通过重复调用 next 直到 hasNext 返回false，next 返回的元素的顺序应该是: [1,1,2,1,1]。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h6 id=&#34;示例-2&#34;&gt;示例 2:&lt;/h6&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: [1,[4,[6]]]
+输出: [1,4,6]
+解释: 通过重复调用 next 直到 hasNext 返回false，next 返回的元素的顺序应该是: [1,4,6]。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第341题&#34;&gt;来源：力扣（LeetCode）第341题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/flatten-nested-list-iterator&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/flatten-nested-list-iterator&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;分析&#34;&gt;分析：&lt;/h3&gt;
+
+&lt;p&gt;递归调用，不是很难。唯一要注意的是要看清题目，list里面是NestedIterator，需要使用他给你的方法调用才能得到integer或者list。&lt;/p&gt;
+
+&lt;h3 id=&#34;思路&#34;&gt;思路：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;从后往前遍历&lt;/li&gt;
+&lt;li&gt;判断是否是integer，是  入栈  不是  递归进去&lt;/li&gt;
+&lt;li&gt;返回栈，结束。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;代码&#34;&gt;代码：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# &amp;quot;&amp;quot;&amp;quot;
+# This is the interface that allows for creating nested lists.
+# You should not implement it, or speculate about its implementation
+# &amp;quot;&amp;quot;&amp;quot;
+#class NestedInteger(object):
+#    def isInteger(self):
+#        &amp;quot;&amp;quot;&amp;quot;
+#        @return True if this NestedInteger holds a single integer, rather than a nested list.
+#        :rtype bool
+#        &amp;quot;&amp;quot;&amp;quot;
+#
+#    def getInteger(self):
+#        &amp;quot;&amp;quot;&amp;quot;
+#        @return the single integer that this NestedInteger holds, if it holds a single integer
+#        Return None if this NestedInteger holds a nested list
+#        :rtype int
+#        &amp;quot;&amp;quot;&amp;quot;
+#
+#    def getList(self):
+#        &amp;quot;&amp;quot;&amp;quot;
+#        @return the nested list that this NestedInteger holds, if it holds a nested list
+#        Return None if this NestedInteger holds a single integer
+#        :rtype List[NestedInteger]
+#        &amp;quot;&amp;quot;&amp;quot;
+
+class NestedIterator(object):  # 注意看清上面的方法都是干什么的，虽然是英文但是也比较容易看懂。
+    def __init__(self, nestedList):
+        &amp;quot;&amp;quot;&amp;quot;
+        Initialize your data structure here.
+        :type nestedList: List[NestedInteger]
+        &amp;quot;&amp;quot;&amp;quot;
+        self.stack = []
+        self.recursion(nestedList)
+
+
+    def recursion(self, nestedList):
+        for i in range(len(nestedList) - 1, -1, -1):
+            if nestedList[i].isInteger():
+                self.stack.append(nestedList[i].getInteger())
+            else:
+                self.recursion(nestedList[i].getList())
+
+
+    def next(self):
+        &amp;quot;&amp;quot;&amp;quot;
+        :rtype: int
+        &amp;quot;&amp;quot;&amp;quot;
+        return self.stack.pop()
+        
+
+    def hasNext(self):
+        &amp;quot;&amp;quot;&amp;quot;
+        :rtype: bool
+        &amp;quot;&amp;quot;&amp;quot;
+        return len(self.stack) &amp;gt; 0
+
+# Your NestedIterator object will be instantiated and called as such:
+# i, v = NestedIterator(nestedList), []
+# while i.hasNext(): v.append(i.next())
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(n) n 为整个列表的元素，也就是最后stack里的元素。&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(n)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
+
+&lt;p&gt;还是很简单的，只要递归写的稍微熟练一点都能写的出来。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>二叉树的锯齿形层次遍历</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%94%AF%E9%BD%BF%E5%BD%A2%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/</link>
+      <pubDate>Sat, 17 Aug 2019 18:48:01 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%94%AF%E9%BD%BF%E5%BD%A2%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-二叉树的锯齿形层次遍历&#34;&gt;题目: 二叉树的锯齿形层次遍历&lt;/h1&gt;
+
+&lt;p&gt;给定一个二叉树，返回其节点值的锯齿形层次遍历。（即先从左往右，再从右往左进行下一层遍历，以此类推，层与层之间交替进行）。&lt;/p&gt;
+
+&lt;h6 id=&#34;例如&#34;&gt;例如：&lt;/h6&gt;
+
+&lt;p&gt;给定二叉树 [3,9,20,null,null,15,7],&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    3
+   / \
+  9  20
+    /  \
+   15   7
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;返回锯齿形层次遍历如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[
+  [3],
+  [20,9],
+  [15,7]
+]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第103题&#34;&gt;来源：力扣（LeetCode）第103题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/binary-tree-zigzag-level-order-traversal&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/binary-tree-zigzag-level-order-traversal&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;分析&#34;&gt;分析:&lt;/h3&gt;
+
+&lt;p&gt;层次遍历比较简单，主要是锯齿形，就是单数层从左到右，双数层从右到左。网上有很多题解，看了他们的之后觉得没有自己的好，他们基本都是使用了反转列表的操作，理论上会很耗时间。所以，我讲的是自己写的思路。&lt;/p&gt;
+
+&lt;h3 id=&#34;思路&#34;&gt;思路:&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;运用双栈法，分别储存单数层和双数层两种情况。&lt;/li&gt;
+&lt;li&gt;ans为返回的总列表，res为每一层的答案，stack和helper是两个栈，方法和之前的前、中序遍历差不多。&lt;/li&gt;
+&lt;li&gt;写一个主循环while，再写两个循环放在主循环中，一个遍历单数层，一个遍历双数层。&lt;/li&gt;
+&lt;li&gt;两个循环里把双栈中的节点拿出来，同时也把节点的两个子节点(stack或者helper)以及他们的值(res)也存起来。&lt;/li&gt;
+&lt;li&gt;最后将res的值加到ans中。主循环结束，ans值也都进去了。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;代码&#34;&gt;代码:&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def zigzagLevelOrder(self, root: TreeNode) -&amp;gt; List[List[int]]:
+        if root is None:
+            return []
+        stack = []
+        helper = [root]
+        res = []
+        ans = [[root.val]]
+        cnt = 1
+        while stack or helper:
+            for i in range(cnt):
+                tail = helper.pop()
+                if tail.right is not None:
+                    stack.append(tail.right)
+                    res.append(tail.right.val)
+                if tail.left is not None:
+                    stack.append(tail.left)
+                    res.append(tail.left.val)
+            if res:
+                ans.append(res)
+                res = []
+                cnt = len(stack)
+            else:
+                break
+            for i in range(cnt):
+                tail = stack.pop()
+                if tail.left is not None:
+                    helper.append(tail.left)
+                    res.append(tail.left.val)
+                if tail.right is not None:
+                    helper.append(tail.right)
+                    res.append(tail.right.val)
+            if res:
+                ans.append(res)
+                res = []
+                cnt = len(helper)
+        return ans
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;复杂度分析&#34;&gt;复杂度分析:&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;虽然有一个while，两个for，但是其实只遍历了一遍节点，而且没有额外的其他耗时操作，也没有递归&lt;/li&gt;
+&lt;li&gt;所以时间复杂度为O(n) n为树的总节点&lt;/li&gt;
+&lt;li&gt;空间复杂度为O(n)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;总结&#34;&gt;总结:&lt;/h1&gt;
+
+&lt;p&gt;双栈法的另一个用处，当遇到在一个循环里但是其中两次循环的条件不一眼时，可以写两个循环分别运算，再用一个主循环让两个循环不会结束。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>二叉搜索树迭代器</title>
@@ -863,463 +1388,6 @@ class Solution:
 &lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
 
 &lt;p&gt;平衡法，我理解为把一个答案分成两类，就比如题目中把无效的括号分为无效左括号和无效右括号，分别求它们的答案，再把它们加在一起，有点像分治算法。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>双指针</title>
-      <link>https://ripple-zjw.github.io/2019/%E5%8F%8C%E6%8C%87%E9%92%88/</link>
-      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E5%8F%8C%E6%8C%87%E9%92%88/</guid>
-      <description>
-
-&lt;h1 id=&#34;运用双指针解题&#34;&gt;运用双指针解题&lt;/h1&gt;
-
-&lt;h4 id=&#34;参考题目-leetcode-26-27题&#34;&gt;参考题目：LeetCode（26、27题）&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&#34;https://leetcode-cn.com/problemset/all/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problemset/all/&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;使用场景&#34;&gt;使用场景：&lt;/h3&gt;
-
-&lt;p&gt;需要遍历一个数组，在遍历过程中根据要求改变数组中元素的值、位置等一些关系。我们可以使用两个指针进行求解。&lt;/p&gt;
-
-&lt;p&gt;例如：删除数组中的重复项，移除摸一个元素&lt;/p&gt;
-
-&lt;h3 id=&#34;双指针使用思路&#34;&gt;双指针使用思路：&lt;/h3&gt;
-
-&lt;p&gt;一个数（i）作为已经过滤了的标记，另一个数（j）去寻找不符合条件的数，找到之后将两个元素进行交换。这样当j完全遍历一遍时，就可以把不符合要求的数都放到后面去，i之前的数都是符合规范的数。这种思路和插入排序很像，都是将一个指针作为排好序的部分，只不过插入排序还需要将排好序的部分再遍历一遍，把新的值插入进去。&lt;/p&gt;
-
-&lt;h3 id=&#34;使用双指针的好处&#34;&gt;使用双指针的好处：&lt;/h3&gt;
-
-&lt;p&gt;首先使用双指针是原地排序，不会需要额外的储存空间，空间复杂度是O（1）。而且被过滤的数并没有被移除，只是与后面符合要求的数进行交换，这样虽然是删除了这个数，但是不需要进行数据的搬移操作，大大节省了时间。&lt;/p&gt;
-
-&lt;h4 id=&#34;c语言代码-leetcode-26题&#34;&gt;c语言代码：（LeetCode 26题）&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;int removeDuplicates(int* nums, int numsSize){
-    if(numsSize==0)
-        return 0;
-    int i, j;
-    for(j = 1, i = 0; j &amp;lt; numsSize; j++){
-        if(nums[i] != nums[j]){
-            i++;
-            nums[i] = nums[j];
-        }
-    }
-    return i + 1;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;python代码-leetcode-27题&#34;&gt;python代码：（LeetCode 27题）&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
-    def removeElement(self, nums: List[int], val: int) -&amp;gt; int:
-        i = 0
-        for j in range(len(nums)):
-            if nums[j] != val:
-                nums[i], nums[j] = nums[j], nums[i]
-                i += 1
-        return i
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>最小栈</title>
-      <link>https://ripple-zjw.github.io/2019/%E6%9C%80%E5%B0%8F%E6%A0%88/</link>
-      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E6%9C%80%E5%B0%8F%E6%A0%88/</guid>
-      <description>
-
-&lt;h2 id=&#34;设计一个支持-push-pop-top-操作-并能在常数时间内检索到最小元素的栈&#34;&gt;设计一个支持 push，pop，top 操作，并能在常数时间内检索到最小元素的栈：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;push(x) &amp;ndash; 将元素 x 推入栈中。&lt;/li&gt;
-&lt;li&gt;pop() &amp;ndash; 删除栈顶的元素。&lt;/li&gt;
-&lt;li&gt;top() &amp;ndash; 获取栈顶元素。&lt;/li&gt;
-&lt;li&gt;getMin() &amp;ndash; 检索栈中的最小元素。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第155题&#34;&gt;来源：力扣（LeetCode）第155题&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/min-stack&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/min-stack&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;题目解析&#34;&gt;题目解析：&lt;/h3&gt;
-
-&lt;p&gt;这道题需要用到一个辅助栈来帮忙，较为暴力的方法是使用python的内置函数min直接算出最小值，或者遍历整个栈将最小值算出。但是题目要求getMin的时间复杂度是常数级的，也就是O（1）。因此上述的方法行不通，需要奇妙的运用到栈的特性来解题。&lt;/p&gt;
-
-&lt;h3 id=&#34;解题思路&#34;&gt;解题思路：&lt;/h3&gt;
-
-&lt;p&gt;首先要有两个栈，一个是正常的数据栈（stack），另一个是只存最小值的辅助栈（minStack）。数据栈正常进，出数据，辅助栈在每次进栈和出栈时要判断。如果push的值比辅助栈的栈顶元素要小（或者相等），那么就把它压入辅助栈。同理，如果pop的值比辅助栈的栈顶元素要小（或者相等），那么就讲辅助栈的栈顶元素弹出。&lt;/p&gt;
-
-&lt;p&gt;为什么要这样做呢？&lt;/p&gt;
-
-&lt;p&gt;其实这很好理解。第一个入栈的元素进栈后，最小值肯定就是它，所以将它放入辅助栈，让它成为判断的目标。如果有比第一个入栈的元素大的元素进栈的话，那其实不用管它们，因为最小值不可能是它们，所以不用把它们放进辅助栈中。如果有栈的元素小于第一个入栈的元素的话，那么就只需要将小于的元素压入辅助栈中，使其成为栈顶元素。如此一来，我们就改变判断的目标，将后面push的元素与这个元素进行比较，直到辅助栈又有一个比它小的元素进栈。&lt;/p&gt;
-
-&lt;p&gt;出栈也是一个道理，只要出栈的元素比辅助栈的栈顶元素小或相等的话。就将辅助栈的栈顶元素弹出。&lt;/p&gt;
-
-&lt;p&gt;这么一来其实就很明朗了。辅助栈的栈顶元素永远都是最小的元素，而整个辅助栈的元素的值从上自下依次在逐渐变大，直到栈底元素，也就是数据栈中第一个入栈的元素。如果有元素比数据栈的栈底元素大的话，根本不用考虑，因为在出栈的过程中，它们永远都会比数据栈的栈底元素先出栈，所以它们直到数据栈中的数据弹光也不可能作为最小值。那么就不用放入栈中。&lt;/p&gt;
-
-&lt;h4 id=&#34;简单理解&#34;&gt;简单理解：&lt;/h4&gt;
-
-&lt;p&gt;使用两个栈，一个用于正常存储数据（stack），另一个用于把可能作为最小值的数据从大到小依次压入栈（minStack），也就是把每次比minStack的栈顶元素小的数压入minStack。&lt;/p&gt;
-
-&lt;p&gt;然后pop操作的时候，只要关注一下当前栈的最小值有没有被弹出去，有的话minStack也要出栈。&lt;/p&gt;
-
-&lt;p&gt;getMin的值就是辅助栈的最小值&lt;/p&gt;
-
-&lt;h3 id=&#34;时间复杂度&#34;&gt;时间复杂度：&lt;/h3&gt;
-
-&lt;p&gt;非常短，只要进行依次获取栈顶元素的操作即可。为O（1）&lt;/p&gt;
-
-&lt;h3 id=&#34;实现代码-python&#34;&gt;实现代码：（Python）&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;class MinStack:
-    def __init__(self):
-        self.stack = []
-        self.minStack = []
-
-    def push(self, x: int) -&amp;gt; None:
-        if len(self.minStack) == 0 or x &amp;lt;= self.minStack[-1]:
-            self.minStack.append(x)
-        self.stack.append(x)
-
-    def pop(self) -&amp;gt; None:
-        if self.stack.pop() &amp;lt;= self.minStack[-1]:
-            self.minStack.pop()
-
-    def top(self) -&amp;gt; int:
-        return self.stack[-1]
-
-    def getMin(self) -&amp;gt; int:
-        return self.minStack[-1]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
-
-&lt;p&gt;题目理解起来不算太难，就是要能想到使用栈这种数据结构。总体的思路就是使用辅助栈来实现。这种方式还可以用来进行别的需求，使用辅助栈来过滤掉一部分不要的元素，同时保证每次需要的元素都在辅助栈的栈顶，而在进行pop操作的时候，也可以顺畅的通过判断来检查所需要的元素是否以及被弹出栈外。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>栈实现队列</title>
-      <link>https://ripple-zjw.github.io/2019/%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/</link>
-      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/</guid>
-      <description>
-
-&lt;h2 id=&#34;使用栈实现队列的下列操作&#34;&gt;使用栈实现队列的下列操作：&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;push(x) &amp;ndash; 将一个元素放入队列的尾部。&lt;/li&gt;
-&lt;li&gt;pop() &amp;ndash; 从队列首部移除元素。&lt;/li&gt;
-&lt;li&gt;peek() &amp;ndash; 返回队列首部的元素。&lt;/li&gt;
-&lt;li&gt;empty() &amp;ndash; 返回队列是否为空。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第232题&#34;&gt;来源：力扣（LeetCode） 第232题&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/implement-queue-using-stacks&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/implement-queue-using-stacks&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;题目解析&#34;&gt;题目解析：&lt;/h3&gt;
-
-&lt;p&gt;这道题想要通过很容易，使用Python的话由于python的列表不仅就是一个现成的栈，而且Python的列表还支持栈所不支持的操作，比如队列的操作，但是时间复杂度可不低，所以Python还有一个双端列表，它可以支持从两端插入并且时间复杂度都是O（1）&lt;/p&gt;
-
-&lt;p&gt;可是如果这样做的话和题目本身的意思有点不相符。如果只能使用栈的操作，即只能在列表的最后进行插入和删除以及取值，就需要使用到双栈来模拟队列的操作。具体的操作方法有很多，在这里只记录LeetCode上最高效的方法。&lt;/p&gt;
-
-&lt;h3 id=&#34;解题思路&#34;&gt;解题思路：&lt;/h3&gt;
-
-&lt;p&gt;我们声明两个栈，一个是In，另一个是Out。In代表每次push到栈内的元素，而Out代表pop和peek所取得的元素。&lt;/p&gt;
-
-&lt;p&gt;首先，将push的元素都依次存放在In栈中。直到进行了一次pop或peek操作后，将In栈中的所有元素依次出栈，再把它们依次放进Out栈中，这样Out栈的栈顶元素就是我们所要取的元素，也就是队首元素。&lt;/p&gt;
-
-&lt;p&gt;如果又有元素入队，那么In栈就继续进栈，如果又有元素出队，那么Out栈就继续弹出。&lt;/p&gt;
-
-&lt;p&gt;可是，当Out栈中的元素都取完后，就不能再从Out栈中弹出元素了，这个时候，就需要从In栈中继续刚才的步骤，把In栈中的元素取出来放到Out栈里去，然后再去取元素。因此，在进行pop和peek操作时，务必要记得判断当前的Out栈内是否还有剩余的元素，如果没有了，可不能再出栈了，以免报错。&lt;/p&gt;
-
-&lt;h4 id=&#34;简单理解&#34;&gt;简单理解：&lt;/h4&gt;
-
-&lt;p&gt;就是拿出两个栈，一个用于进队（In），一个用于出队（Out），如果出队的栈没有元素了，就再从进队的栈中把元素搬过来。&lt;/p&gt;
-
-&lt;h3 id=&#34;时间复杂度&#34;&gt;时间复杂度：&lt;/h3&gt;
-
-&lt;p&gt;使用这种方法，用摊还分析法来计算的话时间复杂度无论是进队还是出队都是O（1），非常的高效。因为最好情况下push就是简单的进栈操作，而pop也是出栈操作。最坏情况下，push不变，而pop则需要将In栈中的所有元素都搬进来，时间复杂度为O（n）。平均一下即O（1）&lt;/p&gt;
-
-&lt;h3 id=&#34;下面是代码演示-python&#34;&gt;下面是代码演示（Python）&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;class MyQueue:
-    def __init__(self):
-        self.stackIn = []
-        self.stackOut = []
-
-    def push(self, x: int) -&amp;gt; None:
-        self.stackIn.append(x)
-
-    def pop(self) -&amp;gt; int:
-        if self.stackOut:
-            return self.stackOut.pop()
-        while self.stackIn:
-            self.stackOut.append(self.stackIn.pop())
-        return self.stackOut.pop()
-
-    def peek(self) -&amp;gt; int:
-        if self.stackOut:
-            return self.stackOut[-1]
-        while self.stackIn:
-            self.stackOut.append(self.stackIn.pop())     
-        return self.stackOut[-1]
-
-    def empty(self) -&amp;gt; bool:
-        return  not self.stackIn and not self.stackOut
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
-
-&lt;p&gt;这是也是一种队列的实现方法，不过好像并不怎么实用，没有循环队列好，不过实现起来很简单。但是像Python这些个语言也都会自带一些实现队列的函数，像双端列表deque&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>滑动窗口问题</title>
-      <link>https://ripple-zjw.github.io/2019/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</link>
-      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</guid>
-      <description>
-
-&lt;h1 id=&#34;给定一个字符串-请你找出其中不含有重复字符的-最长子串-的长度&#34;&gt;给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code&gt;示例 1:
-输入: &amp;quot;abcabcbb&amp;quot;
-输出: 3 
-解释: 因为无重复字符的最长子串是 &amp;quot;abc&amp;quot;，所以其长度为 3。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;示例 2:
-输入: &amp;quot;bbbbb&amp;quot;
-输出: 1
-解释: 因为无重复字符的最长子串是 &amp;quot;b&amp;quot;，所以其长度为 1。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;示例 3:
-输入: &amp;quot;pwwkew&amp;quot;
-输出: 3
-解释: 因为无重复字符的最长子串是 &amp;quot;wke&amp;quot;，所以其长度为 3。
-请注意，你的答案必须是 子串 的长度，&amp;quot;pwke&amp;quot; 是一个子序列，不是子串。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第三题&#34;&gt;来源：力扣（LeetCode）第三题&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/longest-substring-without-repeating-characters&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/longest-substring-without-repeating-characters&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;这是一个典型的滑动窗口问题&#34;&gt;这是一个典型的滑动窗口问题。&lt;/h3&gt;
-
-&lt;h4 id=&#34;解题思路-什么是滑动窗口&#34;&gt;解题思路：什么是滑动窗口？&lt;/h4&gt;
-
-&lt;p&gt;其实就是一个队列,比如例题中的 abcabcbb，进入这个队列（窗口）为 abc 满足题目要求，当再进入 a，队列变成了 abca，这时候不满足要求。所以，我们要移动这个队列！&lt;/p&gt;
-
-&lt;h4 id=&#34;如何移动&#34;&gt;如何移动？&lt;/h4&gt;
-
-&lt;p&gt;我们只要把队列的左边的元素移出就行了，直到满足题目要求！
-一直维持这样的队列，找出队列出现最长的长度时候，求出解！
-时间复杂度：O(n)&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;这样做的时间复杂度会大幅度降低！！！！&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;代码如下：（Python）&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;class Solution:
-    def lengthOfLongestSubstring(self, s: str) -&amp;gt; int:
-        Max_len = 0
-        string = set()
-        if len(s) == 1:  # 字符串只有一个，直接返回，不要在算下去了
-            return 1
-        i = 0
-        for char in s:
-            while char in string:  # 如果遍历到一个已经有了的字符，说明这一段字符串结束，将其全部出队，从下一个不重复的字符开始重新运算。
-                if Max_len &amp;lt; len(string):  # 该段字符串的长度如果比之前的大，那么就代替要返回的值，否则全部扔掉。
-                    Max_len = len(string)
-                string.remove(s[i])
-                i += 1
-            string.add(char)
-            if s[-1] == char and Max_len &amp;lt; len(string):  # 如果传入的字符串没有一个是重复的话
-                Max_len = len(string)
-        return Max_len
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;如果不使用队列解决方法的话，时间复杂度是O（n^3）&lt;/p&gt;
-
-&lt;p&gt;代码如下：（Python）&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;class Solution:
-    def lengthOfLongestSubstring(self, s: str) -&amp;gt; int:
-        Max_len = 0
-        if len(s) == 1:
-            return 1
-        for i in range(len(s)):
-            string = []
-            for char in s[i:]:
-                if char in string:
-                    if Max_len &amp;lt; len(string):
-                        Max_len = len(string)
-                    break
-                string.append(char)
-                if s[-1] == char and Max_len &amp;lt; len(string):
-                    Max_len = len(string)
-        return Max_len
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;可能直接看代码不是非常的直观，不知道第二种方法到底有多慢，我以Python为例，截取了一张所有使用Python的同学提交的代码的时间分布表。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://note.youdao.com/yws/public/resource/b24fb04d698fc8a8cbd73c248269324a/xmlnote/WEB5d754edd1e7db60c7bb416a99b47a073/WEBRESOURCE7cc08259c78934fd341c8d97d5dcf125/2241&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;由于LeetCode后期强制写了一个测试：一段几千字的字符串，还设置了代码执行时间限制。导致如果用第二种方法的话会不通过，所以后期所有人用的都是滑动窗口的方法。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://note.youdao.com/yws/public/resource/b24fb04d698fc8a8cbd73c248269324a/xmlnote/WEB5d754edd1e7db60c7bb416a99b47a073/WEBRESOURCE3e31f7f16247fd4e3c0b6382d6ee797b/2248&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;可以看到我写的代码只用了80ms，最短的用了44ms&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://note.youdao.com/yws/public/resource/b24fb04d698fc8a8cbd73c248269324a/xmlnote/WEB5d754edd1e7db60c7bb416a99b47a073/WEBRESOURCE11b64c972186ffd869e0db0a85f8487c/2256&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;而如果使用第二种方法的话，&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://note.youdao.com/yws/public/resource/b24fb04d698fc8a8cbd73c248269324a/xmlnote/WEB5d754edd1e7db60c7bb416a99b47a073/WEBRESOURCE7e53f821fbd8b02a2824f6d927a001da/2252&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;用了整整1456ms，这平均至少也相差了10倍左右的速度。&lt;/p&gt;
-
-&lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
-
-&lt;p&gt;在思考问题时，我们需要灵活的使用所学过的知识，尤其是数据结构，就比如这个问题，使用队列就可以很轻松的解决，并且运行效率非常的高效。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>表现良好的最长时间段</title>
-      <link>https://ripple-zjw.github.io/2019/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/</link>
-      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E8%A1%A8%E7%8E%B0%E8%89%AF%E5%A5%BD%E7%9A%84%E6%9C%80%E9%95%BF%E6%97%B6%E9%97%B4%E6%AE%B5/</guid>
-      <description>
-
-&lt;h1 id=&#34;题目&#34;&gt;题目：&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;给你一份工作时间表hours，上面记录着某一位员工每天的工作小时数。&lt;/li&gt;
-&lt;li&gt;我们认为当员工一天中的工作小时数大于 8 小时的时候，那么这一天就是「劳累的一天」。&lt;/li&gt;
-&lt;li&gt;所谓「表现良好的时间段」，意味在这段时间内，「劳累的天数」是严格 大于「不劳累的天数」。&lt;/li&gt;
-&lt;li&gt;请你返回「表现良好时间段」的最大长度。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第1124题&#34;&gt;来源：力扣（LeetCode）第1124题&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/longest-well-performing-interval&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/longest-well-performing-interval&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;题目解析&#34;&gt;题目解析：&lt;/h3&gt;
-
-&lt;p&gt;这题可以使用暴力法O(n^2),二分法O(nlogn),以及借助单调栈来实现O(n),使用暴力法由于时间太长而无法通过，使用单调栈的思路可以借鉴LeetCode上浏览第一的思路（虽然并不是最优解决方案）。&lt;/p&gt;
-
-&lt;p&gt;题目的意思其实就是说从给定的数组中找一段数组，这段数组大于8的元素比小于等于8的元素多，而且是最长的一段。
-&amp;gt; 传送门：&lt;a href=&#34;https://leetcode-cn.com/problems/longest-well-performing-interval/solution/qian-zhui-he-dan-diao-zhan-python3-by-smoon1989/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/longest-well-performing-interval/solution/qian-zhui-he-dan-diao-zhan-python3-by-smoon1989/&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;解题思路&#34;&gt;解题思路：&lt;/h3&gt;
-
-&lt;p&gt;根据题意，所谓最大表现良好的时间段其实就是包括两个重要的条件。再这之前，我们要把大于8的元素变为1，小于等于8的元素变为-1，使用for循环就能搞定。&lt;/p&gt;
-
-&lt;p&gt;两个条件：
-1. 所求的这一段数组他们的总和大于0（不能等于0）
-1. 所求的数组是在满足上一个条件的情况下长度最长的数组&lt;/p&gt;
-
-&lt;p&gt;首先先来解释一下这两个条件吧。第一个的意思是所求的数组里1的元素要比-1的多，这样他们的总和肯定是大于0的。符合题意。&lt;/p&gt;
-
-&lt;p&gt;第二个的意思是在这些数组中（数组内的元素是可以重复的）找出最长的那个数组，因为题目要求我们找出最长的那个时间段而不是所有表现良好的时间段。&lt;/p&gt;
-
-&lt;p&gt;先要找到最长的和大于0的数组，我们需要找到所有可能组成和大于0的数组，然后再比较他们的大小，得出答案。&lt;/p&gt;
-
-&lt;p&gt;怎么找呢？我们需要引入前缀和这一概念，顾名思义前缀和就是从第一个开始到某一个元素（可以是任意元素只要不是最后一个元素，因为最后一个元素也算上的话就相当于整个元素了）为止，这一段元素的和。&lt;/p&gt;
-
-&lt;p&gt;为什么要找前缀和呢？因为我们如果用整个元素减去这个数组中每一个前缀和（第一个，第一个加第二个，第一加第二加第三个，……）那么得到的就是这个数组中除去当前前缀后剩下的元素。然后计算他们的和，大于0（符合题意）就把它存起来，如果不大于0，那就把数组中最后一个去掉，再计算和，直到计算到前缀和的最后那个元素。这就表示当前前缀和的所有大于0的元素都计算完了。最长的那个也拿到了，再计算下一段前缀和中的元素是否有符合题意并且比我们从上一段前缀和中拿到的那个长度要长，如果有，就替换它。直到前缀和的长度比你储存的那个最大长度要小，那么剩下的无论怎样都不可能超过这段长度，就可以停止计算了。&lt;/p&gt;
-
-&lt;p&gt;但是这样会有一个问题，并不是所有的前缀和我们都要计算，很多的前缀和其实根本不可能有。比如一个前缀和要比数组的总长度和要大，那么你用小元素减去大元素那肯定是负的，再比如当前前缀和算完后，它的后面（距离它有一段距离）有一段比当前前缀和大1的元素，但是中间的前缀和都是比他们两大的，那么就没有必要考虑，因为随着前缀和的推移，总会遇到与他们的和一样的前缀和，这个时候去计算这些前缀和就行了，因为这些前缀和的长度要比之前看到的那些长度要长。&lt;/p&gt;
-
-&lt;p&gt;其实很明显了，我们只要再维护一个栈，这个栈中存储的是从0开始，顺序递减的前缀和的下标，比如前缀和会是0，-1，-2，-3，当然下标不一定是连着的，但前缀和的差值一定是连着的。我们修改前面的规则，每次检查的都是这个栈中的前缀和，从栈顶开始。&lt;/p&gt;
-
-&lt;h4 id=&#34;简单理解&#34;&gt;简单理解：&lt;/h4&gt;
-
-&lt;p&gt;这题没法很快就理解，需要思考一段时间。&lt;/p&gt;
-
-&lt;p&gt;总的来说，首先要计算数组中每一个前缀和（别忘了第一个是从0开始的，也就是0个元素的前缀），然后维护一个栈，也是从0开始，遍历刚才的前缀和，让栈保持递减的原则，将符合的前缀和的下标依次入栈。（注意是下标，因为前缀和相等的有很多，你必须储存下标才能准确的知道你存的是哪个值），最后再用刚才的方法算出结果。&lt;/p&gt;
-
-&lt;h3 id=&#34;时间复杂度&#34;&gt;时间复杂度：&lt;/h3&gt;
-
-&lt;p&gt;O(n)&lt;/p&gt;
-
-&lt;h3 id=&#34;代码实现-python&#34;&gt;代码实现：（Python）&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;class Solution:
-    def longestWPI(self, hours: List[int]) -&amp;gt; int:
-        n = len(hours)
-        persum = [0]
-        stack = [0]
-        res = 0
-        for hour in hours:
-            if hour &amp;gt; 8:
-                res += 1
-                persum.append(res)
-            else:
-                res -= 1
-                persum.append(res)
-        for i in range(1, n + 1):
-            if persum[stack[-1]] &amp;gt; persum[i]:
-                stack.append(i)
-        maxLen = 0
-        i = n
-        while i &amp;gt; maxLen:
-            while stack and persum[stack[-1]] &amp;lt; persum[i]:
-                maxLen = max(maxLen, i - stack[-1])
-                stack.pop()
-            i -= 1
-        return maxLen
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;这段代码还可以优化，使用散列表代替栈。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;class Solution:
-    def longestWPI(self, hours: List[int]) -&amp;gt; int:
-        maxLen = persum = 0
-        seen = {0: -1}
-        for i,v in enumerate(hours):
-            persum = persum + 1 if v &amp;gt; 8 else persum - 1
-            if persum &amp;gt; 0:
-                maxLen = i + 1
-            if persum not in seen:
-                seen[persum] = i
-            if persum - 1 in seen:
-                maxLen = max(maxLen, i - seen[persum -1])
-        return maxLen
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;优化效果一般般&lt;/p&gt;
-
-&lt;h1 id=&#34;总结&#34;&gt;总结&lt;/h1&gt;
-
-&lt;p&gt;这道题的通过率只有14%，虽然是中等题但是还是挺难的。在使用栈来解题时考虑一下前缀问题也是一种思路。&lt;/p&gt;
 </description>
     </item>
     

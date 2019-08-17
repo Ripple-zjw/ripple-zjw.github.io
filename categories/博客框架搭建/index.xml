@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>博客框架搭建 on LeaveIt</title>
+    <link>https://ripple-zjw.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA/</link>
+    <description>Recent content in 博客框架搭建 on LeaveIt</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 17 Aug 2019 18:58:39 +0800</lastBuildDate>
+    
+	<atom:link href="https://ripple-zjw.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>搭建Hugo时需要注意的坑</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%90%AD%E5%BB%BAhugo%E6%97%B6%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9D%91/</link>
+      <pubDate>Sat, 17 Aug 2019 18:58:39 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%90%AD%E5%BB%BAhugo%E6%97%B6%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9D%91/</guid>
+      <description>搭建Hugo时需要注意的坑 Hugo是一种博客框架，可以说是非常优秀的博客框架。基于go语言，网页生成的速度非常的快，而且下载简单，在GitHub上就能下载，还有官方的中文文档，操作也是很简单。但是对于刚开始搭建博客的小白，还是会遇到各种各样的问题，在这里我把我遇到的坑分享给各位读者。
+ 从GitHub上把Hugo下载下来会慢，当然也有人网速没问题。这个问题可以找网上的一些方法，比如改hosts文件。
+ 可能有人和我一样下载完解压后在终端输入hugo xxx的命令无效，那是因为系统找不到你要输的是什么东西，有两种解决方法。
+ 第一种是每次输入命令都带上你hugo.exe文件的绝对路径，但是这样太麻烦了。 第二种是将hugo.exe添加到你系统的环境变量中，这样直接输入hugo就能启动命令了。 设置方法为： 控制面板 &amp;gt; 系统和安全 &amp;gt; 系统 &amp;gt; 高级系统设置 &amp;gt; 高级 &amp;gt; 环境变量 上下两个一个是用户变量，一个是系统变量，建议两个都设置。 点击Path变量，然后点击新建，将你hugo.exe的绝对路径目录添加进去，注意是目录。不要把hugo.exe带进去。例如：你的目录为c:/xxx/xxx/hugo.exe，你只要添加c:/xxx/xxx就行了。  主题是下载到themes\文件夹中的，用git clone。如果不会使用git，请参考我关于git的文章
+ 下载完之后，里面基本都会有一个exampleSite\文件夹，里面放的是一个样式，你可以直接把里面的config.toml中的内容复制到你的博客主目录的config.toml中。
+ 你博客根目录的config.toml文件里要把baseURL参数换成你的博客网站网址，如果你还没有部署到网上，可以填你的本地网址，就是那个默认端口1313的那个。
+ 你部署好之后，如果想要继续添加文章，首先使用hugo命令重新生成public/文件夹，然后在里面用git添加，提交，上传就行了。与第一次部署时的操作一样。
+  ### 以上差不多就是我遇到的坑。</description>
+    </item>
+    
+  </channel>
+</rss>

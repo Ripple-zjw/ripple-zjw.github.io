@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81/" />
+  
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E6%90%AD%E5%BB%BAhugo%E6%97%B6%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9D%91/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           搭建Hugo时需要注意的坑 | LeaveIt
+       
+  </title>
+  <meta name="title" content="搭建Hugo时需要注意的坑 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "搭建Hugo时需要注意的坑",
+    "headline" : "搭建Hugo时需要注意的坑",
+    "description" : "搭建Hugo时需要注意的坑 Hugo是一种博客框架，可以说是非常优秀的博客框架。基于go语言，网页生成的速度非常的快，而且下载简单，在GitHub上就能下载，还有官方的中文文档，操作也是很简单。但是对于刚开始搭建博客的小白，还是会遇到各种各样的问题，在这里我把我遇到的坑分享给各位读者。\n 从GitHub上把Hugo下载下来会慢，当然也有人网速没问题。这个问题可以找网上的一些方法，比如改hosts文件。\n 可能有人和我一样下载完解压后在终端输入hugo xxx的命令无效，那是因为系统找不到你要输的是什么东西，有两种解决方法。\n 第一种是每次输入命令都带上你hugo.exe文件的绝对路径，但是这样太麻烦了。 第二种是将hugo.exe添加到你系统的环境变量中，这样直接输入hugo就能启动命令了。 设置方法为： 控制面板 \x26gt; 系统和安全 \x26gt; 系统 \x26gt; 高级系统设置 \x26gt; 高级 \x26gt; 环境变量 上下两个一个是用户变量，一个是系统变量，建议两个都设置。 点击Path变量，然后点击新建，将你hugo.exe的绝对路径目录添加进去，注意是目录。不要把hugo.exe带进去。例如：你的目录为c:\/xxx\/xxx\/hugo.exe，你只要添加c:\/xxx\/xxx就行了。  主题是下载到themes\\文件夹中的，用git clone。如果不会使用git，请参考我关于git的文章\n 下载完之后，里面基本都会有一个exampleSite\\文件夹，里面放的是一个样式，你可以直接把里面的config.toml中的内容复制到你的博客主目录的config.toml中。\n 你博客根目录的config.toml文件里要把baseURL参数换成你的博客网站网址，如果你还没有部署到网上，可以填你的本地网址，就是那个默认端口1313的那个。\n 你部署好之后，如果想要继续添加文章，首先使用hugo命令重新生成public\/文件夹，然后在里面用git添加，提交，上传就行了。与第一次部署时的操作一样。\n  ### 以上差不多就是我遇到的坑。",
+    "inLanguage" : "en-us",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-08-17 18:58:39 \x2b0800 CST",
+    "dateModified" : "2019-08-17 18:58:39 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E6%90%AD%E5%BB%BAhugo%E6%97%B6%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9D%91\/",
+    "wordCount" : "28",
+    "keywords" : [ "博客矿建搭建","Hugo", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">搭建Hugo时需要注意的坑</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-08-17 itemprop="datePublished">August 17, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA/"> 博客框架搭建 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="搭建hugo时需要注意的坑">搭建Hugo时需要注意的坑</h1>
+
+<p>Hugo是一种博客框架，可以说是非常优秀的博客框架。基于go语言，网页生成的速度非常的快，而且下载简单，在GitHub上就能下载，还有官方的中文文档，操作也是很简单。但是对于刚开始搭建博客的小白，还是会遇到各种各样的问题，在这里我把我遇到的坑分享给各位读者。</p>
+
+<ul>
+<li><p>从GitHub上把Hugo下载下来会慢，当然也有人网速没问题。这个问题可以找网上的一些方法，比如改hosts文件。</p></li>
+
+<li><p>可能有人和我一样下载完解压后在终端输入<code>hugo xxx</code>的命令无效，那是因为系统找不到你要输的是什么东西，有两种解决方法。</p>
+
+<ul>
+<li>第一种是每次输入命令都带上你<code>hugo.exe</code>文件的绝对路径，但是这样太麻烦了。</li>
+<li>第二种是将<code>hugo.exe</code>添加到你系统的环境变量中，这样直接输入hugo就能启动命令了。</li>
+<li>设置方法为：</li>
+<li><code>控制面板 &gt; 系统和安全 &gt; 系统 &gt; 高级系统设置 &gt; 高级 &gt; 环境变量</code></li>
+<li>上下两个一个是用户变量，一个是系统变量，建议两个都设置。</li>
+<li>点击<code>Path</code>变量，然后点击<code>新建</code>，将你<code>hugo.exe</code>的绝对路径目录添加进去，注意是目录。不要把<code>hugo.exe</code>带进去。例如：你的目录为<code>c:/xxx/xxx/hugo.exe</code>，你只要添加<code>c:/xxx/xxx</code>就行了。</li>
+</ul></li>
+
+<li><p>主题是下载到<code>themes\</code>文件夹中的，用git clone。如果不会使用git，请参考我关于git的文章</p></li>
+
+<li><p>下载完之后，里面基本都会有一个<code>exampleSite\</code>文件夹，里面放的是一个样式，你可以直接把里面的<code>config.toml</code>中的内容复制到你的博客主目录的<code>config.toml</code>中。</p></li>
+
+<li><p>你博客根目录的<code>config.toml</code>文件里要把<code>baseURL</code>参数换成你的博客网站网址，如果你还没有部署到网上，可以填你的本地网址，就是那个默认端口1313的那个。</p></li>
+
+<li><p>你部署好之后，如果想要继续添加文章，首先使用<code>hugo</code>命令重新生成<code>public/</code>文件夹，然后在里面用git添加，提交，上传就行了。与第一次部署时的操作一样。</p></li>
+</ul>
+
+<p>### 以上差不多就是我遇到的坑。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E6%90%AD%E5%BB%BAhugo%E6%97%B6%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9D%91/>https://ripple-zjw.github.io/2019/%E6%90%AD%E5%BB%BAhugo%E6%97%B6%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9D%91/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8D%9A%E5%AE%A2%E7%9F%BF%E5%BB%BA%E6%90%AD%E5%BB%BA/">
+                    #博客矿建搭建</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/hugo/">
+                    #Hugo</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81/" class="prev" rel="prev" title="字符串解码"><i class="iconfont icon-left"></i>&nbsp;字符串解码</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

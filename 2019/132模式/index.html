@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E5%BA%8F%E5%88%97%E5%8C%96/" />
+  
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/132%E6%A8%A1%E5%BC%8F/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           132模式 | LeaveIt
+       
+  </title>
+  <meta name="title" content="132模式 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "132模式",
+    "headline" : "132模式",
+    "description" : "题目：132模式 给定一个整数序列：a1, a2, ..., an，一个132模式的子序列ai, aj, ak被定义为：当 i \x26lt; j \x26lt; k时，ai \x26lt; ak \x26lt; aj。设计一个算法，当给定有 n 个数字的序列时，验证这个序列中是否含有132模式的子序列。 - 注意：n 的值小于15000。\n示例1: 输入: [1, 2, 3, 4] 输出: False 解释: 序列中不存在132模式的子序列。  示例 2: 输入: [3, 1, 4, 2] 输出: True 解释: 序列中有 1 个132模式的子序列： [1, 4, 2].  示例 3: 输入: [-1, 3, 2, 0] 输出: True 解释: 序列中有 3 个132模式的的子序列: [-1, 3, 2], [-1, 3, 0] 和 [-1, 2, 0].",
+    "inLanguage" : "en-us",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-08-19 22:52:15 \x2b0800 CST",
+    "dateModified" : "2019-08-19 22:52:15 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/132%E6%A8%A1%E5%BC%8F\/",
+    "wordCount" : "136",
+    "keywords" : [ "算法求解思想","栈","单调栈","逆向工作法", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">132模式</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-08-19 itemprop="datePublished">August 19, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-132模式">题目：132模式</h1>
+
+<p>给定一个整数序列：<code>a1, a2, ..., an</code>，一个132模式的子序列<code>ai, aj, ak</code>被定义为：当 <code>i &lt; j &lt; k</code>时，<code>ai &lt; ak &lt; aj</code>。设计一个算法，当给定有 n 个数字的序列时，验证这个序列中是否含有132模式的子序列。
+- 注意：n 的值小于15000。</p>
+
+<h5 id="示例1">示例1:</h5>
+
+<pre><code>输入: [1, 2, 3, 4]
+输出: False
+解释: 序列中不存在132模式的子序列。
+</code></pre>
+
+<h5 id="示例-2">示例 2:</h5>
+
+<pre><code>输入: [3, 1, 4, 2]
+输出: True
+解释: 序列中有 1 个132模式的子序列： [1, 4, 2].
+</code></pre>
+
+<h5 id="示例-3">示例 3:</h5>
+
+<pre><code>输入: [-1, 3, 2, 0]
+输出: True
+解释: 序列中有 3 个132模式的的子序列: [-1, 3, 2], [-1, 3, 0] 和 [-1, 2, 0].
+</code></pre>
+
+<h4 id="来源-力扣-leetcode-第456题">来源：力扣（LeetCode）第456题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/132-pattern" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/132-pattern</a></p>
+</blockquote>
+
+<h3 id="分析">分析：</h3>
+
+<ul>
+<li>还是单调栈，不过还需要用到另一个方法，逆向工作法。反向遍历列表就会发现不一样的做法。</li>
+<li>根据题意<code>1</code>代表最小元素，<code>3</code>代表最大元素，<code>2</code>代表次大元素</li>
+<li>通过单调递减栈找到最大元素的最大次大元素，然后再确定最小元素要比最大次大元素小。</li>
+</ul>
+
+<h3 id="思路">思路：</h3>
+
+<ul>
+<li>反向遍历列表。</li>
+<li>严格维护一个单调递减栈。</li>
+<li>一旦遇到一个大的元素，将栈内元素出栈，维护单调递减。入栈后，将自己作为题目中的最大元素，即中间的元素。</li>
+<li>将最后一个出栈的元素作为次大元素，即右边的元素。</li>
+<li>这样的好处是我找到的次大元素一定是与当前最大元素的值最近的，而且还在最大元素的后面。</li>
+<li>这样我只要在前面找到一个比次大元素小的值，也就是最小值，那么就是True。</li>
+<li>如果找不到，那么可能有两种情况。
+
+<ul>
+<li>第一种在最大元素和次大元素之间，最小值比最大的次大元素还要大，不符合题意。但是要维护单调递减栈，所以入栈。</li>
+<li>第二种在最大元素之上，那么用刚才的方法重新确定最大元素和次大元素。由于它在最大元素之上，当它为最大元素时它能包括之前的最大元素在内，重新确定的次大元素一定会比之前的次大元素大。</li>
+</ul></li>
+<li>如果遍历完为止都没有返回True，那么返回False。</li>
+</ul>
+
+<h3 id="上代码">上代码：</h3>
+
+<pre><code class="language-python">class Solution:
+    def find132pattern(self, nums: List[int]) -&gt; bool:
+        stack = []
+        _min = float('-inf')
+        for i in range(len(nums) - 1, -1, -1):
+            if nums[i] &lt; _min:
+                return True
+            while stack and stack[-1] &lt; nums[i]:
+                _min = stack.pop()
+            stack.append(nums[i])
+        return False
+</code></pre>
+
+<h3 id="复杂度分析">复杂度分析：</h3>
+
+<ul>
+<li>时间复杂度：O(n) n为列表的长度</li>
+<li>空间复杂度：O(n)</li>
+</ul>
+
+<h1 id="总结">总结：</h1>
+
+<ul>
+<li>逆向工作法，如果你想不出来细节时可以考虑使用。</li>
+<li>我一开始的思路是正向遍历，维护一个单调递减栈。</li>
+<li>然后确定一个最小值，但是次大元素在右边，所以单调栈内无法找到次大元素。如果次大元素在左边的话，就可以直接正向单调递减了。</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/132%E6%A8%A1%E5%BC%8F/>https://ripple-zjw.github.io/2019/132%E6%A8%A1%E5%BC%8F/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E6%A0%88/">
+                    #栈</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8D%95%E8%B0%83%E6%A0%88/">
+                    #单调栈</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E9%80%86%E5%90%91%E5%B7%A5%E4%BD%9C%E6%B3%95/">
+                    #逆向工作法</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E5%BA%8F%E5%88%97%E5%8C%96/" class="prev" rel="prev" title="验证二叉树的前序序列化"><i class="iconfont icon-left"></i>&nbsp;验证二叉树的前序序列化</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

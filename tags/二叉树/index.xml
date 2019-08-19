@@ -6,10 +6,21 @@
     <description>Recent content in 二叉树 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 17 Aug 2019 18:48:01 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 19 Aug 2019 22:51:58 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>验证二叉树的前序序列化</title>
+      <link>https://ripple-zjw.github.io/2019/%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E5%BA%8F%E5%88%97%E5%8C%96/</link>
+      <pubDate>Mon, 19 Aug 2019 22:51:58 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E5%BA%8F%E5%88%97%E5%8C%96/</guid>
+      <description>题目：验证二叉树的前序序列化 序列化二叉树的一种方法是使用前序遍历。当我们遇到一个非空节点时，我们可以记录下这个节点的值。如果它是一个空节点，我们可以使用一个标记值记录，例如 #。
+ _9_ / \ 3 2 / \ / \ 4 1 # 6 / \ / \ / \ # # # # # #   例如，上面的二叉树可以被序列化为字符串 &amp;quot;9,3,4,#,#,1,#,#,2,#,6,#,#&amp;quot;，其中 #代表一个空节点。 给定一串以逗号分隔的序列，验证它是否是正确的二叉树的前序序列化。编写一个在不重构树的条件下的可行算法。 每个以逗号分隔的字符或为一个整数或为一个表示 null 指针的 &#39;#&#39; 。 你可以认为输入格式总是有效的，例如它永远不会包含两个连续的逗号，比如&amp;quot;1,,3&amp;quot;。  示例 1: 输入: &amp;quot;9,3,4,#,#,1,#,#,2,#,6,#,#&amp;quot; 输出: true  示例 2: 输入: &amp;quot;1,#&amp;quot; 输出: false  示例 3: 输入: &amp;quot;9,#,#,1&amp;quot; 输出: false  来源：力扣（LeetCode）第331题  链接：https://leetcode-cn.com/problems/verify-preorder-serialization-of-a-binary-tree
+ 分析：  就是每个爸爸都要找到两个儿子。(两个儿子可以是数字也可以是#) #爸爸什么都没有，比较惨。 上面两条任意一条不对都不合法。  思路:  前序遍历严格遵守中，左，右的顺序。 所以第一个为根节点，到第一个#为止，前面这些数字都是根节点的最左边的左子节点 维护一个栈stack，栈中存的是未确认它是否有两个子节点的节点，就是说如果该节点找到了他的两个子节点，就出栈(#也算它的子节点)。 凡是找到数字，全都入栈，因为一开始找到数字，你只能确认它的左子节点是下一个值(数字或#)，无法知道它的右子节点。 当找到第一个#时，开始遍历右子节点。因为没有左子节点了，遍历最近的节点的右子节点，也就是栈顶元素！！！ 一旦遍历了右子节点，那么该节点的左右子节点都找到了，出栈。 接下来继续重复之前的规律，如果字符串合法，那么stack中的元素都被弹出去了，如果栈中还有元素，那么就说明有的元素找不到它的两个儿子。 大概是这么个思路，不过还有些细节要处理。  看我写的代码： class Solution: def isValidSerialization(self, preorder: str) -&amp;gt; bool: if preorder == &#39;&#39;: return False if preorder == &#39;#&#39;: return True pol = preorder.</description>
+    </item>
     
     <item>
       <title>二叉树的锯齿形层次遍历</title>

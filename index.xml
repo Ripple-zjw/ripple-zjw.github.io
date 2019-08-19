@@ -5,8 +5,319 @@
     <description>Recent content in LeaveIt on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 17 Aug 2019 18:58:39 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 19 Aug 2019 22:52:15 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>132模式</title>
+      <link>https://ripple-zjw.github.io/2019/132%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Mon, 19 Aug 2019 22:52:15 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/132%E6%A8%A1%E5%BC%8F/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-132模式&#34;&gt;题目：132模式&lt;/h1&gt;
+
+&lt;p&gt;给定一个整数序列：&lt;code&gt;a1, a2, ..., an&lt;/code&gt;，一个132模式的子序列&lt;code&gt;ai, aj, ak&lt;/code&gt;被定义为：当 &lt;code&gt;i &amp;lt; j &amp;lt; k&lt;/code&gt;时，&lt;code&gt;ai &amp;lt; ak &amp;lt; aj&lt;/code&gt;。设计一个算法，当给定有 n 个数字的序列时，验证这个序列中是否含有132模式的子序列。
+- 注意：n 的值小于15000。&lt;/p&gt;
+
+&lt;h5 id=&#34;示例1&#34;&gt;示例1:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: [1, 2, 3, 4]
+输出: False
+解释: 序列中不存在132模式的子序列。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-2&#34;&gt;示例 2:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: [3, 1, 4, 2]
+输出: True
+解释: 序列中有 1 个132模式的子序列： [1, 4, 2].
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-3&#34;&gt;示例 3:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: [-1, 3, 2, 0]
+输出: True
+解释: 序列中有 3 个132模式的的子序列: [-1, 3, 2], [-1, 3, 0] 和 [-1, 2, 0].
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第456题&#34;&gt;来源：力扣（LeetCode）第456题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/132-pattern&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/132-pattern&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;分析&#34;&gt;分析：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;还是单调栈，不过还需要用到另一个方法，逆向工作法。反向遍历列表就会发现不一样的做法。&lt;/li&gt;
+&lt;li&gt;根据题意&lt;code&gt;1&lt;/code&gt;代表最小元素，&lt;code&gt;3&lt;/code&gt;代表最大元素，&lt;code&gt;2&lt;/code&gt;代表次大元素&lt;/li&gt;
+&lt;li&gt;通过单调递减栈找到最大元素的最大次大元素，然后再确定最小元素要比最大次大元素小。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;思路&#34;&gt;思路：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;反向遍历列表。&lt;/li&gt;
+&lt;li&gt;严格维护一个单调递减栈。&lt;/li&gt;
+&lt;li&gt;一旦遇到一个大的元素，将栈内元素出栈，维护单调递减。入栈后，将自己作为题目中的最大元素，即中间的元素。&lt;/li&gt;
+&lt;li&gt;将最后一个出栈的元素作为次大元素，即右边的元素。&lt;/li&gt;
+&lt;li&gt;这样的好处是我找到的次大元素一定是与当前最大元素的值最近的，而且还在最大元素的后面。&lt;/li&gt;
+&lt;li&gt;这样我只要在前面找到一个比次大元素小的值，也就是最小值，那么就是True。&lt;/li&gt;
+&lt;li&gt;如果找不到，那么可能有两种情况。
+
+&lt;ul&gt;
+&lt;li&gt;第一种在最大元素和次大元素之间，最小值比最大的次大元素还要大，不符合题意。但是要维护单调递减栈，所以入栈。&lt;/li&gt;
+&lt;li&gt;第二种在最大元素之上，那么用刚才的方法重新确定最大元素和次大元素。由于它在最大元素之上，当它为最大元素时它能包括之前的最大元素在内，重新确定的次大元素一定会比之前的次大元素大。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;如果遍历完为止都没有返回True，那么返回False。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;上代码&#34;&gt;上代码：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+    def find132pattern(self, nums: List[int]) -&amp;gt; bool:
+        stack = []
+        _min = float(&#39;-inf&#39;)
+        for i in range(len(nums) - 1, -1, -1):
+            if nums[i] &amp;lt; _min:
+                return True
+            while stack and stack[-1] &amp;lt; nums[i]:
+                _min = stack.pop()
+            stack.append(nums[i])
+        return False
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(n) n为列表的长度&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(n)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;逆向工作法，如果你想不出来细节时可以考虑使用。&lt;/li&gt;
+&lt;li&gt;我一开始的思路是正向遍历，维护一个单调递减栈。&lt;/li&gt;
+&lt;li&gt;然后确定一个最小值，但是次大元素在右边，所以单调栈内无法找到次大元素。如果次大元素在左边的话，就可以直接正向单调递减了。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>验证二叉树的前序序列化</title>
+      <link>https://ripple-zjw.github.io/2019/%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E5%BA%8F%E5%88%97%E5%8C%96/</link>
+      <pubDate>Mon, 19 Aug 2019 22:51:58 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E5%BA%8F%E5%88%97%E5%8C%96/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-验证二叉树的前序序列化&#34;&gt;题目：验证二叉树的前序序列化&lt;/h1&gt;
+
+&lt;p&gt;序列化二叉树的一种方法是使用前序遍历。当我们遇到一个非空节点时，我们可以记录下这个节点的值。如果它是一个空节点，我们可以使用一个标记值记录，例如 #。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;     _9_
+    /   \
+   3     2
+  / \   / \
+ 4   1  #  6
+/ \ / \   / \
+# # # #   # #
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;例如，上面的二叉树可以被序列化为字符串 &lt;code&gt;&amp;quot;9,3,4,#,#,1,#,#,2,#,6,#,#&amp;quot;&lt;/code&gt;，其中 &lt;code&gt;#&lt;/code&gt;代表一个空节点。&lt;/li&gt;
+&lt;li&gt;给定一串以逗号分隔的序列，验证它是否是正确的二叉树的前序序列化。编写一个在不重构树的条件下的可行算法。&lt;/li&gt;
+&lt;li&gt;每个以逗号分隔的字符或为一个整数或为一个表示 null 指针的 &lt;code&gt;&#39;#&#39;&lt;/code&gt; 。&lt;/li&gt;
+&lt;li&gt;你可以认为输入格式总是有效的，例如它永远不会包含两个连续的逗号，比如&lt;code&gt;&amp;quot;1,,3&amp;quot;&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例-1&#34;&gt;示例 1:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: &amp;quot;9,3,4,#,#,1,#,#,2,#,6,#,#&amp;quot;
+输出: true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-2&#34;&gt;示例 2:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: &amp;quot;1,#&amp;quot;
+输出: false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-3&#34;&gt;示例 3:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: &amp;quot;9,#,#,1&amp;quot;
+输出: false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第331题&#34;&gt;来源：力扣（LeetCode）第331题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/verify-preorder-serialization-of-a-binary-tree&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/verify-preorder-serialization-of-a-binary-tree&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;分析&#34;&gt;分析：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;就是每个爸爸都要找到两个儿子。(两个儿子可以是数字也可以是&lt;code&gt;#&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;#&lt;/code&gt;爸爸什么都没有，比较惨。&lt;/li&gt;
+&lt;li&gt;上面两条任意一条不对都不合法。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;思路&#34;&gt;思路:&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;前序遍历严格遵守中，左，右的顺序。&lt;/li&gt;
+&lt;li&gt;所以第一个为根节点，到第一个&lt;code&gt;#&lt;/code&gt;为止，前面这些数字都是根节点的最左边的左子节点&lt;/li&gt;
+&lt;li&gt;维护一个栈&lt;code&gt;stack&lt;/code&gt;，栈中存的是未确认它是否有两个子节点的节点，就是说如果该节点找到了他的两个子节点，就出栈(&lt;code&gt;#&lt;/code&gt;也算它的子节点)。&lt;/li&gt;
+&lt;li&gt;凡是找到数字，全都入栈，因为一开始找到数字，你只能确认它的左子节点是下一个值(数字或&lt;code&gt;#&lt;/code&gt;)，无法知道它的右子节点。&lt;/li&gt;
+&lt;li&gt;当找到第一个&lt;code&gt;#&lt;/code&gt;时，开始遍历右子节点。因为没有左子节点了，遍历最近的节点的右子节点，也就是栈顶元素！！！&lt;/li&gt;
+&lt;li&gt;一旦遍历了右子节点，那么该节点的左右子节点都找到了，出栈。&lt;/li&gt;
+&lt;li&gt;接下来继续重复之前的规律，如果字符串合法，那么stack中的元素都被弹出去了，如果栈中还有元素，那么就说明有的元素找不到它的两个儿子。&lt;/li&gt;
+&lt;li&gt;大概是这么个思路，不过还有些细节要处理。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;看我写的代码&#34;&gt;看我写的代码：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+    def isValidSerialization(self, preorder: str) -&amp;gt; bool:
+        if preorder == &#39;&#39;:
+            return False
+        if preorder == &#39;#&#39;:
+            return True
+        pol = preorder.split(&#39;,&#39;)  # PreOrderList
+        stack = []  # 只有数字入栈，当确认了该数字的两个子节点后出栈
+        n = len(pol)
+        isLeftTree = True  # 如果现在遍历的是左子树的话，不用出栈，如果为右子树的话无论是什么都要出栈
+        for i in range(n):
+            if pol[i].isdigit():
+                if not isLeftTree:
+                    if not stack:  # 如果栈是空的还要弹元素的话说明这字符串不合法。
+                        return False
+                    stack.pop()
+                stack.append(pol[i])  # 无论是左子树还是右子树，遇到数字都要入栈
+                isLeftTree = True  # 如果遍历到的是数字的话，那么又开始遍历左子树了。
+            else:
+                isLeftTree = False  # 当左子树遍历到#号时那么左子树完了，开始遍历右子树。
+                if pol[i - 1] == &#39;#&#39;:
+                    if not stack:
+                        return False
+                    stack.pop()
+        return len(stack) == 0  # 栈为空就说明合法，每一个节点都找到了它的两个子节点了。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(n) n为pol列表长度&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(n)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
+
+&lt;p&gt;写的不是最优，总的来说就是将数据分为遍历左子树和右子树两种情况。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>移掉K位数字</title>
+      <link>https://ripple-zjw.github.io/2019/%E7%A7%BB%E6%8E%89k%E4%BD%8D%E6%95%B0%E5%AD%97/</link>
+      <pubDate>Mon, 19 Aug 2019 22:51:46 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E7%A7%BB%E6%8E%89k%E4%BD%8D%E6%95%B0%E5%AD%97/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-移掉k位数字&#34;&gt;题目：移掉K位数字&lt;/h1&gt;
+
+&lt;p&gt;给定一个以字符串表示的非负整数 num，移除这个数中的 k 位数字，使得剩下的数字最小。&lt;/p&gt;
+
+&lt;h5 id=&#34;注意&#34;&gt;注意:&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;num 的长度小于 10002 且 ≥ k。&lt;/li&gt;
+&lt;li&gt;num 不会包含任何前导零。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例-1&#34;&gt;示例 1 :&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: num = &amp;quot;1432219&amp;quot;, k = 3
+输出: &amp;quot;1219&amp;quot;
+解释: 移除掉三个数字 4, 3, 和 2 形成一个新的最小的数字 1219。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-2&#34;&gt;示例 2 :&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: num = &amp;quot;10200&amp;quot;, k = 1
+输出: &amp;quot;200&amp;quot;
+解释: 移掉首位的 1 剩下的数字为 200. 注意输出不能有任何前导零。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-3&#34;&gt;示例 3 :&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: num = &amp;quot;10&amp;quot;, k = 2
+输出: &amp;quot;0&amp;quot;
+解释: 从原数字移除所有的数字，剩余为空就是0。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第402题&#34;&gt;来源：力扣（LeetCode）第402题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/remove-k-digits&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/remove-k-digits&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;分析&#34;&gt;分析：&lt;/h3&gt;
+
+&lt;p&gt;维护一个单调递增栈，主要的方法很容易想到，但是在处理细节上我还是费了的时间，其实不难处理但是我想的有点复杂了。&lt;/p&gt;
+
+&lt;h3 id=&#34;思路&#34;&gt;思路：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;维护一个单调递增栈。&lt;/li&gt;
+&lt;li&gt;依次遍历整个字符串，将元素放入栈，同时使单调栈严格单调递增。&lt;/li&gt;
+&lt;li&gt;如果已经弹出去k个元素了，那么剩下的值直接放入栈中即可，不用再删了。&lt;/li&gt;
+&lt;li&gt;如果还没到k个元素字符串就遍历完了，那么根据剩下还要加的元素数量，从栈顶依次出栈。&lt;/li&gt;
+&lt;li&gt;栈有可能是空，根据示例3，栈为空答案时&lt;code&gt;&amp;quot;0&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;如果栈有值，那么将栈合并为字符串，得出答案。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;激动人心的代码环节&#34;&gt;激动人心的代码环节：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+    def removeKdigits(self, num: str, k: int) -&amp;gt; str:
+        stack = []
+        cnt = 0
+        n = len(num)
+        for i in range(n):
+            while cnt &amp;lt; k and stack and stack[-1] &amp;gt; num[i]:
+                tmp = stack.pop()
+                cnt += 1
+            if stack or num[i] != &#39;0&#39;:
+                stack.append(num[i])
+        while stack and cnt &amp;lt; k:
+            stack.pop()
+            cnt += 1
+        ans = &#39;&#39;.join(stack)
+        return ans if ans != &#39;&#39; else &#39;0&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(n) n为字符串的长度&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(n) n为k的长度&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;单调栈的思想越来越熟了，但是在处理细节上还是不够熟练。&lt;/li&gt;
+&lt;li&gt;虽然自己第一遍做出来了，但是并没有想到最优算法，写的稍微有的啰嗦了。&lt;/li&gt;
+&lt;li&gt;我觉得一开始没处理好是因为我忽略了k这个值，于是关于k的细节没有想得很全面，导致最后自己测试时总是会发现一些小错误，浪费时间。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>搭建Hugo时需要注意的坑</title>
@@ -1124,270 +1435,6 @@ pull的时候调整的是right，分13个等级（0到12）
 
 目的是为了确保列与列之间有30px的槽，列与容器之间有15px的槽
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>reset 三个参数--hard --soft --mixed的区别</title>
-      <link>https://ripple-zjw.github.io/2019/reset-%E4%B8%89%E4%B8%AA%E5%8F%82%E6%95%B0-hard-soft-mixed%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
-      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/reset-%E4%B8%89%E4%B8%AA%E5%8F%82%E6%95%B0-hard-soft-mixed%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
-      <description>
-
-&lt;h1 id=&#34;hard&#34;&gt;&amp;ndash;hard&lt;/h1&gt;
-
-&lt;p&gt;工作区，暂存区，本地库三者同时更新&lt;/p&gt;
-
-&lt;h1 id=&#34;mixed&#34;&gt;&amp;ndash;mixed&lt;/h1&gt;
-
-&lt;p&gt;只有本地库更新，导致本地库和（暂存区，工作区）的指针不一样，但是暂存区和工作区的文件一样。所以暂存区的文件标为绿色，表示暂存区的文件可以提交到本地库。&lt;/p&gt;
-
-&lt;h1 id=&#34;soft&#34;&gt;&amp;ndash;soft&lt;/h1&gt;
-
-&lt;p&gt;本地库和暂存区更新，导致暂存区的文件标为红色，表示工作区的文件和本地库的文件不一样，可以进行add到暂存区，然后进行提交。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>中序遍历二叉树</title>
-      <link>https://ripple-zjw.github.io/2019/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
-      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</guid>
-      <description>
-
-&lt;h1 id=&#34;题目-二叉树的中序遍历&#34;&gt;题目：二叉树的中序遍历&lt;/h1&gt;
-
-&lt;p&gt;给定一个二叉树，返回它的中序遍历。&lt;/p&gt;
-
-&lt;h6 id=&#34;示例&#34;&gt;示例:&lt;/h6&gt;
-
-&lt;pre&gt;&lt;code&gt;输入: [1,null,2,3]
-   1
-    \
-     2
-    /
-   3
-
-输出: [1,3,2]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;进阶: 递归算法很简单，你可以通过迭代算法完成吗？&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第94题&#34;&gt;来源：力扣（LeetCode）第94题&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/binary-tree-inorder-traversal&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/binary-tree-inorder-traversal&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;分析&#34;&gt;分析:&lt;/h3&gt;
-
-&lt;p&gt;两种方法，一种是最常用的递归遍历，非常简单。第二种是迭代遍历，需要用到栈。本文章分析第二种算法。&lt;/p&gt;
-
-&lt;h3 id=&#34;思路&#34;&gt;思路:&lt;/h3&gt;
-
-&lt;p&gt;维护一个栈，每次经过一个节点，就入栈，当节点的左节点没有值时出栈，并继续从出栈的那个节点找它的右节点。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;维护一个栈stack和要储存答案的列表ans&lt;/li&gt;
-&lt;li&gt;写一个循环，不停地将左节点一层一层的入栈&lt;/li&gt;
-&lt;li&gt;当左节点为None时，不要入栈，并且将栈顶节点弹出&lt;/li&gt;
-&lt;li&gt;拿到栈顶节点的value，并且进入该节点的右节点（因为中序遍历是左，中，右）&lt;/li&gt;
-&lt;li&gt;继续拿这个节点的左节点，重复2-4步&lt;/li&gt;
-&lt;li&gt;当节点值为None 或者 stack为空时结束循环&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;代码&#34;&gt;代码：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
-class Solution:
-    def inorderTraversal(self, root: TreeNode) -&amp;gt; List[int]:
-        stack = []
-        ans = []
-        tail = root
-        while tail is not None or stack:
-            while tail is not None:
-                stack.append(tail)
-                tail = tail.left
-            tail = stack.pop()
-            ans.append(tail.val)
-            tail = tail.right
-        return ans
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;顺便把递归遍历的代码一起放上来&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
-class Solution:
-    def inorderTraversal(self, root: TreeNode) -&amp;gt; List[int]:
-        if root is None:
-            return []
-        stack = []
-        self.recursion(stack, root)
-        return stack
-        
-    def recursion(self, stack: List[int], root: TreeNode) -&amp;gt; None:
-        if root.left != None:
-            self.recursion(stack, root.left)
-        stack.append(root.val)
-        if root.right != None:
-            self.recursion(stack, root.right)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;递归法
-
-&lt;ul&gt;
-&lt;li&gt;时间复杂度： O(n) (递归函数 T(n)=2⋅T(n/2) + 1)&lt;/li&gt;
-&lt;li&gt;空间复杂度： O(logn)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;迭代法
-
-&lt;ul&gt;
-&lt;li&gt;时间复杂度： O(n)&lt;/li&gt;
-&lt;li&gt;空间复杂度:  O(n)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;总体来说，迭代法比递归法速度更快，毕竟递归调用很耗时，而递归法节省的空间更多，适合资源不多时使用。&lt;/p&gt;
-
-&lt;p&gt;LeetCode上还有一种方法叫做莫里斯遍历，复杂度与迭代法一样，没仔细看过。在这里放上链接
-&amp;gt; &lt;a href=&#34;https://leetcode-cn.com/problems/binary-tree-inorder-traversal/solution/er-cha-shu-de-zhong-xu-bian-li-by-leetcode/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/binary-tree-inorder-traversal/solution/er-cha-shu-de-zhong-xu-bian-li-by-leetcode/&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
-
-&lt;p&gt;中序遍历的两种方法各有各的优点，尤其是迭代法，时间用的更少，就是实现上没有递归法那么方便。要注意通过栈来储存每次进过的节点，不然的话你再想找之前的节点就找不到了。。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>使括号有效的最少添加</title>
-      <link>https://ripple-zjw.github.io/2019/%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/</link>
-      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/</guid>
-      <description>
-
-&lt;h1 id=&#34;题目&#34;&gt;题目：&lt;/h1&gt;
-
-&lt;p&gt;给定一个由 &amp;rsquo;(&amp;lsquo; 和 &amp;rsquo;)&amp;lsquo; 括号组成的字符串 S，我们需要添加最少的括号（ &amp;lsquo;(&amp;lsquo; 或是 &amp;rsquo;)&amp;lsquo;，可以在任何位置），以使得到的括号字符串有效。&lt;/p&gt;
-
-&lt;p&gt;从形式上讲，只有满足下面几点之一，括号字符串才是有效的：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;它是一个空字符串，或者&lt;/li&gt;
-&lt;li&gt;它可以被写成 AB （A 与 B 连接）, 其中 A 和 B 都是有效字符串，或者&lt;/li&gt;
-&lt;li&gt;它可以被写作 (A)，其中 A 是有效字符串。&lt;/li&gt;
-&lt;li&gt;给定一个括号字符串，返回为使结果字符串有效而必须添加的最少括号数。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;示例 1：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;输入：&amp;quot;())&amp;quot;
-输出：1
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;示例 2：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;输入：&amp;quot;(((&amp;quot;
-输出：3
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;示例 3：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;输入：&amp;quot;()&amp;quot;
-输出：0
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;示例 4：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;输入：&amp;quot;()))((&amp;quot;
-输出：4
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第921题&#34;&gt;来源：力扣（LeetCode）第921题&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/minimum-add-to-make-parentheses-valid&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/minimum-add-to-make-parentheses-valid&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;题目解析&#34;&gt;题目解析：&lt;/h3&gt;
-
-&lt;p&gt;这题不是很难，比较容易就能想到，只要使用栈就能做出。在这里不讨论栈的方法，而是官方给出的一种更加巧妙和特别的方法，平衡法。&lt;/p&gt;
-
-&lt;h3 id=&#34;解题思路&#34;&gt;解题思路：&lt;/h3&gt;
-
-&lt;p&gt;维护两个变量ans(answer)和bal(balance)，ans是正常的结果，而bal则是题目可能发生的一种特殊情况。比如&amp;rdquo;)))(((&amp;ldquo;这种情况。这个答案应该是六，而不是0，因为右括号在前面，而左括号在后面，这就导致他们无法作为一对有效的括号。如果我们不用bal这个变量的话，应该是这样子的。&lt;/p&gt;
-
-&lt;p&gt;先遍历整个字符串，如果是左括号的话，ans加一，如果是右括号的话，ans减一。看似这样做没什么毛病，但是就像我刚才举得例子，当右括号在左括号的前面或者又括号比左括号多，都会出问题，那怎么办呢？这时，我们bal变量就能派上用场。（可能有人会说用个绝对值就行了，同样是上面那个例子，你会发现用绝对值还是不行！！！！）&lt;/p&gt;
-
-&lt;p&gt;还是刚才的思路，只是我们思考一下，如果右括号在前面或者右括号比左括号多的话，会导致ans的值为负数（出现了一次负数也是负数，不管它后面会不会变为正数）。一旦变成了负数（其实就是ans为-1，因为ans只有+1或-1的操作），那那个右括号一定是需要添加的括号，因为他一定是无效的括号。ans存的应该是需要添加的左括号和有效的两个括号，由于有效的两个括号一加一减没了，所以本质上就是存的无效左括号的次数，所以我们要把无效右括号的次数存在bal里面，同时为了不让右括号的-1导致左括号的次数不对，所以当ans值为-1时，bal要加一，同时ans也要加一，即相当于把ans的负数放在bal中。最后，我们只要将ans和bal相加即可得出答案。&lt;/p&gt;
-
-&lt;h4 id=&#34;简单理解&#34;&gt;简单理解：&lt;/h4&gt;
-
-&lt;p&gt;维护ans和bal两个变量，ans存的是无效的左括号，同时当左括号的后面找到右括号后，左括号变为有效，那么ans就减一，如果右括号太多，左括号都是有效的，那么就有了无效的右括号，把他存在bal里面，同时将它离开ans，也就是ans+1（因为右括号是-1，+1相当于ans-（-1）），这样子一左一右即可以使两边平衡，最后的答案只要把ans和bal（无效左括号和无效右括号）加起来就行了。&lt;/p&gt;
-
-&lt;h3 id=&#34;talk-is-cheap-show-me-the-code&#34;&gt;Talk is cheap, show me the code.&lt;/h3&gt;
-
-&lt;p&gt;平衡法：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;class Solution(object):
-    def minAddToMakeValid(self, S):
-        ans = bal = 0
-        for char in S:
-            if char == &#39;(&#39;:
-                ans += 1
-            else:
-                ans -= 1
-            if ans &amp;lt; 0:
-                ans += 1
-                bal += 1
-        return ans + bal
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;顺便再附上栈的方法：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;class Solution:
-    def minAddToMakeValid(self, S: str) -&amp;gt; int:
-        validStack = []
-        for char in S:
-            if char == &#39;)&#39; and validStack and validStack[-1] == &amp;quot;(&amp;quot;:
-                validStack.pop()
-            else:
-                validStack.append(char)
-        return len(validStack)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h3&gt;
-
-&lt;p&gt;平衡法
-- 时间复杂度：O(n) n为S的长度（代码中的S）
-- 空间复杂度：O(1)&lt;/p&gt;
-
-&lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
-
-&lt;p&gt;平衡法，我理解为把一个答案分成两类，就比如题目中把无效的括号分为无效左括号和无效右括号，分别求它们的答案，再把它们加在一起，有点像分治算法。&lt;/p&gt;
 </description>
     </item>
     

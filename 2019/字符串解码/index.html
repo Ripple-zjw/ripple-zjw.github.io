@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="zh-CN">
   <head>
   <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -47,7 +47,7 @@
     "name" : "字符串解码",
     "headline" : "字符串解码",
     "description" : "题目：字符串解码  给定一个经过编码的字符串，返回它解码后的字符串。 编码规则为: k[encoded_string]，表示其中方括号内部的 encoded_string 正好重复 k 次。注意 k 保证为正整数。 你可以认为输入字符串总是有效的；输入字符串中没有额外的空格，且输入的方括号总是符合格式要求的。 此外，你可以认为原始数据不包含数字，所有的数字只表示重复的次数 k ，例如不会出现像 3a 或 2[4] 的输入。  示例: s = \x26quot;3[a]2[bc]\x26quot;, 返回 \x26quot;aaabcbc\x26quot;. s = \x26quot;3[a2[c]]\x26quot;, 返回 \x26quot;accaccacc\x26quot;. s = \x26quot;2[abc]3[cd]ef\x26quot;, 返回 \x26quot;abcabccdcdcdef\x26quot;.  来源：力扣（LeetCode）第394题  链接：https:\/\/leetcode-cn.com\/problems\/decode-string\n 分析： 两种方法，辅助栈法和递归法，递归法相对思路清晰，比较好做。其实本质两种方法是一样的，因为函数的递归调用其实也是用栈来实现的。\n思路：  递归法：  遍历整个字符串 同时要用到stack列表，tmp列表，还有一个表示下标的变量i 每次递归之后stack都是该函数的stack，与外面的stack不同 每次遍历字符时，tmp都要将里面的值清空 遇到字母，压入stack 遇到]字符,结束函数并将stack返回 遇到数字首先判断该数字后是否还有数字，有的话一起加入tmp，然后递归调用函数。  辅助栈法：  遍历整个字符串 res表示当前字符串，multi表示当前数字，stack储存答案 遇到字母，与res拼接起来 遇到数字，放入multi，注意由于两个数字放在一起要变成两位数，以此类推，所以res 写成res = res * 10 \x2b 当前数字 遇到[，将res，multi同时入栈，用一个列表或元祖，并行的，不是先后入栈。 遇到右括号，栈顶元素出栈，并将栈顶元素的multi与当前字符相乘，然后再与栈顶的res相加   上代码：  递归法：",
-    "inLanguage" : "en-us",
+    "inLanguage" : "zh-CN",
     "author" : "Ripple",
     "creator" : "Ripple",
     "publisher": "Ripple",

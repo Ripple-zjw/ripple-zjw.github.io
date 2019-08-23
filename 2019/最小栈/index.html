@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="zh-CN">
   <head>
   <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -47,7 +47,7 @@
     "name" : "最小栈",
     "headline" : "最小栈",
     "description" : "设计一个支持 push，pop，top 操作，并能在常数时间内检索到最小元素的栈：  push(x) \x26ndash; 将元素 x 推入栈中。 pop() \x26ndash; 删除栈顶的元素。 top() \x26ndash; 获取栈顶元素。 getMin() \x26ndash; 检索栈中的最小元素。  来源：力扣（LeetCode）第155题  链接：https:\/\/leetcode-cn.com\/problems\/min-stack\n 题目解析： 这道题需要用到一个辅助栈来帮忙，较为暴力的方法是使用python的内置函数min直接算出最小值，或者遍历整个栈将最小值算出。但是题目要求getMin的时间复杂度是常数级的，也就是O（1）。因此上述的方法行不通，需要奇妙的运用到栈的特性来解题。\n解题思路： 首先要有两个栈，一个是正常的数据栈（stack），另一个是只存最小值的辅助栈（minStack）。数据栈正常进，出数据，辅助栈在每次进栈和出栈时要判断。如果push的值比辅助栈的栈顶元素要小（或者相等），那么就把它压入辅助栈。同理，如果pop的值比辅助栈的栈顶元素要小（或者相等），那么就讲辅助栈的栈顶元素弹出。\n为什么要这样做呢？\n其实这很好理解。第一个入栈的元素进栈后，最小值肯定就是它，所以将它放入辅助栈，让它成为判断的目标。如果有比第一个入栈的元素大的元素进栈的话，那其实不用管它们，因为最小值不可能是它们，所以不用把它们放进辅助栈中。如果有栈的元素小于第一个入栈的元素的话，那么就只需要将小于的元素压入辅助栈中，使其成为栈顶元素。如此一来，我们就改变判断的目标，将后面push的元素与这个元素进行比较，直到辅助栈又有一个比它小的元素进栈。\n出栈也是一个道理，只要出栈的元素比辅助栈的栈顶元素小或相等的话。就将辅助栈的栈顶元素弹出。\n这么一来其实就很明朗了。辅助栈的栈顶元素永远都是最小的元素，而整个辅助栈的元素的值从上自下依次在逐渐变大，直到栈底元素，也就是数据栈中第一个入栈的元素。如果有元素比数据栈的栈底元素大的话，根本不用考虑，因为在出栈的过程中，它们永远都会比数据栈的栈底元素先出栈，所以它们直到数据栈中的数据弹光也不可能作为最小值。那么就不用放入栈中。\n简单理解： 使用两个栈，一个用于正常存储数据（stack），另一个用于把可能作为最小值的数据从大到小依次压入栈（minStack），也就是把每次比minStack的栈顶元素小的数压入minStack。\n然后pop操作的时候，只要关注一下当前栈的最小值有没有被弹出去，有的话minStack也要出栈。\ngetMin的值就是辅助栈的最小值\n时间复杂度： 非常短，只要进行依次获取栈顶元素的操作即可。为O（1）\n实现代码：（Python） class MinStack: def __init__(self): self.stack = [] self.minStack = [] def push(self, x: int) -\x26gt; None: if len(self.minStack) == 0 or x \x26lt;= self.minStack[-1]: self.minStack.append(x) self.stack.append(x) def pop(self) -\x26gt; None: if self.",
-    "inLanguage" : "en-us",
+    "inLanguage" : "zh-CN",
     "author" : "Ripple",
     "creator" : "Ripple",
     "publisher": "Ripple",

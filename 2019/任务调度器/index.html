@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="zh-CN">
   <head>
   <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -47,7 +47,7 @@
     "name" : "任务调度器",
     "headline" : "任务调度器",
     "description" : " 题目：任务调度器  给定一个用字符数组表示的 CPU 需要执行的任务列表。其中包含使用大写的 A - Z 字母表示的26 种不同种类的任务。 任务可以以任意顺序执行，并且每个任务都可以在 1 个单位时间内执行完。 CPU 在任何一个单位时间内都可以执行一个任务，或者在待命状态。 然而，两个相同种类的任务之间必须有长度为 n 的冷却时间，因此至少有连续 n 个单位时间内 CPU 在执行不同的任务，或者在待命状态。 你需要计算完成所有任务所需要的最短时间。  示例 1： 输入: tasks = [\x26quot;A\x26quot;,\x26quot;A\x26quot;,\x26quot;A\x26quot;,\x26quot;B\x26quot;,\x26quot;B\x26quot;,\x26quot;B\x26quot;], n = 2 输出: 8 执行顺序: A -\x26gt; B -\x26gt; (待命) -\x26gt; A -\x26gt; B -\x26gt; (待命) -\x26gt; A -\x26gt; B.  注：  任务的总个数为 [1, 10000]。 n 的取值范围为 [0, 100]。  来源：力扣（LeetCode）第621题  链接：https:\/\/leetcode-cn.com\/problems\/task-scheduler\n 分析： 写在队列的标签里，本质上用的却是贪心算法，不知道为什么，同时还用到了一点hashmap的知识。\n思路：  要知道最短时间首先要找到出现次数最多的那个值，如果出现次数一样多，选哪个都无所谓。 然后看A-Z中总共有几个数字出现了，假设最多次数的值是A，那么第一个A到第二个A之间总共还能再放n个不一样的值。 A -\x26gt; (单位时间) -\x26gt; (单位时间) -\x26gt; A -\x26gt; (单位时间) -\x26gt; (单位时间) -\x26gt; A 如果填不满那就为等待时间。 如果填满了，那就说明不需要等待时间就能得到最短时间，所以最短时间就是数组的长度。 如果没填满，那么我们可以计算(出现的次数最多的元素 - 1) * (n \x2b 1) \x2b 出现次数一样多的元素的个数 我们依靠出现的次数最多的元素A把整个答案划分为a份(a为A的次数)，每一份就是n\x2b1，由于最后一份不一定是n\x2b1，所以是(a-1)*(n\x2b1)，最后在把不相等的最后一份加进去就得到了答案。  代码： class Solution: def leastInterval(self, tasks: List[str], n: int) -\x26gt; int: count = [0] * 26 for task in tasks: count[ord(task) - 65] \x2b= 1 # 这里是我自己写的简单hash函数，也可以用字典，我这里觉得简单就没用字典。 maxNum = max(count) maxCount = 0 for c in count: if c == maxNum: maxCount \x2b= 1 return max((maxNum - 1) * (n \x2b 1) \x2b maxCount, len(tasks))  复杂度分析：  时间复杂度：O(n) n为tasks的长度 空间复杂度：O(1)  总结：  第一次写贪心算法题，标签写错了，本来有想到贪心算法的，可是标签是队列我就一直在想队列，想了半天没有思路。 贪心算法得到的有可能是近似解，在使用贪心算法时要想清楚特殊的情况。  ",
-    "inLanguage" : "en-us",
+    "inLanguage" : "zh-CN",
     "author" : "Ripple",
     "creator" : "Ripple",
     "publisher": "Ripple",

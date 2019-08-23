@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="zh-CN">
   <head>
   <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -47,7 +47,7 @@
     "name" : "有序数组的平方",
     "headline" : "有序数组的平方",
     "description" : "题目：有序数组的平方  给定一个按非递减顺序排序的整数数组 A，返回每个数字的平方组成的新数组，要求也按非递减顺序排序。  示例 1： 输入：[-4,-1,0,3,10] 输出：[0,1,9,16,100]  示例 2： 输入：[-7,-3,2,3,11] 输出：[4,9,9,49,121]  提示：  1 \x26lt;= A.length \x26lt;= 10000 10000 \x26lt;= A[i] \x26lt;= 10000 A已按非递减顺序排序。  来源：力扣（LeetCode）第977题  链接：https:\/\/leetcode-cn.com\/problems\/squares-of-a-sorted-array\n 分析： 这道题的方法有两种，一种最简单，先计算，再排序。第二种用双指针做到一遍遍历解答。\n思路：  由于数组是按照递增的顺序增长的，因此所有的正数都是递增的，所有的负数加上绝对值都是递减的。 我们用两个指针i和j，i从前往后遍历，j从后往前遍历。 i遇到正数就停下来，j遇到负数就停下来，然后比较他们两谁小，小的那个放到ans答案中。 然后就把放入答案中的那个指针往后前移。 最后退出循环，但是可能有一个指针并没有移到终点，因此要在循环结束后去判断两个指针的情况，把指针后面的值都加到ans中去。 最后得到答案。  代码： class Solution: def sortedSquares(self, A: List[int]) -\x26gt; List[int]: i = 0 j = len(A) - 1 ans = [] while i \x26lt; len(A) and j \x26gt;= 0: # 主循环 while i \x26lt; len(A) and A[i] \x26lt; 0: # 遍历到第一个正数 i \x2b= 1 while j \x26gt;= 0 and A[j] \x26gt;= 0: # 遍历到第一个负数 j -= 1 if i \x26lt; len(A) and j \x26gt;= 0: # 谁小就把谁加进来 if A[i] ** 2 \x26gt; A[j] ** 2: ans.",
-    "inLanguage" : "en-us",
+    "inLanguage" : "zh-CN",
     "author" : "Ripple",
     "creator" : "Ripple",
     "publisher": "Ripple",

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="zh-CN">
   <head>
   <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -47,7 +47,7 @@
     "name" : "二叉树的后序遍历",
     "headline" : "二叉树的后序遍历",
     "description" : "题目：二叉树的后序遍历  给定一个二叉树，返回它的 后序 遍历。  示例: 输入: [1,null,2,3] 1 \\ 2 \/ 3 输出: [3,2,1]  进阶:递归算法很简单，你可以通过迭代算法完成吗？\n来源：力扣（LeetCode）第145题  链接：https:\/\/leetcode-cn.com\/problems\/binary-tree-postorder-traversal\n 分析： 方法有很多，递归法最简单，迭代法使用栈辅助完成，还有莫里斯遍历。本文讲解官方写的题解迭代法。虽然我也写出了迭代法，但是官方的解法既简单又高效，非常厉害。使用了迭代法\x2b逆向工作法。\n思路：  后序遍历是左，右，中。可是中在最后，如果正常解后序遍历的话有的复杂。 如果我们用中，右，左这样来遍历的话岂不是将后序遍历变成了前序遍历的翻版类型。 这样的话答案只是与我们要求的答案相反，翻转一下列表就可以了。 所以解法就是一个反向的先序遍历方法。  代码：  官方的迭代法\x2b逆向工作法\n# Definition for a binary tree node. # class TreeNode: # def __init__(self, x): # self.val = x # self.left = None # self.right = None class Solution: def postorderTraversal(self, root: TreeNode) -\x26gt; List[int]: if root is None: return [] stack = [root] res = [] while stack: root = stack.",
-    "inLanguage" : "en-us",
+    "inLanguage" : "zh-CN",
     "author" : "Ripple",
     "creator" : "Ripple",
     "publisher": "Ripple",

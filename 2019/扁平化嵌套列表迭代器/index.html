@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="zh-CN">
   <head>
   <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -47,7 +47,7 @@
     "name" : "扁平化嵌套列表迭代器",
     "headline" : "扁平化嵌套列表迭代器",
     "description" : "题目:扁平化嵌套列表迭代器  给定一个嵌套的整型列表。设计一个迭代器，使其能够遍历这个整型列表中的所有整数。 列表中的项或者为一个整数，或者是另一个列表。  示例 1: 输入: [[1,1],2,[1,1]] 输出: [1,1,2,1,1] 解释: 通过重复调用 next 直到 hasNext 返回false，next 返回的元素的顺序应该是: [1,1,2,1,1]。  示例 2: 输入: [1,[4,[6]]] 输出: [1,4,6] 解释: 通过重复调用 next 直到 hasNext 返回false，next 返回的元素的顺序应该是: [1,4,6]。  来源：力扣（LeetCode）第341题  链接：https:\/\/leetcode-cn.com\/problems\/flatten-nested-list-iterator\n 分析： 递归调用，不是很难。唯一要注意的是要看清题目，list里面是NestedIterator，需要使用他给你的方法调用才能得到integer或者list。\n思路：  从后往前遍历 判断是否是integer，是 入栈 不是 递归进去 返回栈，结束。  代码： # \x26quot;\x26quot;\x26quot; # This is the interface that allows for creating nested lists. # You should not implement it, or speculate about its implementation # \x26quot;\x26quot;\x26quot; #class NestedInteger(object): # def isInteger(self): # \x26quot;\x26quot;\x26quot; # @return True if this NestedInteger holds a single integer, rather than a nested list.",
-    "inLanguage" : "en-us",
+    "inLanguage" : "zh-CN",
     "author" : "Ripple",
     "creator" : "Ripple",
     "publisher": "Ripple",

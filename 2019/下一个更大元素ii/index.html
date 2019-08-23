@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="zh-CN">
   <head>
   <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -47,7 +47,7 @@
     "name" : "下一个更大元素",
     "headline" : "下一个更大元素",
     "description" : "题目：下一个更大元素 II 给定一个循环数组（最后一个元素的下一个元素是数组的第一个元素），输出每个元素的下一个更大元素。数字 x 的下一个更大的元素是按数组遍历顺序，这个数字之后的第一个比它更大的数，这意味着你应该循环地搜索它的下一个更大的数。如果不存在，则输出 -1。\n示例 1: 输入: [1,2,1] 输出: [2,-1,2] 解释: 第一个 1 的下一个更大的数是 2； 数字 2 找不到下一个更大的数； 第二个 1 的下一个最大的数需要循环搜索，结果也是 2。  来源：力扣（LeetCode）第503题  链接：https:\/\/leetcode-cn.com\/problems\/next-greater-element-ii\n 分析： 循环数组和循环队列的样子差不多，这道题主要是单调栈，同样涉及两种解法，暴力法和单调栈法。这题的难点不在于单调栈，而是循环数组什么时候停下来。\n思路：  由于是循环数组，如果只遍历一遍无法完全找到答案，所以我们遍历两边数组，使得数组较后的元素能与前面的元素比对。 当下表(i)比数组的最后一个下表大时，i % len(数组) 初始化所有答案均为-1(如果找不到最大的是-1，所以先全部等于-1) 维护一个单调递减栈，入栈元素将比它小的栈内元素全部出栈，出栈元素的答案就是入栈元素。 如此循环两次，如果栈内元素在两次循环之后均未能出栈(找到比它大的元素),那么它们就是数组中最大的元素，又由于我们初始化答案全部为-1，所以不用改变它们。  上代码: class Solution(object): def nextGreaterElements(self, nums): \x26quot;\x26quot;\x26quot; :type nums: List[int] :rtype: List[int] \x26quot;\x26quot;\x26quot; stack = [] n = len(nums) res = [-1 for _ in nums] for i in range(2 * n): while stack and nums[i % n] \x26gt; nums[stack[-1]]: res[stack.",
-    "inLanguage" : "en-us",
+    "inLanguage" : "zh-CN",
     "author" : "Ripple",
     "creator" : "Ripple",
     "publisher": "Ripple",

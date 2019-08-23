@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="zh-CN">
   <head>
   <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -47,7 +47,7 @@
     "name" : "求最大子数组",
     "headline" : "求最大子数组",
     "description" : "题目：求最大子数组  在一个数组中找到和最大的子数组。 数组中有正有负，但都是integer类型。  题目来源：算法导论第38页 4.1 最大子数组问题 分析： 根据书中的问题，采用分治思想来解题。具体可参考算法导论。\n思路：  将整个数组一分为二，每次分完之后做四件事件：  查看是否是最小数组即长度是1，因为数组长度是1那么总和就是这一个数的值。 如果不是1，那就分别递归进左边的数组和右边的数组继续分，直到分到1再返回。 每次递归除了左边的最大子数组和右边的最大子数组外，还有交叉在中间的最大子数组。所以要把中间的最大子数组也算出来。 算出三者的各自的和将和最大的那个子数组并返回，同时返回它的两端下标。  每次递归都会返回左边，右边，中间的最大的那个子数组。 最后一次递归返回最大的子数组，答案就出来了。  代码： class FindMaxNum: def _find_crossing(self, A, low, mid, high): # 寻找穿过中间值的最大子数组 leftSum = float(\x27-inf\x27) ans = 0 maxLeft = mid maxRight = mid \x2b 1 for i in range(mid, low - 1, -1): # 找到左边的最大子数组 ans \x2b= A[i] if ans \x26gt; leftSum: leftSum = ans maxLeft = i rightSum = float(\x27-inf\x27) ans = 0 for j in range(mid \x2b 1, high \x2b 1): # 找到右边的最大子数组 ans \x2b= A[j] if ans \x26gt; rightSum: rightSum = ans maxRight = j return maxLeft, maxRight, leftSum \x2b rightSum # 返回最大的子数组以及它的两端下标 def find_max_num(self, A, low, high): if low == high: # 如果分到了1，那么就返回 return low, high, A[low] else: mid = (low \x2b high) \/\/ 2 # 将数组一分为二 left_low, left_high, left_sum = self.",
-    "inLanguage" : "en-us",
+    "inLanguage" : "zh-CN",
     "author" : "Ripple",
     "creator" : "Ripple",
     "publisher": "Ripple",

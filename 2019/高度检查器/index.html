@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="zh-CN">
   <head>
   <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -47,7 +47,7 @@
     "name" : "高度检查器",
     "headline" : "高度检查器",
     "description" : "题目：高度检查器  学校在拍年度纪念照时，一般要求学生按照 非递减 的高度顺序排列。 请你返回至少有多少个学生没有站在正确位置数量。该人数指的是：能让所有学生以 非递减 高度排列的必要移动人数。  示例： 输入：[1,1,4,2,1,3] 输出：3 解释： 高度为 4、3 和最后一个 1 的学生，没有站在正确的位置。  提示：  1 \x26lt;= heights.length \x26lt;= 100 1 \x26lt;= heights[i] \x26lt;= 100  来源：力扣（LeetCode）第1051题  链接：https:\/\/leetcode-cn.com\/problems\/height-checker\n 分析： 有两种方法。都是先排序，然后比较两者之间的差异。不同处，第一种是比较排序，第二种是计数排序。计数排序的时间复杂度相对较低，本文讲解计数排序。\n思路：  因为heights[i]不会超过100，所以采用hash的思想，将所给数组每个值出现的次数作为值，将所给数组的值作为下标，这样相同值出现的次数就会被归在一起，而且值小的元素会在前面，因为下标就是值。 如果1出现了3次，那么这3次一定是在最前面的，所以我们顺序遍历原数组，如果前3次不是1，就说明这个数要移动，以此类推。  代码： class Solution: def heightChecker(self, heights: List[int]) -\x26gt; int: ans = 0 arr = [0] * 101 # heights[i]最多不超过100个 for height in heights: # 将heights散列到arr中 arr[height] \x2b= 1 j = 0 for i in range(1, len(arr)): # 根据arr中的计数排序比较原数组 while arr[i] \x26gt; 0: if heights[j] !",
-    "inLanguage" : "en-us",
+    "inLanguage" : "zh-CN",
     "author" : "Ripple",
     "creator" : "Ripple",
     "publisher": "Ripple",

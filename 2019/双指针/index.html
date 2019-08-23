@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="zh-CN">
   <head>
   <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -47,7 +47,7 @@
     "name" : "双指针",
     "headline" : "双指针",
     "description" : "运用双指针解题 参考题目：LeetCode（26、27题）  https:\/\/leetcode-cn.com\/problemset\/all\/\n 使用场景： 需要遍历一个数组，在遍历过程中根据要求改变数组中元素的值、位置等一些关系。我们可以使用两个指针进行求解。\n例如：删除数组中的重复项，移除摸一个元素\n双指针使用思路： 一个数（i）作为已经过滤了的标记，另一个数（j）去寻找不符合条件的数，找到之后将两个元素进行交换。这样当j完全遍历一遍时，就可以把不符合要求的数都放到后面去，i之前的数都是符合规范的数。这种思路和插入排序很像，都是将一个指针作为排好序的部分，只不过插入排序还需要将排好序的部分再遍历一遍，把新的值插入进去。\n使用双指针的好处： 首先使用双指针是原地排序，不会需要额外的储存空间，空间复杂度是O（1）。而且被过滤的数并没有被移除，只是与后面符合要求的数进行交换，这样虽然是删除了这个数，但是不需要进行数据的搬移操作，大大节省了时间。\nc语言代码：（LeetCode 26题） int removeDuplicates(int* nums, int numsSize){ if(numsSize==0) return 0; int i, j; for(j = 1, i = 0; j \x26lt; numsSize; j\x2b\x2b){ if(nums[i] != nums[j]){ i\x2b\x2b; nums[i] = nums[j]; } } return i \x2b 1; }  python代码：（LeetCode 27题） class Solution: def removeElement(self, nums: List[int], val: int) -\x26gt; int: i = 0 for j in range(len(nums)): if nums[j] !",
-    "inLanguage" : "en-us",
+    "inLanguage" : "zh-CN",
     "author" : "Ripple",
     "creator" : "Ripple",
     "publisher": "Ripple",

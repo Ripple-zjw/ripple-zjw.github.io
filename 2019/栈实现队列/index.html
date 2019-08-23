@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="zh-CN">
   <head>
   <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -47,7 +47,7 @@
     "name" : "栈实现队列",
     "headline" : "栈实现队列",
     "description" : "使用栈实现队列的下列操作：  push(x) \x26ndash; 将一个元素放入队列的尾部。 pop() \x26ndash; 从队列首部移除元素。 peek() \x26ndash; 返回队列首部的元素。 empty() \x26ndash; 返回队列是否为空。  来源：力扣（LeetCode） 第232题  链接：https:\/\/leetcode-cn.com\/problems\/implement-queue-using-stacks\n 题目解析： 这道题想要通过很容易，使用Python的话由于python的列表不仅就是一个现成的栈，而且Python的列表还支持栈所不支持的操作，比如队列的操作，但是时间复杂度可不低，所以Python还有一个双端列表，它可以支持从两端插入并且时间复杂度都是O（1）\n可是如果这样做的话和题目本身的意思有点不相符。如果只能使用栈的操作，即只能在列表的最后进行插入和删除以及取值，就需要使用到双栈来模拟队列的操作。具体的操作方法有很多，在这里只记录LeetCode上最高效的方法。\n解题思路： 我们声明两个栈，一个是In，另一个是Out。In代表每次push到栈内的元素，而Out代表pop和peek所取得的元素。\n首先，将push的元素都依次存放在In栈中。直到进行了一次pop或peek操作后，将In栈中的所有元素依次出栈，再把它们依次放进Out栈中，这样Out栈的栈顶元素就是我们所要取的元素，也就是队首元素。\n如果又有元素入队，那么In栈就继续进栈，如果又有元素出队，那么Out栈就继续弹出。\n可是，当Out栈中的元素都取完后，就不能再从Out栈中弹出元素了，这个时候，就需要从In栈中继续刚才的步骤，把In栈中的元素取出来放到Out栈里去，然后再去取元素。因此，在进行pop和peek操作时，务必要记得判断当前的Out栈内是否还有剩余的元素，如果没有了，可不能再出栈了，以免报错。\n简单理解： 就是拿出两个栈，一个用于进队（In），一个用于出队（Out），如果出队的栈没有元素了，就再从进队的栈中把元素搬过来。\n时间复杂度： 使用这种方法，用摊还分析法来计算的话时间复杂度无论是进队还是出队都是O（1），非常的高效。因为最好情况下push就是简单的进栈操作，而pop也是出栈操作。最坏情况下，push不变，而pop则需要将In栈中的所有元素都搬进来，时间复杂度为O（n）。平均一下即O（1）\n下面是代码演示（Python） class MyQueue: def __init__(self): self.stackIn = [] self.stackOut = [] def push(self, x: int) -\x26gt; None: self.stackIn.append(x) def pop(self) -\x26gt; int: if self.stackOut: return self.stackOut.pop() while self.stackIn: self.stackOut.append(self.stackIn.pop()) return self.stackOut.pop() def peek(self) -\x26gt; int: if self.stackOut: return self.",
-    "inLanguage" : "en-us",
+    "inLanguage" : "zh-CN",
     "author" : "Ripple",
     "creator" : "Ripple",
     "publisher": "Ripple",

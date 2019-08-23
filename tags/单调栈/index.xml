@@ -6,10 +6,21 @@
     <description>Recent content in 单调栈 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 19 Aug 2019 22:52:15 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 23 Aug 2019 12:55:03 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/tags/%E5%8D%95%E8%B0%83%E6%A0%88/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>接雨水</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%8E%A5%E9%9B%A8%E6%B0%B4/</link>
+      <pubDate>Fri, 23 Aug 2019 12:55:03 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%8E%A5%E9%9B%A8%E6%B0%B4/</guid>
+      <description>题目：接雨水  给定n个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。   上面是由数组 [0,1,0,2,1,0,1,3,2,1,2,1] 表示的高度图，在这种情况下，可以接 6 个单位的雨水（蓝色部分表示雨水）。感谢 Marcos 贡献此图。  示例: 输入: [0,1,0,2,1,0,1,3,2,1,2,1] 输出: 6  来源：力扣（LeetCode）第42题  链接：https://leetcode-cn.com/problems/trapping-rain-water
+ 分析： 方法太多了，一道极难题，从暴力法，到动态规划，再到单调栈，再到双指针。方法非常多，也很难理解，暴力法最好理解，dp和双指针稍难，我这里讲单调栈的方法。
+思路：  维护一个单调递减栈。 当有值比栈顶元素大的时候做这么几件事情：  先出栈一个元素并保存到top中。 然后判断stack是否是空，如果是空的话，说明出栈的左边没有东西，所以无法装雨水。(一定要两边都要有东西并且两边的墙比出栈的墙要长，这样才能装雨水) 算出当前元素与栈顶元素中间的距离dis(注意现在是出栈之后的栈顶元素) 算出当前元素与栈顶元素中哪个值最小，并将小的那个值与出栈的那个元素相减，得到floor_cnt 为什么要叫floor_cnt呢，因为将floor_cnt与dis(也就是两栋大墙之间的距离)相乘，你就能得到在这两栋墙之间一层的雨水数量。 将它们加到ans答案中。例如：如果两栋墙最小的那栋是3，那么就会有3层，每一层的雨水数量可能是不一样的，所以要算3遍。 最后返回ans得到答案。  如果值比栈顶元素小的话就入栈就行了，这样就能维护单调递减栈。(注意栈中存的是数组下标，为了算起来方便。)  Talk is cheap,show me the code. class Solution(object): def trap(self, height): stack = [] ans = 0 cur = 0 while cur &amp;lt; len(height): while stack and height[stack[-1]] &amp;lt; height[cur]: top = stack.</description>
+    </item>
     
     <item>
       <title>132模式</title>

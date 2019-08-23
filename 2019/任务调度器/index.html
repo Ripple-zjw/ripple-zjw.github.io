@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E6%8E%A5%E9%9B%A8%E6%B0%B4/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%99%A8/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           任务调度器 | LeaveIt
+       
+  </title>
+  <meta name="title" content="任务调度器 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "任务调度器",
+    "headline" : "任务调度器",
+    "description" : " 题目：任务调度器  给定一个用字符数组表示的 CPU 需要执行的任务列表。其中包含使用大写的 A - Z 字母表示的26 种不同种类的任务。 任务可以以任意顺序执行，并且每个任务都可以在 1 个单位时间内执行完。 CPU 在任何一个单位时间内都可以执行一个任务，或者在待命状态。 然而，两个相同种类的任务之间必须有长度为 n 的冷却时间，因此至少有连续 n 个单位时间内 CPU 在执行不同的任务，或者在待命状态。 你需要计算完成所有任务所需要的最短时间。  示例 1： 输入: tasks = [\x26quot;A\x26quot;,\x26quot;A\x26quot;,\x26quot;A\x26quot;,\x26quot;B\x26quot;,\x26quot;B\x26quot;,\x26quot;B\x26quot;], n = 2 输出: 8 执行顺序: A -\x26gt; B -\x26gt; (待命) -\x26gt; A -\x26gt; B -\x26gt; (待命) -\x26gt; A -\x26gt; B.  注：  任务的总个数为 [1, 10000]。 n 的取值范围为 [0, 100]。  来源：力扣（LeetCode）第621题  链接：https:\/\/leetcode-cn.com\/problems\/task-scheduler\n 分析： 写在队列的标签里，本质上用的却是贪心算法，不知道为什么，同时还用到了一点hashmap的知识。\n思路：  要知道最短时间首先要找到出现次数最多的那个值，如果出现次数一样多，选哪个都无所谓。 然后看A-Z中总共有几个数字出现了，假设最多次数的值是A，那么第一个A到第二个A之间总共还能再放n个不一样的值。 A -\x26gt; (单位时间) -\x26gt; (单位时间) -\x26gt; A -\x26gt; (单位时间) -\x26gt; (单位时间) -\x26gt; A 如果填不满那就为等待时间。 如果填满了，那就说明不需要等待时间就能得到最短时间，所以最短时间就是数组的长度。 如果没填满，那么我们可以计算(出现的次数最多的元素 - 1) * (n \x2b 1) \x2b 出现次数一样多的元素的个数 我们依靠出现的次数最多的元素A把整个答案划分为a份(a为A的次数)，每一份就是n\x2b1，由于最后一份不一定是n\x2b1，所以是(a-1)*(n\x2b1)，最后在把不相等的最后一份加进去就得到了答案。  代码： class Solution: def leastInterval(self, tasks: List[str], n: int) -\x26gt; int: count = [0] * 26 for task in tasks: count[ord(task) - 65] \x2b= 1 # 这里是我自己写的简单hash函数，也可以用字典，我这里觉得简单就没用字典。 maxNum = max(count) maxCount = 0 for c in count: if c == maxNum: maxCount \x2b= 1 return max((maxNum - 1) * (n \x2b 1) \x2b maxCount, len(tasks))  复杂度分析：  时间复杂度：O(n) n为tasks的长度 空间复杂度：O(1)  总结：  第一次写贪心算法题，标签写错了，本来有想到贪心算法的，可是标签是队列我就一直在想队列，想了半天没有思路。 贪心算法得到的有可能是近似解，在使用贪心算法时要想清楚特殊的情况。  ",
+    "inLanguage" : "en-us",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-08-23 12:52:54 \x2b0800 CST",
+    "dateModified" : "2019-08-23 12:52:54 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%99%A8\/",
+    "wordCount" : "151",
+    "keywords" : [ "算法求解思想","贪心算法","hash", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">任务调度器</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-08-23 itemprop="datePublished">August 23, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-任务调度器">题目：任务调度器</h1>
+
+<ul>
+<li>给定一个用字符数组表示的 CPU 需要执行的任务列表。其中包含使用大写的 A - Z 字母表示的26 种不同种类的任务。</li>
+<li>任务可以以任意顺序执行，并且每个任务都可以在 1 个单位时间内执行完。</li>
+<li>CPU 在任何一个单位时间内都可以执行一个任务，或者在待命状态。</li>
+<li>然而，两个相同种类的任务之间必须有长度为 n 的冷却时间，因此至少有连续 n 个单位时间内 CPU 在执行不同的任务，或者在待命状态。</li>
+<li>你需要计算完成所有任务所需要的最短时间。</li>
+</ul>
+
+<h5 id="示例-1">示例 1：</h5>
+
+<pre><code>输入: tasks = [&quot;A&quot;,&quot;A&quot;,&quot;A&quot;,&quot;B&quot;,&quot;B&quot;,&quot;B&quot;], n = 2
+输出: 8
+执行顺序: A -&gt; B -&gt; (待命) -&gt; A -&gt; B -&gt; (待命) -&gt; A -&gt; B.
+</code></pre>
+
+<h5 id="注">注：</h5>
+
+<ul>
+<li>任务的总个数为 [1, 10000]。</li>
+<li>n 的取值范围为 [0, 100]。</li>
+</ul>
+
+<h4 id="来源-力扣-leetcode-第621题">来源：力扣（LeetCode）第621题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/task-scheduler" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/task-scheduler</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<p>写在队列的标签里，本质上用的却是贪心算法，不知道为什么，同时还用到了一点hashmap的知识。</p>
+
+<h2 id="思路">思路：</h2>
+
+<ul>
+<li>要知道最短时间首先要找到出现次数最多的那个值，如果出现次数一样多，选哪个都无所谓。</li>
+<li>然后看<code>A-Z</code>中总共有几个数字出现了，假设最多次数的值是<code>A</code>，那么第一个<code>A</code>到第二个<code>A</code>之间总共还能再放<code>n</code>个不一样的值。</li>
+<li><code>A -&gt; (单位时间) -&gt; (单位时间) -&gt; A -&gt; (单位时间) -&gt; (单位时间) -&gt; A</code></li>
+<li>如果填不满那就为<code>等待时间</code>。</li>
+<li>如果填满了，那就说明不需要<code>等待时间</code>就能得到最短时间，所以最短时间就是数组的长度。</li>
+<li>如果没填满，那么我们可以计算<code>(出现的次数最多的元素 - 1) * (n + 1) + 出现次数一样多的元素的个数</code></li>
+<li>我们依靠出现的次数最多的元素<code>A</code>把整个答案划分为a份(a为<code>A</code>的次数)，每一份就是<code>n+1</code>，由于最后一份不一定是<code>n+1</code>，所以是<code>(a-1)*(n+1)</code>，最后在把不相等的最后一份加进去就得到了答案。</li>
+</ul>
+
+<h2 id="代码">代码：</h2>
+
+<pre><code class="language-python">class Solution:
+    def leastInterval(self, tasks: List[str], n: int) -&gt; int:
+        count = [0] * 26
+        for task in tasks:
+            count[ord(task) - 65] += 1  # 这里是我自己写的简单hash函数，也可以用字典，我这里觉得简单就没用字典。
+        maxNum = max(count)
+        maxCount = 0
+        for c in count:
+            if c == maxNum:
+                maxCount += 1
+        return max((maxNum - 1) * (n + 1) + maxCount, len(tasks))
+</code></pre>
+
+<h2 id="复杂度分析">复杂度分析：</h2>
+
+<ul>
+<li>时间复杂度：O(n) n为tasks的长度</li>
+<li>空间复杂度：O(1)</li>
+</ul>
+
+<h1 id="总结">总结：</h1>
+
+<ul>
+<li>第一次写贪心算法题，标签写错了，本来有想到贪心算法的，可是标签是队列我就一直在想队列，想了半天没有思路。</li>
+<li>贪心算法得到的有可能是近似解，在使用贪心算法时要想清楚特殊的情况。</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%99%A8/>https://ripple-zjw.github.io/2019/%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%99%A8/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">
+                    #贪心算法</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/hash/">
+                    #hash</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" class="prev" rel="prev" title="二叉树的后序遍历"><i class="iconfont icon-left"></i>&nbsp;二叉树的后序遍历</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E6%8E%A5%E9%9B%A8%E6%B0%B4/" class="next" rel="next" title="接雨水">接雨水&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

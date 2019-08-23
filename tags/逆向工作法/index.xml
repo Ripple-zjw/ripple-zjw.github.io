@@ -6,10 +6,23 @@
     <description>Recent content in 逆向工作法 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 19 Aug 2019 22:52:15 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 23 Aug 2019 12:49:52 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/tags/%E9%80%86%E5%90%91%E5%B7%A5%E4%BD%9C%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>二叉树的后序遍历</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/</link>
+      <pubDate>Fri, 23 Aug 2019 12:49:52 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/</guid>
+      <description>题目：二叉树的后序遍历  给定一个二叉树，返回它的 后序 遍历。  示例: 输入: [1,null,2,3] 1 \ 2 / 3 输出: [3,2,1]  进阶:递归算法很简单，你可以通过迭代算法完成吗？
+来源：力扣（LeetCode）第145题  链接：https://leetcode-cn.com/problems/binary-tree-postorder-traversal
+ 分析： 方法有很多，递归法最简单，迭代法使用栈辅助完成，还有莫里斯遍历。本文讲解官方写的题解迭代法。虽然我也写出了迭代法，但是官方的解法既简单又高效，非常厉害。使用了迭代法+逆向工作法。
+思路：  后序遍历是左，右，中。可是中在最后，如果正常解后序遍历的话有的复杂。 如果我们用中，右，左这样来遍历的话岂不是将后序遍历变成了前序遍历的翻版类型。 这样的话答案只是与我们要求的答案相反，翻转一下列表就可以了。 所以解法就是一个反向的先序遍历方法。  代码：  官方的迭代法+逆向工作法
+# Definition for a binary tree node. # class TreeNode: # def __init__(self, x): # self.val = x # self.left = None # self.right = None class Solution: def postorderTraversal(self, root: TreeNode) -&amp;gt; List[int]: if root is None: return [] stack = [root] res = [] while stack: root = stack.</description>
+    </item>
     
     <item>
       <title>132模式</title>

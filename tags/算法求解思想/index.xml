@@ -6,10 +6,77 @@
     <description>Recent content in 算法求解思想 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 19 Aug 2019 22:52:15 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 23 Aug 2019 13:01:17 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>有序数组的平方</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9/</link>
+      <pubDate>Fri, 23 Aug 2019 13:01:17 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9/</guid>
+      <description>题目：有序数组的平方  给定一个按非递减顺序排序的整数数组 A，返回每个数字的平方组成的新数组，要求也按非递减顺序排序。  示例 1： 输入：[-4,-1,0,3,10] 输出：[0,1,9,16,100]  示例 2： 输入：[-7,-3,2,3,11] 输出：[4,9,9,49,121]  提示：  1 &amp;lt;= A.length &amp;lt;= 10000 10000 &amp;lt;= A[i] &amp;lt;= 10000 A已按非递减顺序排序。  来源：力扣（LeetCode）第977题  链接：https://leetcode-cn.com/problems/squares-of-a-sorted-array
+ 分析： 这道题的方法有两种，一种最简单，先计算，再排序。第二种用双指针做到一遍遍历解答。
+思路：  由于数组是按照递增的顺序增长的，因此所有的正数都是递增的，所有的负数加上绝对值都是递减的。 我们用两个指针i和j，i从前往后遍历，j从后往前遍历。 i遇到正数就停下来，j遇到负数就停下来，然后比较他们两谁小，小的那个放到ans答案中。 然后就把放入答案中的那个指针往后前移。 最后退出循环，但是可能有一个指针并没有移到终点，因此要在循环结束后去判断两个指针的情况，把指针后面的值都加到ans中去。 最后得到答案。  代码： class Solution: def sortedSquares(self, A: List[int]) -&amp;gt; List[int]: i = 0 j = len(A) - 1 ans = [] while i &amp;lt; len(A) and j &amp;gt;= 0: # 主循环 while i &amp;lt; len(A) and A[i] &amp;lt; 0: # 遍历到第一个正数 i += 1 while j &amp;gt;= 0 and A[j] &amp;gt;= 0: # 遍历到第一个负数 j -= 1 if i &amp;lt; len(A) and j &amp;gt;= 0: # 谁小就把谁加进来 if A[i] ** 2 &amp;gt; A[j] ** 2: ans.</description>
+    </item>
+    
+    <item>
+      <title>高度检查器</title>
+      <link>https://ripple-zjw.github.io/2019/%E9%AB%98%E5%BA%A6%E6%A3%80%E6%9F%A5%E5%99%A8/</link>
+      <pubDate>Fri, 23 Aug 2019 12:59:06 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E9%AB%98%E5%BA%A6%E6%A3%80%E6%9F%A5%E5%99%A8/</guid>
+      <description>题目：高度检查器  学校在拍年度纪念照时，一般要求学生按照 非递减 的高度顺序排列。 请你返回至少有多少个学生没有站在正确位置数量。该人数指的是：能让所有学生以 非递减 高度排列的必要移动人数。  示例： 输入：[1,1,4,2,1,3] 输出：3 解释： 高度为 4、3 和最后一个 1 的学生，没有站在正确的位置。  提示：  1 &amp;lt;= heights.length &amp;lt;= 100 1 &amp;lt;= heights[i] &amp;lt;= 100  来源：力扣（LeetCode）第1051题  链接：https://leetcode-cn.com/problems/height-checker
+ 分析： 有两种方法。都是先排序，然后比较两者之间的差异。不同处，第一种是比较排序，第二种是计数排序。计数排序的时间复杂度相对较低，本文讲解计数排序。
+思路：  因为heights[i]不会超过100，所以采用hash的思想，将所给数组每个值出现的次数作为值，将所给数组的值作为下标，这样相同值出现的次数就会被归在一起，而且值小的元素会在前面，因为下标就是值。 如果1出现了3次，那么这3次一定是在最前面的，所以我们顺序遍历原数组，如果前3次不是1，就说明这个数要移动，以此类推。  代码： class Solution: def heightChecker(self, heights: List[int]) -&amp;gt; int: ans = 0 arr = [0] * 101 # heights[i]最多不超过100个 for height in heights: # 将heights散列到arr中 arr[height] += 1 j = 0 for i in range(1, len(arr)): # 根据arr中的计数排序比较原数组 while arr[i] &amp;gt; 0: if heights[j] !</description>
+    </item>
+    
+    <item>
+      <title>求最大子数组</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%B1%82%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Fri, 23 Aug 2019 12:57:06 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%B1%82%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84/</guid>
+      <description>题目：求最大子数组  在一个数组中找到和最大的子数组。 数组中有正有负，但都是integer类型。  题目来源：算法导论第38页 4.1 最大子数组问题 分析： 根据书中的问题，采用分治思想来解题。具体可参考算法导论。
+思路：  将整个数组一分为二，每次分完之后做四件事件：  查看是否是最小数组即长度是1，因为数组长度是1那么总和就是这一个数的值。 如果不是1，那就分别递归进左边的数组和右边的数组继续分，直到分到1再返回。 每次递归除了左边的最大子数组和右边的最大子数组外，还有交叉在中间的最大子数组。所以要把中间的最大子数组也算出来。 算出三者的各自的和将和最大的那个子数组并返回，同时返回它的两端下标。  每次递归都会返回左边，右边，中间的最大的那个子数组。 最后一次递归返回最大的子数组，答案就出来了。  代码： class FindMaxNum: def _find_crossing(self, A, low, mid, high): # 寻找穿过中间值的最大子数组 leftSum = float(&#39;-inf&#39;) ans = 0 maxLeft = mid maxRight = mid + 1 for i in range(mid, low - 1, -1): # 找到左边的最大子数组 ans += A[i] if ans &amp;gt; leftSum: leftSum = ans maxLeft = i rightSum = float(&#39;-inf&#39;) ans = 0 for j in range(mid + 1, high + 1): # 找到右边的最大子数组 ans += A[j] if ans &amp;gt; rightSum: rightSum = ans maxRight = j return maxLeft, maxRight, leftSum + rightSum # 返回最大的子数组以及它的两端下标 def find_max_num(self, A, low, high): if low == high: # 如果分到了1，那么就返回 return low, high, A[low] else: mid = (low + high) // 2 # 将数组一分为二 left_low, left_high, left_sum = self.</description>
+    </item>
+    
+    <item>
+      <title>接雨水</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%8E%A5%E9%9B%A8%E6%B0%B4/</link>
+      <pubDate>Fri, 23 Aug 2019 12:55:03 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%8E%A5%E9%9B%A8%E6%B0%B4/</guid>
+      <description>题目：接雨水  给定n个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。   上面是由数组 [0,1,0,2,1,0,1,3,2,1,2,1] 表示的高度图，在这种情况下，可以接 6 个单位的雨水（蓝色部分表示雨水）。感谢 Marcos 贡献此图。  示例: 输入: [0,1,0,2,1,0,1,3,2,1,2,1] 输出: 6  来源：力扣（LeetCode）第42题  链接：https://leetcode-cn.com/problems/trapping-rain-water
+ 分析： 方法太多了，一道极难题，从暴力法，到动态规划，再到单调栈，再到双指针。方法非常多，也很难理解，暴力法最好理解，dp和双指针稍难，我这里讲单调栈的方法。
+思路：  维护一个单调递减栈。 当有值比栈顶元素大的时候做这么几件事情：  先出栈一个元素并保存到top中。 然后判断stack是否是空，如果是空的话，说明出栈的左边没有东西，所以无法装雨水。(一定要两边都要有东西并且两边的墙比出栈的墙要长，这样才能装雨水) 算出当前元素与栈顶元素中间的距离dis(注意现在是出栈之后的栈顶元素) 算出当前元素与栈顶元素中哪个值最小，并将小的那个值与出栈的那个元素相减，得到floor_cnt 为什么要叫floor_cnt呢，因为将floor_cnt与dis(也就是两栋大墙之间的距离)相乘，你就能得到在这两栋墙之间一层的雨水数量。 将它们加到ans答案中。例如：如果两栋墙最小的那栋是3，那么就会有3层，每一层的雨水数量可能是不一样的，所以要算3遍。 最后返回ans得到答案。  如果值比栈顶元素小的话就入栈就行了，这样就能维护单调递减栈。(注意栈中存的是数组下标，为了算起来方便。)  Talk is cheap,show me the code. class Solution(object): def trap(self, height): stack = [] ans = 0 cur = 0 while cur &amp;lt; len(height): while stack and height[stack[-1]] &amp;lt; height[cur]: top = stack.</description>
+    </item>
+    
+    <item>
+      <title>任务调度器</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%99%A8/</link>
+      <pubDate>Fri, 23 Aug 2019 12:52:54 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%99%A8/</guid>
+      <description> 题目：任务调度器  给定一个用字符数组表示的 CPU 需要执行的任务列表。其中包含使用大写的 A - Z 字母表示的26 种不同种类的任务。 任务可以以任意顺序执行，并且每个任务都可以在 1 个单位时间内执行完。 CPU 在任何一个单位时间内都可以执行一个任务，或者在待命状态。 然而，两个相同种类的任务之间必须有长度为 n 的冷却时间，因此至少有连续 n 个单位时间内 CPU 在执行不同的任务，或者在待命状态。 你需要计算完成所有任务所需要的最短时间。  示例 1： 输入: tasks = [&amp;quot;A&amp;quot;,&amp;quot;A&amp;quot;,&amp;quot;A&amp;quot;,&amp;quot;B&amp;quot;,&amp;quot;B&amp;quot;,&amp;quot;B&amp;quot;], n = 2 输出: 8 执行顺序: A -&amp;gt; B -&amp;gt; (待命) -&amp;gt; A -&amp;gt; B -&amp;gt; (待命) -&amp;gt; A -&amp;gt; B.  注：  任务的总个数为 [1, 10000]。 n 的取值范围为 [0, 100]。  来源：力扣（LeetCode）第621题  链接：https://leetcode-cn.com/problems/task-scheduler
+ 分析： 写在队列的标签里，本质上用的却是贪心算法，不知道为什么，同时还用到了一点hashmap的知识。
+思路：  要知道最短时间首先要找到出现次数最多的那个值，如果出现次数一样多，选哪个都无所谓。 然后看A-Z中总共有几个数字出现了，假设最多次数的值是A，那么第一个A到第二个A之间总共还能再放n个不一样的值。 A -&amp;gt; (单位时间) -&amp;gt; (单位时间) -&amp;gt; A -&amp;gt; (单位时间) -&amp;gt; (单位时间) -&amp;gt; A 如果填不满那就为等待时间。 如果填满了，那就说明不需要等待时间就能得到最短时间，所以最短时间就是数组的长度。 如果没填满，那么我们可以计算(出现的次数最多的元素 - 1) * (n + 1) + 出现次数一样多的元素的个数 我们依靠出现的次数最多的元素A把整个答案划分为a份(a为A的次数)，每一份就是n+1，由于最后一份不一定是n+1，所以是(a-1)*(n+1)，最后在把不相等的最后一份加进去就得到了答案。  代码： class Solution: def leastInterval(self, tasks: List[str], n: int) -&amp;gt; int: count = [0] * 26 for task in tasks: count[ord(task) - 65] += 1 # 这里是我自己写的简单hash函数，也可以用字典，我这里觉得简单就没用字典。 maxNum = max(count) maxCount = 0 for c in count: if c == maxNum: maxCount += 1 return max((maxNum - 1) * (n + 1) + maxCount, len(tasks))  复杂度分析：  时间复杂度：O(n) n为tasks的长度 空间复杂度：O(1)  总结：  第一次写贪心算法题，标签写错了，本来有想到贪心算法的，可是标签是队列我就一直在想队列，想了半天没有思路。 贪心算法得到的有可能是近似解，在使用贪心算法时要想清楚特殊的情况。  </description>
+    </item>
+    
+    <item>
+      <title>二叉树的后序遍历</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/</link>
+      <pubDate>Fri, 23 Aug 2019 12:49:52 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/</guid>
+      <description>题目：二叉树的后序遍历  给定一个二叉树，返回它的 后序 遍历。  示例: 输入: [1,null,2,3] 1 \ 2 / 3 输出: [3,2,1]  进阶:递归算法很简单，你可以通过迭代算法完成吗？
+来源：力扣（LeetCode）第145题  链接：https://leetcode-cn.com/problems/binary-tree-postorder-traversal
+ 分析： 方法有很多，递归法最简单，迭代法使用栈辅助完成，还有莫里斯遍历。本文讲解官方写的题解迭代法。虽然我也写出了迭代法，但是官方的解法既简单又高效，非常厉害。使用了迭代法+逆向工作法。
+思路：  后序遍历是左，右，中。可是中在最后，如果正常解后序遍历的话有的复杂。 如果我们用中，右，左这样来遍历的话岂不是将后序遍历变成了前序遍历的翻版类型。 这样的话答案只是与我们要求的答案相反，翻转一下列表就可以了。 所以解法就是一个反向的先序遍历方法。  代码：  官方的迭代法+逆向工作法
+# Definition for a binary tree node. # class TreeNode: # def __init__(self, x): # self.val = x # self.left = None # self.right = None class Solution: def postorderTraversal(self, root: TreeNode) -&amp;gt; List[int]: if root is None: return [] stack = [root] res = [] while stack: root = stack.</description>
+    </item>
     
     <item>
       <title>132模式</title>

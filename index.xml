@@ -5,8 +5,657 @@
     <description>Recent content in LeaveIt on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 19 Aug 2019 22:52:15 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 23 Aug 2019 13:01:17 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>有序数组的平方</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9/</link>
+      <pubDate>Fri, 23 Aug 2019 13:01:17 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-有序数组的平方&#34;&gt;题目：有序数组的平方&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;给定一个按非递减顺序排序的整数数组 A，返回每个数字的平方组成的新数组，要求也按非递减顺序排序。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例-1&#34;&gt;示例 1：&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入：[-4,-1,0,3,10]
+输出：[0,1,9,16,100]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-2&#34;&gt;示例 2：&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入：[-7,-3,2,3,11]
+输出：[4,9,9,49,121]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;提示&#34;&gt;提示：&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1 &amp;lt;= &lt;code&gt;A.length&lt;/code&gt; &amp;lt;= 10000&lt;/li&gt;
+&lt;li&gt;10000 &amp;lt;= &lt;code&gt;A[i]&lt;/code&gt; &amp;lt;= 10000&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;A&lt;/code&gt;已按非递减顺序排序。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第977题&#34;&gt;来源：力扣（LeetCode）第977题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/squares-of-a-sorted-array&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/squares-of-a-sorted-array&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;p&gt;这道题的方法有两种，一种最简单，先计算，再排序。第二种用双指针做到一遍遍历解答。&lt;/p&gt;
+
+&lt;h2 id=&#34;思路&#34;&gt;思路：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;由于数组是按照递增的顺序增长的，因此所有的正数都是递增的，所有的负数加上绝对值都是递减的。&lt;/li&gt;
+&lt;li&gt;我们用两个指针&lt;code&gt;i&lt;/code&gt;和&lt;code&gt;j&lt;/code&gt;，&lt;code&gt;i&lt;/code&gt;从前往后遍历，&lt;code&gt;j&lt;/code&gt;从后往前遍历。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;i&lt;/code&gt;遇到正数就停下来，&lt;code&gt;j&lt;/code&gt;遇到负数就停下来，然后比较他们两谁小，小的那个放到ans答案中。&lt;/li&gt;
+&lt;li&gt;然后就把放入答案中的那个指针往后前移。&lt;/li&gt;
+&lt;li&gt;最后退出循环，但是可能有一个指针并没有移到终点，因此要在循环结束后去判断两个指针的情况，把指针后面的值都加到ans中去。&lt;/li&gt;
+&lt;li&gt;最后得到答案。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+    def sortedSquares(self, A: List[int]) -&amp;gt; List[int]:
+        i = 0
+        j = len(A) - 1
+        ans = []
+        while i &amp;lt; len(A) and j &amp;gt;= 0:  # 主循环
+            while i &amp;lt; len(A) and A[i] &amp;lt; 0:  # 遍历到第一个正数
+                i += 1
+            while j &amp;gt;= 0 and A[j] &amp;gt;= 0:  # 遍历到第一个负数
+                j -= 1
+            if i &amp;lt; len(A) and j &amp;gt;= 0:  # 谁小就把谁加进来
+                if A[i] ** 2 &amp;gt; A[j] ** 2:
+                    ans.append(A[j] ** 2)
+                    j -= 1
+                else:
+                    ans.append(A[i] ** 2)
+                    i += 1
+        while i &amp;lt; len(A):  # 如果i没有到遍历完吧i加进去
+            ans.append(A[i] ** 2)
+            i += 1
+        while j &amp;gt;=0:  # j没有到头把j加进去
+            ans.append(A[j] ** 2)
+            j -= 1
+        return ans
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;简单暴力法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+def sortedSquares(self, A: List[int]) -&amp;gt; List[int]:
+    return sorted(x * x for x in A)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;双指针法：
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(n) n 为数组长度&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(n)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;暴力法：
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(nlogn) n为数组长度&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(n)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;双指针法在解数组这一块的问题时是一个不错的方法。&lt;/li&gt;
+&lt;li&gt;一段递增的数，如果有负数那么负数的绝对值是递减的。反向遍历就能使其递增。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>高度检查器</title>
+      <link>https://ripple-zjw.github.io/2019/%E9%AB%98%E5%BA%A6%E6%A3%80%E6%9F%A5%E5%99%A8/</link>
+      <pubDate>Fri, 23 Aug 2019 12:59:06 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E9%AB%98%E5%BA%A6%E6%A3%80%E6%9F%A5%E5%99%A8/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-高度检查器&#34;&gt;题目：高度检查器&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;学校在拍年度纪念照时，一般要求学生按照 非递减 的高度顺序排列。&lt;/li&gt;
+&lt;li&gt;请你返回至少有多少个学生没有站在正确位置数量。该人数指的是：能让所有学生以 非递减 高度排列的必要移动人数。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例&#34;&gt;示例：&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入：[1,1,4,2,1,3]
+输出：3
+解释：
+高度为 4、3 和最后一个 1 的学生，没有站在正确的位置。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;提示&#34;&gt;提示：&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1 &amp;lt;= heights.length &amp;lt;= 100&lt;/li&gt;
+&lt;li&gt;1 &amp;lt;= heights[i] &amp;lt;= 100&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第1051题&#34;&gt;来源：力扣（LeetCode）第1051题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/height-checker&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/height-checker&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;p&gt;有两种方法。都是先排序，然后比较两者之间的差异。不同处，第一种是比较排序，第二种是计数排序。计数排序的时间复杂度相对较低，本文讲解计数排序。&lt;/p&gt;
+
+&lt;h2 id=&#34;思路&#34;&gt;思路：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;因为&lt;code&gt;heights[i]&lt;/code&gt;不会超过100，所以采用hash的思想，将所给数组每个值出现的次数作为值，将所给数组的值作为下标，这样相同值出现的次数就会被归在一起，而且值小的元素会在前面，因为下标就是值。&lt;/li&gt;
+&lt;li&gt;如果&lt;code&gt;1&lt;/code&gt;出现了3次，那么这3次一定是在最前面的，所以我们顺序遍历原数组，如果前3次不是1，就说明这个数要移动，以此类推。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+    def heightChecker(self, heights: List[int]) -&amp;gt; int:
+        ans = 0
+        arr = [0] * 101  # heights[i]最多不超过100个
+        for height in heights:  # 将heights散列到arr中
+            arr[height] += 1
+        j = 0
+        for i in range(1, len(arr)):  # 根据arr中的计数排序比较原数组
+            while arr[i] &amp;gt; 0:
+                if heights[j] != i:  # 如果值不同，那么ans就+1
+                    ans += 1
+                j += 1
+                arr[i] -= 1  # 比较完一次计数就-1，减到0说明这个数没有了。
+        return ans
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;然后再放上比较排序的代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+def heightChecker(self, heights: List[int]) -&amp;gt; int:
+    sorted_list = sorted(heights)
+    ans = 0
+    for i in range(len(heights)):
+        if heights[i] != sorted_list[i]:
+            ans += 1
+    return ans
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;计数排序：
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(n) &lt;code&gt;n = n + n&lt;/code&gt; n为数组&lt;code&gt;heights&lt;/code&gt;的长度&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(1) 1 为arr的长度101&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;比较排序：
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(nlogn) n 为&lt;code&gt;heights&lt;/code&gt;的长度&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(n)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;计数排序的效率比快速排序还要快，但是只适用于特殊场景。&lt;/li&gt;
+&lt;li&gt;例如在该题中，如果&lt;code&gt;heights[i]&lt;/code&gt;的大小非常大，那么需要的内存空间会非常多。如果大小不确定，那么就无法知道该声明多长的数组，一旦内存溢出，程序就崩溃了。又比如次数非常少，基本没有重复的数，那么排序的时间也不会快到哪里去。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>求最大子数组</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%B1%82%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Fri, 23 Aug 2019 12:57:06 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%B1%82%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-求最大子数组&#34;&gt;题目：求最大子数组&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在一个数组中找到和最大的子数组。&lt;/li&gt;
+&lt;li&gt;数组中有正有负，但都是&lt;code&gt;integer&lt;/code&gt;类型。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;题目来源-算法导论第38页-4-1-最大子数组问题&#34;&gt;题目来源：算法导论第38页 4.1 最大子数组问题&lt;/h4&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;p&gt;根据书中的问题，采用分治思想来解题。具体可参考算法导论。&lt;/p&gt;
+
+&lt;h2 id=&#34;思路&#34;&gt;思路：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;将整个数组一分为二，每次分完之后做四件事件：
+
+&lt;ul&gt;
+&lt;li&gt;查看是否是最小数组即长度是1，因为数组长度是1那么总和就是这一个数的值。&lt;/li&gt;
+&lt;li&gt;如果不是1，那就分别递归进左边的数组和右边的数组继续分，直到分到1再返回。&lt;/li&gt;
+&lt;li&gt;每次递归除了左边的最大子数组和右边的最大子数组外，还有交叉在中间的最大子数组。所以要把中间的最大子数组也算出来。&lt;/li&gt;
+&lt;li&gt;算出三者的各自的和将和最大的那个子数组并返回，同时返回它的两端下标。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;每次递归都会返回左边，右边，中间的最大的那个子数组。&lt;/li&gt;
+&lt;li&gt;最后一次递归返回最大的子数组，答案就出来了。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class FindMaxNum:
+	def _find_crossing(self, A, low, mid, high):  # 寻找穿过中间值的最大子数组
+		leftSum = float(&#39;-inf&#39;)
+		ans = 0
+		maxLeft = mid
+		maxRight = mid + 1
+		for i in range(mid, low - 1, -1):  # 找到左边的最大子数组
+			ans += A[i]
+			if ans &amp;gt; leftSum:
+				leftSum = ans
+				maxLeft = i
+		rightSum = float(&#39;-inf&#39;)
+		ans = 0
+		for j in range(mid + 1, high + 1):  # 找到右边的最大子数组
+			ans += A[j]
+			if ans &amp;gt; rightSum:
+				rightSum = ans
+				maxRight = j
+		return maxLeft, maxRight, leftSum + rightSum  # 返回最大的子数组以及它的两端下标
+
+
+	def find_max_num(self, A, low, high):
+		if low == high:  # 如果分到了1，那么就返回
+			return low, high, A[low]
+		else:
+			mid = (low + high) // 2  # 将数组一分为二
+			left_low, left_high, left_sum = self.find_max_num(A, low, mid)  # 递归进左子数组
+			right_low, right_high, right_sum = self.find_max_num(A, mid + 1, high)  # 递归进右子数组
+			cro_low, cro_high, cro_sum = self._find_crossing(A, low, mid, high)  # 寻找中间子数组
+			if left_sum &amp;gt;= right_sum and left_sum &amp;gt;= cro_sum:  # 左边最大返回左边
+				return left_low, left_high, left_sum
+			elif right_sum &amp;gt;= left_sum and right_sum &amp;gt;= cro_sum:  # 右边最大返回右边
+				return right_low, right_high, right_sum
+			else:  # 否则中间最大返回中间
+				return cro_low, cro_high, cro_sum
+
+if __name__ == &#39;__main__&#39;:  # 测试通过
+	test = [13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7]
+	fn = FindMaxNum()
+	i, j, res = fn.find_max_num(test, 0, len(test) - 1)
+	print(test[i:j+1])
+	print(i,j)
+	print(res)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(nlogn) n 为数组的长度&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(1) 完全没有开辟新的数组空间，仅仅是在原数组上分治。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;分治算法可以大幅度提高运行效率，相比于暴力法，速度提升很多。&lt;/li&gt;
+&lt;li&gt;算法导论上的这个分治法应该是我看到的最好的分治法了，很多地方的算法解这道题时总是会开辟新的数组，这就导致了内存空间的浪费，如果数据量多的话，很容易空间不够。&lt;/li&gt;
+&lt;li&gt;分治的主要思想就是找到递归条件和线性条件。然后用分而治之的方法从线性条件不停地向前合并，最终找到答案。主要的原理和递归很像。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>接雨水</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%8E%A5%E9%9B%A8%E6%B0%B4/</link>
+      <pubDate>Fri, 23 Aug 2019 12:55:03 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%8E%A5%E9%9B%A8%E6%B0%B4/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-接雨水&#34;&gt;题目：接雨水&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;给定&lt;code&gt;n&lt;/code&gt;个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;接雨水/rainwatertrap.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;上面是由数组 &lt;code&gt;[0,1,0,2,1,0,1,3,2,1,2,1]&lt;/code&gt; 表示的高度图，在这种情况下，可以接 6 个单位的雨水（蓝色部分表示雨水）。感谢 &lt;code&gt;Marcos&lt;/code&gt; 贡献此图。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例&#34;&gt;示例:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: [0,1,0,2,1,0,1,3,2,1,2,1]
+输出: 6
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第42题&#34;&gt;来源：力扣（LeetCode）第42题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/trapping-rain-water&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/trapping-rain-water&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;p&gt;方法太多了，一道极难题，从暴力法，到动态规划，再到单调栈，再到双指针。方法非常多，也很难理解，暴力法最好理解，dp和双指针稍难，我这里讲单调栈的方法。&lt;/p&gt;
+
+&lt;h2 id=&#34;思路&#34;&gt;思路：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;维护一个单调递减栈。&lt;/li&gt;
+&lt;li&gt;当有值比栈顶元素大的时候做这么几件事情：
+
+&lt;ul&gt;
+&lt;li&gt;先出栈一个元素并保存到top中。&lt;/li&gt;
+&lt;li&gt;然后判断stack是否是空，如果是空的话，说明出栈的左边没有东西，所以无法装雨水。(一定要两边都要有东西并且两边的墙比出栈的墙要长，这样才能装雨水)&lt;/li&gt;
+&lt;li&gt;算出当前元素与栈顶元素中间的距离&lt;code&gt;dis&lt;/code&gt;(注意现在是出栈之后的栈顶元素)&lt;/li&gt;
+&lt;li&gt;算出当前元素与栈顶元素中哪个值最小，并将小的那个值与出栈的那个元素相减，得到&lt;code&gt;floor_cnt&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;为什么要叫&lt;code&gt;floor_cnt&lt;/code&gt;呢，因为将&lt;code&gt;floor_cnt&lt;/code&gt;与&lt;code&gt;dis&lt;/code&gt;(也就是两栋大墙之间的距离)相乘，你就能得到在这两栋墙之间一层的雨水数量。&lt;/li&gt;
+&lt;li&gt;将它们加到ans答案中。例如：如果两栋墙最小的那栋是&lt;code&gt;3&lt;/code&gt;，那么就会有3层，每一层的雨水数量可能是不一样的，所以要算3遍。&lt;/li&gt;
+&lt;li&gt;最后返回ans得到答案。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;如果值比栈顶元素小的话就入栈就行了，这样就能维护单调递减栈。(注意栈中存的是数组下标，为了算起来方便。)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;talk-is-cheap-show-me-the-code&#34;&gt;Talk is cheap,show me the code.&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution(object):
+    def trap(self, height):
+        stack = []
+        ans = 0
+        cur = 0
+        while cur &amp;lt; len(height):
+            while stack and height[stack[-1]] &amp;lt; height[cur]:
+                top = stack.pop()
+                if not stack:
+                    break
+                dis = cur - stack[-1] - 1
+                floor_cnt = min(height[stack[-1]], height[cur]) - height[top]
+                ans += dis * floor_cnt
+            stack.append(cur)
+            cur += 1
+        return ans
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;顺便写上双指针法：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+    def trap(self, height: List[int]) -&amp;gt; int:
+        lMax = 0
+        rMax = 0
+        res = 0
+        i = 0
+        j = len(height) - 1
+        while i &amp;lt; j:
+            if height[i] &amp;lt; height[j]:
+                if height[i] &amp;gt;= lMax:
+                    lMax = height[i]
+                else:
+                    res += (lMax - height[i])
+                i += 1
+            else:
+                if height[j] &amp;gt;= rMax:
+                    rMax = height[j]
+                else:
+                    res += (rMax - height[j])
+                j -= 1
+        return res
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(n) n 为height长度&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(n) n为stack长度。最坏情况下完全是单调递减栈，n变为height的长度。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;这是一道hard题。难度挺大的，其实我自己第一次想的时侯方法已经很接近了，但就是那个突破口没有想到，导致做不出来。&lt;/li&gt;
+&lt;li&gt;如果我能想到一层一层算的话这道题就能解决了。&lt;/li&gt;
+&lt;li&gt;而且这道题非常经典，有非常多的解法，建议大家收藏。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>任务调度器</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%99%A8/</link>
+      <pubDate>Fri, 23 Aug 2019 12:52:54 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%99%A8/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-任务调度器&#34;&gt;题目：任务调度器&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;给定一个用字符数组表示的 CPU 需要执行的任务列表。其中包含使用大写的 A - Z 字母表示的26 种不同种类的任务。&lt;/li&gt;
+&lt;li&gt;任务可以以任意顺序执行，并且每个任务都可以在 1 个单位时间内执行完。&lt;/li&gt;
+&lt;li&gt;CPU 在任何一个单位时间内都可以执行一个任务，或者在待命状态。&lt;/li&gt;
+&lt;li&gt;然而，两个相同种类的任务之间必须有长度为 n 的冷却时间，因此至少有连续 n 个单位时间内 CPU 在执行不同的任务，或者在待命状态。&lt;/li&gt;
+&lt;li&gt;你需要计算完成所有任务所需要的最短时间。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例-1&#34;&gt;示例 1：&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: tasks = [&amp;quot;A&amp;quot;,&amp;quot;A&amp;quot;,&amp;quot;A&amp;quot;,&amp;quot;B&amp;quot;,&amp;quot;B&amp;quot;,&amp;quot;B&amp;quot;], n = 2
+输出: 8
+执行顺序: A -&amp;gt; B -&amp;gt; (待命) -&amp;gt; A -&amp;gt; B -&amp;gt; (待命) -&amp;gt; A -&amp;gt; B.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;注&#34;&gt;注：&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;任务的总个数为 [1, 10000]。&lt;/li&gt;
+&lt;li&gt;n 的取值范围为 [0, 100]。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第621题&#34;&gt;来源：力扣（LeetCode）第621题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/task-scheduler&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/task-scheduler&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;p&gt;写在队列的标签里，本质上用的却是贪心算法，不知道为什么，同时还用到了一点hashmap的知识。&lt;/p&gt;
+
+&lt;h2 id=&#34;思路&#34;&gt;思路：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;要知道最短时间首先要找到出现次数最多的那个值，如果出现次数一样多，选哪个都无所谓。&lt;/li&gt;
+&lt;li&gt;然后看&lt;code&gt;A-Z&lt;/code&gt;中总共有几个数字出现了，假设最多次数的值是&lt;code&gt;A&lt;/code&gt;，那么第一个&lt;code&gt;A&lt;/code&gt;到第二个&lt;code&gt;A&lt;/code&gt;之间总共还能再放&lt;code&gt;n&lt;/code&gt;个不一样的值。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;A -&amp;gt; (单位时间) -&amp;gt; (单位时间) -&amp;gt; A -&amp;gt; (单位时间) -&amp;gt; (单位时间) -&amp;gt; A&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;如果填不满那就为&lt;code&gt;等待时间&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;如果填满了，那就说明不需要&lt;code&gt;等待时间&lt;/code&gt;就能得到最短时间，所以最短时间就是数组的长度。&lt;/li&gt;
+&lt;li&gt;如果没填满，那么我们可以计算&lt;code&gt;(出现的次数最多的元素 - 1) * (n + 1) + 出现次数一样多的元素的个数&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;我们依靠出现的次数最多的元素&lt;code&gt;A&lt;/code&gt;把整个答案划分为a份(a为&lt;code&gt;A&lt;/code&gt;的次数)，每一份就是&lt;code&gt;n+1&lt;/code&gt;，由于最后一份不一定是&lt;code&gt;n+1&lt;/code&gt;，所以是&lt;code&gt;(a-1)*(n+1)&lt;/code&gt;，最后在把不相等的最后一份加进去就得到了答案。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+    def leastInterval(self, tasks: List[str], n: int) -&amp;gt; int:
+        count = [0] * 26
+        for task in tasks:
+            count[ord(task) - 65] += 1  # 这里是我自己写的简单hash函数，也可以用字典，我这里觉得简单就没用字典。
+        maxNum = max(count)
+        maxCount = 0
+        for c in count:
+            if c == maxNum:
+                maxCount += 1
+        return max((maxNum - 1) * (n + 1) + maxCount, len(tasks))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(n) n为tasks的长度&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(1)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;第一次写贪心算法题，标签写错了，本来有想到贪心算法的，可是标签是队列我就一直在想队列，想了半天没有思路。&lt;/li&gt;
+&lt;li&gt;贪心算法得到的有可能是近似解，在使用贪心算法时要想清楚特殊的情况。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>二叉树的后序遍历</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/</link>
+      <pubDate>Fri, 23 Aug 2019 12:49:52 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-二叉树的后序遍历&#34;&gt;题目：二叉树的后序遍历&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;给定一个二叉树，返回它的 后序 遍历。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例&#34;&gt;示例:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: [1,null,2,3]  
+   1
+    \
+     2
+    /
+   3 
+输出: [3,2,1]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;进阶:递归算法很简单，你可以通过迭代算法完成吗？&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第145题&#34;&gt;来源：力扣（LeetCode）第145题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/binary-tree-postorder-traversal&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/binary-tree-postorder-traversal&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;p&gt;方法有很多，递归法最简单，迭代法使用栈辅助完成，还有莫里斯遍历。本文讲解官方写的题解迭代法。虽然我也写出了迭代法，但是官方的解法既简单又高效，非常厉害。使用了迭代法+逆向工作法。&lt;/p&gt;
+
+&lt;h2 id=&#34;思路&#34;&gt;思路：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;后序遍历是左，右，中。可是中在最后，如果正常解后序遍历的话有的复杂。&lt;/li&gt;
+&lt;li&gt;如果我们用中，右，左这样来遍历的话岂不是将后序遍历变成了前序遍历的翻版类型。&lt;/li&gt;
+&lt;li&gt;这样的话答案只是与我们要求的答案相反，翻转一下列表就可以了。&lt;/li&gt;
+&lt;li&gt;所以解法就是一个反向的先序遍历方法。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;官方的迭代法+逆向工作法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+def postorderTraversal(self, root: TreeNode) -&amp;gt; List[int]:
+    if root is None:
+        return []
+    stack = [root]
+    res = []
+    while stack:
+        root = stack.pop()
+        res.append(root.val)
+        if root.left is not None:  # 先加左再加右，出栈的时候就是先加右，再加左。
+            stack.append(root.left)
+        if root.right is not None:
+            stack.append(root.right)
+    return res[::-1]
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;我自己写的迭代法，内容有点复杂，不是很好理解。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+def postorderTraversal(self, root):
+    stack = []
+    helper = []
+    res = []
+    while stack or root:
+        while root:
+            stack.append(root)
+            root = root.left
+        helper.append(stack[-1])
+        root = stack.pop().right
+        if root is None:
+            res.append(helper.pop().val)
+            while stack and stack[-1].left in helper and helper:
+                res.append(helper.pop().val)
+            while not stack and helper:
+                res.append(helper.pop().val)
+    return res
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;虽然我的方法写的多了一点，但是速度和官方的一样，甚至有时比官方解法快。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;两种方法相同，都是迭代法：
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(n) n为树的所有节点。&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(n)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;再一次遇到逆向工作法，事实证明如果你遇到问题解不开来反向解一下，思路清晰，易于求解。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>132模式</title>
@@ -928,513 +1577,6 @@ iterator.hasNext(); // 返回 false
 &lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
 
 &lt;p&gt;二叉搜索树的中序遍历就是将二叉搜索树从小到大排列。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>关于博客</title>
-      <link>https://ripple-zjw.github.io/about/aboutblog/</link>
-      <pubDate>Thu, 15 Aug 2019 14:51:20 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/about/aboutblog/</guid>
-      <description>
-
-&lt;h1 id=&#34;关于博客&#34;&gt;关于博客&lt;/h1&gt;
-
-&lt;p&gt;感谢Leavelt的作者&lt;strong&gt;柳志超&lt;/strong&gt;，这个基于hugo的博客框架非常的好。&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;主题官方网址: &lt;a href=&#34;https://themes.gohugo.io/leaveit/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://themes.gohugo.io/leaveit/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;中文文档网址: &lt;a href=&#34;https://liuzhichao.com/2018/hugo-theme-leaveit/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://liuzhichao.com/2018/hugo-theme-leaveit/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>关于我</title>
-      <link>https://ripple-zjw.github.io/about/aboutme/</link>
-      <pubDate>Thu, 15 Aug 2019 14:51:20 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/about/aboutme/</guid>
-      <description>
-
-&lt;h1 id=&#34;关于我&#34;&gt;关于我&lt;/h1&gt;
-
-&lt;p&gt;学生党一枚,我的网名叫:Ripple&lt;/p&gt;
-
-&lt;p&gt;​       这是我的个人博客网站，主要写一些自己在学习编程过程中遇到的问题，以及解决的方法。同时，我也欢迎其他人来浏览我的学习成果，为我指出一些错误。如果你喜欢我的网站，可以按Ctrl + d 收藏该网站。希望在浏览的过程中我们一起学习，进步。谢谢！！！！！&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;附上我的邮箱，在浏览过程中有任何问题，都可以发到我的邮箱里。1315294982@qq.com&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;我的GitHub账号, Ripple-zjw, 你可以点击左上角的LeaveIt回到主页，再点击头像下的图标前往我的GitHub账号。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;我的微信，同上可以找到我的二维码&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;如果在浏览的过程中你觉得字体不是很清晰可以点击左上角的爱心切换为黑夜模式。&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>First</title>
-      <link>https://ripple-zjw.github.io/2019/first/</link>
-      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/first/</guid>
-      <description>
-
-&lt;h1 id=&#34;我的博客测试文本&#34;&gt;我的博客测试文本&lt;/h1&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Git</title>
-      <link>https://ripple-zjw.github.io/2019/git/</link>
-      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/git/</guid>
-      <description>
-
-&lt;h1 id=&#34;git-版本控制工具&#34;&gt;Git 版本控制工具&lt;/h1&gt;
-
-&lt;h2 id=&#34;学习目标&#34;&gt;学习目标&lt;/h2&gt;
-
-&lt;p&gt;必备（项目开发中必定用到）
-* 能够克隆服务器上的分支并会切换分支&lt;/p&gt;
-
-&lt;p&gt;拓展
-* 本地git操作
-* 远程仓库合并
-* 学会看提示信息去掌握git的方法&lt;/p&gt;
-
-&lt;h2 id=&#34;文档&#34;&gt;文档&lt;/h2&gt;
-
-&lt;p&gt;中文权威文档：&lt;a href=&#34;https://git-scm.com/book/zh/v2&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://git-scm.com/book/zh/v2&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://git.mydoc.io/?t=154712&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;如何在码云上生成并部署SSH key&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;安装git&#34;&gt;安装Git&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;git-scm &lt;a href=&#34;https://git-scm.com/downloads/guis&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://git-scm.com/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;需要了解几个问题&#34;&gt;需要了解几个问题&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;为什么需要版本控制工具？&lt;/li&gt;
-&lt;li&gt;了解版本控制工具的发展历程&lt;/li&gt;
-&lt;li&gt;了解本地版本控制系统、集中化版本控制系统和分布式版本控制系统的异同&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;为什么需要版本控制工具&#34;&gt;为什么需要版本控制工具？&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;备份文件(U盘)&lt;/li&gt;
-&lt;li&gt;记录历史(历史书)&lt;/li&gt;
-&lt;li&gt;回到过去(时光机)&lt;/li&gt;
-&lt;li&gt;多端共享(百度云盘)&lt;/li&gt;
-&lt;li&gt;团队协作(复仇者联盟)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;版本控制工具的发展历程&#34;&gt;版本控制工具的发展历程&lt;/h2&gt;
-
-&lt;p&gt;cvs(1985年)  &amp;mdash;  svn(2000年)  &amp;mdash;   git(2005)&lt;/p&gt;
-
-&lt;h3 id=&#34;git诞生&#34;&gt;Git诞生&lt;/h3&gt;
-
-&lt;p&gt;在2002年以前，世界各地的志愿者把源代码文件发给Linus，然后由Linus本人通过手工方式合并代码！&lt;/p&gt;
-
-&lt;p&gt;因为Linus坚定地反对CVS和SVN，这些集中式的版本控制系统不但速度慢，而且必须联网才能使用。&lt;/p&gt;
-
-&lt;p&gt;有一些商用的版本控制系统，虽然比CVS、SVN好用，但那是付费的，和Linux的开源精神不符。&lt;/p&gt;
-
-&lt;p&gt;到了2002年，Linux系统已经发展了十年了，代码库之大让Linus很难继续通过手工方式管理了，社区的弟兄们也对这种方式表达了强烈不满，于是Linus选择了一个商业的版本控制系统BitKeeper，BitKeeper的东家BitMover公司出于人道主义精神，授权Linux社区免费使用这个版本控制系统。&lt;/p&gt;
-
-&lt;p&gt;安定团结的大好局面在2005年就被打破了，原因是Linux社区牛人聚集，不免沾染了一些梁山好汉的江湖习气。开发Samba的Andrew试图破解BitKeeper的协议（这么干的其实也不只他一个），被BitMover公司发现了（监控工作做得不错！），于是BitMover公司怒了，要收回Linux社区的免费使用权。&lt;/p&gt;
-
-&lt;p&gt;Linus可以向BitMover公司道个歉，保证以后严格管教弟兄们，嗯，这是不可能的。实际情况是这样的：&lt;/p&gt;
-
-&lt;p&gt;Linus花了两周时间自己用C写了一个分布式版本控制系统，这就是Git！一个月之内，Linux系统的源码已经由Git管理了！牛是怎么定义的呢？大家可以体会一下。&lt;/p&gt;
-
-&lt;p&gt;Git迅速成为最流行的分布式版本控制系统，尤其是2008年，GitHub网站上线了，它为开源项目免费提供Git存储，无数开源项目开始迁移至GitHub，包括jQuery，PHP，Ruby等等。&lt;/p&gt;
-
-&lt;p&gt;历史就是这么偶然，如果不是当年BitMover公司威胁Linux社区，可能现在我们就没有免费而超级好用的Git了。&lt;/p&gt;
-
-&lt;h2 id=&#34;集中式和分布式的区别&#34;&gt;集中式和分布式的区别&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;git-scm &lt;a href=&#34;https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%85%B3%E4%BA%8E%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;官方说明&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;集中式：代码都保存在中央服务器，开发人员按需获取代码，修改完成后提交到中央服务器保存&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;优势：&lt;/li&gt;
-&lt;li&gt;方便权限和内容统一管理&lt;/li&gt;
-&lt;li&gt;可以按需检出代码，节省客户端硬盘空间&lt;/li&gt;
-&lt;li&gt;劣势：&lt;/li&gt;
-&lt;li&gt;连接不上服务器时，无法获取和提交更新&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;分布式：代码保存在每一个客户端中，开发人员在本地由&lt;strong&gt;完整的项目代码&lt;/strong&gt;，修改完成后保存在本地仓库。在将来通过网络或其他方式，相互交换修改历史&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;优势：&lt;/li&gt;
-&lt;li&gt;分布式存储，不担心服务器故障导致的代码丢失&lt;/li&gt;
-&lt;li&gt;劣势：操作&lt;strong&gt;太&lt;/strong&gt;灵活，有学习成本&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;git的优势&#34;&gt;Git的优势&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;分布式&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;强大的分支&lt;/strong&gt;（支持非线性的开发模式）&lt;/li&gt;
-&lt;li&gt;灵活（甚至可以修改历史）&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;常用的操作&#34;&gt;常用的操作&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;创建仓库&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git init # 在当面目录下创建仓库
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;设置昵称和邮箱&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git config --global user.name &amp;quot;Gavin&amp;quot; # 设置昵称
-git config --global user.email &amp;quot;Gavin@email.com&amp;quot; # 设置邮箱
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;### 注意git的设置分为“当前仓库设置&amp;rdquo;和&amp;rdquo;全局设置&amp;rdquo;，上面加了&amp;ndash;global是对全局生效的&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;创建或修改文件&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;这个就略了吧。。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;将文件加入版本控制&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git add xxx.md
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;提交此次修改&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git commit -m &amp;quot;增加了一个文件，并且修改了内容&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;查看修改历史&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git log
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;创建新分支，进行实验性的操作&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git checkout -b new_branch
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;合并分支&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git checkout master # 切换到接收合并的分支
-git merge new_branch  # 接收new_branch 分支的合并
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;删除分支&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git branch -d new_branch
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;切换版本&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git reset --hard 1j284jf  # 切换到指定了历史中
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;注意-以上命令都是你的本地仓库进行的&#34;&gt;注意！以上命令都是你的本地仓库进行的！！！！&lt;/h4&gt;
-
-&lt;h4 id=&#34;注意-以上命令掌握之后-日常使用gui完成操作&#34;&gt;注意！以上命令掌握之后，日常使用GUI完成操作！&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;为什么？&lt;/p&gt;
-&lt;/blockquote&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;如何和他人交换代码-其实就是交换history&#34;&gt;如何和他人交换代码（其实就是交换History）&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;git托管平台&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;github # 全球最大的同性交友网站&lt;/li&gt;
-&lt;li&gt;gitlab # 开源的高度定制化的托管平台&lt;/li&gt;
-&lt;li&gt;gogs# 国人使用go开发的开源&lt;strong&gt;精简&lt;/strong&gt;平台&lt;/li&gt;
-&lt;li&gt;bitbucket # 国外的免费私有库平台&lt;/li&gt;
-&lt;li&gt;gitee # 国内的免费私有库平台&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;注册&lt;br /&gt;
-&lt;a href=&#34;https://gitee.com/signup&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://gitee.com/signup&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;创建远程仓库&lt;br /&gt;
-&lt;a href=&#34;https://gitee.com/projects/new&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://gitee.com/projects/new&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;获取仓库地址&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;推送&lt;br /&gt;
-push&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;思考，既然是分布式的，那么现在远程仓库和本地仓库的内容是一摸一样吗&lt;br /&gt;
-  对于已经push 的分支来说是的。但是对于没有push的分支，远程仓库是没有的&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;fork&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;派生一个远程仓库（注意远程仓库，是指托管平台中的仓库，本地仓库是指你电脑中的仓库）&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Pull Request&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;远程仓库建的合并（请求目标仓库合并自己的仓库）&lt;/li&gt;
-&lt;li&gt;前提：有fork关系&lt;/li&gt;
-&lt;li&gt;本质将一个仓库的某分支合并到另一个的仓库的某分支&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;说明，获取代码是整个仓库，交换代码（更新）是以分支为单位的&lt;br /&gt;
-所以，新功能一般在新分支开发，然后把整个分支合并到主分支上&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;git工作流程&#34;&gt;Git工作流程&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;获取代码&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;如果没有克隆仓库，先克隆仓库
-&lt;code&gt;git clone git@gitee.com:DN_Ian/Vip1710.git&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;获取最新数据，使本地仓库与远程仓库一致
-&lt;code&gt;git fetch&lt;/code&gt; # 注意pull命令fetch命令的区别,fetch/pull,抓取/拉取， **pull ==  fetch +  merge **&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;开发代码&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;切换到要开发的分支 (假设要对gavin分支进行开发)&lt;br /&gt;
-&lt;code&gt;git checkout  origin/gavin&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;新建私有分支，进行开发&lt;br /&gt;
-&lt;code&gt;git checkout -b my_branch&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;开发代码&lt;br /&gt;
-&lt;code&gt;(略)&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;提交&lt;br /&gt;
-&lt;code&gt;git commit -a&lt;/code&gt;（在私有分支&lt;code&gt;my_branch&lt;/code&gt;上）&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;上传代码&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;保存好正在开发的代码&lt;br /&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;获取最新数据，使本地仓库与远程仓库一致&lt;br /&gt;
-&lt;code&gt;git fetch origin&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;切换到要开发的分支 (假设要对gavin分支进行开发)&lt;br /&gt;
-&lt;code&gt;git checkout  origin/gavin&lt;/code&gt;&lt;br /&gt;
-// 切到一个临时分支，没有名字, 版本与远程gavin分支相同&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;将开发完成的私有分支合并, 如果有冲突，使用gui处理冲突&lt;br /&gt;
-&lt;code&gt;git merge my_branch&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;上传修改后的gavin分支到远程仓库&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;code&gt;git push origin my_branch:gavin  #1，推送到属于自己的派生仓库，2.推送到目标分支&lt;/code&gt;&lt;br /&gt;
-  // 如果恰好此时远程仓库的gavin分支发生变化，会提示冲突。则重新操作&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;注意区别&#34;&gt;注意区别&lt;/h3&gt;
-
-&lt;p&gt;本地和本地—— checkout/merge&lt;br /&gt;
-本地和远程—— clone/pull/fetch/push&lt;br /&gt;
-远程和远程—— fork/pull reuqets&lt;/p&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;-&lt;/th&gt;
-&lt;th&gt;本地&lt;/th&gt;
-&lt;th&gt;远程&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;本地&lt;/td&gt;
-&lt;td&gt;checkout/merge&lt;/td&gt;
-&lt;td&gt;clone/fetch/push&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;远程&lt;/td&gt;
-&lt;td&gt;clone/fetch/push&lt;/td&gt;
-&lt;td&gt;fork/pull reuqets&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Markdown使用</title>
-      <link>https://ripple-zjw.github.io/2019/markdown%E8%AF%95%E7%94%A8/</link>
-      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/markdown%E8%AF%95%E7%94%A8/</guid>
-      <description>
-
-&lt;h1 id=&#34;一级标题&#34;&gt;一级标题&lt;/h1&gt;
-
-&lt;h2 id=&#34;二级标题&#34;&gt;二级标题&lt;/h2&gt;
-
-&lt;h3 id=&#34;三级标题&#34;&gt;三级标题&lt;/h3&gt;
-
-&lt;h4 id=&#34;四级标题&#34;&gt;四级标题&lt;/h4&gt;
-
-&lt;h5 id=&#34;五级标题&#34;&gt;五级标题&lt;/h5&gt;
-
-&lt;h6 id=&#34;六级标题&#34;&gt;六级标题&lt;/h6&gt;
-
-&lt;p&gt;&lt;em&gt;倾斜字体&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;++下划线++&lt;/p&gt;
-
-&lt;p&gt;&lt;del&gt;删除线&lt;/del&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;加粗字体&lt;/strong&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;分割线&#34;&gt;分割线&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;sequenceDiagram
-A-&amp;gt;&amp;gt;B: How are you?
-B-&amp;gt;&amp;gt;A: Great!
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;graph LR
-A--&amp;gt;B
-a--&amp;gt;A
-a--&amp;gt;B
-B--&amp;gt;a
-c--&amp;gt;B
-a--&amp;gt;c
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-math&#34;&gt;E = mc^2 + 6^7 * 3 /3
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;print(&#39;hello world!!!!&#39;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;#include&amp;lt;stdio.h&amp;gt;
-int main(){
-    printf(&#39;hello world!!!!\n&#39;);
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>bootstrap</title>
-      <link>https://ripple-zjw.github.io/2019/bootstrap/</link>
-      <pubDate>Wed, 14 Aug 2019 13:22:20 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/bootstrap/</guid>
-      <description>
-
-&lt;h3 id=&#34;bootstrap&#34;&gt;bootstrap&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;简洁、直观、强悍的前端开发框架，让web开发更迅速、简单
-中文网 ： http://www.bootcss.com/
-英文网  :  http://getbootstrap.com/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;容器&#34;&gt;容器&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;流体布局容器
-    容器的width为auto，只是两边加了15px的padding。
-
-固定布局
-    容器的width会随设备分辨率的不同而生产变化
-        分辨率阈值
-            w &amp;gt;=1200                容器的width为1170   左右padding为15 （注意是borderBox）
-            1200&amp;gt;w &amp;gt;=992        容器的width为970     左右padding为15 （注意是borderBox）
-            992 &amp;gt; w &amp;gt;=768       容器的width为750     左右padding为15  （注意是borderBox）
-            768 &amp;gt; w &amp;gt;=992       容器的width为auto    左右padding为15  （注意是borderBox）
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;栅格系统&#34;&gt;栅格系统&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt; col-lg-x    
- col-md-x
- col-sm-x
- col-xs-x
- x默认拥有12个等级
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;列偏移&#34;&gt;列偏移&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;调整的是margin-left，分13个等级（0到12）
-        0时为0%
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;列排序&#34;&gt;列排序&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;push的时候调整的是left，分13个等级（0到12）
-        0时为auto
-
-pull的时候调整的是right，分13个等级（0到12）
-        0时为auto
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;响应式工具&#34;&gt;响应式工具&lt;/h3&gt;
-
-&lt;h3 id=&#34;容器与栅格盒模型设计的精妙之处&#34;&gt;容器与栅格盒模型设计的精妙之处&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;    container 提供了一个15px的padding
-    row 是 column 直接存在的容器，row 默认最多可有12个 column，
-同时作为都是左浮动的 column 的 wrapper，自带 clearfix 的性质。
-同时 row 还有一个很特殊的地方，就是左右各有 －15px 的 margin，
-为了抵消 container 中15px的 padding
-    每个column 也会有15px的水平方向的 padding，colunmn 只能在 row 中生存，
-由于 row 的 margin 为－15px，那么位于两边的 column 就碰到了 container 的边界。
-但是 colunmn 本身又有 15px 的 padding 使得它其中的内容并不会碰到 container，
-同时 不同column的内容之间就有了30px的槽
-
-目的是为了确保列与列之间有30px的槽，列与容器之间有15px的槽
-&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     

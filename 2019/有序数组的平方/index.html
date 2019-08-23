@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E9%AB%98%E5%BA%A6%E6%A3%80%E6%9F%A5%E5%99%A8/" />
+  
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           有序数组的平方 | LeaveIt
+       
+  </title>
+  <meta name="title" content="有序数组的平方 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "有序数组的平方",
+    "headline" : "有序数组的平方",
+    "description" : "题目：有序数组的平方  给定一个按非递减顺序排序的整数数组 A，返回每个数字的平方组成的新数组，要求也按非递减顺序排序。  示例 1： 输入：[-4,-1,0,3,10] 输出：[0,1,9,16,100]  示例 2： 输入：[-7,-3,2,3,11] 输出：[4,9,9,49,121]  提示：  1 \x26lt;= A.length \x26lt;= 10000 10000 \x26lt;= A[i] \x26lt;= 10000 A已按非递减顺序排序。  来源：力扣（LeetCode）第977题  链接：https:\/\/leetcode-cn.com\/problems\/squares-of-a-sorted-array\n 分析： 这道题的方法有两种，一种最简单，先计算，再排序。第二种用双指针做到一遍遍历解答。\n思路：  由于数组是按照递增的顺序增长的，因此所有的正数都是递增的，所有的负数加上绝对值都是递减的。 我们用两个指针i和j，i从前往后遍历，j从后往前遍历。 i遇到正数就停下来，j遇到负数就停下来，然后比较他们两谁小，小的那个放到ans答案中。 然后就把放入答案中的那个指针往后前移。 最后退出循环，但是可能有一个指针并没有移到终点，因此要在循环结束后去判断两个指针的情况，把指针后面的值都加到ans中去。 最后得到答案。  代码： class Solution: def sortedSquares(self, A: List[int]) -\x26gt; List[int]: i = 0 j = len(A) - 1 ans = [] while i \x26lt; len(A) and j \x26gt;= 0: # 主循环 while i \x26lt; len(A) and A[i] \x26lt; 0: # 遍历到第一个正数 i \x2b= 1 while j \x26gt;= 0 and A[j] \x26gt;= 0: # 遍历到第一个负数 j -= 1 if i \x26lt; len(A) and j \x26gt;= 0: # 谁小就把谁加进来 if A[i] ** 2 \x26gt; A[j] ** 2: ans.",
+    "inLanguage" : "en-us",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-08-23 13:01:17 \x2b0800 CST",
+    "dateModified" : "2019-08-23 13:01:17 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9\/",
+    "wordCount" : "176",
+    "keywords" : [ "算法求解思想","排序","双指针", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">有序数组的平方</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-08-23 itemprop="datePublished">August 23, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-有序数组的平方">题目：有序数组的平方</h1>
+
+<ul>
+<li>给定一个按非递减顺序排序的整数数组 A，返回每个数字的平方组成的新数组，要求也按非递减顺序排序。</li>
+</ul>
+
+<h5 id="示例-1">示例 1：</h5>
+
+<pre><code>输入：[-4,-1,0,3,10]
+输出：[0,1,9,16,100]
+</code></pre>
+
+<h5 id="示例-2">示例 2：</h5>
+
+<pre><code>输入：[-7,-3,2,3,11]
+输出：[4,9,9,49,121]
+</code></pre>
+
+<h5 id="提示">提示：</h5>
+
+<ul>
+<li>1 &lt;= <code>A.length</code> &lt;= 10000</li>
+<li>10000 &lt;= <code>A[i]</code> &lt;= 10000</li>
+<li><code>A</code>已按非递减顺序排序。</li>
+</ul>
+
+<h4 id="来源-力扣-leetcode-第977题">来源：力扣（LeetCode）第977题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/squares-of-a-sorted-array" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/squares-of-a-sorted-array</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<p>这道题的方法有两种，一种最简单，先计算，再排序。第二种用双指针做到一遍遍历解答。</p>
+
+<h2 id="思路">思路：</h2>
+
+<ul>
+<li>由于数组是按照递增的顺序增长的，因此所有的正数都是递增的，所有的负数加上绝对值都是递减的。</li>
+<li>我们用两个指针<code>i</code>和<code>j</code>，<code>i</code>从前往后遍历，<code>j</code>从后往前遍历。</li>
+<li><code>i</code>遇到正数就停下来，<code>j</code>遇到负数就停下来，然后比较他们两谁小，小的那个放到ans答案中。</li>
+<li>然后就把放入答案中的那个指针往后前移。</li>
+<li>最后退出循环，但是可能有一个指针并没有移到终点，因此要在循环结束后去判断两个指针的情况，把指针后面的值都加到ans中去。</li>
+<li>最后得到答案。</li>
+</ul>
+
+<h2 id="代码">代码：</h2>
+
+<pre><code class="language-python">class Solution:
+    def sortedSquares(self, A: List[int]) -&gt; List[int]:
+        i = 0
+        j = len(A) - 1
+        ans = []
+        while i &lt; len(A) and j &gt;= 0:  # 主循环
+            while i &lt; len(A) and A[i] &lt; 0:  # 遍历到第一个正数
+                i += 1
+            while j &gt;= 0 and A[j] &gt;= 0:  # 遍历到第一个负数
+                j -= 1
+            if i &lt; len(A) and j &gt;= 0:  # 谁小就把谁加进来
+                if A[i] ** 2 &gt; A[j] ** 2:
+                    ans.append(A[j] ** 2)
+                    j -= 1
+                else:
+                    ans.append(A[i] ** 2)
+                    i += 1
+        while i &lt; len(A):  # 如果i没有到遍历完吧i加进去
+            ans.append(A[i] ** 2)
+            i += 1
+        while j &gt;=0:  # j没有到头把j加进去
+            ans.append(A[j] ** 2)
+            j -= 1
+        return ans
+</code></pre>
+
+<ul>
+<li><p>简单暴力法</p>
+
+<pre><code class="language-python">class Solution:
+def sortedSquares(self, A: List[int]) -&gt; List[int]:
+    return sorted(x * x for x in A)
+</code></pre></li>
+</ul>
+
+<h2 id="复杂度分析">复杂度分析：</h2>
+
+<ul>
+<li>双指针法：
+
+<ul>
+<li>时间复杂度：O(n) n 为数组长度</li>
+<li>空间复杂度：O(n)</li>
+</ul></li>
+<li>暴力法：
+
+<ul>
+<li>时间复杂度：O(nlogn) n为数组长度</li>
+<li>空间复杂度：O(n)</li>
+</ul></li>
+</ul>
+
+<h1 id="总结">总结：</h1>
+
+<ul>
+<li>双指针法在解数组这一块的问题时是一个不错的方法。</li>
+<li>一段递增的数，如果有负数那么负数的绝对值是递减的。反向遍历就能使其递增。</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9/>https://ripple-zjw.github.io/2019/%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E6%8E%92%E5%BA%8F/">
+                    #排序</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">
+                    #双指针</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E9%AB%98%E5%BA%A6%E6%A3%80%E6%9F%A5%E5%99%A8/" class="prev" rel="prev" title="高度检查器"><i class="iconfont icon-left"></i>&nbsp;高度检查器</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

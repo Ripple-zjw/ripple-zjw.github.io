@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/132%E6%A8%A1%E5%BC%8F/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%99%A8/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           二叉树的后序遍历 | LeaveIt
+       
+  </title>
+  <meta name="title" content="二叉树的后序遍历 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "二叉树的后序遍历",
+    "headline" : "二叉树的后序遍历",
+    "description" : "题目：二叉树的后序遍历  给定一个二叉树，返回它的 后序 遍历。  示例: 输入: [1,null,2,3] 1 \\ 2 \/ 3 输出: [3,2,1]  进阶:递归算法很简单，你可以通过迭代算法完成吗？\n来源：力扣（LeetCode）第145题  链接：https:\/\/leetcode-cn.com\/problems\/binary-tree-postorder-traversal\n 分析： 方法有很多，递归法最简单，迭代法使用栈辅助完成，还有莫里斯遍历。本文讲解官方写的题解迭代法。虽然我也写出了迭代法，但是官方的解法既简单又高效，非常厉害。使用了迭代法\x2b逆向工作法。\n思路：  后序遍历是左，右，中。可是中在最后，如果正常解后序遍历的话有的复杂。 如果我们用中，右，左这样来遍历的话岂不是将后序遍历变成了前序遍历的翻版类型。 这样的话答案只是与我们要求的答案相反，翻转一下列表就可以了。 所以解法就是一个反向的先序遍历方法。  代码：  官方的迭代法\x2b逆向工作法\n# Definition for a binary tree node. # class TreeNode: # def __init__(self, x): # self.val = x # self.left = None # self.right = None class Solution: def postorderTraversal(self, root: TreeNode) -\x26gt; List[int]: if root is None: return [] stack = [root] res = [] while stack: root = stack.",
+    "inLanguage" : "en-us",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-08-23 12:49:52 \x2b0800 CST",
+    "dateModified" : "2019-08-23 12:49:52 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86\/",
+    "wordCount" : "179",
+    "keywords" : [ "算法求解思想","栈","二叉树","逆向工作法","树","二叉树的遍历", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">二叉树的后序遍历</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-08-23 itemprop="datePublished">August 23, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-二叉树的后序遍历">题目：二叉树的后序遍历</h1>
+
+<ul>
+<li>给定一个二叉树，返回它的 后序 遍历。</li>
+</ul>
+
+<h5 id="示例">示例:</h5>
+
+<pre><code>输入: [1,null,2,3]  
+   1
+    \
+     2
+    /
+   3 
+输出: [3,2,1]
+</code></pre>
+
+<p><strong>进阶:递归算法很简单，你可以通过迭代算法完成吗？</strong></p>
+
+<h4 id="来源-力扣-leetcode-第145题">来源：力扣（LeetCode）第145题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/binary-tree-postorder-traversal" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/binary-tree-postorder-traversal</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<p>方法有很多，递归法最简单，迭代法使用栈辅助完成，还有莫里斯遍历。本文讲解官方写的题解迭代法。虽然我也写出了迭代法，但是官方的解法既简单又高效，非常厉害。使用了迭代法+逆向工作法。</p>
+
+<h2 id="思路">思路：</h2>
+
+<ul>
+<li>后序遍历是左，右，中。可是中在最后，如果正常解后序遍历的话有的复杂。</li>
+<li>如果我们用中，右，左这样来遍历的话岂不是将后序遍历变成了前序遍历的翻版类型。</li>
+<li>这样的话答案只是与我们要求的答案相反，翻转一下列表就可以了。</li>
+<li>所以解法就是一个反向的先序遍历方法。</li>
+</ul>
+
+<h2 id="代码">代码：</h2>
+
+<ul>
+<li><p>官方的迭代法+逆向工作法</p>
+
+<pre><code class="language-python"># Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+def postorderTraversal(self, root: TreeNode) -&gt; List[int]:
+    if root is None:
+        return []
+    stack = [root]
+    res = []
+    while stack:
+        root = stack.pop()
+        res.append(root.val)
+        if root.left is not None:  # 先加左再加右，出栈的时候就是先加右，再加左。
+            stack.append(root.left)
+        if root.right is not None:
+            stack.append(root.right)
+    return res[::-1]
+</code></pre></li>
+
+<li><p>我自己写的迭代法，内容有点复杂，不是很好理解。</p>
+
+<pre><code class="language-python"># Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+def postorderTraversal(self, root):
+    stack = []
+    helper = []
+    res = []
+    while stack or root:
+        while root:
+            stack.append(root)
+            root = root.left
+        helper.append(stack[-1])
+        root = stack.pop().right
+        if root is None:
+            res.append(helper.pop().val)
+            while stack and stack[-1].left in helper and helper:
+                res.append(helper.pop().val)
+            while not stack and helper:
+                res.append(helper.pop().val)
+    return res
+</code></pre></li>
+
+<li><p>虽然我的方法写的多了一点，但是速度和官方的一样，甚至有时比官方解法快。</p></li>
+</ul>
+
+<h2 id="复杂度分析">复杂度分析：</h2>
+
+<ul>
+<li>两种方法相同，都是迭代法：
+
+<ul>
+<li>时间复杂度：O(n) n为树的所有节点。</li>
+<li>空间复杂度：O(n)</li>
+</ul></li>
+</ul>
+
+<h1 id="总结">总结：</h1>
+
+<ul>
+<li>再一次遇到逆向工作法，事实证明如果你遇到问题解不开来反向解一下，思路清晰，易于求解。</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/>https://ripple-zjw.github.io/2019/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E6%A0%88/">
+                    #栈</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
+                    #二叉树</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E9%80%86%E5%90%91%E5%B7%A5%E4%BD%9C%E6%B3%95/">
+                    #逆向工作法</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E6%A0%91/">
+                    #树</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/">
+                    #二叉树的遍历</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/132%E6%A8%A1%E5%BC%8F/" class="prev" rel="prev" title="132模式"><i class="iconfont icon-left"></i>&nbsp;132模式</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%99%A8/" class="next" rel="next" title="任务调度器">任务调度器&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

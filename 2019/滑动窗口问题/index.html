@@ -239,19 +239,19 @@
 
 <p>可能直接看代码不是非常的直观，不知道第二种方法到底有多慢，我以Python为例，截取了一张所有使用Python的同学提交的代码的时间分布表。</p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="images/滑动窗口问题/截图.png" alt="image" class="lazyload"><figcaption class="image-caption">image</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/滑动窗口问题/截图.png" alt="image" class="lazyload"><figcaption class="image-caption">image</figcaption></figure></p>
 
 <p>由于LeetCode后期强制写了一个测试：一段几千字的字符串，还设置了代码执行时间限制。导致如果用第二种方法的话会不通过，所以后期所有人用的都是滑动窗口的方法。</p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="images/滑动窗口问题/截图1.png" alt="image" class="lazyload"><figcaption class="image-caption">image</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/滑动窗口问题/截图1.png" alt="image" class="lazyload"><figcaption class="image-caption">image</figcaption></figure></p>
 
 <p>可以看到我写的代码只用了80ms，最短的用了44ms</p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="images/滑动窗口问题/截图2.png" alt="image" class="lazyload"><figcaption class="image-caption">image</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/滑动窗口问题/截图2.png" alt="image" class="lazyload"><figcaption class="image-caption">image</figcaption></figure></p>
 
 <p>而如果使用第二种方法的话，</p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="images/滑动窗口问题/截图3.png" alt="image" class="lazyload"><figcaption class="image-caption">image</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/滑动窗口问题/截图3.png" alt="image" class="lazyload"><figcaption class="image-caption">image</figcaption></figure></p>
 
 <p>用了整整1456ms，这平均至少也相差了10倍左右的速度。</p>
 

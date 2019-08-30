@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>投票法 on LeaveIt</title>
+    <link>https://ripple-zjw.github.io/tags/%E6%8A%95%E7%A5%A8%E6%B3%95/</link>
+    <description>Recent content in 投票法 on LeaveIt</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 30 Aug 2019 19:17:44 +0800</lastBuildDate>
+    
+	<atom:link href="https://ripple-zjw.github.io/tags/%E6%8A%95%E7%A5%A8%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>求众数</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%B1%82%E4%BC%97%E6%95%B0/</link>
+      <pubDate>Fri, 30 Aug 2019 19:17:44 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%B1%82%E4%BC%97%E6%95%B0/</guid>
+      <description>题目：求众数  给定一个大小为 n 的数组，找到其中的众数。众数是指在数组中出现次数大于⌊ n/2 ⌋的元素。 你可以假设数组是非空的，并且给定的数组总是存在众数。  示例 1: 输入: [3,2,3] 输出: 3  示例 2: 输入: [2,2,1,1,1,2,2] 输出: 2  来源：力扣（LeetCode）第169题  链接：https://leetcode-cn.com/problems/majority-element
+ 分析： 这道题很经典，方法有很多，暴力法，分治法，哈希法，排序法，随机法，投票法。我自己用了哈希法做出来的，但是官方的投票法真的是太秀了，这里着重讲投票法。
+思路：  先让第一个人作为candidate， 然后和它一样的元素给他加票，不一样的元素给它减票， 当票数为0时，就换掉candidate，让新的元素担任。 最后成为candidate的元素就是众数。 当然，前提是题目给出地假设一定存在众数。  代码：  投票法：
+class Solution: def majorityElement(self, nums: List[int]) -&amp;gt; int: candidate = 0 count = 0 for num in nums: if count == 0: candidate = num count += 1 if num == candidate else -1 return candidate  哈希法：(自己做的)</description>
+    </item>
+    
+  </channel>
+</rss>

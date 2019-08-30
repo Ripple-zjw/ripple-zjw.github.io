@@ -6,10 +6,55 @@
     <description>Recent content in Posts on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 23 Aug 2019 13:01:17 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 30 Aug 2019 19:27:49 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>数组的相对排序</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%95%B0%E7%BB%84%E7%9A%84%E7%9B%B8%E5%AF%B9%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Fri, 30 Aug 2019 19:27:49 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%95%B0%E7%BB%84%E7%9A%84%E7%9B%B8%E5%AF%B9%E6%8E%92%E5%BA%8F/</guid>
+      <description>题目：数组的相对排序  给你两个数组，arr1 和arr2，  arr2中的元素各不相同 arr2 中的每个元素都出现在arr1中  对arr1中的元素进行排序，使arr1中项的相对顺序和arr2中的相对顺序相同。 未在arr2中出现过的元素需要按照升序放在arr1的末尾。  示例： 输入：arr1 = [2,3,1,3,2,4,6,7,9,2,19], arr2 = [2,1,4,3,9,6] 输出：[2,2,2,1,4,3,3,9,6,7,19]  提示：  arr1.length, arr2.length &amp;lt;= 1000 0 &amp;lt;= arr1[i], arr2[i] &amp;lt;= 1000 arr2中的元素arr2[i]各不相同 arr2 中的每个元素arr2[i]都出现在arr1中  来源：力扣（LeetCode）第1122题  链接：https://leetcode-cn.com/problems/relative-sort-array
+ 分析：  最近一直在做数组的题目，这种题一眼就想到了计数排序，唯一的不同就是在排序的时候要按arr2的顺序排。 我的代码是遍历了两边，第一遍是遍历arr2，第二遍遍历整个排序，如果你有更好的计数排序方法，欢迎你告诉我。 不知道你们有没有遇到过计数排序，我尽可能的把注释写的详细一点，好给没接触过的人参考一下。（反正多遇到几次就写的很熟了） 其实就是用到了hash表。  代码： class Solution: def relativeSortArray(self, arr1: List[int], arr2: List[int]) -&amp;gt; List[int]: arr = [0 for _ in range(1001)] # 由于题目说arr1的范围在0-1000，所以生成一个1001大小的数组用来存放每个数出现的次数。 ans = [] # 储存答案的数组。 for i in range(len(arr1)): # 遍历arr1，把整个arr1的数的出现次数储存在arr上，arr的下标对应arr1的值，arr的值对应arr1中值出现的次数。 arr[arr1[i]] += 1 # 如果遇到了这个数，就把和它值一样的下标位置上+1，表示这个数在这个下标i上出现了1次。 for i in range(len(arr2)): # 遍历arr2，现在开始要输出答案了。 while arr[arr2[i]] &amp;gt; 0: # 如果arr2的值在arr所对应的下标位置出现次数大于0，那么就说明arr中的这个位置存在值。 ans.</description>
+    </item>
+    
+    <item>
+      <title>杨辉三角</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/</link>
+      <pubDate>Fri, 30 Aug 2019 19:22:10 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/</guid>
+      <description> 题目：杨辉三角  给定一个非负整数 numRows，生成杨辉三角的前 numRows 行。 在杨辉三角中，每个数是它左上方和右上方的数的和。  示例: 输入: 5 输出: [ [1], [1,1], [1,2,1], [1,3,3,1], [1,4,6,4,1] ]  来源：力扣（LeetCode）第118题  链接：https://leetcode-cn.com/problems/pascals-triangle
+ 分析： 这题可以使用动态规划，是一道非常简单的题目。我们可以把所要求的值看成是前一行的两个值的相加，而且这两个值的位置是有规律的。
+思路：  两个循环，第一遍遍历所有的层。 第二遍遍历每一层中的值。 每一层中的值只有第一个和最后一个是1，其他的值都是前一行的前一个位置和现在的位置的和。  代码： class Solution: def generate(self, numRows: int) -&amp;gt; List[List[int]]: ans = [] for i in range(numRows): numRow = [1 for _ in range(i + 1)] for j in range(1, i): numRow[j] = ans[i-1][j-1] + ans[i-1][j] ans.append(numRow) return ans  复杂度分析：  时间复杂度：O(n^2^) n 为numRows 空间复杂度：O(n^2^)  </description>
+    </item>
+    
+    <item>
+      <title>按奇偶排序数组</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%8C%89%E5%A5%87%E5%81%B6%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%842/</link>
+      <pubDate>Fri, 30 Aug 2019 19:20:28 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%8C%89%E5%A5%87%E5%81%B6%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%842/</guid>
+      <description>题目：按奇偶排序数组 II  给定一个非负整数数组A，A中一半整数是奇数，一半整数是偶数。 对数组进行排序，以便当A[i] 为奇数时，i也是奇数；当A[i]为偶数时，i 也是偶数。 你可以返回任何满足上述条件的数组作为答案。  示例： 输入：[4,2,5,7] 输出：[4,5,2,7] 解释：[4,7,2,5]，[2,5,4,7]，[2,7,4,5] 也会被接受。  提示：  2 &amp;lt;= A.length &amp;lt;= 20000 A.length % 2 == 0 0 &amp;lt;= A[i] &amp;lt;= 1000  来源：力扣（LeetCode）第922题  链接：https://leetcode-cn.com/problems/sort-array-by-parity-ii
+ 分析： 一遍遍历数组即可求解。但是为了追求极致，采用双指针法可以实现原地交换。
+思路：  使用两个指针i,j。 一个遍历偶数下标，一个遍历奇数下标。 如果i在偶数的下标中找到了一个奇数，那么就从j奇数下标中找一个偶数。 将两者交换位置。  代码：  双指针法：
+class Solution: def sortArrayByParityII(self, A: List[int]) -&amp;gt; List[int]: j = 1 for i in range(0, len(A), 2): if A[i] % 2 == 1: while A[j] % 2 == 1: j += 2 A[i], A[j] = A[j], A[i] return A  正常一次遍历：</description>
+    </item>
+    
+    <item>
+      <title>求众数</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%B1%82%E4%BC%97%E6%95%B0/</link>
+      <pubDate>Fri, 30 Aug 2019 19:17:44 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%B1%82%E4%BC%97%E6%95%B0/</guid>
+      <description>题目：求众数  给定一个大小为 n 的数组，找到其中的众数。众数是指在数组中出现次数大于⌊ n/2 ⌋的元素。 你可以假设数组是非空的，并且给定的数组总是存在众数。  示例 1: 输入: [3,2,3] 输出: 3  示例 2: 输入: [2,2,1,1,1,2,2] 输出: 2  来源：力扣（LeetCode）第169题  链接：https://leetcode-cn.com/problems/majority-element
+ 分析： 这道题很经典，方法有很多，暴力法，分治法，哈希法，排序法，随机法，投票法。我自己用了哈希法做出来的，但是官方的投票法真的是太秀了，这里着重讲投票法。
+思路：  先让第一个人作为candidate， 然后和它一样的元素给他加票，不一样的元素给它减票， 当票数为0时，就换掉candidate，让新的元素担任。 最后成为candidate的元素就是众数。 当然，前提是题目给出地假设一定存在众数。  代码：  投票法：
+class Solution: def majorityElement(self, nums: List[int]) -&amp;gt; int: candidate = 0 count = 0 for num in nums: if count == 0: candidate = num count += 1 if num == candidate else -1 return candidate  哈希法：(自己做的)</description>
+    </item>
     
     <item>
       <title>有序数组的平方</title>
@@ -386,40 +431,11 @@ class Solution: def lengthOfLongestSubstring(self, s: str) -&amp;gt; int: Max_le
     
     <item>
       <title></title>
-      <link>https://ripple-zjw.github.io/1/pipenv/</link>
+      <link>https://ripple-zjw.github.io/1/%E5%85%B3%E4%BA%8Evs2019%E7%9A%84%E6%B3%A8%E9%87%8A/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ripple-zjw.github.io/1/pipenv/</guid>
-      <description>pipenv Pipenv，它的项目简介为 Python Development Workflow for Humans，是 Python 著名的 requests 库作者 kennethreitz 写的一个包管理工具，它可以为我们的项目自动创建和管理虚拟环境并非常方便地管理 Python 包，现在它也已经是 Python 官方推荐的包管理工具。
-Pipenv 我们可以简单理解为 pip 和 virtualenv 的集合体，它可以为我们的项目自动创建和管理一个虚拟环境。virtualenv 在使用时我们需要手动创建一个虚拟环境然后激活，Pipenv 会自动创建。另外我们之前可能使用 requirements.txt 文件来标识项目所需要的依赖，但是这样会带来一些问题，如有的 requirements.txt 中只是将库名列出来了，没有严格指定版本号，这样就可能会导致不同时间安装的库版本是不同的，如 requirements.txt 文件中对 Django 的依赖只写了一个 django，可能在 2016 年的时候运行安装会安装 Django 的 1.x 版本，到了 2017 年就会安装 Django 的 2.x 版本，所以可能导致一些麻烦。为了解决这个问题，Pipenv 直接弃用了 requirements.txt，会同时它会使用一个叫做 Pipfile 和 Pipfile.lock 的文件来管理项目所需的依赖包，而不再是简单地使用 requirements.txt 文件来记录项目所需要的依赖
-总的来说，Pipenv 可以解决如下问题：  我们不需要再手动创建虚拟环境，Pipenv 会自动为我们创建，它会在某个特定的位置创建一个 virtualenv 环境，然后调用 pipenv shell 命令切换到虚拟环境。 使用 requirements.txt 可能会导致一些问题，所以 Pipenv 使用 Pipfile 和 Pipfile.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://ripple-zjw.github.io/1/wsgi/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/1/wsgi/</guid>
-      <description>WSGI (Web Server Gateway Interface) 接口介绍 了解了HTTP协议和HTML文档，我们其实就明白了一个Web应用的本质就是： * 浏览器发送一个HTTP请求；
- 服务器收到请求，生成一个HTML文档；
- 服务器把HTML文档作为HTTP响应的Body发送给浏览器；
- 浏览器收到HTTP响应，从HTTP Body取出HTML文档并显示。
-  所以，最简单的Web应用就是先把HTML用文件保存好，用一个现成的HTTP服务器软件，接收用户请求，从文件中读取HTML，返回。Apache、Nginx、Lighttpd等这些常见的静态服务器就是干这件事情的。
-如果要动态生成HTML，就需要把上述步骤自己来实现。不过，接受HTTP请求、解析HTTP请求、发送HTTP响应都是苦力活，如果我们自己来写这些底层代码，还没开始写动态HTML呢，就得花个把月去读HTTP规范。
-正确的做法是底层代码由专门的服务器软件实现，我们用Python专注于生成HTML文档。因为我们不希望接触到TCP连接、HTTP原始请求和响应格式，所以，需要一个统一的接口，让我们专心用Python编写Web业务。 这个接口就是WSGI：Web Server Gateway Interface。
-WSGI接口定义非常简单，它只要求Web开发者实现一个函数，就可以响应HTTP请求。我们来看一个最简单的Web版本的“Hello, web!”：
-def application(environ, start_response): start_response(&#39;200 OK&#39;, [(&#39;Content-Type&#39;, &#39;text/html&#39;)]) return [b&#39;&amp;lt;h1&amp;gt;Hello, web!&amp;lt;/h1&amp;gt;&#39;]  上面的application()函数就是符合WSGI标准的一个HTTP处理函数，它接收两个参数：
- environ：一个包含所有HTTP请求信息的dict对象；
- start_response：一个发送HTTP响应的函数。
-  在application()函数中，调用：
-start_response(&#39;200 OK&#39;, [(&#39;Content-Type&#39;, &#39;text/html&#39;)])  就发送了HTTP响应的Header，注意Header只能发送一次，也就是只能调用一次 start_response()函数。start_response()函数接收两个参数， 一个是HTTP响应码，一个是一组list表示的HTTP Header， 每个Header用一个包含两个str的tuple表示。
-通常情况下，都应该把Content-Type头发送给浏览器。其他很多常用的HTTP Header也应该发送。
-然后，函数的返回值b&#39;&amp;lt;h1&amp;gt;Hello, web!&amp;lt;/h1&amp;gt;&#39;将作为HTTP响应的Body发送给浏览器。
-有了WSGI，我们关心的就是如何从environ这个dict对象拿到HTTP请求信息，然后构造HTML， 通过start_response()发送Header，最后返回Body。
-整个application()函数本身没有涉及到任何解析HTTP的部分，也就是说， 底层代码不需要我们自己编写，我们只负责在更高层次上考虑如何响应请求就可以了。
-不过，等等，这个application()函数怎么调用？如果我们自己调用， 两个参数environ和start_response我们没法提供，返回的bytes也没法发给浏览器。
-所以application()函数必须由WSGI服务器来调用。有很多符合WSGI规范的服务器， 我们可以挑选一个来用。但是现在，我们只想尽快测试一下我们编写的application() 函数真的可以把HTML输出到浏览器，所以，要赶紧找一个最简单的WSGI服务器， 把我们的Web应用程序跑起来。</description>
+      <guid>https://ripple-zjw.github.io/1/%E5%85%B3%E4%BA%8Evs2019%E7%9A%84%E6%B3%A8%E9%87%8A/</guid>
+      <description> 使用Ctrl+k 和Ctrl+c进行多行注释 使用Ctrl+k和Ctrl+u进行解除多行注释 </description>
     </item>
     
   </channel>

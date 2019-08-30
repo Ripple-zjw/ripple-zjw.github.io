@@ -6,10 +6,20 @@
     <description>Recent content in 计数排序 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 23 Aug 2019 12:59:06 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 30 Aug 2019 19:27:49 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/tags/%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>数组的相对排序</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%95%B0%E7%BB%84%E7%9A%84%E7%9B%B8%E5%AF%B9%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Fri, 30 Aug 2019 19:27:49 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%95%B0%E7%BB%84%E7%9A%84%E7%9B%B8%E5%AF%B9%E6%8E%92%E5%BA%8F/</guid>
+      <description>题目：数组的相对排序  给你两个数组，arr1 和arr2，  arr2中的元素各不相同 arr2 中的每个元素都出现在arr1中  对arr1中的元素进行排序，使arr1中项的相对顺序和arr2中的相对顺序相同。 未在arr2中出现过的元素需要按照升序放在arr1的末尾。  示例： 输入：arr1 = [2,3,1,3,2,4,6,7,9,2,19], arr2 = [2,1,4,3,9,6] 输出：[2,2,2,1,4,3,3,9,6,7,19]  提示：  arr1.length, arr2.length &amp;lt;= 1000 0 &amp;lt;= arr1[i], arr2[i] &amp;lt;= 1000 arr2中的元素arr2[i]各不相同 arr2 中的每个元素arr2[i]都出现在arr1中  来源：力扣（LeetCode）第1122题  链接：https://leetcode-cn.com/problems/relative-sort-array
+ 分析：  最近一直在做数组的题目，这种题一眼就想到了计数排序，唯一的不同就是在排序的时候要按arr2的顺序排。 我的代码是遍历了两边，第一遍是遍历arr2，第二遍遍历整个排序，如果你有更好的计数排序方法，欢迎你告诉我。 不知道你们有没有遇到过计数排序，我尽可能的把注释写的详细一点，好给没接触过的人参考一下。（反正多遇到几次就写的很熟了） 其实就是用到了hash表。  代码： class Solution: def relativeSortArray(self, arr1: List[int], arr2: List[int]) -&amp;gt; List[int]: arr = [0 for _ in range(1001)] # 由于题目说arr1的范围在0-1000，所以生成一个1001大小的数组用来存放每个数出现的次数。 ans = [] # 储存答案的数组。 for i in range(len(arr1)): # 遍历arr1，把整个arr1的数的出现次数储存在arr上，arr的下标对应arr1的值，arr的值对应arr1中值出现的次数。 arr[arr1[i]] += 1 # 如果遇到了这个数，就把和它值一样的下标位置上+1，表示这个数在这个下标i上出现了1次。 for i in range(len(arr2)): # 遍历arr2，现在开始要输出答案了。 while arr[arr2[i]] &amp;gt; 0: # 如果arr2的值在arr所对应的下标位置出现次数大于0，那么就说明arr中的这个位置存在值。 ans.</description>
+    </item>
     
     <item>
       <title>高度检查器</title>

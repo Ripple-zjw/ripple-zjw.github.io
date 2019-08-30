@@ -6,10 +6,55 @@
     <description>Recent content in 算法求解思想 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 23 Aug 2019 13:01:17 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 30 Aug 2019 19:27:49 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>数组的相对排序</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%95%B0%E7%BB%84%E7%9A%84%E7%9B%B8%E5%AF%B9%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Fri, 30 Aug 2019 19:27:49 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%95%B0%E7%BB%84%E7%9A%84%E7%9B%B8%E5%AF%B9%E6%8E%92%E5%BA%8F/</guid>
+      <description>题目：数组的相对排序  给你两个数组，arr1 和arr2，  arr2中的元素各不相同 arr2 中的每个元素都出现在arr1中  对arr1中的元素进行排序，使arr1中项的相对顺序和arr2中的相对顺序相同。 未在arr2中出现过的元素需要按照升序放在arr1的末尾。  示例： 输入：arr1 = [2,3,1,3,2,4,6,7,9,2,19], arr2 = [2,1,4,3,9,6] 输出：[2,2,2,1,4,3,3,9,6,7,19]  提示：  arr1.length, arr2.length &amp;lt;= 1000 0 &amp;lt;= arr1[i], arr2[i] &amp;lt;= 1000 arr2中的元素arr2[i]各不相同 arr2 中的每个元素arr2[i]都出现在arr1中  来源：力扣（LeetCode）第1122题  链接：https://leetcode-cn.com/problems/relative-sort-array
+ 分析：  最近一直在做数组的题目，这种题一眼就想到了计数排序，唯一的不同就是在排序的时候要按arr2的顺序排。 我的代码是遍历了两边，第一遍是遍历arr2，第二遍遍历整个排序，如果你有更好的计数排序方法，欢迎你告诉我。 不知道你们有没有遇到过计数排序，我尽可能的把注释写的详细一点，好给没接触过的人参考一下。（反正多遇到几次就写的很熟了） 其实就是用到了hash表。  代码： class Solution: def relativeSortArray(self, arr1: List[int], arr2: List[int]) -&amp;gt; List[int]: arr = [0 for _ in range(1001)] # 由于题目说arr1的范围在0-1000，所以生成一个1001大小的数组用来存放每个数出现的次数。 ans = [] # 储存答案的数组。 for i in range(len(arr1)): # 遍历arr1，把整个arr1的数的出现次数储存在arr上，arr的下标对应arr1的值，arr的值对应arr1中值出现的次数。 arr[arr1[i]] += 1 # 如果遇到了这个数，就把和它值一样的下标位置上+1，表示这个数在这个下标i上出现了1次。 for i in range(len(arr2)): # 遍历arr2，现在开始要输出答案了。 while arr[arr2[i]] &amp;gt; 0: # 如果arr2的值在arr所对应的下标位置出现次数大于0，那么就说明arr中的这个位置存在值。 ans.</description>
+    </item>
+    
+    <item>
+      <title>杨辉三角</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/</link>
+      <pubDate>Fri, 30 Aug 2019 19:22:10 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/</guid>
+      <description> 题目：杨辉三角  给定一个非负整数 numRows，生成杨辉三角的前 numRows 行。 在杨辉三角中，每个数是它左上方和右上方的数的和。  示例: 输入: 5 输出: [ [1], [1,1], [1,2,1], [1,3,3,1], [1,4,6,4,1] ]  来源：力扣（LeetCode）第118题  链接：https://leetcode-cn.com/problems/pascals-triangle
+ 分析： 这题可以使用动态规划，是一道非常简单的题目。我们可以把所要求的值看成是前一行的两个值的相加，而且这两个值的位置是有规律的。
+思路：  两个循环，第一遍遍历所有的层。 第二遍遍历每一层中的值。 每一层中的值只有第一个和最后一个是1，其他的值都是前一行的前一个位置和现在的位置的和。  代码： class Solution: def generate(self, numRows: int) -&amp;gt; List[List[int]]: ans = [] for i in range(numRows): numRow = [1 for _ in range(i + 1)] for j in range(1, i): numRow[j] = ans[i-1][j-1] + ans[i-1][j] ans.append(numRow) return ans  复杂度分析：  时间复杂度：O(n^2^) n 为numRows 空间复杂度：O(n^2^)  </description>
+    </item>
+    
+    <item>
+      <title>按奇偶排序数组</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%8C%89%E5%A5%87%E5%81%B6%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%842/</link>
+      <pubDate>Fri, 30 Aug 2019 19:20:28 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%8C%89%E5%A5%87%E5%81%B6%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%842/</guid>
+      <description>题目：按奇偶排序数组 II  给定一个非负整数数组A，A中一半整数是奇数，一半整数是偶数。 对数组进行排序，以便当A[i] 为奇数时，i也是奇数；当A[i]为偶数时，i 也是偶数。 你可以返回任何满足上述条件的数组作为答案。  示例： 输入：[4,2,5,7] 输出：[4,5,2,7] 解释：[4,7,2,5]，[2,5,4,7]，[2,7,4,5] 也会被接受。  提示：  2 &amp;lt;= A.length &amp;lt;= 20000 A.length % 2 == 0 0 &amp;lt;= A[i] &amp;lt;= 1000  来源：力扣（LeetCode）第922题  链接：https://leetcode-cn.com/problems/sort-array-by-parity-ii
+ 分析： 一遍遍历数组即可求解。但是为了追求极致，采用双指针法可以实现原地交换。
+思路：  使用两个指针i,j。 一个遍历偶数下标，一个遍历奇数下标。 如果i在偶数的下标中找到了一个奇数，那么就从j奇数下标中找一个偶数。 将两者交换位置。  代码：  双指针法：
+class Solution: def sortArrayByParityII(self, A: List[int]) -&amp;gt; List[int]: j = 1 for i in range(0, len(A), 2): if A[i] % 2 == 1: while A[j] % 2 == 1: j += 2 A[i], A[j] = A[j], A[i] return A  正常一次遍历：</description>
+    </item>
+    
+    <item>
+      <title>求众数</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%B1%82%E4%BC%97%E6%95%B0/</link>
+      <pubDate>Fri, 30 Aug 2019 19:17:44 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%B1%82%E4%BC%97%E6%95%B0/</guid>
+      <description>题目：求众数  给定一个大小为 n 的数组，找到其中的众数。众数是指在数组中出现次数大于⌊ n/2 ⌋的元素。 你可以假设数组是非空的，并且给定的数组总是存在众数。  示例 1: 输入: [3,2,3] 输出: 3  示例 2: 输入: [2,2,1,1,1,2,2] 输出: 2  来源：力扣（LeetCode）第169题  链接：https://leetcode-cn.com/problems/majority-element
+ 分析： 这道题很经典，方法有很多，暴力法，分治法，哈希法，排序法，随机法，投票法。我自己用了哈希法做出来的，但是官方的投票法真的是太秀了，这里着重讲投票法。
+思路：  先让第一个人作为candidate， 然后和它一样的元素给他加票，不一样的元素给它减票， 当票数为0时，就换掉candidate，让新的元素担任。 最后成为candidate的元素就是众数。 当然，前提是题目给出地假设一定存在众数。  代码：  投票法：
+class Solution: def majorityElement(self, nums: List[int]) -&amp;gt; int: candidate = 0 count = 0 for num in nums: if count == 0: candidate = num count += 1 if num == candidate else -1 return candidate  哈希法：(自己做的)</description>
+    </item>
     
     <item>
       <title>有序数组的平方</title>

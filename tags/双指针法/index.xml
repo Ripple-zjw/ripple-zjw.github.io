@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>双指针法 on LeaveIt</title>
+    <link>https://ripple-zjw.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95/</link>
+    <description>Recent content in 双指针法 on LeaveIt</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 30 Aug 2019 19:20:28 +0800</lastBuildDate>
+    
+	<atom:link href="https://ripple-zjw.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>按奇偶排序数组</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%8C%89%E5%A5%87%E5%81%B6%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%842/</link>
+      <pubDate>Fri, 30 Aug 2019 19:20:28 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%8C%89%E5%A5%87%E5%81%B6%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%842/</guid>
+      <description>题目：按奇偶排序数组 II  给定一个非负整数数组A，A中一半整数是奇数，一半整数是偶数。 对数组进行排序，以便当A[i] 为奇数时，i也是奇数；当A[i]为偶数时，i 也是偶数。 你可以返回任何满足上述条件的数组作为答案。  示例： 输入：[4,2,5,7] 输出：[4,5,2,7] 解释：[4,7,2,5]，[2,5,4,7]，[2,7,4,5] 也会被接受。  提示：  2 &amp;lt;= A.length &amp;lt;= 20000 A.length % 2 == 0 0 &amp;lt;= A[i] &amp;lt;= 1000  来源：力扣（LeetCode）第922题  链接：https://leetcode-cn.com/problems/sort-array-by-parity-ii
+ 分析： 一遍遍历数组即可求解。但是为了追求极致，采用双指针法可以实现原地交换。
+思路：  使用两个指针i,j。 一个遍历偶数下标，一个遍历奇数下标。 如果i在偶数的下标中找到了一个奇数，那么就从j奇数下标中找一个偶数。 将两者交换位置。  代码：  双指针法：
+class Solution: def sortArrayByParityII(self, A: List[int]) -&amp;gt; List[int]: j = 1 for i in range(0, len(A), 2): if A[i] % 2 == 1: while A[j] % 2 == 1: j += 2 A[i], A[j] = A[j], A[i] return A  正常一次遍历：</description>
+    </item>
+    
+  </channel>
+</rss>

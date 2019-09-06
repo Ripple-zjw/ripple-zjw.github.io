@@ -6,10 +6,87 @@
     <description>Recent content in 算法求解思想 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 30 Aug 2019 19:27:49 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 06 Sep 2019 20:27:15 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>数组的度</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/</link>
+      <pubDate>Fri, 06 Sep 2019 20:27:15 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/</guid>
+      <description>题目：数组的度  给定一个非空且只包含非负数的整数数组nums, 数组的度的定义是指数组里任一元素出现频数的最大值。 你的任务是找到与nums拥有相同大小的度的最短连续子数组，返回其长度。  示例 1: 输入: [1, 2, 2, 3, 1] 输出: 2 解释: 输入数组的度是2，因为元素1和2的出现频数最大，均为2. 连续子数组里面拥有相同度的有如下所示: [1, 2, 2, 3, 1], [1, 2, 2, 3], [2, 2, 3, 1], [1, 2, 2], [2, 2, 3], [2, 2] 最短连续子数组[2, 2]的长度为2，所以返回2.  示例 2: 输入: [1,2,2,3,1,4,2] 输出: 6  注意:  nums.length在1到50,000区间范围内。 nums[i]是一个在0到49,999范围内的整数。  来源：力扣（LeetCode）第697题  链接：https://leetcode-cn.com/problems/degree-of-an-array
+ 分析：  找到每一个元素的第一个下标和最后一个下标。 然后找出出现频率最高的元素。 答案就是频率最高的元素的最后一个下标减去第一个下标。  代码： class Solution: def findShortestSubArray(self, nums: List[int]) -&amp;gt; int: left, right, count = {}, {}, {} for i in range(len(nums)): if nums[i] not in left: # 将第一个下标保存 left[nums[i]] = i right[nums[i]] = i # 将最后一个下标保存 count[nums[i]] = count.</description>
+    </item>
+    
+    <item>
+      <title>图片平滑器</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%9B%BE%E7%89%87%E5%B9%B3%E6%BB%91%E5%99%A8/</link>
+      <pubDate>Fri, 06 Sep 2019 20:26:04 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%9B%BE%E7%89%87%E5%B9%B3%E6%BB%91%E5%99%A8/</guid>
+      <description>题目：图片平滑器  包含整数的二维矩阵M表示一个图片的灰度。 你需要设计一个平滑器来让每一个单元的灰度成为平均灰度(向下舍入) ，平均灰度的计算是周围的8个单元和它本身的值求平均，如果周围的单元格不足八个，则尽可能多的利用它们。  示例 1: 输入: [[1,1,1], [1,0,1], [1,1,1]] 输出: [[0, 0, 0], [0, 0, 0], [0, 0, 0]] 解释: 对于点 (0,0), (0,2), (2,0), (2,2): 平均(3/4) = 平均(0.75) = 0 对于点 (0,1), (1,0), (1,2), (2,1): 平均(5/6) = 平均(0.83333333) = 0 对于点 (1,1): 平均(8/9) = 平均(0.88888889) = 0  注意:  给定矩阵中的整数范围为 [0, 255]。 矩阵的长和宽的范围均为 [1, 150]。  来源：力扣（LeetCode）第661题  链接：https://leetcode-cn.com/problems/image-smoother
+ 分析：  可以一个一个判断，但是不好，另一种方法，先把八个方向放在一个列表中，然后每次遍历这八个方向。  代码： class Solution: def imageSmoother(self, M: List[List[int]]) -&amp;gt; List[List[int]]: ans = [] directions = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]] # 生成八个方向的列表。 height = len(M) width = len(M[0]) for i in range(height): tmp = [] for j in range(width): res = M[i][j] cnt = 1 for direction in directions: y = direction[0] + i x = direction[1] + j if y &amp;lt; height and x &amp;lt; width and x &amp;gt;= 0 and y &amp;gt;= 0: # 每次都要判断方向是否合法，防止数组越界。 res += M[y][x] cnt += 1 tmp.</description>
+    </item>
+    
+    <item>
+      <title>两数之和II 输入有序数组</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8Cii-%E8%BE%93%E5%85%A5%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Fri, 06 Sep 2019 20:24:19 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8Cii-%E8%BE%93%E5%85%A5%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/</guid>
+      <description>题目：两数之和 II - 输入有序数组  给定一个已按照升序排列的有序数组，找到两个数使得它们相加之和等于目标数。 函数应该返回这两个下标值 index1 和 index2，其中index1必须小于index2。  说明: 返回的下标值（index1 和 index2）不是从零开始的。 你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。  示例: 输入: numbers = [2, 7, 11, 15], target = 9 输出: [1,2] 解释: 2 与 7 之和等于目标数 9 。因此 index1 = 1, index2 = 2 。  来源：力扣（LeetCode）第167题  链接：https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted
+ 分析： 方法有：hash表，二分查找，双指针。
+代码：  hash表:
+class Solution: def twoSum(self, numbers: List[int], target: int) -&amp;gt; List[int]: hashTable = {} for i in range(len(numbers)): if hashTable.</description>
+    </item>
+    
+    <item>
+      <title>缺失数字</title>
+      <link>https://ripple-zjw.github.io/2019/%E7%BC%BA%E5%A4%B1%E6%95%B0%E5%AD%97/</link>
+      <pubDate>Fri, 06 Sep 2019 20:21:39 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E7%BC%BA%E5%A4%B1%E6%95%B0%E5%AD%97/</guid>
+      <description> 题目：缺失数字  给定一个包含0, 1, 2, ..., n中n 个数的序列，找出 0 .. n 中没有出现在序列中的那个数。  示例 1: 输入: [3,0,1] 输出: 2  示例 2: 输入: [9,6,4,2,3,5,7,0,1] 输出: 8  说明:  你的算法应具有线性时间复杂度。你能否仅使用额外常数空间来实现?  来源：力扣（LeetCode）第268题  链接：https://leetcode-cn.com/problems/missing-number
+ 分析： 使用排序和哈希可以很容易做出来，但是不符合题意O(1)的空间复杂度。还有两种方法，一种是位运算，另一种是通过数学定理来解题。
+位运算解题：  异或运算的性质：  异或运算（XOR）满足结合律，并且对一个数进行两次完全相同的异或运算会得到原来的数。 比如：a ^ b ^ b == a 任意一个数对0进行异或运算，等于它原来的数。 比如：a ^ 0 == a 任意一个数对它本身进行异或运算，等于0. 比如：a ^ a == 0  因此，在0-n个数的数组中必定缺少一个数。我们把数组的下标和数组中的数进行异或运算，所有的数都会找到下标相等的数，只有缺失的那个数字找不到，最后算出来的结果就是那个缺失的数。  代码： class Solution: def missingNumber(self, nums: List[int]) -&amp;gt; int: ans = len(nums) # 由于数组没有长度为nums长度的下标，因为从0开始索引的，所以我们要先加上去。 for i in range(len(nums)): ans ^= i ^ nums[i] return ans  数学定理解题：  等差数列求和公式：  n * (n+1) / 2  我们把从0到数组最后的下标累加，再加上数组的长度。 再把数组中的所有元素累加。 然后两个相减，最后得到的就是缺失的数字。  代码： class Solution: def missingNumber(self, nums: List[int]) -&amp;gt; int: n = len(nums) return n * (n + 1) // 2 - sum(nums)  复杂度分析：  两种方法复杂度一样：  时间复杂度：O(n) 空间复杂度：O(1)   </description>
+    </item>
+    
+    <item>
+      <title>找到所有数组中消失的数字</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%89%BE%E5%88%B0%E6%89%80%E6%9C%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%B6%88%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/</link>
+      <pubDate>Fri, 06 Sep 2019 20:19:35 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%89%BE%E5%88%B0%E6%89%80%E6%9C%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%B6%88%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/</guid>
+      <description>题目：找到所有数组中消失的数字  给定一个范围在1 ≤ a[i] ≤ n (n = 数组大小 ) 的 整型数组，数组中的元素一些出现了两次，另一些只出现一次。 找到所有在 [1, n] 范围之间没有出现在数组中的数字。 您能在不使用额外空间且时间复杂度为O(n)的情况下完成这个任务吗? 你可以假定返回的数组不算在额外空间内。  示例: 输入: [4,3,2,7,8,2,3,1] 输出: [5,6]  来源：力扣（LeetCode）第448题  链接：https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array
+ 分析： 有多种方法，第一种是用抽屉原理和异或运算的方式交换值。第二种是一种更为巧妙的方式。
+使用异或运算交换两个值的方法： a = a ^ b b = a ^ b a = a ^ b 这样就可以在不使用第三个变量的前提下交换两个变量的值。  抽屉原理：  如果每个抽屉代表一个集合，每一个苹果就可以代表一个元素，假如有 n + 1 个元素放到 n 个集合中去，其中必定有一个集合里至少有两个元素。” 抽屉原理有时也被称为鸽巢原理。它是组合数学中一个重要的原理。  思路：  第一种：  遍历整个数组，从第一个开始i，不停地把这个位置上的元素i与它的值所对应的下标位置上的元素进行交换。 一旦当前遍历的这个位置上的元素i与它值所对应的下标位置上的元素相等，那么就遍历数组的下一个元素i。 这样的目的是，要么当前位置上i存的是正确的位置，比如i = 0的位置上存的是1，因为数组中的元素是从1开始的；要么当前位置i上存的是出现了两次的元素。 这样最后判断每个元素的值是否是其下标+1。  第二种：  遍历整个数组，将该元素的值所对应的下标位置的值变为负数。 遍历完后，如果数组中还有位置上的值是正数，那么说明没有值等于该位置的下标，即数组中没有遍历到这个值。   两种方法的代码：  第一种：</description>
+    </item>
+    
+    <item>
+      <title>组合总和</title>
+      <link>https://ripple-zjw.github.io/2019/%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/</link>
+      <pubDate>Fri, 06 Sep 2019 20:18:05 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/</guid>
+      <description>题目：组合总和  给定一个无重复元素的数组candidates和一个目标数target，找出candidates中所有可以使数字和为target的组合。 candidates中的数字可以无限制重复被选取。  说明： 所有数字（包括 target）都是正整数。 解集不能包含重复的组合。  示例 1: 输入: candidates = [2,3,6,7], target = 7, 所求解集为: [ [7], [2,2,3] ]  示例 2: 输入: candidates = [2,3,5], target = 8, 所求解集为: [ [2,2,2,2], [2,3,3], [3,5] ]  来源：力扣（LeetCode）  链接：https://leetcode-cn.com/problems/combination-sum
+ 分析： 回溯算法+栈，这是我的做法，看到很多算法高手的思路和方法都很棒，有用回溯的，有用dp的。
+我放上两个比较好的题解:  回溯算法： &amp;gt; https://leetcode-cn.com/problems/combination-sum/solution/hui-su-suan-fa-jian-zhi-python-dai-ma-java-dai-m-2/ 动态规划： &amp;gt; https://leetcode-cn.com/problems/combination-sum/solution/chao-qiang-gifzhu-ni-shi-yong-dong-tai-gui-hua-qiu/  思路：  回溯算法一般都用递归来完成。最好的方法是画递归树。 通过对每一层的递归，将所有等于target的答案全部都得到。  代码： class Solution: def combinationSum(self, candidates: List[int], target: int) -&amp;gt; List[List[int]]: ans = [] def recursion(cand, i): for j in range(i, len(candidates)): stack.</description>
+    </item>
+    
+    <item>
+      <title>复写零</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%A4%8D%E5%86%99%E9%9B%B6/</link>
+      <pubDate>Fri, 06 Sep 2019 20:16:32 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%A4%8D%E5%86%99%E9%9B%B6/</guid>
+      <description>题目：复写零  给你一个长度固定的整数数组arr，请你将该数组中出现的每个零都复写一遍，并将其余的元素向右平移。 注意：请不要在超过该数组长度的位置写入元素。 要求：请对输入的数组就地进行上述修改，不要从函数返回任何东西。  示例 1： 输入：[1,0,2,3,0,4,5,0] 输出：null 解释：调用函数后，输入的数组将被修改为：[1,0,0,2,3,0,0,4]  示例 2： 输入：[1,2,3] 输出：null 解释：调用函数后，输入的数组将被修改为：[1,2,3]  提示：  1 &amp;lt;= arr.length &amp;lt;= 10000 0 &amp;lt;= arr[i] &amp;lt;= 9  来源：力扣（LeetCode）第1089题  链接：https://leetcode-cn.com/problems/duplicate-zeros
+ 分析： 这道题的难点在于要在原数组上操作，不可以申请新的数组。因此，快慢双指针就派上用场了。
+思路：  声明两个指针i,j 一个指针正常遍历i，另一个j遇到0就往前再+1 遍历完之后i之后的数都是被移出去的，j指针在最后一位 依次将i指针的元素赋在j的位置，遇到0，j不仅要将i的值赋上，还要往前一位再赋上0。  代码：  双指针法：
+class Solution: def duplicateZeros(self, arr: List[int]) -&amp;gt; None: i = j = 0 n = len(arr) while j &amp;lt; n: if arr[i] == 0: j += 1 i += 1 j += 1 i -= 1 j -= 1 while i &amp;gt;= 0: if j &amp;lt; n: arr[j] = arr[i] if arr[i] == 0: j -= 1 arr[j] = 0 j -= 1 i -= 1  非原地解法：</description>
+    </item>
     
     <item>
       <title>数组的相对排序</title>

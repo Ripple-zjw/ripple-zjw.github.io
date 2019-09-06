@@ -6,10 +6,43 @@
     <description>Recent content in 哈希 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 30 Aug 2019 19:17:44 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 06 Sep 2019 20:27:15 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/tags/%E5%93%88%E5%B8%8C/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>数组的度</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/</link>
+      <pubDate>Fri, 06 Sep 2019 20:27:15 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/</guid>
+      <description>题目：数组的度  给定一个非空且只包含非负数的整数数组nums, 数组的度的定义是指数组里任一元素出现频数的最大值。 你的任务是找到与nums拥有相同大小的度的最短连续子数组，返回其长度。  示例 1: 输入: [1, 2, 2, 3, 1] 输出: 2 解释: 输入数组的度是2，因为元素1和2的出现频数最大，均为2. 连续子数组里面拥有相同度的有如下所示: [1, 2, 2, 3, 1], [1, 2, 2, 3], [2, 2, 3, 1], [1, 2, 2], [2, 2, 3], [2, 2] 最短连续子数组[2, 2]的长度为2，所以返回2.  示例 2: 输入: [1,2,2,3,1,4,2] 输出: 6  注意:  nums.length在1到50,000区间范围内。 nums[i]是一个在0到49,999范围内的整数。  来源：力扣（LeetCode）第697题  链接：https://leetcode-cn.com/problems/degree-of-an-array
+ 分析：  找到每一个元素的第一个下标和最后一个下标。 然后找出出现频率最高的元素。 答案就是频率最高的元素的最后一个下标减去第一个下标。  代码： class Solution: def findShortestSubArray(self, nums: List[int]) -&amp;gt; int: left, right, count = {}, {}, {} for i in range(len(nums)): if nums[i] not in left: # 将第一个下标保存 left[nums[i]] = i right[nums[i]] = i # 将最后一个下标保存 count[nums[i]] = count.</description>
+    </item>
+    
+    <item>
+      <title>两数之和II 输入有序数组</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8Cii-%E8%BE%93%E5%85%A5%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Fri, 06 Sep 2019 20:24:19 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8Cii-%E8%BE%93%E5%85%A5%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/</guid>
+      <description>题目：两数之和 II - 输入有序数组  给定一个已按照升序排列的有序数组，找到两个数使得它们相加之和等于目标数。 函数应该返回这两个下标值 index1 和 index2，其中index1必须小于index2。  说明: 返回的下标值（index1 和 index2）不是从零开始的。 你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。  示例: 输入: numbers = [2, 7, 11, 15], target = 9 输出: [1,2] 解释: 2 与 7 之和等于目标数 9 。因此 index1 = 1, index2 = 2 。  来源：力扣（LeetCode）第167题  链接：https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted
+ 分析： 方法有：hash表，二分查找，双指针。
+代码：  hash表:
+class Solution: def twoSum(self, numbers: List[int], target: int) -&amp;gt; List[int]: hashTable = {} for i in range(len(numbers)): if hashTable.</description>
+    </item>
+    
+    <item>
+      <title>缺失数字</title>
+      <link>https://ripple-zjw.github.io/2019/%E7%BC%BA%E5%A4%B1%E6%95%B0%E5%AD%97/</link>
+      <pubDate>Fri, 06 Sep 2019 20:21:39 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E7%BC%BA%E5%A4%B1%E6%95%B0%E5%AD%97/</guid>
+      <description> 题目：缺失数字  给定一个包含0, 1, 2, ..., n中n 个数的序列，找出 0 .. n 中没有出现在序列中的那个数。  示例 1: 输入: [3,0,1] 输出: 2  示例 2: 输入: [9,6,4,2,3,5,7,0,1] 输出: 8  说明:  你的算法应具有线性时间复杂度。你能否仅使用额外常数空间来实现?  来源：力扣（LeetCode）第268题  链接：https://leetcode-cn.com/problems/missing-number
+ 分析： 使用排序和哈希可以很容易做出来，但是不符合题意O(1)的空间复杂度。还有两种方法，一种是位运算，另一种是通过数学定理来解题。
+位运算解题：  异或运算的性质：  异或运算（XOR）满足结合律，并且对一个数进行两次完全相同的异或运算会得到原来的数。 比如：a ^ b ^ b == a 任意一个数对0进行异或运算，等于它原来的数。 比如：a ^ 0 == a 任意一个数对它本身进行异或运算，等于0. 比如：a ^ a == 0  因此，在0-n个数的数组中必定缺少一个数。我们把数组的下标和数组中的数进行异或运算，所有的数都会找到下标相等的数，只有缺失的那个数字找不到，最后算出来的结果就是那个缺失的数。  代码： class Solution: def missingNumber(self, nums: List[int]) -&amp;gt; int: ans = len(nums) # 由于数组没有长度为nums长度的下标，因为从0开始索引的，所以我们要先加上去。 for i in range(len(nums)): ans ^= i ^ nums[i] return ans  数学定理解题：  等差数列求和公式：  n * (n+1) / 2  我们把从0到数组最后的下标累加，再加上数组的长度。 再把数组中的所有元素累加。 然后两个相减，最后得到的就是缺失的数字。  代码： class Solution: def missingNumber(self, nums: List[int]) -&amp;gt; int: n = len(nums) return n * (n + 1) // 2 - sum(nums)  复杂度分析：  两种方法复杂度一样：  时间复杂度：O(n) 空间复杂度：O(1)   </description>
+    </item>
     
     <item>
       <title>求众数</title>

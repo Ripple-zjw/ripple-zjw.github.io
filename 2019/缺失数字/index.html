@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E6%89%BE%E5%88%B0%E6%89%80%E6%9C%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%B6%88%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8Cii-%E8%BE%93%E5%85%A5%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E7%BC%BA%E5%A4%B1%E6%95%B0%E5%AD%97/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           缺失数字 | LeaveIt
+       
+  </title>
+  <meta name="title" content="缺失数字 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "缺失数字",
+    "headline" : "缺失数字",
+    "description" : " 题目：缺失数字  给定一个包含0, 1, 2, ..., n中n 个数的序列，找出 0 .. n 中没有出现在序列中的那个数。  示例 1: 输入: [3,0,1] 输出: 2  示例 2: 输入: [9,6,4,2,3,5,7,0,1] 输出: 8  说明:  你的算法应具有线性时间复杂度。你能否仅使用额外常数空间来实现?  来源：力扣（LeetCode）第268题  链接：https:\/\/leetcode-cn.com\/problems\/missing-number\n 分析： 使用排序和哈希可以很容易做出来，但是不符合题意O(1)的空间复杂度。还有两种方法，一种是位运算，另一种是通过数学定理来解题。\n位运算解题：  异或运算的性质：  异或运算（XOR）满足结合律，并且对一个数进行两次完全相同的异或运算会得到原来的数。 比如：a ^ b ^ b == a 任意一个数对0进行异或运算，等于它原来的数。 比如：a ^ 0 == a 任意一个数对它本身进行异或运算，等于0. 比如：a ^ a == 0  因此，在0-n个数的数组中必定缺少一个数。我们把数组的下标和数组中的数进行异或运算，所有的数都会找到下标相等的数，只有缺失的那个数字找不到，最后算出来的结果就是那个缺失的数。  代码： class Solution: def missingNumber(self, nums: List[int]) -\x26gt; int: ans = len(nums) # 由于数组没有长度为nums长度的下标，因为从0开始索引的，所以我们要先加上去。 for i in range(len(nums)): ans ^= i ^ nums[i] return ans  数学定理解题：  等差数列求和公式：  n * (n\x2b1) \/ 2  我们把从0到数组最后的下标累加，再加上数组的长度。 再把数组中的所有元素累加。 然后两个相减，最后得到的就是缺失的数字。  代码： class Solution: def missingNumber(self, nums: List[int]) -\x26gt; int: n = len(nums) return n * (n \x2b 1) \/\/ 2 - sum(nums)  复杂度分析：  两种方法复杂度一样：  时间复杂度：O(n) 空间复杂度：O(1)   ",
+    "inLanguage" : "zh-CN",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-09-06 20:21:39 \x2b0800 CST",
+    "dateModified" : "2019-09-06 20:21:39 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E7%BC%BA%E5%A4%B1%E6%95%B0%E5%AD%97\/",
+    "wordCount" : "113",
+    "keywords" : [ "算法求解思想","排序","哈希","数学","位运算","异或运算", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">缺失数字</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-09-06 itemprop="datePublished">September 6, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-缺失数字">题目：缺失数字</h1>
+
+<ul>
+<li>给定一个包含<code>0, 1, 2, ..., n</code>中<em>n</em> 个数的序列，找出 <em>0 .. n</em> 中没有出现在序列中的那个数。</li>
+</ul>
+
+<h5 id="示例-1">示例 1:</h5>
+
+<pre><code>输入: [3,0,1]
+输出: 2
+</code></pre>
+
+<h5 id="示例-2">示例 2:</h5>
+
+<pre><code>输入: [9,6,4,2,3,5,7,0,1]
+输出: 8
+</code></pre>
+
+<h5 id="说明">说明:</h5>
+
+<ul>
+<li>你的算法应具有线性时间复杂度。你能否仅使用额外常数空间来实现?</li>
+</ul>
+
+<h4 id="来源-力扣-leetcode-第268题">来源：力扣（LeetCode）第268题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/missing-number" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/missing-number</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<p>使用排序和哈希可以很容易做出来，但是不符合题意O(1)的空间复杂度。还有两种方法，一种是位运算，另一种是通过数学定理来解题。</p>
+
+<h2 id="位运算解题">位运算解题：</h2>
+
+<ul>
+<li>异或运算的性质：
+
+<ul>
+<li>异或运算（XOR）满足结合律，并且对一个数进行两次完全相同的异或运算会得到原来的数。</li>
+<li>比如：<code>a ^ b ^ b == a</code></li>
+<li>任意一个数对0进行异或运算，等于它原来的数。</li>
+<li>比如：<code>a ^ 0 == a</code></li>
+<li>任意一个数对它本身进行异或运算，等于0.</li>
+<li>比如：<code>a ^ a  == 0</code></li>
+</ul></li>
+<li>因此，在<code>0-n</code>个数的数组中必定缺少一个数。我们把数组的下标和数组中的数进行异或运算，所有的数都会找到下标相等的数，只有缺失的那个数字找不到，最后算出来的结果就是那个缺失的数。</li>
+</ul>
+
+<h3 id="代码">代码：</h3>
+
+<pre><code class="language-python">class Solution:
+    def missingNumber(self, nums: List[int]) -&gt; int:
+        ans = len(nums)  # 由于数组没有长度为nums长度的下标，因为从0开始索引的，所以我们要先加上去。
+        for i in range(len(nums)):
+            ans ^= i ^ nums[i]
+        return ans
+</code></pre>
+
+<h2 id="数学定理解题">数学定理解题：</h2>
+
+<ul>
+<li>等差数列求和公式：
+
+<ul>
+<li>n * (n+1) / 2</li>
+</ul></li>
+<li>我们把从0到数组最后的下标累加，再加上数组的长度。</li>
+<li>再把数组中的所有元素累加。</li>
+<li>然后两个相减，最后得到的就是缺失的数字。</li>
+</ul>
+
+<h3 id="代码-1">代码：</h3>
+
+<pre><code class="language-python">class Solution:
+    def missingNumber(self, nums: List[int]) -&gt; int:
+        n = len(nums)
+        return n * (n + 1) // 2 - sum(nums)
+</code></pre>
+
+<h2 id="复杂度分析">复杂度分析：</h2>
+
+<ul>
+<li>两种方法复杂度一样：
+
+<ul>
+<li>时间复杂度：O(n)</li>
+<li>空间复杂度：O(1)</li>
+</ul></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E7%BC%BA%E5%A4%B1%E6%95%B0%E5%AD%97/>https://ripple-zjw.github.io/2019/%E7%BC%BA%E5%A4%B1%E6%95%B0%E5%AD%97/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E6%8E%92%E5%BA%8F/">
+                    #排序</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%93%88%E5%B8%8C/">
+                    #哈希</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E6%95%B0%E5%AD%A6/">
+                    #数学</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">
+                    #位运算</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%BC%82%E6%88%96%E8%BF%90%E7%AE%97/">
+                    #异或运算</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E6%89%BE%E5%88%B0%E6%89%80%E6%9C%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%B6%88%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/" class="prev" rel="prev" title="找到所有数组中消失的数字"><i class="iconfont icon-left"></i>&nbsp;找到所有数组中消失的数字</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8Cii-%E8%BE%93%E5%85%A5%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/" class="next" rel="next" title="两数之和II 输入有序数组">两数之和II 输入有序数组&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

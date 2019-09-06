@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>异或运算 on LeaveIt</title>
+    <link>https://ripple-zjw.github.io/tags/%E5%BC%82%E6%88%96%E8%BF%90%E7%AE%97/</link>
+    <description>Recent content in 异或运算 on LeaveIt</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 06 Sep 2019 20:21:39 +0800</lastBuildDate>
+    
+	<atom:link href="https://ripple-zjw.github.io/tags/%E5%BC%82%E6%88%96%E8%BF%90%E7%AE%97/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>缺失数字</title>
+      <link>https://ripple-zjw.github.io/2019/%E7%BC%BA%E5%A4%B1%E6%95%B0%E5%AD%97/</link>
+      <pubDate>Fri, 06 Sep 2019 20:21:39 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E7%BC%BA%E5%A4%B1%E6%95%B0%E5%AD%97/</guid>
+      <description> 题目：缺失数字  给定一个包含0, 1, 2, ..., n中n 个数的序列，找出 0 .. n 中没有出现在序列中的那个数。  示例 1: 输入: [3,0,1] 输出: 2  示例 2: 输入: [9,6,4,2,3,5,7,0,1] 输出: 8  说明:  你的算法应具有线性时间复杂度。你能否仅使用额外常数空间来实现?  来源：力扣（LeetCode）第268题  链接：https://leetcode-cn.com/problems/missing-number
+ 分析： 使用排序和哈希可以很容易做出来，但是不符合题意O(1)的空间复杂度。还有两种方法，一种是位运算，另一种是通过数学定理来解题。
+位运算解题：  异或运算的性质：  异或运算（XOR）满足结合律，并且对一个数进行两次完全相同的异或运算会得到原来的数。 比如：a ^ b ^ b == a 任意一个数对0进行异或运算，等于它原来的数。 比如：a ^ 0 == a 任意一个数对它本身进行异或运算，等于0. 比如：a ^ a == 0  因此，在0-n个数的数组中必定缺少一个数。我们把数组的下标和数组中的数进行异或运算，所有的数都会找到下标相等的数，只有缺失的那个数字找不到，最后算出来的结果就是那个缺失的数。  代码： class Solution: def missingNumber(self, nums: List[int]) -&amp;gt; int: ans = len(nums) # 由于数组没有长度为nums长度的下标，因为从0开始索引的，所以我们要先加上去。 for i in range(len(nums)): ans ^= i ^ nums[i] return ans  数学定理解题：  等差数列求和公式：  n * (n+1) / 2  我们把从0到数组最后的下标累加，再加上数组的长度。 再把数组中的所有元素累加。 然后两个相减，最后得到的就是缺失的数字。  代码： class Solution: def missingNumber(self, nums: List[int]) -&amp;gt; int: n = len(nums) return n * (n + 1) // 2 - sum(nums)  复杂度分析：  两种方法复杂度一样：  时间复杂度：O(n) 空间复杂度：O(1)   </description>
+    </item>
+    
+    <item>
+      <title>找到所有数组中消失的数字</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%89%BE%E5%88%B0%E6%89%80%E6%9C%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%B6%88%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/</link>
+      <pubDate>Fri, 06 Sep 2019 20:19:35 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%89%BE%E5%88%B0%E6%89%80%E6%9C%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%B6%88%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/</guid>
+      <description>题目：找到所有数组中消失的数字  给定一个范围在1 ≤ a[i] ≤ n (n = 数组大小 ) 的 整型数组，数组中的元素一些出现了两次，另一些只出现一次。 找到所有在 [1, n] 范围之间没有出现在数组中的数字。 您能在不使用额外空间且时间复杂度为O(n)的情况下完成这个任务吗? 你可以假定返回的数组不算在额外空间内。  示例: 输入: [4,3,2,7,8,2,3,1] 输出: [5,6]  来源：力扣（LeetCode）第448题  链接：https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array
+ 分析： 有多种方法，第一种是用抽屉原理和异或运算的方式交换值。第二种是一种更为巧妙的方式。
+使用异或运算交换两个值的方法： a = a ^ b b = a ^ b a = a ^ b 这样就可以在不使用第三个变量的前提下交换两个变量的值。  抽屉原理：  如果每个抽屉代表一个集合，每一个苹果就可以代表一个元素，假如有 n + 1 个元素放到 n 个集合中去，其中必定有一个集合里至少有两个元素。” 抽屉原理有时也被称为鸽巢原理。它是组合数学中一个重要的原理。  思路：  第一种：  遍历整个数组，从第一个开始i，不停地把这个位置上的元素i与它的值所对应的下标位置上的元素进行交换。 一旦当前遍历的这个位置上的元素i与它值所对应的下标位置上的元素相等，那么就遍历数组的下一个元素i。 这样的目的是，要么当前位置上i存的是正确的位置，比如i = 0的位置上存的是1，因为数组中的元素是从1开始的；要么当前位置i上存的是出现了两次的元素。 这样最后判断每个元素的值是否是其下标+1。  第二种：  遍历整个数组，将该元素的值所对应的下标位置的值变为负数。 遍历完后，如果数组中还有位置上的值是正数，那么说明没有值等于该位置的下标，即数组中没有遍历到这个值。   两种方法的代码：  第一种：</description>
+    </item>
+    
+  </channel>
+</rss>

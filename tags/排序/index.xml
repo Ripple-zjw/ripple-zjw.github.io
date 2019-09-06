@@ -6,10 +6,21 @@
     <description>Recent content in 排序 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 23 Aug 2019 13:01:17 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 06 Sep 2019 20:21:39 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/tags/%E6%8E%92%E5%BA%8F/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>缺失数字</title>
+      <link>https://ripple-zjw.github.io/2019/%E7%BC%BA%E5%A4%B1%E6%95%B0%E5%AD%97/</link>
+      <pubDate>Fri, 06 Sep 2019 20:21:39 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E7%BC%BA%E5%A4%B1%E6%95%B0%E5%AD%97/</guid>
+      <description> 题目：缺失数字  给定一个包含0, 1, 2, ..., n中n 个数的序列，找出 0 .. n 中没有出现在序列中的那个数。  示例 1: 输入: [3,0,1] 输出: 2  示例 2: 输入: [9,6,4,2,3,5,7,0,1] 输出: 8  说明:  你的算法应具有线性时间复杂度。你能否仅使用额外常数空间来实现?  来源：力扣（LeetCode）第268题  链接：https://leetcode-cn.com/problems/missing-number
+ 分析： 使用排序和哈希可以很容易做出来，但是不符合题意O(1)的空间复杂度。还有两种方法，一种是位运算，另一种是通过数学定理来解题。
+位运算解题：  异或运算的性质：  异或运算（XOR）满足结合律，并且对一个数进行两次完全相同的异或运算会得到原来的数。 比如：a ^ b ^ b == a 任意一个数对0进行异或运算，等于它原来的数。 比如：a ^ 0 == a 任意一个数对它本身进行异或运算，等于0. 比如：a ^ a == 0  因此，在0-n个数的数组中必定缺少一个数。我们把数组的下标和数组中的数进行异或运算，所有的数都会找到下标相等的数，只有缺失的那个数字找不到，最后算出来的结果就是那个缺失的数。  代码： class Solution: def missingNumber(self, nums: List[int]) -&amp;gt; int: ans = len(nums) # 由于数组没有长度为nums长度的下标，因为从0开始索引的，所以我们要先加上去。 for i in range(len(nums)): ans ^= i ^ nums[i] return ans  数学定理解题：  等差数列求和公式：  n * (n+1) / 2  我们把从0到数组最后的下标累加，再加上数组的长度。 再把数组中的所有元素累加。 然后两个相减，最后得到的就是缺失的数字。  代码： class Solution: def missingNumber(self, nums: List[int]) -&amp;gt; int: n = len(nums) return n * (n + 1) // 2 - sum(nums)  复杂度分析：  两种方法复杂度一样：  时间复杂度：O(n) 空间复杂度：O(1)   </description>
+    </item>
     
     <item>
       <title>有序数组的平方</title>

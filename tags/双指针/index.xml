@@ -6,10 +6,34 @@
     <description>Recent content in 双指针 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 23 Aug 2019 13:01:17 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 06 Sep 2019 20:24:19 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>两数之和II 输入有序数组</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8Cii-%E8%BE%93%E5%85%A5%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Fri, 06 Sep 2019 20:24:19 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8Cii-%E8%BE%93%E5%85%A5%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/</guid>
+      <description>题目：两数之和 II - 输入有序数组  给定一个已按照升序排列的有序数组，找到两个数使得它们相加之和等于目标数。 函数应该返回这两个下标值 index1 和 index2，其中index1必须小于index2。  说明: 返回的下标值（index1 和 index2）不是从零开始的。 你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。  示例: 输入: numbers = [2, 7, 11, 15], target = 9 输出: [1,2] 解释: 2 与 7 之和等于目标数 9 。因此 index1 = 1, index2 = 2 。  来源：力扣（LeetCode）第167题  链接：https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted
+ 分析： 方法有：hash表，二分查找，双指针。
+代码：  hash表:
+class Solution: def twoSum(self, numbers: List[int], target: int) -&amp;gt; List[int]: hashTable = {} for i in range(len(numbers)): if hashTable.</description>
+    </item>
+    
+    <item>
+      <title>复写零</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%A4%8D%E5%86%99%E9%9B%B6/</link>
+      <pubDate>Fri, 06 Sep 2019 20:16:32 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%A4%8D%E5%86%99%E9%9B%B6/</guid>
+      <description>题目：复写零  给你一个长度固定的整数数组arr，请你将该数组中出现的每个零都复写一遍，并将其余的元素向右平移。 注意：请不要在超过该数组长度的位置写入元素。 要求：请对输入的数组就地进行上述修改，不要从函数返回任何东西。  示例 1： 输入：[1,0,2,3,0,4,5,0] 输出：null 解释：调用函数后，输入的数组将被修改为：[1,0,0,2,3,0,0,4]  示例 2： 输入：[1,2,3] 输出：null 解释：调用函数后，输入的数组将被修改为：[1,2,3]  提示：  1 &amp;lt;= arr.length &amp;lt;= 10000 0 &amp;lt;= arr[i] &amp;lt;= 9  来源：力扣（LeetCode）第1089题  链接：https://leetcode-cn.com/problems/duplicate-zeros
+ 分析： 这道题的难点在于要在原数组上操作，不可以申请新的数组。因此，快慢双指针就派上用场了。
+思路：  声明两个指针i,j 一个指针正常遍历i，另一个j遇到0就往前再+1 遍历完之后i之后的数都是被移出去的，j指针在最后一位 依次将i指针的元素赋在j的位置，遇到0，j不仅要将i的值赋上，还要往前一位再赋上0。  代码：  双指针法：
+class Solution: def duplicateZeros(self, arr: List[int]) -&amp;gt; None: i = j = 0 n = len(arr) while j &amp;lt; n: if arr[i] == 0: j += 1 i += 1 j += 1 i -= 1 j -= 1 while i &amp;gt;= 0: if j &amp;lt; n: arr[j] = arr[i] if arr[i] == 0: j -= 1 arr[j] = 0 j -= 1 i -= 1  非原地解法：</description>
+    </item>
     
     <item>
       <title>有序数组的平方</title>

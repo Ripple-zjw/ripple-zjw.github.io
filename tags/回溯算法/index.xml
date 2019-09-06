@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>回溯算法 on LeaveIt</title>
+    <link>https://ripple-zjw.github.io/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</link>
+    <description>Recent content in 回溯算法 on LeaveIt</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 06 Sep 2019 20:18:05 +0800</lastBuildDate>
+    
+	<atom:link href="https://ripple-zjw.github.io/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>组合总和</title>
+      <link>https://ripple-zjw.github.io/2019/%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/</link>
+      <pubDate>Fri, 06 Sep 2019 20:18:05 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/</guid>
+      <description>题目：组合总和  给定一个无重复元素的数组candidates和一个目标数target，找出candidates中所有可以使数字和为target的组合。 candidates中的数字可以无限制重复被选取。  说明： 所有数字（包括 target）都是正整数。 解集不能包含重复的组合。  示例 1: 输入: candidates = [2,3,6,7], target = 7, 所求解集为: [ [7], [2,2,3] ]  示例 2: 输入: candidates = [2,3,5], target = 8, 所求解集为: [ [2,2,2,2], [2,3,3], [3,5] ]  来源：力扣（LeetCode）  链接：https://leetcode-cn.com/problems/combination-sum
+ 分析： 回溯算法+栈，这是我的做法，看到很多算法高手的思路和方法都很棒，有用回溯的，有用dp的。
+我放上两个比较好的题解:  回溯算法： &amp;gt; https://leetcode-cn.com/problems/combination-sum/solution/hui-su-suan-fa-jian-zhi-python-dai-ma-java-dai-m-2/ 动态规划： &amp;gt; https://leetcode-cn.com/problems/combination-sum/solution/chao-qiang-gifzhu-ni-shi-yong-dong-tai-gui-hua-qiu/  思路：  回溯算法一般都用递归来完成。最好的方法是画递归树。 通过对每一层的递归，将所有等于target的答案全部都得到。  代码： class Solution: def combinationSum(self, candidates: List[int], target: int) -&amp;gt; List[List[int]]: ans = [] def recursion(cand, i): for j in range(i, len(candidates)): stack.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -5,8 +5,698 @@
     <description>Recent content in LeaveIt on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 30 Aug 2019 19:27:49 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 06 Sep 2019 20:27:15 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>数组的度</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/</link>
+      <pubDate>Fri, 06 Sep 2019 20:27:15 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-数组的度&#34;&gt;题目：数组的度&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;给定一个非空且只包含非负数的整数数组&lt;code&gt;nums&lt;/code&gt;, 数组的度的定义是指数组里任一元素出现频数的最大值。&lt;/li&gt;
+&lt;li&gt;你的任务是找到与&lt;code&gt;nums&lt;/code&gt;拥有相同大小的度的最短连续子数组，返回其长度。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例-1&#34;&gt;示例 1:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: [1, 2, 2, 3, 1]
+输出: 2
+解释: 
+输入数组的度是2，因为元素1和2的出现频数最大，均为2.
+连续子数组里面拥有相同度的有如下所示:
+[1, 2, 2, 3, 1], [1, 2, 2, 3], [2, 2, 3, 1], [1, 2, 2], [2, 2, 3], [2, 2]
+最短连续子数组[2, 2]的长度为2，所以返回2.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-2&#34;&gt;示例 2:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: [1,2,2,3,1,4,2]
+输出: 6
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;注意&#34;&gt;注意:&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;nums.length&lt;/code&gt;在1到50,000区间范围内。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;nums[i]&lt;/code&gt;是一个在0到49,999范围内的整数。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第697题&#34;&gt;来源：力扣（LeetCode）第697题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/degree-of-an-array&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/degree-of-an-array&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;找到每一个元素的第一个下标和最后一个下标。&lt;/li&gt;
+&lt;li&gt;然后找出出现频率最高的元素。&lt;/li&gt;
+&lt;li&gt;答案就是频率最高的元素的最后一个下标减去第一个下标。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+    def findShortestSubArray(self, nums: List[int]) -&amp;gt; int:
+        left, right, count = {}, {}, {}
+        for i in range(len(nums)):
+            if nums[i] not in left:  # 将第一个下标保存
+                left[nums[i]] = i
+            right[nums[i]] = i  # 将最后一个下标保存
+            count[nums[i]] = count.get(nums[i], 0) + 1  # 累加每个元素出现的频率
+        maxCnt = max(count.values())  # 找出最大值
+        ans = len(nums)
+        for x in count:
+            if count[x] == maxCnt:  # 找到最大值的第一个下标和最后一个下标，由于可能出现最高的次数一样的情况，所以要比较所有出现次数最大的元素的长度，再看哪个最小。
+                ans = min(ans, right[x] - left[x] + 1)
+        return ans
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(n) n为nums的长度。&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(n) n取决于nums中有多少不重复的数。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>图片平滑器</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%9B%BE%E7%89%87%E5%B9%B3%E6%BB%91%E5%99%A8/</link>
+      <pubDate>Fri, 06 Sep 2019 20:26:04 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%9B%BE%E7%89%87%E5%B9%B3%E6%BB%91%E5%99%A8/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-图片平滑器&#34;&gt;题目：图片平滑器&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;包含整数的二维矩阵M表示一个图片的灰度。&lt;/li&gt;
+&lt;li&gt;你需要设计一个平滑器来让每一个单元的灰度成为平均灰度(向下舍入) ，平均灰度的计算是周围的8个单元和它本身的值求平均，如果周围的单元格不足八个，则尽可能多的利用它们。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例-1&#34;&gt;示例 1:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入:
+[[1,1,1],
+ [1,0,1],
+ [1,1,1]]
+输出:
+[[0, 0, 0],
+ [0, 0, 0],
+ [0, 0, 0]]
+解释:
+对于点 (0,0), (0,2), (2,0), (2,2): 平均(3/4) = 平均(0.75) = 0
+对于点 (0,1), (1,0), (1,2), (2,1): 平均(5/6) = 平均(0.83333333) = 0
+对于点 (1,1): 平均(8/9) = 平均(0.88888889) = 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;注意&#34;&gt;注意:&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;给定矩阵中的整数范围为 [0, 255]。&lt;/li&gt;
+&lt;li&gt;矩阵的长和宽的范围均为 [1, 150]。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第661题&#34;&gt;来源：力扣（LeetCode）第661题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/image-smoother&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/image-smoother&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;可以一个一个判断，但是不好，另一种方法，先把八个方向放在一个列表中，然后每次遍历这八个方向。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+    def imageSmoother(self, M: List[List[int]]) -&amp;gt; List[List[int]]:
+        ans = []
+        directions = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]]  # 生成八个方向的列表。
+        height = len(M)
+        width = len(M[0])
+        for i in range(height):
+            tmp = []
+            for j in range(width):
+                res = M[i][j]
+                cnt = 1
+                for direction in directions:
+                    y = direction[0] + i
+                    x = direction[1] + j
+                    if y &amp;lt; height and x &amp;lt; width and x &amp;gt;= 0 and y &amp;gt;= 0:  # 每次都要判断方向是否合法，防止数组越界。
+                        res += M[y][x]
+                        cnt += 1
+                tmp.append(res // cnt)
+            ans.append(tmp)
+        return ans
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(n) n为M的长度和宽度&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(n)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>两数之和II 输入有序数组</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8Cii-%E8%BE%93%E5%85%A5%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Fri, 06 Sep 2019 20:24:19 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8Cii-%E8%BE%93%E5%85%A5%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-两数之和-ii-输入有序数组&#34;&gt;题目：两数之和 II - 输入有序数组&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;给定一个已按照升序排列的有序数组，找到两个数使得它们相加之和等于目标数。&lt;/li&gt;
+&lt;li&gt;函数应该返回这两个下标值 index1 和 index2，其中&lt;code&gt;index1&lt;/code&gt;必须小于&lt;code&gt;index2&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;说明&#34;&gt;说明:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;返回的下标值（index1 和 index2）不是从零开始的。
+你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例&#34;&gt;示例:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: numbers = [2, 7, 11, 15], target = 9
+输出: [1,2]
+解释: 2 与 7 之和等于目标数 9 。因此 index1 = 1, index2 = 2 。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第167题&#34;&gt;来源：力扣（LeetCode）第167题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;p&gt;方法有：hash表，二分查找，双指针。&lt;/p&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;hash表:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+def twoSum(self, numbers: List[int], target: int) -&amp;gt; List[int]:
+    hashTable = {}
+    for i in range(len(numbers)):
+        if hashTable.get(target - numbers[i]) is not None:
+            return hashTable[target - numbers[i]] + 1, i + 1
+        hashTable[numbers[i]] = i
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;二分查找:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+def twoSum(self, numbers: List[int], target: int) -&amp;gt; List[int]:
+    for i in range(len(numbers)):
+        ans = target - numbers[i]
+        k = len(numbers) - 1
+        j = i + 1
+        while j &amp;lt;= k:
+            mid = (j + k) // 2
+            if numbers[mid] == ans:
+                return i + 1, mid + 1
+            elif numbers[mid] &amp;lt; ans:
+                j = mid + 1
+            else:
+                k = mid - 1
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;双指针:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+def twoSum(self, numbers: List[int], target: int) -&amp;gt; List[int]:
+    i = 0
+    j = len(numbers) - 1
+    while i &amp;lt; j:
+        _sum = numbers[i] + numbers[j]
+        if target == _sum:
+            return i + 1, j + 1
+        elif target &amp;lt; _sum:
+            j -= 1
+        else:
+            i += 1
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;hash表：
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(n) n为数组长度&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(n)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;二分查找：
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(nlogn)&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(1)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;双指针：
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(n) n为数组长度的一半&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(1)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>缺失数字</title>
+      <link>https://ripple-zjw.github.io/2019/%E7%BC%BA%E5%A4%B1%E6%95%B0%E5%AD%97/</link>
+      <pubDate>Fri, 06 Sep 2019 20:21:39 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E7%BC%BA%E5%A4%B1%E6%95%B0%E5%AD%97/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-缺失数字&#34;&gt;题目：缺失数字&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;给定一个包含&lt;code&gt;0, 1, 2, ..., n&lt;/code&gt;中&lt;em&gt;n&lt;/em&gt; 个数的序列，找出 &lt;em&gt;0 .. n&lt;/em&gt; 中没有出现在序列中的那个数。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例-1&#34;&gt;示例 1:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: [3,0,1]
+输出: 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-2&#34;&gt;示例 2:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: [9,6,4,2,3,5,7,0,1]
+输出: 8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;说明&#34;&gt;说明:&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;你的算法应具有线性时间复杂度。你能否仅使用额外常数空间来实现?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第268题&#34;&gt;来源：力扣（LeetCode）第268题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/missing-number&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/missing-number&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;p&gt;使用排序和哈希可以很容易做出来，但是不符合题意O(1)的空间复杂度。还有两种方法，一种是位运算，另一种是通过数学定理来解题。&lt;/p&gt;
+
+&lt;h2 id=&#34;位运算解题&#34;&gt;位运算解题：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;异或运算的性质：
+
+&lt;ul&gt;
+&lt;li&gt;异或运算（XOR）满足结合律，并且对一个数进行两次完全相同的异或运算会得到原来的数。&lt;/li&gt;
+&lt;li&gt;比如：&lt;code&gt;a ^ b ^ b == a&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;任意一个数对0进行异或运算，等于它原来的数。&lt;/li&gt;
+&lt;li&gt;比如：&lt;code&gt;a ^ 0 == a&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;任意一个数对它本身进行异或运算，等于0.&lt;/li&gt;
+&lt;li&gt;比如：&lt;code&gt;a ^ a  == 0&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;因此，在&lt;code&gt;0-n&lt;/code&gt;个数的数组中必定缺少一个数。我们把数组的下标和数组中的数进行异或运算，所有的数都会找到下标相等的数，只有缺失的那个数字找不到，最后算出来的结果就是那个缺失的数。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;代码&#34;&gt;代码：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+    def missingNumber(self, nums: List[int]) -&amp;gt; int:
+        ans = len(nums)  # 由于数组没有长度为nums长度的下标，因为从0开始索引的，所以我们要先加上去。
+        for i in range(len(nums)):
+            ans ^= i ^ nums[i]
+        return ans
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;数学定理解题&#34;&gt;数学定理解题：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;等差数列求和公式：
+
+&lt;ul&gt;
+&lt;li&gt;n * (n+1) / 2&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;我们把从0到数组最后的下标累加，再加上数组的长度。&lt;/li&gt;
+&lt;li&gt;再把数组中的所有元素累加。&lt;/li&gt;
+&lt;li&gt;然后两个相减，最后得到的就是缺失的数字。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;代码-1&#34;&gt;代码：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+    def missingNumber(self, nums: List[int]) -&amp;gt; int:
+        n = len(nums)
+        return n * (n + 1) // 2 - sum(nums)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;两种方法复杂度一样：
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(n)&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(1)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>找到所有数组中消失的数字</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%89%BE%E5%88%B0%E6%89%80%E6%9C%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%B6%88%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/</link>
+      <pubDate>Fri, 06 Sep 2019 20:19:35 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%89%BE%E5%88%B0%E6%89%80%E6%9C%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%B6%88%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-找到所有数组中消失的数字&#34;&gt;题目：找到所有数组中消失的数字&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;给定一个范围在&lt;code&gt;1 ≤ a[i] ≤ n&lt;/code&gt; (&lt;code&gt;n&lt;/code&gt; = 数组大小 ) 的 整型数组，数组中的元素一些出现了两次，另一些只出现一次。&lt;/li&gt;
+&lt;li&gt;找到所有在 [1, n] 范围之间没有出现在数组中的数字。&lt;/li&gt;
+&lt;li&gt;您能在不使用额外空间且时间复杂度为O(n)的情况下完成这个任务吗? 你可以假定返回的数组不算在额外空间内。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例&#34;&gt;示例:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入:
+[4,3,2,7,8,2,3,1]
+
+输出:
+[5,6]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第448题&#34;&gt;来源：力扣（LeetCode）第448题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;p&gt;有多种方法，第一种是用抽屉原理和异或运算的方式交换值。第二种是一种更为巧妙的方式。&lt;/p&gt;
+
+&lt;h3 id=&#34;使用异或运算交换两个值的方法&#34;&gt;使用异或运算交换两个值的方法：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;a = a ^ b
+b = a ^ b
+a = a ^ b
+这样就可以在不使用第三个变量的前提下交换两个变量的值。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;抽屉原理&#34;&gt;抽屉原理：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;如果每个抽屉代表一个集合，每一个苹果就可以代表一个元素，假如有 n + 1 个元素放到 n 个集合中去，其中必定有一个集合里至少有两个元素。” 抽屉原理有时也被称为鸽巢原理。它是组合数学中一个重要的原理。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;思路&#34;&gt;思路：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;第一种：
+
+&lt;ul&gt;
+&lt;li&gt;遍历整个数组，从第一个开始&lt;code&gt;i&lt;/code&gt;，不停地把这个位置上的元素&lt;code&gt;i&lt;/code&gt;与它的值所对应的下标位置上的元素进行交换。&lt;/li&gt;
+&lt;li&gt;一旦当前遍历的这个位置上的元素&lt;code&gt;i&lt;/code&gt;与它值所对应的下标位置上的元素相等，那么就遍历数组的下一个元素&lt;code&gt;i&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;这样的目的是，要么当前位置上&lt;code&gt;i&lt;/code&gt;存的是正确的位置，比如&lt;code&gt;i = 0&lt;/code&gt;的位置上存的是&lt;code&gt;1&lt;/code&gt;，因为数组中的元素是从&lt;code&gt;1&lt;/code&gt;开始的；要么当前位置&lt;code&gt;i&lt;/code&gt;上存的是出现了两次的元素。&lt;/li&gt;
+&lt;li&gt;这样最后判断每个元素的值是否是其下标+1。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;第二种：
+
+&lt;ul&gt;
+&lt;li&gt;遍历整个数组，将该元素的值所对应的下标位置的值变为负数。&lt;/li&gt;
+&lt;li&gt;遍历完后，如果数组中还有位置上的值是正数，那么说明没有值等于该位置的下标，即数组中没有遍历到这个值。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;两种方法的代码&#34;&gt;两种方法的代码：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;第一种：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+def findDisappearedNumbers(self, nums: List[int]) -&amp;gt; List[int]:
+    for i in range(len(nums)):
+        while nums[i] != nums[nums[i] - 1]:  # 一直交换，直到值正确或者这个值出现了两次。
+            tmp = nums[i] - 1  # 临时储存，如果用函数可以不写这个。
+            if i == tmp:  # 如果两个值相等不能用异或交换，否则一个值会为0
+                break
+            nums[i] = nums[i] ^ nums[tmp]  # 异或交换
+            nums[tmp] = nums[i] ^ nums[tmp]
+            nums[i] = nums[i] ^ nums[tmp]
+    return [i+1 for i in range(len(nums)) if i+1 != nums[i]]  # 返回正确位置的值
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;第二种：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+def findDisappearedNumbers(self, nums: List[int]) -&amp;gt; List[int]:
+    for i in range(len(nums)):
+        nums[abs(nums[i]) - 1] = -abs(nums[abs(nums[i]) - 1])  # 把当前值所对应的下标上的值变为负数，需要注意的是可能这个值已经是负数了，比如有的值出现了两次，所以要加绝对值。
+    return [i + 1 for i in range(len(nums)) if nums[i] &amp;gt; 0]  # 把大于0的数返回
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(n)&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(1)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>组合总和</title>
+      <link>https://ripple-zjw.github.io/2019/%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/</link>
+      <pubDate>Fri, 06 Sep 2019 20:18:05 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-组合总和&#34;&gt;题目：组合总和&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;给定一个无重复元素的数组&lt;code&gt;candidates&lt;/code&gt;和一个目标数&lt;code&gt;target&lt;/code&gt;，找出&lt;code&gt;candidates&lt;/code&gt;中所有可以使数字和为&lt;code&gt;target&lt;/code&gt;的组合。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;candidates&lt;/code&gt;中的数字可以无限制重复被选取。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;说明&#34;&gt;说明：&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;所有数字（包括 target）都是正整数。
+解集不能包含重复的组合。 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-1&#34;&gt;示例 1:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: candidates = [2,3,6,7], target = 7,
+所求解集为:
+[
+  [7],
+  [2,2,3]
+]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-2&#34;&gt;示例 2:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: candidates = [2,3,5], target = 8,
+所求解集为:
+[
+  [2,2,2,2],
+  [2,3,3],
+  [3,5]
+]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode&#34;&gt;来源：力扣（LeetCode）&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/combination-sum&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/combination-sum&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;p&gt;回溯算法+栈，这是我的做法，看到很多算法高手的思路和方法都很棒，有用回溯的，有用dp的。&lt;/p&gt;
+
+&lt;h3 id=&#34;我放上两个比较好的题解&#34;&gt;我放上两个比较好的题解:&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;回溯算法：
+&amp;gt; &lt;a href=&#34;https://leetcode-cn.com/problems/combination-sum/solution/hui-su-suan-fa-jian-zhi-python-dai-ma-java-dai-m-2/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/combination-sum/solution/hui-su-suan-fa-jian-zhi-python-dai-ma-java-dai-m-2/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;动态规划：
+&amp;gt; &lt;a href=&#34;https://leetcode-cn.com/problems/combination-sum/solution/chao-qiang-gifzhu-ni-shi-yong-dong-tai-gui-hua-qiu/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/combination-sum/solution/chao-qiang-gifzhu-ni-shi-yong-dong-tai-gui-hua-qiu/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;思路&#34;&gt;思路：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;回溯算法一般都用递归来完成。最好的方法是画递归树。&lt;/li&gt;
+&lt;li&gt;通过对每一层的递归，将所有等于target的答案全部都得到。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -&amp;gt; List[List[int]]:
+        ans = []
+        def recursion(cand, i):
+            for j in range(i, len(candidates)):
+                stack.append(candidates[j])
+                res = candidates[j] + cand
+                if res &amp;gt;= target:
+                    if res == target:
+                        ans.append(stack[:])
+                    stack.pop()
+                    continue
+                else:
+                    recursion(res, j)
+                    stack.pop()
+        for i in range(len(candidates)):
+            stack = [candidates[i]]
+            if candidates[i] &amp;lt; target:
+                recursion(candidates[i], i)
+            elif candidates[i] == target:
+                ans.append(stack)
+        return ans
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(n!) 个人认为&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(target) 个人认为&lt;code&gt;target&lt;/code&gt;是主要影响答案数量的，当&lt;code&gt;target&lt;/code&gt;变大时，最终返回的数量会非常多。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>复写零</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%A4%8D%E5%86%99%E9%9B%B6/</link>
+      <pubDate>Fri, 06 Sep 2019 20:16:32 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%A4%8D%E5%86%99%E9%9B%B6/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-复写零&#34;&gt;题目：复写零&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;给你一个长度固定的整数数组&lt;code&gt;arr&lt;/code&gt;，请你将该数组中出现的每个零都复写一遍，并将其余的元素向右平移。&lt;/li&gt;
+&lt;li&gt;注意：请不要在超过该数组长度的位置写入元素。&lt;/li&gt;
+&lt;li&gt;要求：请对输入的数组就地进行上述修改，不要从函数返回任何东西。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例-1&#34;&gt;示例 1：&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入：[1,0,2,3,0,4,5,0]
+输出：null
+解释：调用函数后，输入的数组将被修改为：[1,0,0,2,3,0,0,4]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-2&#34;&gt;示例 2：&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入：[1,2,3]
+输出：null
+解释：调用函数后，输入的数组将被修改为：[1,2,3]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;提示&#34;&gt;提示：&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1 &amp;lt;= arr.length &amp;lt;= 10000&lt;/li&gt;
+&lt;li&gt;0 &amp;lt;= arr[i] &amp;lt;= 9&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第1089题&#34;&gt;来源：力扣（LeetCode）第1089题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/duplicate-zeros&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/duplicate-zeros&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;p&gt;这道题的难点在于要在原数组上操作，不可以申请新的数组。因此，快慢双指针就派上用场了。&lt;/p&gt;
+
+&lt;h2 id=&#34;思路&#34;&gt;思路：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;声明两个指针&lt;code&gt;i&lt;/code&gt;,&lt;code&gt;j&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;一个指针正常遍历&lt;code&gt;i&lt;/code&gt;，另一个&lt;code&gt;j&lt;/code&gt;遇到&lt;code&gt;0&lt;/code&gt;就往前再+1&lt;/li&gt;
+&lt;li&gt;遍历完之后&lt;code&gt;i&lt;/code&gt;之后的数都是被移出去的，&lt;code&gt;j&lt;/code&gt;指针在最后一位&lt;/li&gt;
+&lt;li&gt;依次将&lt;code&gt;i&lt;/code&gt;指针的元素赋在&lt;code&gt;j&lt;/code&gt;的位置，遇到0，&lt;code&gt;j&lt;/code&gt;不仅要将&lt;code&gt;i&lt;/code&gt;的值赋上，还要往前一位再赋上0。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;双指针法：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+def duplicateZeros(self, arr: List[int]) -&amp;gt; None:
+    i = j = 0
+    n = len(arr)
+    while j &amp;lt; n:
+        if arr[i] == 0:
+            j += 1
+        i += 1
+        j += 1
+    i -= 1
+    j -= 1
+    while i &amp;gt;= 0:
+        if j &amp;lt; n:
+            arr[j] = arr[i]
+        if arr[i] == 0:
+            j -= 1
+            arr[j] = 0
+        j -= 1
+        i -= 1
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;非原地解法：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+def duplicateZeros(self, arr: List[int]) -&amp;gt; None:
+    i = 0
+    while i &amp;lt; len(arr):
+        if arr[i] == 0:
+            arr.insert(i, 0)
+            arr.pop()
+            i += 1
+        i += 1
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(n) n为数组的长度&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(1)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>数组的相对排序</title>
@@ -793,704 +1483,6 @@ if __name__ == &#39;__main__&#39;:  # 测试通过
 &lt;li&gt;这是一道hard题。难度挺大的，其实我自己第一次想的时侯方法已经很接近了，但就是那个突破口没有想到，导致做不出来。&lt;/li&gt;
 &lt;li&gt;如果我能想到一层一层算的话这道题就能解决了。&lt;/li&gt;
 &lt;li&gt;而且这道题非常经典，有非常多的解法，建议大家收藏。&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>任务调度器</title>
-      <link>https://ripple-zjw.github.io/2019/%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%99%A8/</link>
-      <pubDate>Fri, 23 Aug 2019 12:52:54 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%99%A8/</guid>
-      <description>
-
-&lt;h1 id=&#34;题目-任务调度器&#34;&gt;题目：任务调度器&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;给定一个用字符数组表示的 CPU 需要执行的任务列表。其中包含使用大写的 A - Z 字母表示的26 种不同种类的任务。&lt;/li&gt;
-&lt;li&gt;任务可以以任意顺序执行，并且每个任务都可以在 1 个单位时间内执行完。&lt;/li&gt;
-&lt;li&gt;CPU 在任何一个单位时间内都可以执行一个任务，或者在待命状态。&lt;/li&gt;
-&lt;li&gt;然而，两个相同种类的任务之间必须有长度为 n 的冷却时间，因此至少有连续 n 个单位时间内 CPU 在执行不同的任务，或者在待命状态。&lt;/li&gt;
-&lt;li&gt;你需要计算完成所有任务所需要的最短时间。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;示例-1&#34;&gt;示例 1：&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入: tasks = [&amp;quot;A&amp;quot;,&amp;quot;A&amp;quot;,&amp;quot;A&amp;quot;,&amp;quot;B&amp;quot;,&amp;quot;B&amp;quot;,&amp;quot;B&amp;quot;], n = 2
-输出: 8
-执行顺序: A -&amp;gt; B -&amp;gt; (待命) -&amp;gt; A -&amp;gt; B -&amp;gt; (待命) -&amp;gt; A -&amp;gt; B.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;注&#34;&gt;注：&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;任务的总个数为 [1, 10000]。&lt;/li&gt;
-&lt;li&gt;n 的取值范围为 [0, 100]。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第621题&#34;&gt;来源：力扣（LeetCode）第621题&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/task-scheduler&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/task-scheduler&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
-
-&lt;p&gt;写在队列的标签里，本质上用的却是贪心算法，不知道为什么，同时还用到了一点hashmap的知识。&lt;/p&gt;
-
-&lt;h2 id=&#34;思路&#34;&gt;思路：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;要知道最短时间首先要找到出现次数最多的那个值，如果出现次数一样多，选哪个都无所谓。&lt;/li&gt;
-&lt;li&gt;然后看&lt;code&gt;A-Z&lt;/code&gt;中总共有几个数字出现了，假设最多次数的值是&lt;code&gt;A&lt;/code&gt;，那么第一个&lt;code&gt;A&lt;/code&gt;到第二个&lt;code&gt;A&lt;/code&gt;之间总共还能再放&lt;code&gt;n&lt;/code&gt;个不一样的值。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;A -&amp;gt; (单位时间) -&amp;gt; (单位时间) -&amp;gt; A -&amp;gt; (单位时间) -&amp;gt; (单位时间) -&amp;gt; A&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;如果填不满那就为&lt;code&gt;等待时间&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;如果填满了，那就说明不需要&lt;code&gt;等待时间&lt;/code&gt;就能得到最短时间，所以最短时间就是数组的长度。&lt;/li&gt;
-&lt;li&gt;如果没填满，那么我们可以计算&lt;code&gt;(出现的次数最多的元素 - 1) * (n + 1) + 出现次数一样多的元素的个数&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;我们依靠出现的次数最多的元素&lt;code&gt;A&lt;/code&gt;把整个答案划分为a份(a为&lt;code&gt;A&lt;/code&gt;的次数)，每一份就是&lt;code&gt;n+1&lt;/code&gt;，由于最后一份不一定是&lt;code&gt;n+1&lt;/code&gt;，所以是&lt;code&gt;(a-1)*(n+1)&lt;/code&gt;，最后在把不相等的最后一份加进去就得到了答案。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
-    def leastInterval(self, tasks: List[str], n: int) -&amp;gt; int:
-        count = [0] * 26
-        for task in tasks:
-            count[ord(task) - 65] += 1  # 这里是我自己写的简单hash函数，也可以用字典，我这里觉得简单就没用字典。
-        maxNum = max(count)
-        maxCount = 0
-        for c in count:
-            if c == maxNum:
-                maxCount += 1
-        return max((maxNum - 1) * (n + 1) + maxCount, len(tasks))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;时间复杂度：O(n) n为tasks的长度&lt;/li&gt;
-&lt;li&gt;空间复杂度：O(1)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;第一次写贪心算法题，标签写错了，本来有想到贪心算法的，可是标签是队列我就一直在想队列，想了半天没有思路。&lt;/li&gt;
-&lt;li&gt;贪心算法得到的有可能是近似解，在使用贪心算法时要想清楚特殊的情况。&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>二叉树的后序遍历</title>
-      <link>https://ripple-zjw.github.io/2019/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/</link>
-      <pubDate>Fri, 23 Aug 2019 12:49:52 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/</guid>
-      <description>
-
-&lt;h1 id=&#34;题目-二叉树的后序遍历&#34;&gt;题目：二叉树的后序遍历&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;给定一个二叉树，返回它的 后序 遍历。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;示例&#34;&gt;示例:&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入: [1,null,2,3]  
-   1
-    \
-     2
-    /
-   3 
-输出: [3,2,1]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;进阶:递归算法很简单，你可以通过迭代算法完成吗？&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第145题&#34;&gt;来源：力扣（LeetCode）第145题&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/binary-tree-postorder-traversal&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/binary-tree-postorder-traversal&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
-
-&lt;p&gt;方法有很多，递归法最简单，迭代法使用栈辅助完成，还有莫里斯遍历。本文讲解官方写的题解迭代法。虽然我也写出了迭代法，但是官方的解法既简单又高效，非常厉害。使用了迭代法+逆向工作法。&lt;/p&gt;
-
-&lt;h2 id=&#34;思路&#34;&gt;思路：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;后序遍历是左，右，中。可是中在最后，如果正常解后序遍历的话有的复杂。&lt;/li&gt;
-&lt;li&gt;如果我们用中，右，左这样来遍历的话岂不是将后序遍历变成了前序遍历的翻版类型。&lt;/li&gt;
-&lt;li&gt;这样的话答案只是与我们要求的答案相反，翻转一下列表就可以了。&lt;/li&gt;
-&lt;li&gt;所以解法就是一个反向的先序遍历方法。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;官方的迭代法+逆向工作法&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
-class Solution:
-def postorderTraversal(self, root: TreeNode) -&amp;gt; List[int]:
-    if root is None:
-        return []
-    stack = [root]
-    res = []
-    while stack:
-        root = stack.pop()
-        res.append(root.val)
-        if root.left is not None:  # 先加左再加右，出栈的时候就是先加右，再加左。
-            stack.append(root.left)
-        if root.right is not None:
-            stack.append(root.right)
-    return res[::-1]
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;我自己写的迭代法，内容有点复杂，不是很好理解。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
-class Solution(object):
-def postorderTraversal(self, root):
-    stack = []
-    helper = []
-    res = []
-    while stack or root:
-        while root:
-            stack.append(root)
-            root = root.left
-        helper.append(stack[-1])
-        root = stack.pop().right
-        if root is None:
-            res.append(helper.pop().val)
-            while stack and stack[-1].left in helper and helper:
-                res.append(helper.pop().val)
-            while not stack and helper:
-                res.append(helper.pop().val)
-    return res
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;虽然我的方法写的多了一点，但是速度和官方的一样，甚至有时比官方解法快。&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;两种方法相同，都是迭代法：
-
-&lt;ul&gt;
-&lt;li&gt;时间复杂度：O(n) n为树的所有节点。&lt;/li&gt;
-&lt;li&gt;空间复杂度：O(n)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;再一次遇到逆向工作法，事实证明如果你遇到问题解不开来反向解一下，思路清晰，易于求解。&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>132模式</title>
-      <link>https://ripple-zjw.github.io/2019/132%E6%A8%A1%E5%BC%8F/</link>
-      <pubDate>Mon, 19 Aug 2019 22:52:15 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/132%E6%A8%A1%E5%BC%8F/</guid>
-      <description>
-
-&lt;h1 id=&#34;题目-132模式&#34;&gt;题目：132模式&lt;/h1&gt;
-
-&lt;p&gt;给定一个整数序列：&lt;code&gt;a1, a2, ..., an&lt;/code&gt;，一个132模式的子序列&lt;code&gt;ai, aj, ak&lt;/code&gt;被定义为：当 &lt;code&gt;i &amp;lt; j &amp;lt; k&lt;/code&gt;时，&lt;code&gt;ai &amp;lt; ak &amp;lt; aj&lt;/code&gt;。设计一个算法，当给定有 n 个数字的序列时，验证这个序列中是否含有132模式的子序列。
-- 注意：n 的值小于15000。&lt;/p&gt;
-
-&lt;h5 id=&#34;示例1&#34;&gt;示例1:&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入: [1, 2, 3, 4]
-输出: False
-解释: 序列中不存在132模式的子序列。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;示例-2&#34;&gt;示例 2:&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入: [3, 1, 4, 2]
-输出: True
-解释: 序列中有 1 个132模式的子序列： [1, 4, 2].
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;示例-3&#34;&gt;示例 3:&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入: [-1, 3, 2, 0]
-输出: True
-解释: 序列中有 3 个132模式的的子序列: [-1, 3, 2], [-1, 3, 0] 和 [-1, 2, 0].
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第456题&#34;&gt;来源：力扣（LeetCode）第456题&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/132-pattern&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/132-pattern&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;分析&#34;&gt;分析：&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;还是单调栈，不过还需要用到另一个方法，逆向工作法。反向遍历列表就会发现不一样的做法。&lt;/li&gt;
-&lt;li&gt;根据题意&lt;code&gt;1&lt;/code&gt;代表最小元素，&lt;code&gt;3&lt;/code&gt;代表最大元素，&lt;code&gt;2&lt;/code&gt;代表次大元素&lt;/li&gt;
-&lt;li&gt;通过单调递减栈找到最大元素的最大次大元素，然后再确定最小元素要比最大次大元素小。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;思路&#34;&gt;思路：&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;反向遍历列表。&lt;/li&gt;
-&lt;li&gt;严格维护一个单调递减栈。&lt;/li&gt;
-&lt;li&gt;一旦遇到一个大的元素，将栈内元素出栈，维护单调递减。入栈后，将自己作为题目中的最大元素，即中间的元素。&lt;/li&gt;
-&lt;li&gt;将最后一个出栈的元素作为次大元素，即右边的元素。&lt;/li&gt;
-&lt;li&gt;这样的好处是我找到的次大元素一定是与当前最大元素的值最近的，而且还在最大元素的后面。&lt;/li&gt;
-&lt;li&gt;这样我只要在前面找到一个比次大元素小的值，也就是最小值，那么就是True。&lt;/li&gt;
-&lt;li&gt;如果找不到，那么可能有两种情况。
-
-&lt;ul&gt;
-&lt;li&gt;第一种在最大元素和次大元素之间，最小值比最大的次大元素还要大，不符合题意。但是要维护单调递减栈，所以入栈。&lt;/li&gt;
-&lt;li&gt;第二种在最大元素之上，那么用刚才的方法重新确定最大元素和次大元素。由于它在最大元素之上，当它为最大元素时它能包括之前的最大元素在内，重新确定的次大元素一定会比之前的次大元素大。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;如果遍历完为止都没有返回True，那么返回False。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;上代码&#34;&gt;上代码：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
-    def find132pattern(self, nums: List[int]) -&amp;gt; bool:
-        stack = []
-        _min = float(&#39;-inf&#39;)
-        for i in range(len(nums) - 1, -1, -1):
-            if nums[i] &amp;lt; _min:
-                return True
-            while stack and stack[-1] &amp;lt; nums[i]:
-                _min = stack.pop()
-            stack.append(nums[i])
-        return False
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;时间复杂度：O(n) n为列表的长度&lt;/li&gt;
-&lt;li&gt;空间复杂度：O(n)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;逆向工作法，如果你想不出来细节时可以考虑使用。&lt;/li&gt;
-&lt;li&gt;我一开始的思路是正向遍历，维护一个单调递减栈。&lt;/li&gt;
-&lt;li&gt;然后确定一个最小值，但是次大元素在右边，所以单调栈内无法找到次大元素。如果次大元素在左边的话，就可以直接正向单调递减了。&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>验证二叉树的前序序列化</title>
-      <link>https://ripple-zjw.github.io/2019/%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E5%BA%8F%E5%88%97%E5%8C%96/</link>
-      <pubDate>Mon, 19 Aug 2019 22:51:58 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E5%BA%8F%E5%88%97%E5%8C%96/</guid>
-      <description>
-
-&lt;h1 id=&#34;题目-验证二叉树的前序序列化&#34;&gt;题目：验证二叉树的前序序列化&lt;/h1&gt;
-
-&lt;p&gt;序列化二叉树的一种方法是使用前序遍历。当我们遇到一个非空节点时，我们可以记录下这个节点的值。如果它是一个空节点，我们可以使用一个标记值记录，例如 #。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;     _9_
-    /   \
-   3     2
-  / \   / \
- 4   1  #  6
-/ \ / \   / \
-# # # #   # #
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;例如，上面的二叉树可以被序列化为字符串 &lt;code&gt;&amp;quot;9,3,4,#,#,1,#,#,2,#,6,#,#&amp;quot;&lt;/code&gt;，其中 &lt;code&gt;#&lt;/code&gt;代表一个空节点。&lt;/li&gt;
-&lt;li&gt;给定一串以逗号分隔的序列，验证它是否是正确的二叉树的前序序列化。编写一个在不重构树的条件下的可行算法。&lt;/li&gt;
-&lt;li&gt;每个以逗号分隔的字符或为一个整数或为一个表示 null 指针的 &lt;code&gt;&#39;#&#39;&lt;/code&gt; 。&lt;/li&gt;
-&lt;li&gt;你可以认为输入格式总是有效的，例如它永远不会包含两个连续的逗号，比如&lt;code&gt;&amp;quot;1,,3&amp;quot;&lt;/code&gt;。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;示例-1&#34;&gt;示例 1:&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入: &amp;quot;9,3,4,#,#,1,#,#,2,#,6,#,#&amp;quot;
-输出: true
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;示例-2&#34;&gt;示例 2:&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入: &amp;quot;1,#&amp;quot;
-输出: false
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;示例-3&#34;&gt;示例 3:&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入: &amp;quot;9,#,#,1&amp;quot;
-输出: false
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第331题&#34;&gt;来源：力扣（LeetCode）第331题&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/verify-preorder-serialization-of-a-binary-tree&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/verify-preorder-serialization-of-a-binary-tree&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;分析&#34;&gt;分析：&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;就是每个爸爸都要找到两个儿子。(两个儿子可以是数字也可以是&lt;code&gt;#&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;#&lt;/code&gt;爸爸什么都没有，比较惨。&lt;/li&gt;
-&lt;li&gt;上面两条任意一条不对都不合法。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;思路&#34;&gt;思路:&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;前序遍历严格遵守中，左，右的顺序。&lt;/li&gt;
-&lt;li&gt;所以第一个为根节点，到第一个&lt;code&gt;#&lt;/code&gt;为止，前面这些数字都是根节点的最左边的左子节点&lt;/li&gt;
-&lt;li&gt;维护一个栈&lt;code&gt;stack&lt;/code&gt;，栈中存的是未确认它是否有两个子节点的节点，就是说如果该节点找到了他的两个子节点，就出栈(&lt;code&gt;#&lt;/code&gt;也算它的子节点)。&lt;/li&gt;
-&lt;li&gt;凡是找到数字，全都入栈，因为一开始找到数字，你只能确认它的左子节点是下一个值(数字或&lt;code&gt;#&lt;/code&gt;)，无法知道它的右子节点。&lt;/li&gt;
-&lt;li&gt;当找到第一个&lt;code&gt;#&lt;/code&gt;时，开始遍历右子节点。因为没有左子节点了，遍历最近的节点的右子节点，也就是栈顶元素！！！&lt;/li&gt;
-&lt;li&gt;一旦遍历了右子节点，那么该节点的左右子节点都找到了，出栈。&lt;/li&gt;
-&lt;li&gt;接下来继续重复之前的规律，如果字符串合法，那么stack中的元素都被弹出去了，如果栈中还有元素，那么就说明有的元素找不到它的两个儿子。&lt;/li&gt;
-&lt;li&gt;大概是这么个思路，不过还有些细节要处理。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;看我写的代码&#34;&gt;看我写的代码：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
-    def isValidSerialization(self, preorder: str) -&amp;gt; bool:
-        if preorder == &#39;&#39;:
-            return False
-        if preorder == &#39;#&#39;:
-            return True
-        pol = preorder.split(&#39;,&#39;)  # PreOrderList
-        stack = []  # 只有数字入栈，当确认了该数字的两个子节点后出栈
-        n = len(pol)
-        isLeftTree = True  # 如果现在遍历的是左子树的话，不用出栈，如果为右子树的话无论是什么都要出栈
-        for i in range(n):
-            if pol[i].isdigit():
-                if not isLeftTree:
-                    if not stack:  # 如果栈是空的还要弹元素的话说明这字符串不合法。
-                        return False
-                    stack.pop()
-                stack.append(pol[i])  # 无论是左子树还是右子树，遇到数字都要入栈
-                isLeftTree = True  # 如果遍历到的是数字的话，那么又开始遍历左子树了。
-            else:
-                isLeftTree = False  # 当左子树遍历到#号时那么左子树完了，开始遍历右子树。
-                if pol[i - 1] == &#39;#&#39;:
-                    if not stack:
-                        return False
-                    stack.pop()
-        return len(stack) == 0  # 栈为空就说明合法，每一个节点都找到了它的两个子节点了。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;时间复杂度：O(n) n为pol列表长度&lt;/li&gt;
-&lt;li&gt;空间复杂度：O(n)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
-
-&lt;p&gt;写的不是最优，总的来说就是将数据分为遍历左子树和右子树两种情况。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>移掉K位数字</title>
-      <link>https://ripple-zjw.github.io/2019/%E7%A7%BB%E6%8E%89k%E4%BD%8D%E6%95%B0%E5%AD%97/</link>
-      <pubDate>Mon, 19 Aug 2019 22:51:46 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E7%A7%BB%E6%8E%89k%E4%BD%8D%E6%95%B0%E5%AD%97/</guid>
-      <description>
-
-&lt;h1 id=&#34;题目-移掉k位数字&#34;&gt;题目：移掉K位数字&lt;/h1&gt;
-
-&lt;p&gt;给定一个以字符串表示的非负整数 num，移除这个数中的 k 位数字，使得剩下的数字最小。&lt;/p&gt;
-
-&lt;h5 id=&#34;注意&#34;&gt;注意:&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;num 的长度小于 10002 且 ≥ k。&lt;/li&gt;
-&lt;li&gt;num 不会包含任何前导零。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;示例-1&#34;&gt;示例 1 :&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入: num = &amp;quot;1432219&amp;quot;, k = 3
-输出: &amp;quot;1219&amp;quot;
-解释: 移除掉三个数字 4, 3, 和 2 形成一个新的最小的数字 1219。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;示例-2&#34;&gt;示例 2 :&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入: num = &amp;quot;10200&amp;quot;, k = 1
-输出: &amp;quot;200&amp;quot;
-解释: 移掉首位的 1 剩下的数字为 200. 注意输出不能有任何前导零。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;示例-3&#34;&gt;示例 3 :&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入: num = &amp;quot;10&amp;quot;, k = 2
-输出: &amp;quot;0&amp;quot;
-解释: 从原数字移除所有的数字，剩余为空就是0。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第402题&#34;&gt;来源：力扣（LeetCode）第402题&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/remove-k-digits&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/remove-k-digits&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;分析&#34;&gt;分析：&lt;/h3&gt;
-
-&lt;p&gt;维护一个单调递增栈，主要的方法很容易想到，但是在处理细节上我还是费了的时间，其实不难处理但是我想的有点复杂了。&lt;/p&gt;
-
-&lt;h3 id=&#34;思路&#34;&gt;思路：&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;维护一个单调递增栈。&lt;/li&gt;
-&lt;li&gt;依次遍历整个字符串，将元素放入栈，同时使单调栈严格单调递增。&lt;/li&gt;
-&lt;li&gt;如果已经弹出去k个元素了，那么剩下的值直接放入栈中即可，不用再删了。&lt;/li&gt;
-&lt;li&gt;如果还没到k个元素字符串就遍历完了，那么根据剩下还要加的元素数量，从栈顶依次出栈。&lt;/li&gt;
-&lt;li&gt;栈有可能是空，根据示例3，栈为空答案时&lt;code&gt;&amp;quot;0&amp;quot;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;如果栈有值，那么将栈合并为字符串，得出答案。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;激动人心的代码环节&#34;&gt;激动人心的代码环节：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
-    def removeKdigits(self, num: str, k: int) -&amp;gt; str:
-        stack = []
-        cnt = 0
-        n = len(num)
-        for i in range(n):
-            while cnt &amp;lt; k and stack and stack[-1] &amp;gt; num[i]:
-                tmp = stack.pop()
-                cnt += 1
-            if stack or num[i] != &#39;0&#39;:
-                stack.append(num[i])
-        while stack and cnt &amp;lt; k:
-            stack.pop()
-            cnt += 1
-        ans = &#39;&#39;.join(stack)
-        return ans if ans != &#39;&#39; else &#39;0&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;时间复杂度：O(n) n为字符串的长度&lt;/li&gt;
-&lt;li&gt;空间复杂度：O(n) n为k的长度&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;单调栈的思想越来越熟了，但是在处理细节上还是不够熟练。&lt;/li&gt;
-&lt;li&gt;虽然自己第一遍做出来了，但是并没有想到最优算法，写的稍微有的啰嗦了。&lt;/li&gt;
-&lt;li&gt;我觉得一开始没处理好是因为我忽略了k这个值，于是关于k的细节没有想得很全面，导致最后自己测试时总是会发现一些小错误，浪费时间。&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>搭建Hugo时需要注意的坑</title>
-      <link>https://ripple-zjw.github.io/2019/%E6%90%AD%E5%BB%BAhugo%E6%97%B6%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9D%91/</link>
-      <pubDate>Sat, 17 Aug 2019 18:58:39 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E6%90%AD%E5%BB%BAhugo%E6%97%B6%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9D%91/</guid>
-      <description>
-
-&lt;h1 id=&#34;搭建hugo时需要注意的坑&#34;&gt;搭建Hugo时需要注意的坑&lt;/h1&gt;
-
-&lt;p&gt;Hugo是一种博客框架，可以说是非常优秀的博客框架。基于go语言，网页生成的速度非常的快，而且下载简单，在GitHub上就能下载，还有官方的中文文档，操作也是很简单。但是对于刚开始搭建博客的小白，还是会遇到各种各样的问题，在这里我把我遇到的坑分享给各位读者。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;从GitHub上把Hugo下载下来会慢，当然也有人网速没问题。这个问题可以找网上的一些方法，比如改hosts文件。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;可能有人和我一样下载完解压后在终端输入&lt;code&gt;hugo xxx&lt;/code&gt;的命令无效，那是因为系统找不到你要输的是什么东西，有两种解决方法。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;第一种是每次输入命令都带上你&lt;code&gt;hugo.exe&lt;/code&gt;文件的绝对路径，但是这样太麻烦了。&lt;/li&gt;
-&lt;li&gt;第二种是将&lt;code&gt;hugo.exe&lt;/code&gt;添加到你系统的环境变量中，这样直接输入hugo就能启动命令了。&lt;/li&gt;
-&lt;li&gt;设置方法为：&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;控制面板 &amp;gt; 系统和安全 &amp;gt; 系统 &amp;gt; 高级系统设置 &amp;gt; 高级 &amp;gt; 环境变量&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;上下两个一个是用户变量，一个是系统变量，建议两个都设置。&lt;/li&gt;
-&lt;li&gt;点击&lt;code&gt;Path&lt;/code&gt;变量，然后点击&lt;code&gt;新建&lt;/code&gt;，将你&lt;code&gt;hugo.exe&lt;/code&gt;的绝对路径目录添加进去，注意是目录。不要把&lt;code&gt;hugo.exe&lt;/code&gt;带进去。例如：你的目录为&lt;code&gt;c:/xxx/xxx/hugo.exe&lt;/code&gt;，你只要添加&lt;code&gt;c:/xxx/xxx&lt;/code&gt;就行了。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;主题是下载到&lt;code&gt;themes\&lt;/code&gt;文件夹中的，用git clone。如果不会使用git，请参考我关于git的文章&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;下载完之后，里面基本都会有一个&lt;code&gt;exampleSite\&lt;/code&gt;文件夹，里面放的是一个样式，你可以直接把里面的&lt;code&gt;config.toml&lt;/code&gt;中的内容复制到你的博客主目录的&lt;code&gt;config.toml&lt;/code&gt;中。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;你博客根目录的&lt;code&gt;config.toml&lt;/code&gt;文件里要把&lt;code&gt;baseURL&lt;/code&gt;参数换成你的博客网站网址，如果你还没有部署到网上，可以填你的本地网址，就是那个默认端口1313的那个。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;你部署好之后，如果想要继续添加文章，首先使用&lt;code&gt;hugo&lt;/code&gt;命令重新生成&lt;code&gt;public/&lt;/code&gt;文件夹，然后在里面用git添加，提交，上传就行了。与第一次部署时的操作一样。&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;### 以上差不多就是我遇到的坑。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>字符串解码</title>
-      <link>https://ripple-zjw.github.io/2019/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81/</link>
-      <pubDate>Sat, 17 Aug 2019 18:51:43 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81/</guid>
-      <description>
-
-&lt;h1 id=&#34;题目-字符串解码&#34;&gt;题目：字符串解码&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;给定一个经过编码的字符串，返回它解码后的字符串。&lt;/li&gt;
-&lt;li&gt;编码规则为: k[encoded_string]，表示其中方括号内部的 encoded_string 正好重复 k 次。注意 k 保证为正整数。&lt;/li&gt;
-&lt;li&gt;你可以认为输入字符串总是有效的；输入字符串中没有额外的空格，且输入的方括号总是符合格式要求的。&lt;/li&gt;
-&lt;li&gt;此外，你可以认为原始数据不包含数字，所有的数字只表示重复的次数 k ，例如不会出现像 3a 或 2[4] 的输入。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h6 id=&#34;示例&#34;&gt;示例:&lt;/h6&gt;
-
-&lt;pre&gt;&lt;code&gt;s = &amp;quot;3[a]2[bc]&amp;quot;, 返回 &amp;quot;aaabcbc&amp;quot;.
-s = &amp;quot;3[a2[c]]&amp;quot;, 返回 &amp;quot;accaccacc&amp;quot;.
-s = &amp;quot;2[abc]3[cd]ef&amp;quot;, 返回 &amp;quot;abcabccdcdcdef&amp;quot;.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第394题&#34;&gt;来源：力扣（LeetCode）第394题&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/decode-string&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/decode-string&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;分析&#34;&gt;分析：&lt;/h3&gt;
-
-&lt;p&gt;两种方法，辅助栈法和递归法，递归法相对思路清晰，比较好做。其实本质两种方法是一样的，因为函数的递归调用其实也是用栈来实现的。&lt;/p&gt;
-
-&lt;h3 id=&#34;思路&#34;&gt;思路：&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;递归法：
-
-&lt;ul&gt;
-&lt;li&gt;遍历整个字符串&lt;/li&gt;
-&lt;li&gt;同时要用到stack列表，tmp列表，还有一个表示下标的变量i&lt;/li&gt;
-&lt;li&gt;每次递归之后stack都是该函数的stack，与外面的stack不同&lt;/li&gt;
-&lt;li&gt;每次遍历字符时，tmp都要将里面的值清空&lt;/li&gt;
-&lt;li&gt;遇到字母，压入stack&lt;/li&gt;
-&lt;li&gt;遇到&lt;code&gt;]&lt;/code&gt;字符,结束函数并将stack返回&lt;/li&gt;
-&lt;li&gt;遇到数字首先判断该数字后是否还有数字，有的话一起加入tmp，然后递归调用函数。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;辅助栈法：
-
-&lt;ul&gt;
-&lt;li&gt;遍历整个字符串&lt;/li&gt;
-&lt;li&gt;res表示当前字符串，multi表示当前数字，stack储存答案&lt;/li&gt;
-&lt;li&gt;遇到字母，与res拼接起来&lt;/li&gt;
-&lt;li&gt;遇到数字，放入multi，注意由于两个数字放在一起要变成两位数，以此类推，所以res 写成&lt;code&gt;res = res * 10 + 当前数字&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;遇到&lt;code&gt;[&lt;/code&gt;，将res，multi同时入栈，用一个列表或元祖，并行的，不是先后入栈。&lt;/li&gt;
-&lt;li&gt;遇到右括号，栈顶元素出栈，并将栈顶元素的multi与当前字符相乘，然后再与栈顶的res相加&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;上代码&#34;&gt;上代码：&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;递归法：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
-    def decodeString(self, s: str) -&amp;gt; str:
-        self.i = 0
-        return &#39;&#39;.join(self.recursion(s))
-            
-    def recursion(self, s: str) -&amp;gt; list:
-        stack = []
-        while self.i &amp;lt; len(s):
-            tmp = []
-            if s[self.i].isalpha():
-                stack.append(s[self.i])
-            elif s[self.i] == &#39;]&#39;:
-                return stack
-            elif s[self.i].isdigit():
-                tmp.append(s[self.i])
-                while s[self.i + 1].isdigit():
-                    tmp.append(s[self.i + 1])
-                    self.i += 1
-                self.i += 2
-                stack += (int(&#39;&#39;.join(tmp)) * self.recursion(s))
-            self.i += 1
-        return stack
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;辅助栈法：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
-    def decodeString(self, s: str) -&amp;gt; str:
-        stack, res, multi = [], &amp;quot;&amp;quot;, 0
-        for c in s:
-            if c == &#39;[&#39;:
-                stack.append([multi, res])
-                res, multi = &amp;quot;&amp;quot;, 0
-            elif c == &#39;]&#39;:
-                cur_multi, last_res = stack.pop()
-                res = last_res + cur_multi * res
-            elif &#39;0&#39; &amp;lt;= c &amp;lt;= &#39;9&#39;:
-                multi = multi * 10 + int(c)            
-            else:
-                res += c
-        return res
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;辅助栈法不是我自己写的，可以参考LeetCode上的作者：
-&amp;gt; &lt;a href=&#34;https://leetcode-cn.com/problems/decode-string/solution/decode-string-fu-zhu-zhan-fa-di-gui-fa-by-jyd/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/decode-string/solution/decode-string-fu-zhu-zhan-fa-di-gui-fa-by-jyd/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;递归法：
-
-&lt;ul&gt;
-&lt;li&gt;时间复杂度：O(n) n为字符串长度&lt;/li&gt;
-&lt;li&gt;空间复杂度：O(n)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;辅助栈法：
-
-&lt;ul&gt;
-&lt;li&gt;时间复杂度：O(n) n为字符串长度&lt;/li&gt;
-&lt;li&gt;空间复杂度：O(n)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;总结&#34;&gt;总结：&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;递归是一种不错的尝试，很多时候递归的时间耗时并不是非常高，而且解题方便。&lt;/li&gt;
-&lt;li&gt;写这种题目前需要理清各种情况时的行为。&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

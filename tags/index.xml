@@ -6,10 +6,118 @@
     <description>Recent content in Tags on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 06 Sep 2019 20:27:15 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 10 Sep 2019 22:59:46 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>分治算法</title>
+      <link>https://ripple-zjw.github.io/tags/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Tue, 10 Sep 2019 22:59:46 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/tags/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>动态规划</title>
+      <link>https://ripple-zjw.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</link>
+      <pubDate>Tue, 10 Sep 2019 22:59:46 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>算法求解思想</title>
+      <link>https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/</link>
+      <pubDate>Tue, 10 Sep 2019 22:59:46 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>二分查找</title>
+      <link>https://ripple-zjw.github.io/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</link>
+      <pubDate>Tue, 10 Sep 2019 22:48:08 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>算法模版</title>
+      <link>https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88/</link>
+      <pubDate>Tue, 10 Sep 2019 22:48:08 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>位运算</title>
+      <link>https://ripple-zjw.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/</link>
+      <pubDate>Tue, 10 Sep 2019 22:46:51 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>判断奇偶性</title>
+      <link>https://ripple-zjw.github.io/tags/%E5%88%A4%E6%96%AD%E5%A5%87%E5%81%B6%E6%80%A7/</link>
+      <pubDate>Tue, 10 Sep 2019 22:46:51 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/tags/%E5%88%A4%E6%96%AD%E5%A5%87%E5%81%B6%E6%80%A7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>异或运算</title>
+      <link>https://ripple-zjw.github.io/tags/%E5%BC%82%E6%88%96%E8%BF%90%E7%AE%97/</link>
+      <pubDate>Tue, 10 Sep 2019 22:46:51 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/tags/%E5%BC%82%E6%88%96%E8%BF%90%E7%AE%97/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>递归</title>
+      <link>https://ripple-zjw.github.io/tags/%E9%80%92%E5%BD%92/</link>
+      <pubDate>Tue, 10 Sep 2019 22:45:45 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/tags/%E9%80%92%E5%BD%92/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>双指针</title>
+      <link>https://ripple-zjw.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/</link>
+      <pubDate>Tue, 10 Sep 2019 22:44:21 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>逆向工作法</title>
+      <link>https://ripple-zjw.github.io/tags/%E9%80%86%E5%90%91%E5%B7%A5%E4%BD%9C%E6%B3%95/</link>
+      <pubDate>Tue, 10 Sep 2019 22:44:21 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/tags/%E9%80%86%E5%90%91%E5%B7%A5%E4%BD%9C%E6%B3%95/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>数学</title>
+      <link>https://ripple-zjw.github.io/tags/%E6%95%B0%E5%AD%A6/</link>
+      <pubDate>Tue, 10 Sep 2019 22:42:16 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/tags/%E6%95%B0%E5%AD%A6/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>哈希</title>
@@ -17,60 +125,6 @@
       <pubDate>Fri, 06 Sep 2019 20:27:15 +0800</pubDate>
       
       <guid>https://ripple-zjw.github.io/tags/%E5%93%88%E5%B8%8C/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>算法求解思想</title>
-      <link>https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/</link>
-      <pubDate>Fri, 06 Sep 2019 20:27:15 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>数学</title>
-      <link>https://ripple-zjw.github.io/tags/%E6%95%B0%E5%AD%A6/</link>
-      <pubDate>Fri, 06 Sep 2019 20:26:04 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/tags/%E6%95%B0%E5%AD%A6/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>二分查找</title>
-      <link>https://ripple-zjw.github.io/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</link>
-      <pubDate>Fri, 06 Sep 2019 20:24:19 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>双指针</title>
-      <link>https://ripple-zjw.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/</link>
-      <pubDate>Fri, 06 Sep 2019 20:24:19 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>位运算</title>
-      <link>https://ripple-zjw.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/</link>
-      <pubDate>Fri, 06 Sep 2019 20:21:39 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>异或运算</title>
-      <link>https://ripple-zjw.github.io/tags/%E5%BC%82%E6%88%96%E8%BF%90%E7%AE%97/</link>
-      <pubDate>Fri, 06 Sep 2019 20:21:39 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/tags/%E5%BC%82%E6%88%96%E8%BF%90%E7%AE%97/</guid>
       <description></description>
     </item>
     
@@ -102,15 +156,6 @@
     </item>
     
     <item>
-      <title>递归</title>
-      <link>https://ripple-zjw.github.io/tags/%E9%80%92%E5%BD%92/</link>
-      <pubDate>Fri, 06 Sep 2019 20:18:05 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/tags/%E9%80%92%E5%BD%92/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>hash</title>
       <link>https://ripple-zjw.github.io/tags/hash/</link>
       <pubDate>Fri, 30 Aug 2019 19:27:49 +0800</pubDate>
@@ -129,29 +174,11 @@
     </item>
     
     <item>
-      <title>动态规划</title>
-      <link>https://ripple-zjw.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</link>
-      <pubDate>Fri, 30 Aug 2019 19:22:10 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>双指针法</title>
       <link>https://ripple-zjw.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95/</link>
       <pubDate>Fri, 30 Aug 2019 19:20:28 +0800</pubDate>
       
       <guid>https://ripple-zjw.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>分治算法</title>
-      <link>https://ripple-zjw.github.io/tags/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/</link>
-      <pubDate>Fri, 30 Aug 2019 19:17:44 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/tags/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/</guid>
       <description></description>
     </item>
     
@@ -233,15 +260,6 @@
       <pubDate>Fri, 23 Aug 2019 12:49:52 +0800</pubDate>
       
       <guid>https://ripple-zjw.github.io/tags/%E6%A0%91/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>逆向工作法</title>
-      <link>https://ripple-zjw.github.io/tags/%E9%80%86%E5%90%91%E5%B7%A5%E4%BD%9C%E6%B3%95/</link>
-      <pubDate>Fri, 23 Aug 2019 12:49:52 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/tags/%E9%80%86%E5%90%91%E5%B7%A5%E4%BD%9C%E6%B3%95/</guid>
       <description></description>
     </item>
     

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/" />
+  
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E4%B8%BA%E8%BF%90%E7%AE%97%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AE%BE%E8%AE%A1%E4%BC%98%E5%85%88%E7%BA%A7/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           为运算表达式设计优先级 | LeaveIt
+       
+  </title>
+  <meta name="title" content="为运算表达式设计优先级 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "为运算表达式设计优先级",
+    "headline" : "为运算表达式设计优先级",
+    "description" : "题目：为运算表达式设计优先级  给定一个含有数字和运算符的字符串，为表达式添加括号，改变其运算优先级以求出不同的结果。你需要给出所有可能的组合的结果。有效的运算符号包含\x2b,-以及*。  示例 1: 输入: \x26quot;2-1-1\x26quot; 输出: [0, 2] 解释: ((2-1)-1) = 0 (2-(1-1)) = 2  示例 2: 输入: \x26quot;2*3-4*5\x26quot; 输出: [-34, -14, -10, -10, 10] 解释: (2*(3-(4*5))) = -34 ((2*3)-(4*5)) = -14 ((2*(3-4))*5) = -10 (2*((3-4)*5)) = -10 (((2*3)-4)*5) = 10  来源：力扣（LeetCode）第241题  链接：https:\/\/leetcode-cn.com\/problems\/different-ways-to-add-parentheses\n ## 分析： - 动态规划\x2b分治算法。 - 当只有一个运算符时，只有一种情况，当有两个运算符时有两种情况，以此类推。 - 当有三个运算符时，假设第一个运算符优先级最高，然后剩下三个数有两种情况，将两种情况与其相加，得到答案。接着判断第二个运算符优先级最低时，依次类推。\n代码： from functools import lru_cache # lru缓存淘汰算法。 class Solution: @lru_cache(None) def diffWaysToCompute(self, input: str) -\x26gt; List[int]: if input.",
+    "inLanguage" : "zh-CN",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-09-10 22:59:46 \x2b0800 CST",
+    "dateModified" : "2019-09-10 22:59:46 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E4%B8%BA%E8%BF%90%E7%AE%97%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AE%BE%E8%AE%A1%E4%BC%98%E5%85%88%E7%BA%A7\/",
+    "wordCount" : "155",
+    "keywords" : [ "算法求解思想","动态规划","分治算法", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">为运算表达式设计优先级</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-09-10 itemprop="datePublished">September 10, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-为运算表达式设计优先级">题目：为运算表达式设计优先级</h1>
+
+<ul>
+<li>给定一个含有数字和运算符的字符串，为表达式添加括号，改变其运算优先级以求出不同的结果。你需要给出所有可能的组合的结果。有效的运算符号包含<code>+</code>,<code>-</code>以及<code>*</code>。</li>
+</ul>
+
+<h5 id="示例-1">示例 1:</h5>
+
+<pre><code>输入: &quot;2-1-1&quot;
+输出: [0, 2]
+解释: 
+((2-1)-1) = 0 
+(2-(1-1)) = 2
+</code></pre>
+
+<h5 id="示例-2">示例 2:</h5>
+
+<pre><code>输入: &quot;2*3-4*5&quot;
+输出: [-34, -14, -10, -10, 10]
+解释: 
+(2*(3-(4*5))) = -34 
+((2*3)-(4*5)) = -14 
+((2*(3-4))*5) = -10 
+(2*((3-4)*5)) = -10 
+(((2*3)-4)*5) = 10
+</code></pre>
+
+<h4 id="来源-力扣-leetcode-第241题">来源：力扣（LeetCode）第241题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/different-ways-to-add-parentheses" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/different-ways-to-add-parentheses</a></p>
+</blockquote>
+
+<p>## 分析：
+ - 动态规划+分治算法。
+ - 当只有一个运算符时，只有一种情况，当有两个运算符时有两种情况，以此类推。
+ - 当有三个运算符时，假设第一个运算符优先级最高，然后剩下三个数有两种情况，将两种情况与其相加，得到答案。接着判断第二个运算符优先级最低时，依次类推。</p>
+
+<h2 id="代码">代码：</h2>
+
+<pre><code class="language-python">from functools import lru_cache  # lru缓存淘汰算法。
+class Solution:
+    @lru_cache(None)
+    def diffWaysToCompute(self, input: str) -&gt; List[int]:
+        if input.isdigit():  # 基线条件
+            return [int(input)]
+        opt = {'-', '+', '*'}  # 运算符集合
+        ans = []  # 储存答案
+        for i, char in enumerate(input):  # 判断每个运算符优先级最低的时候。
+            if char in opt:  # 如果是运算符才执行
+                left = self.diffWaysToCompute(input[:i])  # 拿到运算符的左边，递归
+                right = self.diffWaysToCompute(input[i+1:])  # 拿到运算符的右边，递归
+                ans.extend([self.operator(l, r, char) for l in left for r in right])  # 将运算符的左右两边的值按照运算符做运算。left和right拿到的是列表，就像前面说的，如果左边有不止一个运算符时答案也不止一个，右边同理。
+        return ans
+    def operator(self, l, r, char):  # 根据运算符做运算符操作，char就是运算符。
+        if char == '-':
+            return l - r
+        elif char == '+':
+            return l + r
+        else:
+            return l * r
+</code></pre>
+
+<h2 id="复杂度分析">复杂度分析：</h2>
+
+<ul>
+<li>时间复杂度：O(n!)n为运算符的个数，个人认为</li>
+<li>空间复杂度：实在算不出来了。。。。</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E4%B8%BA%E8%BF%90%E7%AE%97%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AE%BE%E8%AE%A1%E4%BC%98%E5%85%88%E7%BA%A7/>https://ripple-zjw.github.io/2019/%E4%B8%BA%E8%BF%90%E7%AE%97%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AE%BE%E8%AE%A1%E4%BC%98%E5%85%88%E7%BA%A7/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                    #动态规划</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/">
+                    #分治算法</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/" class="prev" rel="prev" title="搜索插入位置"><i class="iconfont icon-left"></i>&nbsp;搜索插入位置</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

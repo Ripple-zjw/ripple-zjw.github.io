@@ -6,10 +6,74 @@
     <description>Recent content in 算法求解思想 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 06 Sep 2019 20:27:15 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 10 Sep 2019 22:59:46 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>为运算表达式设计优先级</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%B8%BA%E8%BF%90%E7%AE%97%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AE%BE%E8%AE%A1%E4%BC%98%E5%85%88%E7%BA%A7/</link>
+      <pubDate>Tue, 10 Sep 2019 22:59:46 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%B8%BA%E8%BF%90%E7%AE%97%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AE%BE%E8%AE%A1%E4%BC%98%E5%85%88%E7%BA%A7/</guid>
+      <description>题目：为运算表达式设计优先级  给定一个含有数字和运算符的字符串，为表达式添加括号，改变其运算优先级以求出不同的结果。你需要给出所有可能的组合的结果。有效的运算符号包含+,-以及*。  示例 1: 输入: &amp;quot;2-1-1&amp;quot; 输出: [0, 2] 解释: ((2-1)-1) = 0 (2-(1-1)) = 2  示例 2: 输入: &amp;quot;2*3-4*5&amp;quot; 输出: [-34, -14, -10, -10, 10] 解释: (2*(3-(4*5))) = -34 ((2*3)-(4*5)) = -14 ((2*(3-4))*5) = -10 (2*((3-4)*5)) = -10 (((2*3)-4)*5) = 10  来源：力扣（LeetCode）第241题  链接：https://leetcode-cn.com/problems/different-ways-to-add-parentheses
+ ## 分析： - 动态规划+分治算法。 - 当只有一个运算符时，只有一种情况，当有两个运算符时有两种情况，以此类推。 - 当有三个运算符时，假设第一个运算符优先级最高，然后剩下三个数有两种情况，将两种情况与其相加，得到答案。接着判断第二个运算符优先级最低时，依次类推。
+代码： from functools import lru_cache # lru缓存淘汰算法。 class Solution: @lru_cache(None) def diffWaysToCompute(self, input: str) -&amp;gt; List[int]: if input.</description>
+    </item>
+    
+    <item>
+      <title>搜索插入位置</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/</link>
+      <pubDate>Tue, 10 Sep 2019 22:48:08 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/</guid>
+      <description>搜索插入位置  给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。 你可以假设数组中无重复元素。  示例 1: 输入: [1,3,5,6], 5 输出: 2  示例 2: 输入: [1,3,5,6], 2 输出: 1  示例 3: 输入: [1,3,5,6], 7 输出: 4  示例 4: 输入: [1,3,5,6], 0 输出: 0  来源：力扣（LeetCode）第35题  链接：https://leetcode-cn.com/problems/search-insert-position
+ 两种二分查找模版： target = 要查找的值 left = 0, right = arr.length while left &amp;lt; right: mid = (left + right) &amp;gt;&amp;gt; 1 // 为了防止数组溢出，也可以写成left + (right - left) &amp;gt;&amp;gt; 1 if arr[mid] == target: return arr[mid] elif arr[mid] &amp;gt; target: right = mid else: left = mid + 1  target = 要查找的值 left = 0, right = arr.</description>
+    </item>
+    
+    <item>
+      <title>使用异或运算判断奇偶性</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%BD%BF%E7%94%A8%E5%BC%82%E6%88%96%E8%BF%90%E7%AE%97%E5%88%A4%E6%96%AD%E5%A5%87%E5%81%B6%E6%80%A7/</link>
+      <pubDate>Tue, 10 Sep 2019 22:46:51 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%BD%BF%E7%94%A8%E5%BC%82%E6%88%96%E8%BF%90%E7%AE%97%E5%88%A4%E6%96%AD%E5%A5%87%E5%81%B6%E6%80%A7/</guid>
+      <description> 使用异或运算判断奇偶性  原理是通过异或运算中的一个数与自己本身异或得到0，与0异或得到自己。  解释： 比如说有一组数组[1, 1, 1, 1] 我们使用异或判断
+ans = [1, 1, 1, 1] parity = ans[0] # 拿出第一个数 for i in ans[1:]: # 从数组的第二个数开始循环 parity ^= i parity == 1 # 如果等于1说明1有奇数个，如果等于0说明1有偶数个。例如1^1=0 0^1=1  </description>
+    </item>
+    
+    <item>
+      <title>使用最小花费爬楼梯</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%BD%BF%E7%94%A8%E6%9C%80%E5%B0%8F%E8%8A%B1%E8%B4%B9%E7%88%AC%E6%A5%BC%E6%A2%AF/</link>
+      <pubDate>Tue, 10 Sep 2019 22:45:45 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%BD%BF%E7%94%A8%E6%9C%80%E5%B0%8F%E8%8A%B1%E8%B4%B9%E7%88%AC%E6%A5%BC%E6%A2%AF/</guid>
+      <description>题目：使用最小花费爬楼梯  数组的每个索引做为一个阶梯，第 i个阶梯对应着一个非负数的体力花费值cost[i](索引从0开始)。 每当你爬上一个阶梯你都要花费对应的体力花费值，然后你可以选择继续爬一个阶梯或者爬两个阶梯。 您需要找到达到楼层顶部的最低花费。在开始时，你可以选择从索引为 0 或 1 的元素作为初始阶梯。  示例 1: 输入: cost = [10, 15, 20] 输出: 15 解释: 最低花费是从cost[1]开始，然后走两步即可到阶梯顶，一共花费15。  示例 2: 输入: cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1] 输出: 6 解释: 最低花费方式是从cost[0]开始，逐个经过那些1，跳过cost[3]，一共花费6。  注意：  cost的长度将会在[2, 1000]。 每一个cost[i] 将会是一个Integer类型，范围为[0, 999]。  来源：力扣（LeetCode）第746题  链接：https://leetcode-cn.com/problems/min-cost-climbing-stairs
+ 分析：  可以使用递归或者动态规划来解这道题。 思路是如果要跳到第i个位置，那么就要先跳到i-1或者是i-2个位置。  代码：  动态规划： python
+class Solution: def minCostClimbingStairs(self, cost: List[int]) -&amp;gt; int: for i in range(2, len(cost)): cost[i] = min(cost[i-1], cost[i-2]) + cost[i] # 你想要跳到第i个位置，就要跳先跳到i-1或i-2个位置。 return min(cost[-1], cost[-2]) # 决定最后是从倒数第一个位置跳上去，还是倒数第二个位置跳上去。  java</description>
+    </item>
+    
+    <item>
+      <title>合并两个有序数组</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Tue, 10 Sep 2019 22:44:21 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/</guid>
+      <description>题目：合并两个有序数组  给定两个有序整数数组nums1和nums2，将nums2 合并到nums1中，使得num1成为一个有序数组。  说明:  初始化nums1和nums2的元素数量分别为m和n。 你可以假设nums1有足够的空间（空间大小大于或等于m + n）来保存 nums2 中的元素。  示例: 输入: nums1 = [1,2,3,0,0,0], m = 3 nums2 = [2,5,6], n = 3 输出: [1,2,2,3,5,6]  来源：力扣（LeetCode）第88题  链接：https://leetcode-cn.com/problems/merge-sorted-array
+ 分析：  从后往前放元素，就能解开了。  代码：  Python
+class Solution: def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -&amp;gt; None: p1 = m - 1 # num1的指针 p2 = n - 1 # num2的指针 p = m + n - 1 # num1存放答案的指针 while p1 &amp;gt;= 0 and p2 &amp;gt;= 0: # 将两者大的值放进去。 if nums1[p1] &amp;gt; nums2[p2]: nums1[p] = nums1[p1] p1 -= 1 else: nums1[p] = nums2[p2] p2 -= 1 p -= 1 nums1[:p2+1] = nums2[:p2+1] # 最后将nums2中还没放完的元素放进去。  Java</description>
+    </item>
+    
+    <item>
+      <title>单调数列</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%8D%95%E8%B0%83%E6%95%B0%E5%88%97/</link>
+      <pubDate>Tue, 10 Sep 2019 22:42:16 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%8D%95%E8%B0%83%E6%95%B0%E5%88%97/</guid>
+      <description>题目：单调数列  如果数组是单调递增或单调递减的，那么它是单调的。 如果对于所有i &amp;lt;= j，A[i] &amp;lt;= A[j]，那么数组 A 是单调递增的。 如果对于所有i &amp;lt;= j，A[i]&amp;gt; = A[j]，那么数组 A 是单调递减的。  当给定的数组 A 是单调数组时返回true，否则返回 false。
+示例 1： 输入：[1,2,2,3] 输出：true  示例 2： 输入：[6,5,4,4] 输出：true  示例 3： 输入：[1,3,2] 输出：false  示例 4： 输入：[1,2,4,5] 输出：true  示例 5： 输入：[1,1,1] 输出：true  提示：  1 &amp;lt;= A.length &amp;lt;= 50000 -100000 &amp;lt;= A[i] &amp;lt;= 100000  来源：力扣（LeetCode）第896题  链接：https://leetcode-cn.com/problems/monotonic-array
+ 分析：  通过大于为1，等于为0，小于为-1判断列表是否单调。 如果一个数中既出现了1，也出现了-1，那么它不是单调数组。 有一点要注意，Python2中自带cmp的函数，可以直接判断，而Python3中将cmp函数移除了，所以Python3中需要自己写一个cmp函数，而Python2中不用。  代码：  Python</description>
+    </item>
     
     <item>
       <title>数组的度</title>

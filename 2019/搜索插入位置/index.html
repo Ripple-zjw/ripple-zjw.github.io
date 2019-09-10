@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E4%BD%BF%E7%94%A8%E5%BC%82%E6%88%96%E8%BF%90%E7%AE%97%E5%88%A4%E6%96%AD%E5%A5%87%E5%81%B6%E6%80%A7/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E4%B8%BA%E8%BF%90%E7%AE%97%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AE%BE%E8%AE%A1%E4%BC%98%E5%85%88%E7%BA%A7/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           搜索插入位置 | LeaveIt
+       
+  </title>
+  <meta name="title" content="搜索插入位置 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "搜索插入位置",
+    "headline" : "搜索插入位置",
+    "description" : "搜索插入位置  给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。 你可以假设数组中无重复元素。  示例 1: 输入: [1,3,5,6], 5 输出: 2  示例 2: 输入: [1,3,5,6], 2 输出: 1  示例 3: 输入: [1,3,5,6], 7 输出: 4  示例 4: 输入: [1,3,5,6], 0 输出: 0  来源：力扣（LeetCode）第35题  链接：https:\/\/leetcode-cn.com\/problems\/search-insert-position\n 两种二分查找模版： target = 要查找的值 left = 0, right = arr.length while left \x26lt; right: mid = (left \x2b right) \x26gt;\x26gt; 1 \/\/ 为了防止数组溢出，也可以写成left \x2b (right - left) \x26gt;\x26gt; 1 if arr[mid] == target: return arr[mid] elif arr[mid] \x26gt; target: right = mid else: left = mid \x2b 1  target = 要查找的值 left = 0, right = arr.",
+    "inLanguage" : "zh-CN",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-09-10 22:48:08 \x2b0800 CST",
+    "dateModified" : "2019-09-10 22:48:08 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE\/",
+    "wordCount" : "248",
+    "keywords" : [ "算法求解思想","二分查找","算法模版", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">搜索插入位置</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-09-10 itemprop="datePublished">September 10, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="搜索插入位置">搜索插入位置</h1>
+
+<ul>
+<li>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</li>
+<li>你可以假设数组中无重复元素。</li>
+</ul>
+
+<h5 id="示例-1">示例 1:</h5>
+
+<pre><code>输入: [1,3,5,6], 5
+输出: 2
+</code></pre>
+
+<h5 id="示例-2">示例 2:</h5>
+
+<pre><code>输入: [1,3,5,6], 2
+输出: 1
+</code></pre>
+
+<h5 id="示例-3">示例 3:</h5>
+
+<pre><code>输入: [1,3,5,6], 7
+输出: 4
+</code></pre>
+
+<h5 id="示例-4">示例 4:</h5>
+
+<pre><code>输入: [1,3,5,6], 0
+输出: 0
+</code></pre>
+
+<h4 id="来源-力扣-leetcode-第35题">来源：力扣（LeetCode）第35题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/search-insert-position" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/search-insert-position</a></p>
+</blockquote>
+
+<h2 id="两种二分查找模版">两种二分查找模版：</h2>
+
+<pre><code>target = 要查找的值
+left = 0, right = arr.length
+while left &lt; right:
+    mid = (left + right) &gt;&gt; 1
+    // 为了防止数组溢出，也可以写成left + (right - left) &gt;&gt; 1
+    if arr[mid] == target:
+        return arr[mid]
+    elif arr[mid] &gt; target:
+        right = mid
+    else:
+        left = mid + 1
+</code></pre>
+
+<pre><code>target = 要查找的值
+left = 0, right = arr.length - 1
+while left &lt;= right:
+    mid = (left + right) &gt;&gt; 1
+    // 为了防止数组溢出，也可以写成left + (right - left) &gt;&gt; 1
+    if arr[mid] == target:
+        return arr[mid]
+    elif arr[mid] &gt; target:
+        right = mid - 1
+    else:
+        left = mid + 1
+</code></pre>
+
+<h2 id="代码">代码：</h2>
+
+<pre><code class="language-python">class Solution:
+    def searchInsert(self, nums: List[int], target: int) -&gt; int:
+        left = 0
+        right = len(nums)
+        while left &lt; right:
+            mid = (left + right) &gt;&gt; 1
+            if nums[mid] == target:
+                return mid
+            elif nums[mid] &gt; target:
+                right = mid
+            else:
+                left = mid + 1
+        return left  # 基本和模版一样，就是如果没有找到的话，就返回left，可以自己推测出来
+</code></pre>
+
+<pre><code class="language-java">class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
+        while (left &lt;= right) {
+            int mid = left + ((right - left) &gt;&gt; 1);
+            if (nums[mid] == target) return mid;
+            else if (nums[mid] &lt; target) left = mid + 1;
+            else right = mid - 1;
+        }
+        return left;
+    }
+}
+</code></pre>
+
+<h2 id="复杂度分析">复杂度分析：</h2>
+
+<ul>
+<li>时间复杂度：O(logn) 二分查找</li>
+<li>空间复杂度：O(1)</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/>https://ripple-zjw.github.io/2019/%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
+                    #二分查找</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88/">
+                    #算法模版</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E4%BD%BF%E7%94%A8%E5%BC%82%E6%88%96%E8%BF%90%E7%AE%97%E5%88%A4%E6%96%AD%E5%A5%87%E5%81%B6%E6%80%A7/" class="prev" rel="prev" title="使用异或运算判断奇偶性"><i class="iconfont icon-left"></i>&nbsp;使用异或运算判断奇偶性</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E4%B8%BA%E8%BF%90%E7%AE%97%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AE%BE%E8%AE%A1%E4%BC%98%E5%85%88%E7%BA%A7/" class="next" rel="next" title="为运算表达式设计优先级">为运算表达式设计优先级&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

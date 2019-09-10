@@ -6,10 +6,21 @@
     <description>Recent content in 双指针 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 06 Sep 2019 20:24:19 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 10 Sep 2019 22:44:21 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>合并两个有序数组</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Tue, 10 Sep 2019 22:44:21 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/</guid>
+      <description>题目：合并两个有序数组  给定两个有序整数数组nums1和nums2，将nums2 合并到nums1中，使得num1成为一个有序数组。  说明:  初始化nums1和nums2的元素数量分别为m和n。 你可以假设nums1有足够的空间（空间大小大于或等于m + n）来保存 nums2 中的元素。  示例: 输入: nums1 = [1,2,3,0,0,0], m = 3 nums2 = [2,5,6], n = 3 输出: [1,2,2,3,5,6]  来源：力扣（LeetCode）第88题  链接：https://leetcode-cn.com/problems/merge-sorted-array
+ 分析：  从后往前放元素，就能解开了。  代码：  Python
+class Solution: def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -&amp;gt; None: p1 = m - 1 # num1的指针 p2 = n - 1 # num2的指针 p = m + n - 1 # num1存放答案的指针 while p1 &amp;gt;= 0 and p2 &amp;gt;= 0: # 将两者大的值放进去。 if nums1[p1] &amp;gt; nums2[p2]: nums1[p] = nums1[p1] p1 -= 1 else: nums1[p] = nums2[p2] p2 -= 1 p -= 1 nums1[:p2+1] = nums2[:p2+1] # 最后将nums2中还没放完的元素放进去。  Java</description>
+    </item>
     
     <item>
       <title>两数之和II 输入有序数组</title>

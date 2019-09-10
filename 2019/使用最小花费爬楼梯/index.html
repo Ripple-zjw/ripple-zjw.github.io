@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E4%BD%BF%E7%94%A8%E5%BC%82%E6%88%96%E8%BF%90%E7%AE%97%E5%88%A4%E6%96%AD%E5%A5%87%E5%81%B6%E6%80%A7/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E4%BD%BF%E7%94%A8%E6%9C%80%E5%B0%8F%E8%8A%B1%E8%B4%B9%E7%88%AC%E6%A5%BC%E6%A2%AF/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           使用最小花费爬楼梯 | LeaveIt
+       
+  </title>
+  <meta name="title" content="使用最小花费爬楼梯 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "使用最小花费爬楼梯",
+    "headline" : "使用最小花费爬楼梯",
+    "description" : "题目：使用最小花费爬楼梯  数组的每个索引做为一个阶梯，第 i个阶梯对应着一个非负数的体力花费值cost[i](索引从0开始)。 每当你爬上一个阶梯你都要花费对应的体力花费值，然后你可以选择继续爬一个阶梯或者爬两个阶梯。 您需要找到达到楼层顶部的最低花费。在开始时，你可以选择从索引为 0 或 1 的元素作为初始阶梯。  示例 1: 输入: cost = [10, 15, 20] 输出: 15 解释: 最低花费是从cost[1]开始，然后走两步即可到阶梯顶，一共花费15。  示例 2: 输入: cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1] 输出: 6 解释: 最低花费方式是从cost[0]开始，逐个经过那些1，跳过cost[3]，一共花费6。  注意：  cost的长度将会在[2, 1000]。 每一个cost[i] 将会是一个Integer类型，范围为[0, 999]。  来源：力扣（LeetCode）第746题  链接：https:\/\/leetcode-cn.com\/problems\/min-cost-climbing-stairs\n 分析：  可以使用递归或者动态规划来解这道题。 思路是如果要跳到第i个位置，那么就要先跳到i-1或者是i-2个位置。  代码：  动态规划： python\nclass Solution: def minCostClimbingStairs(self, cost: List[int]) -\x26gt; int: for i in range(2, len(cost)): cost[i] = min(cost[i-1], cost[i-2]) \x2b cost[i] # 你想要跳到第i个位置，就要跳先跳到i-1或i-2个位置。 return min(cost[-1], cost[-2]) # 决定最后是从倒数第一个位置跳上去，还是倒数第二个位置跳上去。  java",
+    "inLanguage" : "zh-CN",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-09-10 22:45:45 \x2b0800 CST",
+    "dateModified" : "2019-09-10 22:45:45 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E4%BD%BF%E7%94%A8%E6%9C%80%E5%B0%8F%E8%8A%B1%E8%B4%B9%E7%88%AC%E6%A5%BC%E6%A2%AF\/",
+    "wordCount" : "152",
+    "keywords" : [ "算法求解思想","动态规划","递归", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">使用最小花费爬楼梯</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-09-10 itemprop="datePublished">September 10, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-使用最小花费爬楼梯">题目：使用最小花费爬楼梯</h1>
+
+<ul>
+<li>数组的每个索引做为一个阶梯，第 i个阶梯对应着一个非负数的体力花费值<code>cost[i]</code>(索引从0开始)。</li>
+<li>每当你爬上一个阶梯你都要花费对应的体力花费值，然后你可以选择继续爬一个阶梯或者爬两个阶梯。</li>
+<li>您需要找到达到楼层顶部的最低花费。在开始时，你可以选择从索引为 0 或 1 的元素作为初始阶梯。</li>
+</ul>
+
+<h5 id="示例-1">示例 1:</h5>
+
+<pre><code>输入: cost = [10, 15, 20]
+输出: 15
+解释: 最低花费是从cost[1]开始，然后走两步即可到阶梯顶，一共花费15。
+</code></pre>
+
+<h5 id="示例-2">示例 2:</h5>
+
+<pre><code>输入: cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1]
+输出: 6
+解释: 最低花费方式是从cost[0]开始，逐个经过那些1，跳过cost[3]，一共花费6。
+</code></pre>
+
+<h5 id="注意">注意：</h5>
+
+<ul>
+<li><code>cost</code>的长度将会在<code>[2, 1000]</code>。</li>
+<li>每一个<code>cost[i]</code> 将会是一个Integer类型，范围为<code>[0, 999]</code>。</li>
+</ul>
+
+<h4 id="来源-力扣-leetcode-第746题">来源：力扣（LeetCode）第746题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/min-cost-climbing-stairs" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/min-cost-climbing-stairs</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<ul>
+<li>可以使用递归或者动态规划来解这道题。</li>
+<li>思路是如果要跳到第<code>i</code>个位置，那么就要先跳到<code>i-1</code>或者是<code>i-2</code>个位置。</li>
+</ul>
+
+<h2 id="代码">代码：</h2>
+
+<ul>
+<li>动态规划：</li>
+
+<li><p>python</p>
+
+<pre><code class="language-python">class Solution:
+def minCostClimbingStairs(self, cost: List[int]) -&gt; int:
+    for i in range(2, len(cost)):
+        cost[i] = min(cost[i-1], cost[i-2]) + cost[i]  # 你想要跳到第i个位置，就要跳先跳到i-1或i-2个位置。
+    return min(cost[-1], cost[-2])  # 决定最后是从倒数第一个位置跳上去，还是倒数第二个位置跳上去。
+</code></pre></li>
+
+<li><p>java</p>
+
+<pre><code class="language-java">class Solution {
+public int minCostClimbingStairs(int[] cost) {
+    int n = cost.length;
+    for (int i = 2; i &lt; n; i++) {
+        cost[i] = Math.min(cost[i-1], cost[i-2]) + cost[i];
+    }
+    return Math.min(cost[n-1], cost[n-2]);
+}
+}
+</code></pre></li>
+
+<li><p>递归：(超时！！！)</p></li>
+
+<li><p>Python</p>
+
+<pre><code class="language-python">class Solution:
+def minCostClimbingStairs(self, cost: List[int]) -&gt; int:
+    cost.append(0)
+    def recursion(i):
+        if i &lt;= 1:
+            return cost[i]
+        return min(recursion(i - 1), recursion(i - 2)) + cost[i]
+    return recursion(len(cost) - 1)
+</code></pre></li>
+</ul>
+
+<h2 id="复杂度分析">复杂度分析：</h2>
+
+<ul>
+<li>时间复杂度：O(n) n为数组长度</li>
+<li>空间复杂度：O(1) 几乎用不到额外空间</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E4%BD%BF%E7%94%A8%E6%9C%80%E5%B0%8F%E8%8A%B1%E8%B4%B9%E7%88%AC%E6%A5%BC%E6%A2%AF/>https://ripple-zjw.github.io/2019/%E4%BD%BF%E7%94%A8%E6%9C%80%E5%B0%8F%E8%8A%B1%E8%B4%B9%E7%88%AC%E6%A5%BC%E6%A2%AF/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                    #动态规划</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E9%80%92%E5%BD%92/">
+                    #递归</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/" class="prev" rel="prev" title="合并两个有序数组"><i class="iconfont icon-left"></i>&nbsp;合并两个有序数组</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E4%BD%BF%E7%94%A8%E5%BC%82%E6%88%96%E8%BF%90%E7%AE%97%E5%88%A4%E6%96%AD%E5%A5%87%E5%81%B6%E6%80%A7/" class="next" rel="next" title="使用异或运算判断奇偶性">使用异或运算判断奇偶性&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

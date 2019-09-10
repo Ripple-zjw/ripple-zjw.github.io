@@ -6,10 +6,32 @@
     <description>Recent content in 动态规划 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 30 Aug 2019 19:22:10 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 10 Sep 2019 22:59:46 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>为运算表达式设计优先级</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%B8%BA%E8%BF%90%E7%AE%97%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AE%BE%E8%AE%A1%E4%BC%98%E5%85%88%E7%BA%A7/</link>
+      <pubDate>Tue, 10 Sep 2019 22:59:46 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%B8%BA%E8%BF%90%E7%AE%97%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AE%BE%E8%AE%A1%E4%BC%98%E5%85%88%E7%BA%A7/</guid>
+      <description>题目：为运算表达式设计优先级  给定一个含有数字和运算符的字符串，为表达式添加括号，改变其运算优先级以求出不同的结果。你需要给出所有可能的组合的结果。有效的运算符号包含+,-以及*。  示例 1: 输入: &amp;quot;2-1-1&amp;quot; 输出: [0, 2] 解释: ((2-1)-1) = 0 (2-(1-1)) = 2  示例 2: 输入: &amp;quot;2*3-4*5&amp;quot; 输出: [-34, -14, -10, -10, 10] 解释: (2*(3-(4*5))) = -34 ((2*3)-(4*5)) = -14 ((2*(3-4))*5) = -10 (2*((3-4)*5)) = -10 (((2*3)-4)*5) = 10  来源：力扣（LeetCode）第241题  链接：https://leetcode-cn.com/problems/different-ways-to-add-parentheses
+ ## 分析： - 动态规划+分治算法。 - 当只有一个运算符时，只有一种情况，当有两个运算符时有两种情况，以此类推。 - 当有三个运算符时，假设第一个运算符优先级最高，然后剩下三个数有两种情况，将两种情况与其相加，得到答案。接着判断第二个运算符优先级最低时，依次类推。
+代码： from functools import lru_cache # lru缓存淘汰算法。 class Solution: @lru_cache(None) def diffWaysToCompute(self, input: str) -&amp;gt; List[int]: if input.</description>
+    </item>
+    
+    <item>
+      <title>使用最小花费爬楼梯</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%BD%BF%E7%94%A8%E6%9C%80%E5%B0%8F%E8%8A%B1%E8%B4%B9%E7%88%AC%E6%A5%BC%E6%A2%AF/</link>
+      <pubDate>Tue, 10 Sep 2019 22:45:45 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%BD%BF%E7%94%A8%E6%9C%80%E5%B0%8F%E8%8A%B1%E8%B4%B9%E7%88%AC%E6%A5%BC%E6%A2%AF/</guid>
+      <description>题目：使用最小花费爬楼梯  数组的每个索引做为一个阶梯，第 i个阶梯对应着一个非负数的体力花费值cost[i](索引从0开始)。 每当你爬上一个阶梯你都要花费对应的体力花费值，然后你可以选择继续爬一个阶梯或者爬两个阶梯。 您需要找到达到楼层顶部的最低花费。在开始时，你可以选择从索引为 0 或 1 的元素作为初始阶梯。  示例 1: 输入: cost = [10, 15, 20] 输出: 15 解释: 最低花费是从cost[1]开始，然后走两步即可到阶梯顶，一共花费15。  示例 2: 输入: cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1] 输出: 6 解释: 最低花费方式是从cost[0]开始，逐个经过那些1，跳过cost[3]，一共花费6。  注意：  cost的长度将会在[2, 1000]。 每一个cost[i] 将会是一个Integer类型，范围为[0, 999]。  来源：力扣（LeetCode）第746题  链接：https://leetcode-cn.com/problems/min-cost-climbing-stairs
+ 分析：  可以使用递归或者动态规划来解这道题。 思路是如果要跳到第i个位置，那么就要先跳到i-1或者是i-2个位置。  代码：  动态规划： python
+class Solution: def minCostClimbingStairs(self, cost: List[int]) -&amp;gt; int: for i in range(2, len(cost)): cost[i] = min(cost[i-1], cost[i-2]) + cost[i] # 你想要跳到第i个位置，就要跳先跳到i-1或i-2个位置。 return min(cost[-1], cost[-2]) # 决定最后是从倒数第一个位置跳上去，还是倒数第二个位置跳上去。  java</description>
+    </item>
     
     <item>
       <title>杨辉三角</title>

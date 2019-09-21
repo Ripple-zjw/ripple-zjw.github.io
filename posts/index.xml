@@ -6,10 +6,73 @@
     <description>Recent content in Posts on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 10 Sep 2019 22:59:46 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 21 Sep 2019 16:04:38 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>比特位计数</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%AF%94%E7%89%B9%E4%BD%8D%E8%AE%A1%E6%95%B0/</link>
+      <pubDate>Sat, 21 Sep 2019 16:04:38 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%AF%94%E7%89%B9%E4%BD%8D%E8%AE%A1%E6%95%B0/</guid>
+      <description> 题目：比特位计数  给定一个非负整数num。对于0 ≤ i ≤ num 范围中的每个数字i，计算其二进制数中的1 的数目并将它们作为数组返回。  示例 1: 输入: 2 输出: [0,1,1]  示例 2: 输入: 5 输出: [0,1,1,2,1,2]  进阶:  给出时间复杂度为O(n*sizeof(integer))的解答非常容易。但你可以在线性时间O(n)内用一趟扫描做到吗？ 要求算法的空间复杂度为O(n)。 你能进一步完善解法吗？要求在C++或任何其他语言中不使用任何内置函数（如C++中的__builtin_popcount）来执行此操作。  来源：力扣（LeetCode）第338题  链接：https://leetcode-cn.com/problems/counting-bits
+ 分析：  由于偶数的二进制数最后一位是0，所以如果一个偶数做&amp;gt;&amp;gt;1运算那么它的1的个数不变。同理如果一个奇数右移一位，1的个数减1。 因此如果1有1个1，那么2也有1个1,3就有2个1。(正推的话做左移运算),如果2有1个1的话，那么4也是1个1,5就是2个1。 所以有了状态转换公式dp[2*i] = dp[i] dp[2*i+1] = dp[i] + 1  代码： class Solution { public int[] countBits(int num) { int[] dp = new int[num + 1]; for (int i = 0; i &amp;lt;= num / 2; i++) { dp[i&amp;lt;&amp;lt;1] = dp[i]; if ((i&amp;lt;&amp;lt;1) + 1 &amp;lt;= num) dp[(i&amp;lt;&amp;lt;1)+1] = dp[i] + 1; } return dp; } }  复杂度分析：  时间复杂度：O(n) n 为num / 2 空间复杂度：O(n) n 为num  </description>
+    </item>
+    
+    <item>
+      <title>有序链表转换二叉搜索树</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
+      <pubDate>Sat, 21 Sep 2019 15:50:29 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
+      <description>题目：有序链表转换二叉搜索树  给定一个单链表，其中的元素按升序排序，将其转换为高度平衡的二叉搜索树。 本题中，一个高度平衡二叉树是指一个二叉树每个节点的左右两个子树的高度差的绝对值不超过1。  示例: 给定的有序链表： [-10, -3, 0, 5, 9], 一个可能的答案是：[0, -3, 9, -10, null, 5], 它可以表示下面这个高度平衡二叉搜索树： 0 / \ -3 9 / / -10 5  来源：力扣（LeetCode）第109题  链接：https://leetcode-cn.com/problems/convert-sorted-list-to-binary-search-tree
+ 分析：  递归 + 快慢双指针  使用快慢指针找出链表的中点。 然后将中点生成树的根。 递归进入左右子树。  模拟遍历中序二叉树  算出链表的长度 把链表一分为二 递归进入链表的左边和右边 同时，在左边递归完后生成父节点 再把递归得到的左右子节点放在父节点的left和right   代码：  递归 + 快慢双指针
+/** * Definition for singly-linked list. * public class ListNode { * int val; * ListNode next; * ListNode(int x) { val = x; } * } */ /** * Definition for a binary tree node.</description>
+    </item>
+    
+    <item>
+      <title>回文链表</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/</link>
+      <pubDate>Sat, 21 Sep 2019 15:48:18 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/</guid>
+      <description>题目：回文链表  请判断一个链表是否为回文链表。  示例 1: 输入: 1-&amp;gt;2 输出: false  示例 2: 输入: 1-&amp;gt;2-&amp;gt;2-&amp;gt;1 输出: true  进阶：  你能否用O(n)时间复杂度和O(1)空间复杂度解决此题？  来源：力扣（LeetCode）第234题  链接：https://leetcode-cn.com/problems/palindrome-linked-list
+ 分析：  最常见的做法是将链表变为数组，通过数组的随机访问的特性检测回文链表。 第二种更为方便的方法是使用快慢双指针找到链表的中点，然后将前半部分的链表翻转。  代码： /** * Definition for singly-linked list. * public class ListNode { * int val; * ListNode next; * ListNode(int x) { val = x; } * } */ class Solution { public boolean isPalindrome(ListNode head) { if (head == null || head.</description>
+    </item>
+    
+    <item>
+      <title>环形链表</title>
+      <link>https://ripple-zjw.github.io/2019/%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/</link>
+      <pubDate>Sat, 21 Sep 2019 15:45:40 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/</guid>
+      <description>题目：环形链表  给定一个链表，判断链表中是否有环。 为了表示给定链表中的环，我们使用整数pos 来表示链表尾连接到链表中的位置（索引从0开始）。 如果pos是-1,则在该链表中没有环。  示例 1： 输入：head = [3,2,0,-4], pos = 1 输出：true 解释：链表中有一个环，其尾部连接到第二个节点。  示例 2： 输入：head = [1,2], pos = 0 输出：true 解释：链表中有一个环，其尾部连接到第一个节点。  示例 3： 输入：head = [1], pos = -1 输出：false 解释：链表中没有环。  进阶：  你能用 O(1)（即，常量）内存解决此问题吗？  来源：力扣（LeetCode）第141题  链接：https://leetcode-cn.com/problems/linked-list-cycle
+ 分析：  这道题可以使用哈希表来做，但这样的空间复杂度是O(n),另一种方法是快慢双指针。 使用两个指针，一个每次走一格，另一个每次走两格。 最后看快指针会不会走到头，或者这两个指针碰到了。  代码： /** * Definition for singly-linked list. * class ListNode { * int val; * ListNode next; * ListNode(int x) { * val = x; * next = null; * } * } */ public class Solution { public boolean hasCycle(ListNode head) { if (head == null || head.</description>
+    </item>
+    
+    <item>
+      <title>漂亮数组</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%BC%82%E4%BA%AE%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Sat, 21 Sep 2019 15:32:09 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%BC%82%E4%BA%AE%E6%95%B0%E7%BB%84/</guid>
+      <description>题目：漂亮数组  对于某些固定的N，如果数组A是整数1, 2, ..., N组成的排列，使得： 对于每个i &amp;lt; j，都不存在k满足i &amp;lt; k &amp;lt; j使得A[k] * 2 = A[i] + A[j]。 那么数组A是漂亮数组。 给定N，返回任意漂亮数组A（保证存在一个）。  示例 1： 输入：4 输出：[2,1,4,3]  示例 2： 输入：5 输出：[3,1,2,5,4]  提示：  1 &amp;lt;= N &amp;lt;= 1000  来源：力扣（LeetCode）第932题  链接：https://leetcode-cn.com/problems/beautiful-array
+ 分析：  根据题目的要求，所谓漂亮数组就是A[k] * 2 != A[i] + A[j]。 A[k] * 2一定是一个偶数，那么我们只需要让A[i] + A[j]是奇数就行了，如果我们把奇数放在左边，偶数放在右边，那么左右两边各取一个数相加一定是奇数。 那么还有一个问题，若i是偶数，j也是偶数怎么办？ 如果我们要知道8个数的漂亮数组，首先8有4个奇数，4个偶数，我们需要知道4个数的漂亮数组，如果要知道4个数的漂亮数组又要分为2奇数，2偶数，直到为1个数时，漂亮数组为[1]。 漂亮数组又有一个性质，如果我们把数组中每个元素都乘以a并且加上b(a,b为任意除0外的数)，那么它还是漂亮数组。 同样的我们把奇偶两个漂亮数组相加，结果还是漂亮数组。 既然如此，[1]是漂亮数组，那么我将1*2-1也是是漂亮数组，我将1*2也是漂亮数组，我把这两个数放在一起，也就是[1,2]也是漂亮数组。以此类推，4个数的漂亮数组就是[1,3,2,4],8个数就是[1,5,3,7,2,6,4,8]。如果数不足8个多于4个，我只需要把多余的拿掉就行了。 通过这种方式，可以发现，比如奇数部分的数两数相加除以2要么是偶数，要么在中间根本找不到这个数。  代码：  分治算法：
+class Solution: def beautifulArray(self, N: int) -&amp;gt; List[int]: def divi(N): ans = {1: [1]} if N not in ans: odds = divi((N + 1) // 2) evens = divi(N // 2) ans[N] = [2 * odd - 1 for odd in odds] + [2 * even for even in evens] return ans[N] return divi(N)  分治法的迭代版本：</description>
+    </item>
+    
+    <item>
+      <title>数组中的第K个最大元素</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACk%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/</link>
+      <pubDate>Sat, 21 Sep 2019 15:30:13 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACk%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/</guid>
+      <description>题目：数组中的第K个最大元素  在未排序的数组中找到第k个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。  示例 1: 输入: [3,2,1,5,6,4] 和 k = 2 输出: 5  示例 2: 输入: [3,2,3,1,2,4,5,5,6] 和 k = 4 输出: 4  说明:  你可以假设 k 总是有效的，且 1 ≤ k ≤ 数组的长度。  来源：力扣（LeetCode）第215题  链接：https://leetcode-cn.com/problems/kth-largest-element-in-an-array
+ 分析：  有两种做法，一种是使用快排思想，选中一个数，对其进行partition。 第二种做法是使用堆，维护一个大顶堆，要拿到第k大元素就删除堆顶k次  代码：  快速排序改进：
+class Solution: def findKthLargest(self, nums: List[int], k: int) -&amp;gt; int: self.k = k ans = self.quickSort(nums, 0, len(nums) - 1) return ans if ans else nums[k-1] def portition(self, arr, start, end): pivot = arr[end] i = start - 1 for j in range(start, end): if pivot &amp;lt; arr[j]: i += 1 arr[i], arr[j] = arr[j], arr[i] arr[i+1], arr[end] = arr[end], arr[i+1] return i + 1 def quickSort(self, arr, start, end): if start &amp;lt; end: pivot = self.</description>
+    </item>
     
     <item>
       <title>为运算表达式设计优先级</title>

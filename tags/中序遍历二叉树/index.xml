@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>中序遍历二叉树 on LeaveIt</title>
+    <link>https://ripple-zjw.github.io/tags/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
+    <description>Recent content in 中序遍历二叉树 on LeaveIt</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 21 Sep 2019 15:50:29 +0800</lastBuildDate>
+    
+	<atom:link href="https://ripple-zjw.github.io/tags/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>有序链表转换二叉搜索树</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
+      <pubDate>Sat, 21 Sep 2019 15:50:29 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
+      <description>题目：有序链表转换二叉搜索树  给定一个单链表，其中的元素按升序排序，将其转换为高度平衡的二叉搜索树。 本题中，一个高度平衡二叉树是指一个二叉树每个节点的左右两个子树的高度差的绝对值不超过1。  示例: 给定的有序链表： [-10, -3, 0, 5, 9], 一个可能的答案是：[0, -3, 9, -10, null, 5], 它可以表示下面这个高度平衡二叉搜索树： 0 / \ -3 9 / / -10 5  来源：力扣（LeetCode）第109题  链接：https://leetcode-cn.com/problems/convert-sorted-list-to-binary-search-tree
+ 分析：  递归 + 快慢双指针  使用快慢指针找出链表的中点。 然后将中点生成树的根。 递归进入左右子树。  模拟遍历中序二叉树  算出链表的长度 把链表一分为二 递归进入链表的左边和右边 同时，在左边递归完后生成父节点 再把递归得到的左右子节点放在父节点的left和right   代码：  递归 + 快慢双指针
+/** * Definition for singly-linked list. * public class ListNode { * int val; * ListNode next; * ListNode(int x) { val = x; } * } */ /** * Definition for a binary tree node.</description>
+    </item>
+    
+  </channel>
+</rss>

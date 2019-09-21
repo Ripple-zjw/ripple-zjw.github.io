@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           回文链表 | LeaveIt
+       
+  </title>
+  <meta name="title" content="回文链表 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "回文链表",
+    "headline" : "回文链表",
+    "description" : "题目：回文链表  请判断一个链表是否为回文链表。  示例 1: 输入: 1-\x26gt;2 输出: false  示例 2: 输入: 1-\x26gt;2-\x26gt;2-\x26gt;1 输出: true  进阶：  你能否用O(n)时间复杂度和O(1)空间复杂度解决此题？  来源：力扣（LeetCode）第234题  链接：https:\/\/leetcode-cn.com\/problems\/palindrome-linked-list\n 分析：  最常见的做法是将链表变为数组，通过数组的随机访问的特性检测回文链表。 第二种更为方便的方法是使用快慢双指针找到链表的中点，然后将前半部分的链表翻转。  代码： \/** * Definition for singly-linked list. * public class ListNode { * int val; * ListNode next; * ListNode(int x) { val = x; } * } *\/ class Solution { public boolean isPalindrome(ListNode head) { if (head == null || head.",
+    "inLanguage" : "zh-CN",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-09-21 15:48:18 \x2b0800 CST",
+    "dateModified" : "2019-09-21 15:48:18 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8\/",
+    "wordCount" : "159",
+    "keywords" : [ "算法求解思想","链表","双指针","快慢双指针","回文","链表翻转", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">回文链表</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-09-21 itemprop="datePublished">September 21, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-回文链表">题目：回文链表</h1>
+
+<ul>
+<li>请判断一个链表是否为回文链表。</li>
+</ul>
+
+<h5 id="示例-1">示例 1:</h5>
+
+<pre><code>输入: 1-&gt;2
+输出: false
+</code></pre>
+
+<h5 id="示例-2">示例 2:</h5>
+
+<pre><code>输入: 1-&gt;2-&gt;2-&gt;1
+输出: true
+</code></pre>
+
+<h5 id="进阶">进阶：</h5>
+
+<ul>
+<li>你能否用<code>O(n)</code>时间复杂度和<code>O(1)</code>空间复杂度解决此题？</li>
+</ul>
+
+<h4 id="来源-力扣-leetcode-第234题">来源：力扣（LeetCode）第234题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/palindrome-linked-list" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/palindrome-linked-list</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<ul>
+<li>最常见的做法是将链表变为数组，通过数组的随机访问的特性检测回文链表。</li>
+<li>第二种更为方便的方法是使用快慢双指针找到链表的中点，然后将前半部分的链表翻转。</li>
+</ul>
+
+<h2 id="代码">代码：</h2>
+
+<pre><code class="language-java">/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        if (head == null || head.next == null)  //两种特殊情况 return true;
+        ListNode slow = head, fast = head; //快慢指针
+        while (fast != null &amp;&amp; fast.next != null) {slow = slow.next;fast = fast.next.next;} //找到链表的中间位置奇数找到的是正中间，偶数得到的是中间靠右的数
+        ListNode pre = head.next, next; // 翻转前半链表，pre储存的是后面的结点，next储存的是head翻转后的head.next
+        while (pre != slow) { // 如果pre等于slow，那么head会指向slow前面的那个数
+            next = head;head = pre;  // 如果实在看不懂的话自己画一下就明白了
+            pre = head.next;head.next = next;
+        }
+        if (fast != null) slow = slow.next; // 如果链表是奇数的长度，那么fast.next == null，这时slow往前移一位
+        while (head != null &amp;&amp; slow != null) { // 检测是否回文
+            if (head.val != slow.val) return false;
+            head = head.next;slow = slow.next;
+        }
+        return true;
+    }
+}
+</code></pre>
+
+<h2 id="复杂度分析">复杂度分析：</h2>
+
+<ul>
+<li>时间复杂度：O(n)</li>
+<li>空间复杂度：O(1)</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/>https://ripple-zjw.github.io/2019/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E9%93%BE%E8%A1%A8/">
+                    #链表</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">
+                    #双指针</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%BF%AB%E6%85%A2%E5%8F%8C%E6%8C%87%E9%92%88/">
+                    #快慢双指针</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%9B%9E%E6%96%87/">
+                    #回文</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E9%93%BE%E8%A1%A8%E7%BF%BB%E8%BD%AC/">
+                    #链表翻转</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/" class="prev" rel="prev" title="环形链表"><i class="iconfont icon-left"></i>&nbsp;环形链表</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" class="next" rel="next" title="有序链表转换二叉搜索树">有序链表转换二叉搜索树&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

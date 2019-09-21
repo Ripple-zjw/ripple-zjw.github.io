@@ -5,8 +5,670 @@
     <description>Recent content in LeaveIt on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 10 Sep 2019 22:59:46 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 21 Sep 2019 16:04:38 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>比特位计数</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%AF%94%E7%89%B9%E4%BD%8D%E8%AE%A1%E6%95%B0/</link>
+      <pubDate>Sat, 21 Sep 2019 16:04:38 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%AF%94%E7%89%B9%E4%BD%8D%E8%AE%A1%E6%95%B0/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-比特位计数&#34;&gt;题目：比特位计数&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;给定一个非负整数&lt;code&gt;num&lt;/code&gt;。对于&lt;code&gt;0 ≤ i ≤ num&lt;/code&gt; 范围中的每个数字&lt;code&gt;i&lt;/code&gt;，计算其二进制数中的&lt;code&gt;1&lt;/code&gt; 的数目并将它们作为数组返回。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例-1&#34;&gt;示例 1:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: 2
+输出: [0,1,1]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-2&#34;&gt;示例 2:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: 5
+输出: [0,1,1,2,1,2]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;进阶&#34;&gt;进阶:&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;给出时间复杂度为O(n*sizeof(integer))的解答非常容易。但你可以在线性时间O(n)内用一趟扫描做到吗？&lt;/li&gt;
+&lt;li&gt;要求算法的空间复杂度为O(n)。&lt;/li&gt;
+&lt;li&gt;你能进一步完善解法吗？要求在C++或任何其他语言中不使用任何内置函数（如C++中的&lt;code&gt;__builtin_popcount&lt;/code&gt;）来执行此操作。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第338题&#34;&gt;来源：力扣（LeetCode）第338题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/counting-bits&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/counting-bits&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;由于偶数的二进制数最后一位是0，所以如果一个偶数做&lt;code&gt;&amp;gt;&amp;gt;1&lt;/code&gt;运算那么它的1的个数不变。同理如果一个奇数右移一位，1的个数减1。&lt;/li&gt;
+&lt;li&gt;因此如果1有1个1，那么2也有1个1,3就有2个1。(正推的话做左移运算),如果2有1个1的话，那么4也是1个1,5就是2个1。&lt;/li&gt;
+&lt;li&gt;所以有了状态转换公式&lt;code&gt;dp[2*i] = dp[i] dp[2*i+1] = dp[i] + 1&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public int[] countBits(int num) {
+        int[] dp = new int[num + 1];
+        for (int i = 0; i &amp;lt;= num / 2; i++) {
+            dp[i&amp;lt;&amp;lt;1] = dp[i];
+            if ((i&amp;lt;&amp;lt;1) + 1 &amp;lt;= num) dp[(i&amp;lt;&amp;lt;1)+1] = dp[i] + 1;
+        }
+        return dp;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(n) n 为num / 2&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(n) n 为num&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>有序链表转换二叉搜索树</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
+      <pubDate>Sat, 21 Sep 2019 15:50:29 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-有序链表转换二叉搜索树&#34;&gt;题目：有序链表转换二叉搜索树&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;给定一个单链表，其中的元素按升序排序，将其转换为高度平衡的二叉搜索树。&lt;/li&gt;
+&lt;li&gt;本题中，一个高度平衡二叉树是指一个二叉树每个节点的左右两个子树的高度差的绝对值不超过&lt;code&gt;1&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例&#34;&gt;示例:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;给定的有序链表： [-10, -3, 0, 5, 9],
+
+一个可能的答案是：[0, -3, 9, -10, null, 5],
+它可以表示下面这个高度平衡二叉搜索树：
+
+      0
+     / \
+   -3   9
+   /   /
+ -10  5
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第109题&#34;&gt;来源：力扣（LeetCode）第109题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/convert-sorted-list-to-binary-search-tree&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/convert-sorted-list-to-binary-search-tree&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;递归 + 快慢双指针
+
+&lt;ul&gt;
+&lt;li&gt;使用快慢指针找出链表的中点。&lt;/li&gt;
+&lt;li&gt;然后将中点生成树的根。&lt;/li&gt;
+&lt;li&gt;递归进入左右子树。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;模拟遍历中序二叉树
+
+&lt;ul&gt;
+&lt;li&gt;算出链表的长度&lt;/li&gt;
+&lt;li&gt;把链表一分为二&lt;/li&gt;
+&lt;li&gt;递归进入链表的左边和右边&lt;/li&gt;
+&lt;li&gt;同时，在左边递归完后生成父节点&lt;/li&gt;
+&lt;li&gt;再把递归得到的左右子节点放在父节点的left和right&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;递归 + 快慢双指针&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+* Definition for singly-linked list.
+* public class ListNode {
+*     int val;
+*     ListNode next;
+*     ListNode(int x) { val = x; }
+* }
+*/
+/**
+* Definition for a binary tree node.
+* public class TreeNode {
+*     int val;
+*     TreeNode left;
+*     TreeNode right;
+*     TreeNode(int x) { val = x; }
+* }
+*/
+class Solution {
+public TreeNode sortedListToBST(ListNode head) {
+    return recursion(head,null);
+}
+public TreeNode recursion(ListNode point, ListNode end) {
+    if (point == end) return null;
+    ListNode head = point, fast = point, slow = point;
+    while (fast != end &amp;amp;&amp;amp; fast.next != end) {slow = slow.next;fast = fast.next.next;}
+    TreeNode node = new TreeNode(slow.val);
+    node.left = recursion(head, slow);
+    node.right = recursion(slow.next, end);
+    return node;
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;模拟遍历中序二叉树&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+* Definition for singly-linked list.
+* public class ListNode {
+*     int val;
+*     ListNode next;
+*     ListNode(int x) { val = x; }
+* }
+*/
+/**
+* Definition for a binary tree node.
+* public class TreeNode {
+*     int val;
+*     TreeNode left;
+*     TreeNode right;
+*     TreeNode(int x) { val = x; }
+* }
+*/
+class Solution {
+private ListNode head;
+
+public TreeNode sortedListToBST(ListNode head) {
+    this.head = head;
+    int cnt = -1;ListNode tail = head;
+    while (tail != null) {cnt++;tail = tail.next;} // 拿到链表的长度
+    return recursion(0, cnt);
+}
+
+public TreeNode recursion(int left, int right) {
+    if (left &amp;gt; right) return null;
+    int mid = (left + right) &amp;gt;&amp;gt; 1;
+    TreeNode l = recursion(left, mid - 1);
+    TreeNode node = new TreeNode(head.val);
+    node.left = l;
+    head = head.next;
+    node.right = recursion(mid + 1, right);
+    return node;
+}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+def sortedListToBST(self, head: ListNode) -&amp;gt; TreeNode:
+    self.head = head
+    tail = head
+    cnt = -1
+    while tail:
+        cnt += 1
+        tail = tail.next;
+
+    def recursion(left, right):
+        if left &amp;gt; right:
+            return
+        mid = (left + right) &amp;gt;&amp;gt; 1
+        l = recursion(left, mid - 1)
+        node = TreeNode(self.head.val)
+        self.head = self.head.next
+        node.left = l
+        node.right = recursion(mid + 1, right)
+        return node
+    return recursion(0, cnt)   
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>回文链表</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/</link>
+      <pubDate>Sat, 21 Sep 2019 15:48:18 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-回文链表&#34;&gt;题目：回文链表&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;请判断一个链表是否为回文链表。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例-1&#34;&gt;示例 1:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: 1-&amp;gt;2
+输出: false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-2&#34;&gt;示例 2:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: 1-&amp;gt;2-&amp;gt;2-&amp;gt;1
+输出: true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;进阶&#34;&gt;进阶：&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;你能否用&lt;code&gt;O(n)&lt;/code&gt;时间复杂度和&lt;code&gt;O(1)&lt;/code&gt;空间复杂度解决此题？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第234题&#34;&gt;来源：力扣（LeetCode）第234题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/palindrome-linked-list&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/palindrome-linked-list&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;最常见的做法是将链表变为数组，通过数组的随机访问的特性检测回文链表。&lt;/li&gt;
+&lt;li&gt;第二种更为方便的方法是使用快慢双指针找到链表的中点，然后将前半部分的链表翻转。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        if (head == null || head.next == null)  //两种特殊情况 return true;
+        ListNode slow = head, fast = head; //快慢指针
+        while (fast != null &amp;amp;&amp;amp; fast.next != null) {slow = slow.next;fast = fast.next.next;} //找到链表的中间位置奇数找到的是正中间，偶数得到的是中间靠右的数
+        ListNode pre = head.next, next; // 翻转前半链表，pre储存的是后面的结点，next储存的是head翻转后的head.next
+        while (pre != slow) { // 如果pre等于slow，那么head会指向slow前面的那个数
+            next = head;head = pre;  // 如果实在看不懂的话自己画一下就明白了
+            pre = head.next;head.next = next;
+        }
+        if (fast != null) slow = slow.next; // 如果链表是奇数的长度，那么fast.next == null，这时slow往前移一位
+        while (head != null &amp;amp;&amp;amp; slow != null) { // 检测是否回文
+            if (head.val != slow.val) return false;
+            head = head.next;slow = slow.next;
+        }
+        return true;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(n)&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(1)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>环形链表</title>
+      <link>https://ripple-zjw.github.io/2019/%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/</link>
+      <pubDate>Sat, 21 Sep 2019 15:45:40 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-环形链表&#34;&gt;题目：环形链表&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;给定一个链表，判断链表中是否有环。&lt;/li&gt;
+&lt;li&gt;为了表示给定链表中的环，我们使用整数&lt;code&gt;pos&lt;/code&gt; 来表示链表尾连接到链表中的位置（索引从&lt;code&gt;0&lt;/code&gt;开始）。 如果&lt;code&gt;pos&lt;/code&gt;是&lt;code&gt;-1&lt;/code&gt;,则在该链表中没有环。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例-1&#34;&gt;示例 1：&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入：head = [3,2,0,-4], pos = 1
+输出：true
+解释：链表中有一个环，其尾部连接到第二个节点。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-2&#34;&gt;示例 2：&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入：head = [1,2], pos = 0
+输出：true
+解释：链表中有一个环，其尾部连接到第一个节点。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-3&#34;&gt;示例 3：&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入：head = [1], pos = -1
+输出：false
+解释：链表中没有环。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;进阶&#34;&gt;进阶：&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;你能用 O(1)（即，常量）内存解决此问题吗？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第141题&#34;&gt;来源：力扣（LeetCode）第141题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/linked-list-cycle&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/linked-list-cycle&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;这道题可以使用哈希表来做，但这样的空间复杂度是O(n),另一种方法是快慢双指针。&lt;/li&gt;
+&lt;li&gt;使用两个指针，一个每次走一格，另一个每次走两格。&lt;/li&gt;
+&lt;li&gt;最后看快指针会不会走到头，或者这两个指针碰到了。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        if (head == null || head.next == null) return false;
+        ListNode slow = head, fast = head.next;
+        while (slow != fast) {
+            if (fast == null || fast.next == null) return false;
+            slow = slow.next;fast = fast.next.next;
+        }
+        return true;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;使用set来做&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+* Definition for singly-linked list.
+* class ListNode {
+*     int val;
+*     ListNode next;
+*     ListNode(int x) {
+*         val = x;
+*         next = null;
+*     }
+* }
+*/
+public class Solution {
+public boolean hasCycle(ListNode head) {
+    Set&amp;lt;ListNode&amp;gt; cycle = new HashSet();
+    while (head != null) {
+        if (cycle.contains(head)) return true;
+        cycle.add(head);
+        head = head.next;
+    }
+    return false;
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(n)&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(1)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>漂亮数组</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%BC%82%E4%BA%AE%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Sat, 21 Sep 2019 15:32:09 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%BC%82%E4%BA%AE%E6%95%B0%E7%BB%84/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-漂亮数组&#34;&gt;题目：漂亮数组&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;对于某些固定的&lt;code&gt;N&lt;/code&gt;，如果数组&lt;code&gt;A&lt;/code&gt;是整数&lt;code&gt;1, 2, ...&lt;/code&gt;, &lt;code&gt;N&lt;/code&gt;组成的排列，使得：
+对于每个&lt;code&gt;i &amp;lt; j&lt;/code&gt;，都不存在&lt;code&gt;k&lt;/code&gt;满足&lt;code&gt;i &amp;lt; k &amp;lt; j&lt;/code&gt;使得&lt;code&gt;A[k] * 2 = A[i] + A[j]&lt;/code&gt;。
+那么数组&lt;code&gt;A&lt;/code&gt;是漂亮数组。&lt;/li&gt;
+&lt;li&gt;给定&lt;code&gt;N&lt;/code&gt;，返回任意漂亮数组&lt;code&gt;A&lt;/code&gt;（保证存在一个）。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例-1&#34;&gt;示例 1：&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入：4
+输出：[2,1,4,3]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-2&#34;&gt;示例 2：&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入：5
+输出：[3,1,2,5,4]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;提示&#34;&gt;提示：&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1 &amp;lt;= N &amp;lt;= 1000&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第932题&#34;&gt;来源：力扣（LeetCode）第932题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/beautiful-array&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/beautiful-array&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;根据题目的要求，所谓漂亮数组就是&lt;code&gt;A[k] * 2 != A[i] + A[j]&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;A[k] * 2&lt;/code&gt;一定是一个偶数，那么我们只需要让&lt;code&gt;A[i] + A[j]&lt;/code&gt;是奇数就行了，如果我们把奇数放在左边，偶数放在右边，那么左右两边各取一个数相加一定是奇数。&lt;/li&gt;
+&lt;li&gt;那么还有一个问题，若&lt;code&gt;i&lt;/code&gt;是偶数，&lt;code&gt;j&lt;/code&gt;也是偶数怎么办？&lt;/li&gt;
+&lt;li&gt;如果我们要知道8个数的漂亮数组，首先8有4个奇数，4个偶数，我们需要知道4个数的漂亮数组，如果要知道4个数的漂亮数组又要分为2奇数，2偶数，直到为1个数时，漂亮数组为&lt;code&gt;[1]&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;漂亮数组又有一个性质，如果我们把数组中每个元素都乘以a并且加上b(a,b为任意除0外的数)，那么它还是漂亮数组。&lt;/li&gt;
+&lt;li&gt;同样的我们把奇偶两个漂亮数组相加，结果还是漂亮数组。&lt;/li&gt;
+&lt;li&gt;既然如此，&lt;code&gt;[1]&lt;/code&gt;是漂亮数组，那么我将&lt;code&gt;1*2-1&lt;/code&gt;也是是漂亮数组，我将&lt;code&gt;1*2&lt;/code&gt;也是漂亮数组，我把这两个数放在一起，也就是&lt;code&gt;[1,2]&lt;/code&gt;也是漂亮数组。以此类推，4个数的漂亮数组就是&lt;code&gt;[1,3,2,4]&lt;/code&gt;,8个数就是&lt;code&gt;[1,5,3,7,2,6,4,8]&lt;/code&gt;。如果数不足8个多于4个，我只需要把多余的拿掉就行了。&lt;/li&gt;
+&lt;li&gt;通过这种方式，可以发现，比如奇数部分的数两数相加除以2要么是偶数，要么在中间根本找不到这个数。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;分治算法：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+def beautifulArray(self, N: int) -&amp;gt; List[int]:
+    def divi(N):
+        ans = {1: [1]}
+        if N not in ans:
+            odds = divi((N + 1) // 2)
+            evens = divi(N // 2)
+            ans[N] = [2 * odd - 1 for odd in odds] + [2 * even for even in evens]
+        return ans[N]
+    return divi(N)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;分治法的迭代版本：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+def beautifulArray(self, N: int) -&amp;gt; List[int]:
+    ans = [1]
+    while len(ans) &amp;lt; N:
+        ans = [2 * odd - 1 for odd in ans] + [2 * even for even in ans]
+    return [i for i in ans if i &amp;lt;= N]
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(nlogn)&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(n)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>数组中的第K个最大元素</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACk%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/</link>
+      <pubDate>Sat, 21 Sep 2019 15:30:13 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACk%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-数组中的第k个最大元素&#34;&gt;题目：数组中的第K个最大元素&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在未排序的数组中找到第k个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例-1&#34;&gt;示例 1:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: [3,2,1,5,6,4] 和 k = 2
+输出: 5
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-2&#34;&gt;示例 2:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: [3,2,3,1,2,4,5,5,6] 和 k = 4
+输出: 4
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;说明&#34;&gt;说明:&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;你可以假设 k 总是有效的，且 1 ≤ k ≤ 数组的长度。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第215题&#34;&gt;来源：力扣（LeetCode）第215题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/kth-largest-element-in-an-array&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/kth-largest-element-in-an-array&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;有两种做法，一种是使用快排思想，选中一个数，对其进行&lt;code&gt;partition&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;第二种做法是使用堆，维护一个大顶堆，要拿到第k大元素就删除堆顶k次&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;快速排序改进：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+def findKthLargest(self, nums: List[int], k: int) -&amp;gt; int:
+    self.k = k
+    ans =  self.quickSort(nums, 0, len(nums) - 1)
+    return ans if ans else nums[k-1]
+        
+def portition(self, arr, start, end):
+    pivot = arr[end]
+    i = start - 1
+    for j in range(start, end):
+        if pivot &amp;lt; arr[j]:
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]
+    arr[i+1], arr[end] = arr[end], arr[i+1]
+    return i + 1
+    
+def quickSort(self, arr, start, end):
+    if start &amp;lt; end:
+        pivot = self.portition(arr, start, end)
+        if pivot + 1 == self.k:  # 唯一与快排的区别就是当pivot已经是第k大元素时就直接返回。
+            return arr[pivot]
+        self.quickSort(arr, start, pivot - 1)
+        self.quickSort(arr, pivot + 1, end)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;使用堆：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+def findKthLargest(self, nums: List[int], k: int) -&amp;gt; int:
+    self.length = len(nums)
+    for i in range(self.length // 2 - 1, -1, -1):  # 把数组构建成堆
+        self.maxheapify(nums, i)
+    ans = nums[0]
+    for i in range(k):  # 拿到第k大元素
+        ans = nums[0]
+        nums[0] = nums[self.length - 1]
+        self.length -= 1
+        self.maxheapify(nums, 0)
+    return ans
+
+def maxheapify(self, heap, i):  # 堆的关键方法，作用是维护堆，任何涉及到堆的操作基本都需要。
+    left = 2 * (i + 1) - 1
+    right = 2 * (i + 1)
+    largest = i
+    if left &amp;lt; self.length and heap[largest] &amp;lt; heap[left]:
+        largest = left
+    if right &amp;lt; self.length and heap[largest] &amp;lt; heap[right]:
+        largest = right
+    if largest != i:
+        heap[largest], heap[i] = heap[i], heap[largest]
+        self.maxheapify(heap, largest)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;快速排序：
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(nlogn)这是最坏情况下，最好情况下为O(n)&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(1) 快速排序本来就是原地排序，不需要额外的空间。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;使用堆：
+
+&lt;ul&gt;
+&lt;li&gt;时间复杂度：O(nlogn) n为二分之一的数组长度，&lt;code&gt;maxheapify&lt;/code&gt;的时间复杂度为&lt;code&gt;logn&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;空间复杂度：O(1) 构建堆以及拿出堆顶都只需要常数空间。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>为运算表达式设计优先级</title>
@@ -809,570 +1471,6 @@ def twoSum(self, numbers: List[int], target: int) -&amp;gt; List[int]:
 &lt;li&gt;时间复杂度：O(n) n为数组长度的一半&lt;/li&gt;
 &lt;li&gt;空间复杂度：O(1)&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>缺失数字</title>
-      <link>https://ripple-zjw.github.io/2019/%E7%BC%BA%E5%A4%B1%E6%95%B0%E5%AD%97/</link>
-      <pubDate>Fri, 06 Sep 2019 20:21:39 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E7%BC%BA%E5%A4%B1%E6%95%B0%E5%AD%97/</guid>
-      <description>
-
-&lt;h1 id=&#34;题目-缺失数字&#34;&gt;题目：缺失数字&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;给定一个包含&lt;code&gt;0, 1, 2, ..., n&lt;/code&gt;中&lt;em&gt;n&lt;/em&gt; 个数的序列，找出 &lt;em&gt;0 .. n&lt;/em&gt; 中没有出现在序列中的那个数。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;示例-1&#34;&gt;示例 1:&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入: [3,0,1]
-输出: 2
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;示例-2&#34;&gt;示例 2:&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入: [9,6,4,2,3,5,7,0,1]
-输出: 8
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;说明&#34;&gt;说明:&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;你的算法应具有线性时间复杂度。你能否仅使用额外常数空间来实现?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第268题&#34;&gt;来源：力扣（LeetCode）第268题&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/missing-number&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/missing-number&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
-
-&lt;p&gt;使用排序和哈希可以很容易做出来，但是不符合题意O(1)的空间复杂度。还有两种方法，一种是位运算，另一种是通过数学定理来解题。&lt;/p&gt;
-
-&lt;h2 id=&#34;位运算解题&#34;&gt;位运算解题：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;异或运算的性质：
-
-&lt;ul&gt;
-&lt;li&gt;异或运算（XOR）满足结合律，并且对一个数进行两次完全相同的异或运算会得到原来的数。&lt;/li&gt;
-&lt;li&gt;比如：&lt;code&gt;a ^ b ^ b == a&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;任意一个数对0进行异或运算，等于它原来的数。&lt;/li&gt;
-&lt;li&gt;比如：&lt;code&gt;a ^ 0 == a&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;任意一个数对它本身进行异或运算，等于0.&lt;/li&gt;
-&lt;li&gt;比如：&lt;code&gt;a ^ a  == 0&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;因此，在&lt;code&gt;0-n&lt;/code&gt;个数的数组中必定缺少一个数。我们把数组的下标和数组中的数进行异或运算，所有的数都会找到下标相等的数，只有缺失的那个数字找不到，最后算出来的结果就是那个缺失的数。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;代码&#34;&gt;代码：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
-    def missingNumber(self, nums: List[int]) -&amp;gt; int:
-        ans = len(nums)  # 由于数组没有长度为nums长度的下标，因为从0开始索引的，所以我们要先加上去。
-        for i in range(len(nums)):
-            ans ^= i ^ nums[i]
-        return ans
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;数学定理解题&#34;&gt;数学定理解题：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;等差数列求和公式：
-
-&lt;ul&gt;
-&lt;li&gt;n * (n+1) / 2&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;我们把从0到数组最后的下标累加，再加上数组的长度。&lt;/li&gt;
-&lt;li&gt;再把数组中的所有元素累加。&lt;/li&gt;
-&lt;li&gt;然后两个相减，最后得到的就是缺失的数字。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;代码-1&#34;&gt;代码：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
-    def missingNumber(self, nums: List[int]) -&amp;gt; int:
-        n = len(nums)
-        return n * (n + 1) // 2 - sum(nums)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;两种方法复杂度一样：
-
-&lt;ul&gt;
-&lt;li&gt;时间复杂度：O(n)&lt;/li&gt;
-&lt;li&gt;空间复杂度：O(1)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>找到所有数组中消失的数字</title>
-      <link>https://ripple-zjw.github.io/2019/%E6%89%BE%E5%88%B0%E6%89%80%E6%9C%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%B6%88%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/</link>
-      <pubDate>Fri, 06 Sep 2019 20:19:35 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E6%89%BE%E5%88%B0%E6%89%80%E6%9C%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%B6%88%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/</guid>
-      <description>
-
-&lt;h1 id=&#34;题目-找到所有数组中消失的数字&#34;&gt;题目：找到所有数组中消失的数字&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;给定一个范围在&lt;code&gt;1 ≤ a[i] ≤ n&lt;/code&gt; (&lt;code&gt;n&lt;/code&gt; = 数组大小 ) 的 整型数组，数组中的元素一些出现了两次，另一些只出现一次。&lt;/li&gt;
-&lt;li&gt;找到所有在 [1, n] 范围之间没有出现在数组中的数字。&lt;/li&gt;
-&lt;li&gt;您能在不使用额外空间且时间复杂度为O(n)的情况下完成这个任务吗? 你可以假定返回的数组不算在额外空间内。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;示例&#34;&gt;示例:&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入:
-[4,3,2,7,8,2,3,1]
-
-输出:
-[5,6]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第448题&#34;&gt;来源：力扣（LeetCode）第448题&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
-
-&lt;p&gt;有多种方法，第一种是用抽屉原理和异或运算的方式交换值。第二种是一种更为巧妙的方式。&lt;/p&gt;
-
-&lt;h3 id=&#34;使用异或运算交换两个值的方法&#34;&gt;使用异或运算交换两个值的方法：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;a = a ^ b
-b = a ^ b
-a = a ^ b
-这样就可以在不使用第三个变量的前提下交换两个变量的值。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;抽屉原理&#34;&gt;抽屉原理：&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;如果每个抽屉代表一个集合，每一个苹果就可以代表一个元素，假如有 n + 1 个元素放到 n 个集合中去，其中必定有一个集合里至少有两个元素。” 抽屉原理有时也被称为鸽巢原理。它是组合数学中一个重要的原理。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;思路&#34;&gt;思路：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;第一种：
-
-&lt;ul&gt;
-&lt;li&gt;遍历整个数组，从第一个开始&lt;code&gt;i&lt;/code&gt;，不停地把这个位置上的元素&lt;code&gt;i&lt;/code&gt;与它的值所对应的下标位置上的元素进行交换。&lt;/li&gt;
-&lt;li&gt;一旦当前遍历的这个位置上的元素&lt;code&gt;i&lt;/code&gt;与它值所对应的下标位置上的元素相等，那么就遍历数组的下一个元素&lt;code&gt;i&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;这样的目的是，要么当前位置上&lt;code&gt;i&lt;/code&gt;存的是正确的位置，比如&lt;code&gt;i = 0&lt;/code&gt;的位置上存的是&lt;code&gt;1&lt;/code&gt;，因为数组中的元素是从&lt;code&gt;1&lt;/code&gt;开始的；要么当前位置&lt;code&gt;i&lt;/code&gt;上存的是出现了两次的元素。&lt;/li&gt;
-&lt;li&gt;这样最后判断每个元素的值是否是其下标+1。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;第二种：
-
-&lt;ul&gt;
-&lt;li&gt;遍历整个数组，将该元素的值所对应的下标位置的值变为负数。&lt;/li&gt;
-&lt;li&gt;遍历完后，如果数组中还有位置上的值是正数，那么说明没有值等于该位置的下标，即数组中没有遍历到这个值。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;两种方法的代码&#34;&gt;两种方法的代码：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;第一种：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
-def findDisappearedNumbers(self, nums: List[int]) -&amp;gt; List[int]:
-    for i in range(len(nums)):
-        while nums[i] != nums[nums[i] - 1]:  # 一直交换，直到值正确或者这个值出现了两次。
-            tmp = nums[i] - 1  # 临时储存，如果用函数可以不写这个。
-            if i == tmp:  # 如果两个值相等不能用异或交换，否则一个值会为0
-                break
-            nums[i] = nums[i] ^ nums[tmp]  # 异或交换
-            nums[tmp] = nums[i] ^ nums[tmp]
-            nums[i] = nums[i] ^ nums[tmp]
-    return [i+1 for i in range(len(nums)) if i+1 != nums[i]]  # 返回正确位置的值
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;第二种：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
-def findDisappearedNumbers(self, nums: List[int]) -&amp;gt; List[int]:
-    for i in range(len(nums)):
-        nums[abs(nums[i]) - 1] = -abs(nums[abs(nums[i]) - 1])  # 把当前值所对应的下标上的值变为负数，需要注意的是可能这个值已经是负数了，比如有的值出现了两次，所以要加绝对值。
-    return [i + 1 for i in range(len(nums)) if nums[i] &amp;gt; 0]  # 把大于0的数返回
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;时间复杂度：O(n)&lt;/li&gt;
-&lt;li&gt;空间复杂度：O(1)&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>组合总和</title>
-      <link>https://ripple-zjw.github.io/2019/%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/</link>
-      <pubDate>Fri, 06 Sep 2019 20:18:05 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/</guid>
-      <description>
-
-&lt;h1 id=&#34;题目-组合总和&#34;&gt;题目：组合总和&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;给定一个无重复元素的数组&lt;code&gt;candidates&lt;/code&gt;和一个目标数&lt;code&gt;target&lt;/code&gt;，找出&lt;code&gt;candidates&lt;/code&gt;中所有可以使数字和为&lt;code&gt;target&lt;/code&gt;的组合。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;candidates&lt;/code&gt;中的数字可以无限制重复被选取。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;说明&#34;&gt;说明：&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;所有数字（包括 target）都是正整数。
-解集不能包含重复的组合。 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;示例-1&#34;&gt;示例 1:&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入: candidates = [2,3,6,7], target = 7,
-所求解集为:
-[
-  [7],
-  [2,2,3]
-]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;示例-2&#34;&gt;示例 2:&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入: candidates = [2,3,5], target = 8,
-所求解集为:
-[
-  [2,2,2,2],
-  [2,3,3],
-  [3,5]
-]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode&#34;&gt;来源：力扣（LeetCode）&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/combination-sum&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/combination-sum&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
-
-&lt;p&gt;回溯算法+栈，这是我的做法，看到很多算法高手的思路和方法都很棒，有用回溯的，有用dp的。&lt;/p&gt;
-
-&lt;h3 id=&#34;我放上两个比较好的题解&#34;&gt;我放上两个比较好的题解:&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;回溯算法：
-&amp;gt; &lt;a href=&#34;https://leetcode-cn.com/problems/combination-sum/solution/hui-su-suan-fa-jian-zhi-python-dai-ma-java-dai-m-2/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/combination-sum/solution/hui-su-suan-fa-jian-zhi-python-dai-ma-java-dai-m-2/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;动态规划：
-&amp;gt; &lt;a href=&#34;https://leetcode-cn.com/problems/combination-sum/solution/chao-qiang-gifzhu-ni-shi-yong-dong-tai-gui-hua-qiu/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/combination-sum/solution/chao-qiang-gifzhu-ni-shi-yong-dong-tai-gui-hua-qiu/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;思路&#34;&gt;思路：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;回溯算法一般都用递归来完成。最好的方法是画递归树。&lt;/li&gt;
-&lt;li&gt;通过对每一层的递归，将所有等于target的答案全部都得到。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
-    def combinationSum(self, candidates: List[int], target: int) -&amp;gt; List[List[int]]:
-        ans = []
-        def recursion(cand, i):
-            for j in range(i, len(candidates)):
-                stack.append(candidates[j])
-                res = candidates[j] + cand
-                if res &amp;gt;= target:
-                    if res == target:
-                        ans.append(stack[:])
-                    stack.pop()
-                    continue
-                else:
-                    recursion(res, j)
-                    stack.pop()
-        for i in range(len(candidates)):
-            stack = [candidates[i]]
-            if candidates[i] &amp;lt; target:
-                recursion(candidates[i], i)
-            elif candidates[i] == target:
-                ans.append(stack)
-        return ans
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;时间复杂度：O(n!) 个人认为&lt;/li&gt;
-&lt;li&gt;空间复杂度：O(target) 个人认为&lt;code&gt;target&lt;/code&gt;是主要影响答案数量的，当&lt;code&gt;target&lt;/code&gt;变大时，最终返回的数量会非常多。&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>复写零</title>
-      <link>https://ripple-zjw.github.io/2019/%E5%A4%8D%E5%86%99%E9%9B%B6/</link>
-      <pubDate>Fri, 06 Sep 2019 20:16:32 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E5%A4%8D%E5%86%99%E9%9B%B6/</guid>
-      <description>
-
-&lt;h1 id=&#34;题目-复写零&#34;&gt;题目：复写零&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;给你一个长度固定的整数数组&lt;code&gt;arr&lt;/code&gt;，请你将该数组中出现的每个零都复写一遍，并将其余的元素向右平移。&lt;/li&gt;
-&lt;li&gt;注意：请不要在超过该数组长度的位置写入元素。&lt;/li&gt;
-&lt;li&gt;要求：请对输入的数组就地进行上述修改，不要从函数返回任何东西。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;示例-1&#34;&gt;示例 1：&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入：[1,0,2,3,0,4,5,0]
-输出：null
-解释：调用函数后，输入的数组将被修改为：[1,0,0,2,3,0,0,4]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;示例-2&#34;&gt;示例 2：&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入：[1,2,3]
-输出：null
-解释：调用函数后，输入的数组将被修改为：[1,2,3]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;提示&#34;&gt;提示：&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;1 &amp;lt;= arr.length &amp;lt;= 10000&lt;/li&gt;
-&lt;li&gt;0 &amp;lt;= arr[i] &amp;lt;= 9&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第1089题&#34;&gt;来源：力扣（LeetCode）第1089题&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/duplicate-zeros&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/duplicate-zeros&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
-
-&lt;p&gt;这道题的难点在于要在原数组上操作，不可以申请新的数组。因此，快慢双指针就派上用场了。&lt;/p&gt;
-
-&lt;h2 id=&#34;思路&#34;&gt;思路：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;声明两个指针&lt;code&gt;i&lt;/code&gt;,&lt;code&gt;j&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;一个指针正常遍历&lt;code&gt;i&lt;/code&gt;，另一个&lt;code&gt;j&lt;/code&gt;遇到&lt;code&gt;0&lt;/code&gt;就往前再+1&lt;/li&gt;
-&lt;li&gt;遍历完之后&lt;code&gt;i&lt;/code&gt;之后的数都是被移出去的，&lt;code&gt;j&lt;/code&gt;指针在最后一位&lt;/li&gt;
-&lt;li&gt;依次将&lt;code&gt;i&lt;/code&gt;指针的元素赋在&lt;code&gt;j&lt;/code&gt;的位置，遇到0，&lt;code&gt;j&lt;/code&gt;不仅要将&lt;code&gt;i&lt;/code&gt;的值赋上，还要往前一位再赋上0。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;双指针法：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
-def duplicateZeros(self, arr: List[int]) -&amp;gt; None:
-    i = j = 0
-    n = len(arr)
-    while j &amp;lt; n:
-        if arr[i] == 0:
-            j += 1
-        i += 1
-        j += 1
-    i -= 1
-    j -= 1
-    while i &amp;gt;= 0:
-        if j &amp;lt; n:
-            arr[j] = arr[i]
-        if arr[i] == 0:
-            j -= 1
-            arr[j] = 0
-        j -= 1
-        i -= 1
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;非原地解法：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
-def duplicateZeros(self, arr: List[int]) -&amp;gt; None:
-    i = 0
-    while i &amp;lt; len(arr):
-        if arr[i] == 0:
-            arr.insert(i, 0)
-            arr.pop()
-            i += 1
-        i += 1
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;时间复杂度：O(n) n为数组的长度&lt;/li&gt;
-&lt;li&gt;空间复杂度：O(1)&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>数组的相对排序</title>
-      <link>https://ripple-zjw.github.io/2019/%E6%95%B0%E7%BB%84%E7%9A%84%E7%9B%B8%E5%AF%B9%E6%8E%92%E5%BA%8F/</link>
-      <pubDate>Fri, 30 Aug 2019 19:27:49 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E6%95%B0%E7%BB%84%E7%9A%84%E7%9B%B8%E5%AF%B9%E6%8E%92%E5%BA%8F/</guid>
-      <description>
-
-&lt;h1 id=&#34;题目-数组的相对排序&#34;&gt;题目：数组的相对排序&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;给你两个数组，&lt;code&gt;arr1&lt;/code&gt; 和&lt;code&gt;arr2&lt;/code&gt;，
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;arr2&lt;/code&gt;中的元素各不相同&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;arr2&lt;/code&gt; 中的每个元素都出现在&lt;code&gt;arr1&lt;/code&gt;中&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;对&lt;code&gt;arr1&lt;/code&gt;中的元素进行排序，使arr1中项的相对顺序和&lt;code&gt;arr2&lt;/code&gt;中的相对顺序相同。&lt;/li&gt;
-&lt;li&gt;未在&lt;code&gt;arr2&lt;/code&gt;中出现过的元素需要按照升序放在&lt;code&gt;arr1&lt;/code&gt;的末尾。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;示例&#34;&gt;示例：&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入：arr1 = [2,3,1,3,2,4,6,7,9,2,19], arr2 = [2,1,4,3,9,6]
-输出：[2,2,2,1,4,3,3,9,6,7,19]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;提示&#34;&gt;提示：&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;arr1.length, arr2.length&lt;/code&gt; &amp;lt;= 1000&lt;/li&gt;
-&lt;li&gt;0 &amp;lt;= &lt;code&gt;arr1[i], arr2[i]&lt;/code&gt; &amp;lt;= 1000&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;arr2&lt;/code&gt;中的元素&lt;code&gt;arr2[i]&lt;/code&gt;各不相同&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;arr2&lt;/code&gt; 中的每个元素&lt;code&gt;arr2[i]&lt;/code&gt;都出现在&lt;code&gt;arr1&lt;/code&gt;中&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第1122题&#34;&gt;来源：力扣（LeetCode）第1122题&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/relative-sort-array&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/relative-sort-array&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;最近一直在做数组的题目，这种题一眼就想到了计数排序，唯一的不同就是在排序的时候要按arr2的顺序排。&lt;/li&gt;
-&lt;li&gt;我的代码是遍历了两边，第一遍是遍历arr2，第二遍遍历整个排序，如果你有更好的计数排序方法，欢迎你告诉我。&lt;/li&gt;
-&lt;li&gt;不知道你们有没有遇到过计数排序，我尽可能的把注释写的详细一点，好给没接触过的人参考一下。（反正多遇到几次就写的很熟了）&lt;/li&gt;
-&lt;li&gt;其实就是用到了hash表。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
-    def relativeSortArray(self, arr1: List[int], arr2: List[int]) -&amp;gt; List[int]:
-        arr = [0 for _ in range(1001)]  # 由于题目说arr1的范围在0-1000，所以生成一个1001大小的数组用来存放每个数出现的次数。
-        ans = []  # 储存答案的数组。
-        for i in range(len(arr1)):  # 遍历arr1，把整个arr1的数的出现次数储存在arr上，arr的下标对应arr1的值，arr的值对应arr1中值出现的次数。
-            arr[arr1[i]] += 1  # 如果遇到了这个数，就把和它值一样的下标位置上+1，表示这个数在这个下标i上出现了1次。
-        for i in range(len(arr2)):  # 遍历arr2，现在开始要输出答案了。
-            while arr[arr2[i]] &amp;gt; 0:  # 如果arr2的值在arr所对应的下标位置出现次数大于0，那么就说明arr中的这个位置存在值。
-                ans.append(arr2[i])  # 如果存在值，那就把它加到ans中，因为要按arr2的顺序排序。
-                arr[arr2[i]] -= 1  # 加进去了次数 -1 ，不然就死循环了。
-        for i in range(len(arr)):  # 如果arr1的值不在arr2中，那么不能就这么结束了，因为题目说了如果不在，剩下的值按照升序排序。
-            while arr[i] &amp;gt; 0:  # 同样也是找到大于0的下标，然后一直加到ans中，直到次数为0。
-                ans.append(i)
-                arr[i] -= 1
-        return ans  # 返回最终答案。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;时间复杂度：O(n+m) n 为arr2的长度，m为arr1的长度。arr的长度固定是1001，所以就算arr中只有1个有次数,也要遍历1001遍。&lt;/li&gt;
-&lt;li&gt;空间复杂度：O(n) n 为arr1的长度。&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>杨辉三角</title>
-      <link>https://ripple-zjw.github.io/2019/%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/</link>
-      <pubDate>Fri, 30 Aug 2019 19:22:10 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/</guid>
-      <description>
-
-&lt;h1 id=&#34;题目-杨辉三角&#34;&gt;题目：杨辉三角&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;给定一个非负整数 numRows，生成杨辉三角的前 numRows 行。&lt;/li&gt;
-&lt;li&gt;在杨辉三角中，每个数是它左上方和右上方的数的和。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://ripple-zjw.github.io/images/杨辉三角/PascalTriangleAnimated2.gif&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
-
-&lt;h5 id=&#34;示例&#34;&gt;示例:&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入: 5
-输出:
-[
-     [1],
-    [1,1],
-   [1,2,1],
-  [1,3,3,1],
- [1,4,6,4,1]
-]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第118题&#34;&gt;来源：力扣（LeetCode）第118题&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/pascals-triangle&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/pascals-triangle&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
-
-&lt;p&gt;这题可以使用动态规划，是一道非常简单的题目。我们可以把所要求的值看成是前一行的两个值的相加，而且这两个值的位置是有规律的。&lt;/p&gt;
-
-&lt;h2 id=&#34;思路&#34;&gt;思路：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;两个循环，第一遍遍历所有的层。&lt;/li&gt;
-&lt;li&gt;第二遍遍历每一层中的值。&lt;/li&gt;
-&lt;li&gt;每一层中的值只有第一个和最后一个是1，其他的值都是前一行的前一个位置和现在的位置的和。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
-    def generate(self, numRows: int) -&amp;gt; List[List[int]]:
-        ans = []
-        for i in range(numRows):
-            numRow = [1 for _ in range(i + 1)]
-            for j in range(1, i):
-                numRow[j] = ans[i-1][j-1] + ans[i-1][j]
-            ans.append(numRow)
-        return ans
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;复杂度分析&#34;&gt;复杂度分析：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;时间复杂度：O(n^2^) n 为numRows&lt;/li&gt;
-&lt;li&gt;空间复杂度：O(n^2^)&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

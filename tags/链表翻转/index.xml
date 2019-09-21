@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>链表翻转 on LeaveIt</title>
+    <link>https://ripple-zjw.github.io/tags/%E9%93%BE%E8%A1%A8%E7%BF%BB%E8%BD%AC/</link>
+    <description>Recent content in 链表翻转 on LeaveIt</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 21 Sep 2019 15:48:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://ripple-zjw.github.io/tags/%E9%93%BE%E8%A1%A8%E7%BF%BB%E8%BD%AC/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>回文链表</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/</link>
+      <pubDate>Sat, 21 Sep 2019 15:48:18 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/</guid>
+      <description>题目：回文链表  请判断一个链表是否为回文链表。  示例 1: 输入: 1-&amp;gt;2 输出: false  示例 2: 输入: 1-&amp;gt;2-&amp;gt;2-&amp;gt;1 输出: true  进阶：  你能否用O(n)时间复杂度和O(1)空间复杂度解决此题？  来源：力扣（LeetCode）第234题  链接：https://leetcode-cn.com/problems/palindrome-linked-list
+ 分析：  最常见的做法是将链表变为数组，通过数组的随机访问的特性检测回文链表。 第二种更为方便的方法是使用快慢双指针找到链表的中点，然后将前半部分的链表翻转。  代码： /** * Definition for singly-linked list. * public class ListNode { * int val; * ListNode next; * ListNode(int x) { val = x; } * } */ class Solution { public boolean isPalindrome(ListNode head) { if (head == null || head.</description>
+    </item>
+    
+  </channel>
+</rss>

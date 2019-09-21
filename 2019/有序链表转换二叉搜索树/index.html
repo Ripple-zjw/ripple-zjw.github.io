@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E6%AF%94%E7%89%B9%E4%BD%8D%E8%AE%A1%E6%95%B0/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           有序链表转换二叉搜索树 | LeaveIt
+       
+  </title>
+  <meta name="title" content="有序链表转换二叉搜索树 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "有序链表转换二叉搜索树",
+    "headline" : "有序链表转换二叉搜索树",
+    "description" : "题目：有序链表转换二叉搜索树  给定一个单链表，其中的元素按升序排序，将其转换为高度平衡的二叉搜索树。 本题中，一个高度平衡二叉树是指一个二叉树每个节点的左右两个子树的高度差的绝对值不超过1。  示例: 给定的有序链表： [-10, -3, 0, 5, 9], 一个可能的答案是：[0, -3, 9, -10, null, 5], 它可以表示下面这个高度平衡二叉搜索树： 0 \/ \\ -3 9 \/ \/ -10 5  来源：力扣（LeetCode）第109题  链接：https:\/\/leetcode-cn.com\/problems\/convert-sorted-list-to-binary-search-tree\n 分析：  递归 \x2b 快慢双指针  使用快慢指针找出链表的中点。 然后将中点生成树的根。 递归进入左右子树。  模拟遍历中序二叉树  算出链表的长度 把链表一分为二 递归进入链表的左边和右边 同时，在左边递归完后生成父节点 再把递归得到的左右子节点放在父节点的left和right   代码：  递归 \x2b 快慢双指针\n\/** * Definition for singly-linked list. * public class ListNode { * int val; * ListNode next; * ListNode(int x) { val = x; } * } *\/ \/** * Definition for a binary tree node.",
+    "inLanguage" : "zh-CN",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-09-21 15:50:29 \x2b0800 CST",
+    "dateModified" : "2019-09-21 15:50:29 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91\/",
+    "wordCount" : "427",
+    "keywords" : [ "算法求解思想","链表","平衡搜索二叉树","二叉树","双指针","搜索二叉树","递归","快慢双指针","中序遍历二叉树", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">有序链表转换二叉搜索树</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-09-21 itemprop="datePublished">September 21, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-有序链表转换二叉搜索树">题目：有序链表转换二叉搜索树</h1>
+
+<ul>
+<li>给定一个单链表，其中的元素按升序排序，将其转换为高度平衡的二叉搜索树。</li>
+<li>本题中，一个高度平衡二叉树是指一个二叉树每个节点的左右两个子树的高度差的绝对值不超过<code>1</code>。</li>
+</ul>
+
+<h5 id="示例">示例:</h5>
+
+<pre><code>给定的有序链表： [-10, -3, 0, 5, 9],
+
+一个可能的答案是：[0, -3, 9, -10, null, 5],
+它可以表示下面这个高度平衡二叉搜索树：
+
+      0
+     / \
+   -3   9
+   /   /
+ -10  5
+</code></pre>
+
+<h4 id="来源-力扣-leetcode-第109题">来源：力扣（LeetCode）第109题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/convert-sorted-list-to-binary-search-tree" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/convert-sorted-list-to-binary-search-tree</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<ul>
+<li>递归 + 快慢双指针
+
+<ul>
+<li>使用快慢指针找出链表的中点。</li>
+<li>然后将中点生成树的根。</li>
+<li>递归进入左右子树。</li>
+</ul></li>
+<li>模拟遍历中序二叉树
+
+<ul>
+<li>算出链表的长度</li>
+<li>把链表一分为二</li>
+<li>递归进入链表的左边和右边</li>
+<li>同时，在左边递归完后生成父节点</li>
+<li>再把递归得到的左右子节点放在父节点的left和right</li>
+</ul></li>
+</ul>
+
+<h2 id="代码">代码：</h2>
+
+<ul>
+<li><p>递归 + 快慢双指针</p>
+
+<pre><code class="language-java">/**
+* Definition for singly-linked list.
+* public class ListNode {
+*     int val;
+*     ListNode next;
+*     ListNode(int x) { val = x; }
+* }
+*/
+/**
+* Definition for a binary tree node.
+* public class TreeNode {
+*     int val;
+*     TreeNode left;
+*     TreeNode right;
+*     TreeNode(int x) { val = x; }
+* }
+*/
+class Solution {
+public TreeNode sortedListToBST(ListNode head) {
+    return recursion(head,null);
+}
+public TreeNode recursion(ListNode point, ListNode end) {
+    if (point == end) return null;
+    ListNode head = point, fast = point, slow = point;
+    while (fast != end &amp;&amp; fast.next != end) {slow = slow.next;fast = fast.next.next;}
+    TreeNode node = new TreeNode(slow.val);
+    node.left = recursion(head, slow);
+    node.right = recursion(slow.next, end);
+    return node;
+}
+}
+</code></pre></li>
+
+<li><p>模拟遍历中序二叉树</p>
+
+<pre><code class="language-java">/**
+* Definition for singly-linked list.
+* public class ListNode {
+*     int val;
+*     ListNode next;
+*     ListNode(int x) { val = x; }
+* }
+*/
+/**
+* Definition for a binary tree node.
+* public class TreeNode {
+*     int val;
+*     TreeNode left;
+*     TreeNode right;
+*     TreeNode(int x) { val = x; }
+* }
+*/
+class Solution {
+private ListNode head;
+
+public TreeNode sortedListToBST(ListNode head) {
+    this.head = head;
+    int cnt = -1;ListNode tail = head;
+    while (tail != null) {cnt++;tail = tail.next;} // 拿到链表的长度
+    return recursion(0, cnt);
+}
+
+public TreeNode recursion(int left, int right) {
+    if (left &gt; right) return null;
+    int mid = (left + right) &gt;&gt; 1;
+    TreeNode l = recursion(left, mid - 1);
+    TreeNode node = new TreeNode(head.val);
+    node.left = l;
+    head = head.next;
+    node.right = recursion(mid + 1, right);
+    return node;
+}
+}
+</code></pre>
+
+<pre><code class="language-python"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+def sortedListToBST(self, head: ListNode) -&gt; TreeNode:
+    self.head = head
+    tail = head
+    cnt = -1
+    while tail:
+        cnt += 1
+        tail = tail.next;
+
+    def recursion(left, right):
+        if left &gt; right:
+            return
+        mid = (left + right) &gt;&gt; 1
+        l = recursion(left, mid - 1)
+        node = TreeNode(self.head.val)
+        self.head = self.head.next
+        node.left = l
+        node.right = recursion(mid + 1, right)
+        return node
+    return recursion(0, cnt)   
+</code></pre></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/>https://ripple-zjw.github.io/2019/%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E9%93%BE%E8%A1%A8/">
+                    #链表</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%B9%B3%E8%A1%A1%E6%90%9C%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/">
+                    #平衡搜索二叉树</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
+                    #二叉树</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">
+                    #双指针</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E6%90%9C%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/">
+                    #搜索二叉树</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E9%80%92%E5%BD%92/">
+                    #递归</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%BF%AB%E6%85%A2%E5%8F%8C%E6%8C%87%E9%92%88/">
+                    #快慢双指针</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/">
+                    #中序遍历二叉树</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/" class="prev" rel="prev" title="回文链表"><i class="iconfont icon-left"></i>&nbsp;回文链表</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E6%AF%94%E7%89%B9%E4%BD%8D%E8%AE%A1%E6%95%B0/" class="next" rel="next" title="比特位计数">比特位计数&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" />
+  
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E6%AF%94%E7%89%B9%E4%BD%8D%E8%AE%A1%E6%95%B0/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           比特位计数 | LeaveIt
+       
+  </title>
+  <meta name="title" content="比特位计数 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "比特位计数",
+    "headline" : "比特位计数",
+    "description" : " 题目：比特位计数  给定一个非负整数num。对于0 ≤ i ≤ num 范围中的每个数字i，计算其二进制数中的1 的数目并将它们作为数组返回。  示例 1: 输入: 2 输出: [0,1,1]  示例 2: 输入: 5 输出: [0,1,1,2,1,2]  进阶:  给出时间复杂度为O(n*sizeof(integer))的解答非常容易。但你可以在线性时间O(n)内用一趟扫描做到吗？ 要求算法的空间复杂度为O(n)。 你能进一步完善解法吗？要求在C\x2b\x2b或任何其他语言中不使用任何内置函数（如C\x2b\x2b中的__builtin_popcount）来执行此操作。  来源：力扣（LeetCode）第338题  链接：https:\/\/leetcode-cn.com\/problems\/counting-bits\n 分析：  由于偶数的二进制数最后一位是0，所以如果一个偶数做\x26gt;\x26gt;1运算那么它的1的个数不变。同理如果一个奇数右移一位，1的个数减1。 因此如果1有1个1，那么2也有1个1,3就有2个1。(正推的话做左移运算),如果2有1个1的话，那么4也是1个1,5就是2个1。 所以有了状态转换公式dp[2*i] = dp[i] dp[2*i\x2b1] = dp[i] \x2b 1  代码： class Solution { public int[] countBits(int num) { int[] dp = new int[num \x2b 1]; for (int i = 0; i \x26lt;= num \/ 2; i\x2b\x2b) { dp[i\x26lt;\x26lt;1] = dp[i]; if ((i\x26lt;\x26lt;1) \x2b 1 \x26lt;= num) dp[(i\x26lt;\x26lt;1)\x2b1] = dp[i] \x2b 1; } return dp; } }  复杂度分析：  时间复杂度：O(n) n 为num \/ 2 空间复杂度：O(n) n 为num  ",
+    "inLanguage" : "zh-CN",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-09-21 16:04:38 \x2b0800 CST",
+    "dateModified" : "2019-09-21 16:04:38 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E6%AF%94%E7%89%B9%E4%BD%8D%E8%AE%A1%E6%95%B0\/",
+    "wordCount" : "93",
+    "keywords" : [ "算法求解思想","动态规划","位运算", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">比特位计数</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-09-21 itemprop="datePublished">September 21, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-比特位计数">题目：比特位计数</h1>
+
+<ul>
+<li>给定一个非负整数<code>num</code>。对于<code>0 ≤ i ≤ num</code> 范围中的每个数字<code>i</code>，计算其二进制数中的<code>1</code> 的数目并将它们作为数组返回。</li>
+</ul>
+
+<h5 id="示例-1">示例 1:</h5>
+
+<pre><code>输入: 2
+输出: [0,1,1]
+</code></pre>
+
+<h5 id="示例-2">示例 2:</h5>
+
+<pre><code>输入: 5
+输出: [0,1,1,2,1,2]
+</code></pre>
+
+<h5 id="进阶">进阶:</h5>
+
+<ul>
+<li>给出时间复杂度为O(n*sizeof(integer))的解答非常容易。但你可以在线性时间O(n)内用一趟扫描做到吗？</li>
+<li>要求算法的空间复杂度为O(n)。</li>
+<li>你能进一步完善解法吗？要求在C++或任何其他语言中不使用任何内置函数（如C++中的<code>__builtin_popcount</code>）来执行此操作。</li>
+</ul>
+
+<h4 id="来源-力扣-leetcode-第338题">来源：力扣（LeetCode）第338题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/counting-bits" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/counting-bits</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<ul>
+<li>由于偶数的二进制数最后一位是0，所以如果一个偶数做<code>&gt;&gt;1</code>运算那么它的1的个数不变。同理如果一个奇数右移一位，1的个数减1。</li>
+<li>因此如果1有1个1，那么2也有1个1,3就有2个1。(正推的话做左移运算),如果2有1个1的话，那么4也是1个1,5就是2个1。</li>
+<li>所以有了状态转换公式<code>dp[2*i] = dp[i] dp[2*i+1] = dp[i] + 1</code></li>
+</ul>
+
+<h2 id="代码">代码：</h2>
+
+<pre><code class="language-java">class Solution {
+    public int[] countBits(int num) {
+        int[] dp = new int[num + 1];
+        for (int i = 0; i &lt;= num / 2; i++) {
+            dp[i&lt;&lt;1] = dp[i];
+            if ((i&lt;&lt;1) + 1 &lt;= num) dp[(i&lt;&lt;1)+1] = dp[i] + 1;
+        }
+        return dp;
+    }
+}
+</code></pre>
+
+<h2 id="复杂度分析">复杂度分析：</h2>
+
+<ul>
+<li>时间复杂度：O(n) n 为num / 2</li>
+<li>空间复杂度：O(n) n 为num</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E6%AF%94%E7%89%B9%E4%BD%8D%E8%AE%A1%E6%95%B0/>https://ripple-zjw.github.io/2019/%E6%AF%94%E7%89%B9%E4%BD%8D%E8%AE%A1%E6%95%B0/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                    #动态规划</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">
+                    #位运算</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" class="prev" rel="prev" title="有序链表转换二叉搜索树"><i class="iconfont icon-left"></i>&nbsp;有序链表转换二叉搜索树</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

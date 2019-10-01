@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E6%AF%94%E7%89%B9%E4%BD%8D%E8%AE%A1%E6%95%B0/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91ii/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8F/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           石子游戏 | LeaveIt
+       
+  </title>
+  <meta name="title" content="石子游戏 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "石子游戏",
+    "headline" : "石子游戏",
+    "description" : "题目：石子游戏  亚历克斯和李用几堆石子在做游戏。偶数堆石子排成一行，每堆都有正整数颗石子piles[i]。 游戏以谁手中的石子最多来决出胜负。石子的总数是奇数，所以没有平局。 亚历克斯和李轮流进行，亚历克斯先开始。每回合，玩家从行的开始或结束处取走整堆石头。这种情况一直持续到没有更多的石子堆为止，此时手中石子最多的玩家获胜。 假设亚历克斯和李都发挥出最佳水平，当亚历克斯赢得比赛时返回true，当李赢得比赛时返回false。  示例： 输入：[5,3,4,5] 输出：true 解释： 亚历克斯先开始，只能拿前 5 颗或后 5 颗石子 。 假设他取了前 5 颗，这一行就变成了 [3,4,5] 。 如果李拿走前 3 颗，那么剩下的是 [4,5]，亚历克斯拿走后 5 颗赢得 10 分。 如果李拿走后 5 颗，那么剩下的是 [3,4]，亚历克斯拿走后 4 颗赢得 9 分。 这表明，取前 5 颗石子对亚历克斯来说是一个胜利的举动，所以我们返回 true 。  提示：  2 \x26lt;= piles.length \x26lt;= 500 piles.length 是偶数。 1 \x26lt;= piles[i] \x26lt;= 500 sum(piles)是奇数。  来源：力扣（LeetCode）第877题  链接：https:\/\/leetcode-cn.com\/problems\/stone-game\n 分析：  这是一道典型的动态规划题。 要做出动态规划问题，首先要找到问题的状态和选择。 以这道题为例，状态有三种，分别是开始位置索引i，结束位置索引j，还有在i到j这段位置时，先手的值和后手的值。 举个例子，i = 0, j = 0时，表明在第一个索引0时先手明显是piles[0]，而后手没有东西，所以是0。 说完状态再来看选择，根据题意，选择就是你可以从开始位置i拿，也可以从结束位置j拿。 然后是状态转移方程，首先每一个i和j所对应的位置都有先后手两种情况，如果我选择拿了i的值，那么剩下留给另一个人的元素就是i \x2b 1 到 j,而i \x2b 1 到 j是另一个人先手拿的(i\x2b1,j先手就是i,j的后手，因为一人一次)，所以你拿的是i\x2b1, j的后手。 同理如果你拿的是右边的j，那么剩下的就是i, j - 1的后手。 因此状态转移方程就是：max(piles[i] \x2b dp[i\x2b1][j][1], piles[j] \x2b dp[i][j-1][1])。dp是一个三维数组，前两个表示的是i,j位置索引，而1表示的是后手情况，那么0表示的是先手情况。(不一定是0,1也可以是别的，无所谓) 最后我要的结果就是从0到piles长度的下标，即dp[0][piles.",
+    "inLanguage" : "zh-CN",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-10-01 21:32:58 \x2b0800 CST",
+    "dateModified" : "2019-10-01 21:32:58 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8F\/",
+    "wordCount" : "218",
+    "keywords" : [ "算法求解思想","动态规划","博弈类问题", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">石子游戏</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-10-01 itemprop="datePublished">October 1, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-石子游戏">题目：石子游戏</h1>
+
+<ul>
+<li>亚历克斯和李用几堆石子在做游戏。偶数堆石子排成一行，每堆都有正整数颗石子<code>piles[i]</code>。</li>
+<li>游戏以谁手中的石子最多来决出胜负。石子的总数是奇数，所以没有平局。</li>
+<li>亚历克斯和李轮流进行，亚历克斯先开始。每回合，玩家从行的开始或结束处取走整堆石头。这种情况一直持续到没有更多的石子堆为止，此时手中石子最多的玩家获胜。</li>
+<li>假设亚历克斯和李都发挥出最佳水平，当亚历克斯赢得比赛时返回<code>true</code>，当李赢得比赛时返回<code>false</code>。</li>
+</ul>
+
+<h5 id="示例">示例：</h5>
+
+<pre><code>输入：[5,3,4,5]
+输出：true
+解释：
+亚历克斯先开始，只能拿前 5 颗或后 5 颗石子 。
+假设他取了前 5 颗，这一行就变成了 [3,4,5] 。
+如果李拿走前 3 颗，那么剩下的是 [4,5]，亚历克斯拿走后 5 颗赢得 10 分。
+如果李拿走后 5 颗，那么剩下的是 [3,4]，亚历克斯拿走后 4 颗赢得 9 分。
+这表明，取前 5 颗石子对亚历克斯来说是一个胜利的举动，所以我们返回 true 。
+</code></pre>
+
+<h5 id="提示">提示：</h5>
+
+<ul>
+<li>2 &lt;= piles.length &lt;= 500</li>
+<li>piles.length 是偶数。</li>
+<li>1 &lt;= piles[i] &lt;= 500</li>
+<li>sum(piles)是奇数。</li>
+</ul>
+
+<h4 id="来源-力扣-leetcode-第877题">来源：力扣（LeetCode）第877题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/stone-game" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/stone-game</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<ul>
+<li>这是一道典型的动态规划题。</li>
+<li>要做出动态规划问题，首先要找到问题的<strong>状态</strong>和<strong>选择</strong>。</li>
+<li>以这道题为例，状态有三种，分别是开始位置索引<code>i</code>，结束位置索引<code>j</code>，还有在i到j这段位置时，先手的值和后手的值。</li>
+<li>举个例子，i = 0, j = 0时，表明在第一个索引0时先手明显是piles[0]，而后手没有东西，所以是0。</li>
+<li>说完状态再来看选择，根据题意，选择就是你可以从开始位置<code>i</code>拿，也可以从结束位置<code>j</code>拿。</li>
+<li>然后是状态转移方程，首先每一个i和j所对应的位置都有先后手两种情况，如果我选择拿了i的值，那么剩下留给另一个人的元素就是<code>i + 1 到 j</code>,而<code>i + 1 到 j</code>是另一个人先手拿的(<code>i+1,j</code>先手就是<code>i,j</code>的后手，因为一人一次)，所以你拿的是<code>i+1, j</code>的后手。</li>
+<li>同理如果你拿的是右边的<code>j</code>，那么剩下的就是<code>i, j - 1</code>的后手。</li>
+<li>因此状态转移方程就是：<code>max(piles[i] + dp[i+1][j][1], piles[j] + dp[i][j-1][1])</code>。dp是一个三维数组，前两个表示的是i,j位置索引，而1表示的是后手情况，那么0表示的是先手情况。(不一定是0,1也可以是别的，无所谓)</li>
+<li>最后我要的结果就是从0到piles长度的下标，即<code>dp[0][piles.length-1]</code>。</li>
+</ul>
+
+<h2 id="代码">代码：</h2>
+
+<pre><code class="language-java">class Solution {
+    public boolean stoneGame(int[] piles) {
+        int N = piles.length;
+        int[][][] dp = new int[N][N][2];
+        for (int i = 0; i &lt; N; i++) {
+            dp[i][i][0] = piles[i];
+            dp[i][i][1] = 0;
+        }
+        for (int size = 2; size &lt;= N; size++) {
+            for (int i = 0; i &lt;= N - size; i++) {
+                int j = i + size - 1; // 由于i,j之间的差一开始会是1，第二次是2...所以这样就保证了j的下标是对的。
+                int left = piles[i] + dp[i+1][j][1];
+                int right = piles[j] + dp[i][j-1][1];
+                if (left &lt; right) {  // 每次都取最优情况，不要忘了先手最优，但是后手也要添加进去的。
+                    dp[i][j][0] = right;
+                    dp[i][j][1] = dp[i][j-1][0];
+                } else {
+                    dp[i][j][0] = left;
+                    dp[i][j][1] = dp[i+1][j][0];
+                }
+            }
+        }
+        return dp[0][N-1][0] &gt; dp[0][N-1][1]; // 比较先手是否大于后手
+    }
+}
+</code></pre>
+
+<ul>
+<li>你以为这样就结束了？？？</li>
+<li>如果你写完这段dp代码去测试，你就会发现一件神奇的事情，你无论怎么换测试用例，只要符合题目要求，答案都是true，也就是说只要Alex先手，那么他必赢。</li>
+
+<li><p>所以第二种方法：</p>
+
+<pre><code class="language-python">class Solution:
+def stoneGame(self, piles: List[int]) -&gt; bool:
+    return True
+</code></pre></li>
+</ul>
+
+<h2 id="复杂度分析">复杂度分析：</h2>
+
+<ul>
+<li>时间复杂度：O(n^2)</li>
+<li>空间复杂度：O(n^2)</li>
+<li>虽然是个三维数组，但最后一位是常数2，所以忽略不计。</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8F/>https://ripple-zjw.github.io/2019/%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8F/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                    #动态规划</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8D%9A%E5%BC%88%E7%B1%BB%E9%97%AE%E9%A2%98/">
+                    #博弈类问题</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E6%AF%94%E7%89%B9%E4%BD%8D%E8%AE%A1%E6%95%B0/" class="prev" rel="prev" title="比特位计数"><i class="iconfont icon-left"></i>&nbsp;比特位计数</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91ii/" class="next" rel="next" title="不同的二叉搜索树II">不同的二叉搜索树II&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

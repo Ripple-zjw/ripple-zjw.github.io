@@ -6,10 +6,76 @@
     <description>Recent content in 算法求解思想 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 21 Sep 2019 16:04:38 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 01 Oct 2019 21:49:17 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>大礼包</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%A4%A7%E7%A4%BC%E5%8C%85/</link>
+      <pubDate>Tue, 01 Oct 2019 21:49:17 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%A4%A7%E7%A4%BC%E5%8C%85/</guid>
+      <description>题目：大礼包  在LeetCode商店中， 有许多在售的物品。 然而，也有一些大礼包，每个大礼包以优惠的价格捆绑销售一组物品。 现给定每个物品的价格，每个大礼包包含物品的清单，以及待购物品清单。请输出确切完成待购清单的最低花费。 每个大礼包的由一个数组中的一组数据描述，最后一个数字代表大礼包的价格，其他数字分别表示内含的其他种类物品的数量。 任意大礼包可无限次购买。  示例 1: 输入: [2,5], [[3,0,5],[1,2,10]], [3,2] 输出: 14 解释: 有A和B两种物品，价格分别为¥2和¥5。 大礼包1，你可以以¥5的价格购买3A和0B。 大礼包2， 你可以以¥10的价格购买1A和2B。 你需要购买3个A和2个B， 所以你付了¥10购买了1A和2B（大礼包2），以及¥4购买2A。  示例 2: 输入: [2,3,4], [[1,1,0,4],[2,2,1,9]], [1,2,1] 输出: 11 解释: A，B，C的价格分别为¥2，¥3，¥4. 你可以用¥4购买1A和1B，也可以用¥9购买2A，2B和1C。 你需要买1A，2B和1C，所以你付了¥4买了1A和1B（大礼包1），以及¥3购买1B， ¥4购买1C。 你不可以购买超出待购清单的物品，尽管购买大礼包2更加便宜。  说明:  最多6种物品， 100种大礼包。 每种物品，你最多只需要购买6个。 你不可以购买超出待购清单的物品，即使更便宜。  来源：力扣（LeetCode）第638题  链接：https://leetcode-cn.com/problems/shopping-offers
+ 分析：  动态规划解法，常规解法需要使用六维数组，实在太麻烦，而且每次的维度还不一样。 使用状压dp的思想，把六维数组归为1维。 因为每一维的长度是0-6，所以我们把这7个数变为一个七进制的数字，但是把它变为10进制存在一个一维数组中。 比如111就是57，它表示a,b,c各有1个。如果是4个1，那就是a,b,c,d各有1个，然后它也有对应的十进制数。 因此，我们把needs中的数看成是一个七进制数，然后把它以十进制表示出来。 比如need如果是121，那么结果是64。那么我们就开辟一个65个的数组。最后把dp[64]返回就是最终答案了。  代码： class Solution { public int shoppingOffers(List&amp;lt;Integer&amp;gt; price, List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; special, List&amp;lt;Integer&amp;gt; needs) { int[] Decinal = {1, 7, 49, 343, 2401, 16807, 117649}; // 7的一次方，7的二次方.</description>
+    </item>
+    
+    <item>
+      <title>穿过迷宫的最少移动次数</title>
+      <link>https://ripple-zjw.github.io/2019/%E7%A9%BF%E8%BF%87%E8%BF%B7%E5%AE%AB%E7%9A%84%E6%9C%80%E5%B0%91%E7%A7%BB%E5%8A%A8%E6%AC%A1%E6%95%B0/</link>
+      <pubDate>Tue, 01 Oct 2019 21:43:48 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E7%A9%BF%E8%BF%87%E8%BF%B7%E5%AE%AB%E7%9A%84%E6%9C%80%E5%B0%91%E7%A7%BB%E5%8A%A8%E6%AC%A1%E6%95%B0/</guid>
+      <description>题目：穿过迷宫的最少移动次数  你还记得那条风靡全球的贪吃蛇吗？ 我们在一个n*n的网格上构建了新的迷宫地图，蛇的长度为 2，也就是说它会占去两个单元格。蛇会从左上角(0, 0)和(0, 1)开始移动。我们用 0 表示空单元格，用 1 表示障碍物。蛇需要移动到迷宫的右下角(n-1, n-2)和(n-1, n-1)。 每次移动，蛇可以这样走：  如果没有障碍，则向右移动一个单元格。并仍然保持身体的水平／竖直状态。 如果没有障碍，则向下移动一个单元格。并仍然保持身体的水平／竖直状态。 如果它处于水平状态并且其下面的两个单元都是空的，就顺时针旋转 90 度。蛇从（(r, c)、(r, c+1)）移动到 （(r, c)、(r+1, c)）。  如果它处于竖直状态并且其右面的两个单元都是空的，就逆时针旋转 90 度。蛇从（(r, c)、(r+1, c)）移动到（(r, c)、(r, c+1)）。   返回蛇抵达目的地所需的最少移动次数。 如果无法到达目的地，请返回-1。  示例 1： 输入：grid = [[0,0,0,0,0,1], [1,1,0,0,1,0], [0,0,0,0,1,1], [0,0,1,0,1,0], [0,1,1,0,0,0], [0,1,1,0,0,0]] 输出：11 解释： 一种可能的解决方案是 [右, 右, 顺时针旋转, 右, 下, 下, 下, 下, 逆时针旋转, 右, 下]。  示例 2： 输入：grid = [[0,0,1,1,1,1], [0,0,0,0,1,1], [1,1,0,0,0,1], [1,1,1,0,0,1], [1,1,1,0,0,1], [1,1,1,0,0,0]] 输出：9  提示：  2 &amp;lt;= n &amp;lt;= 100 0 &amp;lt;= grid[i][j] &amp;lt;= 1 蛇保证从空单元格开始出发。  来源：力扣（LeetCode）第5208题(临时)  链接：https://leetcode-cn.</description>
+    </item>
+    
+    <item>
+      <title>买卖股票的最佳时机含手续费</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA%E5%90%AB%E6%89%8B%E7%BB%AD%E8%B4%B9/</link>
+      <pubDate>Tue, 01 Oct 2019 21:42:37 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA%E5%90%AB%E6%89%8B%E7%BB%AD%E8%B4%B9/</guid>
+      <description>题目：买卖股票的最佳时机含手续费  给定一个整数数组prices，其中第i个元素代表了第i天的股票价格 ；非负整数fee代表了交易股票的手续费用。 你可以无限次地完成交易，但是你每次交易都需要付手续费。如果你已经购买了一个股票，在卖出它之前你就不能再继续购买股票了。 返回获得利润的最大值。  示例 1: 输入: prices = [1, 3, 2, 8, 4, 9], fee = 2 输出: 8 解释: 能够达到的最大利润: 在此处买入 prices[0] = 1 在此处卖出 prices[3] = 8 在此处买入 prices[4] = 4 在此处卖出 prices[5] = 9 总利润: ((8 - 1) - 2) + ((9 - 4) - 2) = 8.  注意:  0 &amp;lt; prices.length &amp;lt;= 50000. 0 &amp;lt; prices[i] &amp;lt; 50000. 0 &amp;lt;= fee &amp;lt; 50000.</description>
+    </item>
+    
+    <item>
+      <title>机器人大冒险</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%A4%A7%E5%86%92%E9%99%A9/</link>
+      <pubDate>Tue, 01 Oct 2019 21:40:38 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%A4%A7%E5%86%92%E9%99%A9/</guid>
+      <description>题目：机器人大冒险  力扣团队买了一个可编程机器人，机器人初始位置在原点(0, 0)。小伙伴事先给机器人输入一串指令command，机器人就会无限循环这条指令的步骤进行移动。指令有两种：   U: 向y轴正方向移动一格 R: 向x轴正方向移动一格。   不幸的是，在xy平面上还有一些障碍物，他们的坐标用obstacles表示。机器人一旦碰到障碍物就会被损毁。 给定终点坐标(x,y)，返回机器人能否完好地到达终点。如果能，返回true；否则返回false。  示例 1： 输入：command = &amp;quot;URR&amp;quot;, obstacles = [], x = 3, y = 2 输出：true 解释：U(0, 1) -&amp;gt; R(1, 1) -&amp;gt; R(2, 1) -&amp;gt; U(2, 2) -&amp;gt; R(3, 2)。  示例 2： 输入：command = &amp;quot;URR&amp;quot;, obstacles = [[2, 2]], x = 3, y = 2 输出：false 解释：机器人在到达终点前会碰到(2, 2)的障碍物。  示例 3： 输入：command = &amp;quot;URR&amp;quot;, obstacles = [[4, 2]], x = 3, y = 2 输出：true 解释：到达终点后，再碰到障碍物也不影响返回结果。  限制：  2 &amp;lt;= command的长度&amp;lt;= 1000 command由U，R构成，且至少有一个U，至少有一个R 0 &amp;lt;= x &amp;lt;= 1e9,0 &amp;lt;= y &amp;lt;= 1e9 0 &amp;lt;= obstacles的长度&amp;lt;= 1000 obstacles[i]不为原点或者终点  来源：力扣（LeetCode）LCP.</description>
+    </item>
+    
+    <item>
+      <title>两个字符串的最小ASCII删除和</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%B8%A4%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8Fascii%E5%88%A0%E9%99%A4%E5%92%8C/</link>
+      <pubDate>Tue, 01 Oct 2019 21:36:41 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%B8%A4%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8Fascii%E5%88%A0%E9%99%A4%E5%92%8C/</guid>
+      <description>题目：两个字符串的最小ASCII删除和  给定两个字符串s1,s2，找到使两个字符串相等所需删除字符的ASCII值的最小和。  示例 1: 输入: s1 = &amp;quot;sea&amp;quot;, s2 = &amp;quot;eat&amp;quot; 输出: 231 解释: 在 &amp;quot;sea&amp;quot; 中删除 &amp;quot;s&amp;quot; 并将 &amp;quot;s&amp;quot; 的值(115)加入总和。 在 &amp;quot;eat&amp;quot; 中删除 &amp;quot;t&amp;quot; 并将 116 加入总和。 结束时，两个字符串相等，115 + 116 = 231 就是符合条件的最小和。  示例 2: 输入: s1 = &amp;quot;delete&amp;quot;, s2 = &amp;quot;leet&amp;quot; 输出: 403 解释: 在 &amp;quot;delete&amp;quot; 中删除 &amp;quot;dee&amp;quot; 字符串变成 &amp;quot;let&amp;quot;， 将 100[d]+101[e]+101[e] 加入总和。在 &amp;quot;leet&amp;quot; 中删除 &amp;quot;e&amp;quot; 将 101[e] 加入总和。 结束时，两个字符串都等于 &amp;quot;let&amp;quot;，结果即为 100+101+101+101 = 403 。 如果改为将两个字符串转换为 &amp;quot;lee&amp;quot; 或 &amp;quot;eet&amp;quot;，我们会得到 433 或 417 的结果，比答案更大。  注意:  0 &amp;lt; s1.</description>
+    </item>
+    
+    <item>
+      <title>不同的二叉搜索树II</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91ii/</link>
+      <pubDate>Tue, 01 Oct 2019 21:34:34 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91ii/</guid>
+      <description>题目：不同的二叉搜索树 II  给定一个整数n，生成所有由1...n为节点所组成的二叉搜索树。  示例: 输入: 3 输出: [ [1,null,3,2], [3,2,null,1], [3,1,null,null,2], [2,1,3], [1,null,2,null,3] ] 解释: 以上的输出对应以下 5 种不同结构的二叉搜索树： 1 3 3 2 1 \ / / / \ \ 3 2 1 1 3 2 / / \ \ 2 1 2 3  来源：力扣（LeetCode）第95题  链接：https://leetcode-cn.com/problems/unique-binary-search-trees-ii
+ 分析：  可以使用递归，但我怕超时就没写。 但是几乎所有的递归都可以转换为动态规划，所以这题用dp求解。 思路和前面找个数一样，状态都是第n个数的内容，选择是谁为根节点。 不一样的是状态转移方程稍稍有点复杂，我在代码中说明。  代码： /** * Definition for a binary tree node. * public class TreeNode { * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) { val = x; } * } */ class Solution { public List&amp;lt;TreeNode&amp;gt; generateTrees(int n) { List&amp;lt;TreeNode&amp;gt;[] dp = new ArrayList[n+1]; dp[0] = new ArrayList(); // 如果left或right为0，就会出现空指针异常。 if (n == 0) return dp[0]; dp[0].</description>
+    </item>
+    
+    <item>
+      <title>石子游戏</title>
+      <link>https://ripple-zjw.github.io/2019/%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8F/</link>
+      <pubDate>Tue, 01 Oct 2019 21:32:58 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8F/</guid>
+      <description>题目：石子游戏  亚历克斯和李用几堆石子在做游戏。偶数堆石子排成一行，每堆都有正整数颗石子piles[i]。 游戏以谁手中的石子最多来决出胜负。石子的总数是奇数，所以没有平局。 亚历克斯和李轮流进行，亚历克斯先开始。每回合，玩家从行的开始或结束处取走整堆石头。这种情况一直持续到没有更多的石子堆为止，此时手中石子最多的玩家获胜。 假设亚历克斯和李都发挥出最佳水平，当亚历克斯赢得比赛时返回true，当李赢得比赛时返回false。  示例： 输入：[5,3,4,5] 输出：true 解释： 亚历克斯先开始，只能拿前 5 颗或后 5 颗石子 。 假设他取了前 5 颗，这一行就变成了 [3,4,5] 。 如果李拿走前 3 颗，那么剩下的是 [4,5]，亚历克斯拿走后 5 颗赢得 10 分。 如果李拿走后 5 颗，那么剩下的是 [3,4]，亚历克斯拿走后 4 颗赢得 9 分。 这表明，取前 5 颗石子对亚历克斯来说是一个胜利的举动，所以我们返回 true 。  提示：  2 &amp;lt;= piles.length &amp;lt;= 500 piles.length 是偶数。 1 &amp;lt;= piles[i] &amp;lt;= 500 sum(piles)是奇数。  来源：力扣（LeetCode）第877题  链接：https://leetcode-cn.com/problems/stone-game
+ 分析：  这是一道典型的动态规划题。 要做出动态规划问题，首先要找到问题的状态和选择。 以这道题为例，状态有三种，分别是开始位置索引i，结束位置索引j，还有在i到j这段位置时，先手的值和后手的值。 举个例子，i = 0, j = 0时，表明在第一个索引0时先手明显是piles[0]，而后手没有东西，所以是0。 说完状态再来看选择，根据题意，选择就是你可以从开始位置i拿，也可以从结束位置j拿。 然后是状态转移方程，首先每一个i和j所对应的位置都有先后手两种情况，如果我选择拿了i的值，那么剩下留给另一个人的元素就是i + 1 到 j,而i + 1 到 j是另一个人先手拿的(i+1,j先手就是i,j的后手，因为一人一次)，所以你拿的是i+1, j的后手。 同理如果你拿的是右边的j，那么剩下的就是i, j - 1的后手。 因此状态转移方程就是：max(piles[i] + dp[i+1][j][1], piles[j] + dp[i][j-1][1])。dp是一个三维数组，前两个表示的是i,j位置索引，而1表示的是后手情况，那么0表示的是先手情况。(不一定是0,1也可以是别的，无所谓) 最后我要的结果就是从0到piles长度的下标，即dp[0][piles.</description>
+    </item>
     
     <item>
       <title>比特位计数</title>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E4%B8%A4%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8Fascii%E5%88%A0%E9%99%A4%E5%92%8C/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA%E5%90%AB%E6%89%8B%E7%BB%AD%E8%B4%B9/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%A4%A7%E5%86%92%E9%99%A9/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           机器人大冒险 | LeaveIt
+       
+  </title>
+  <meta name="title" content="机器人大冒险 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "机器人大冒险",
+    "headline" : "机器人大冒险",
+    "description" : "题目：机器人大冒险  力扣团队买了一个可编程机器人，机器人初始位置在原点(0, 0)。小伙伴事先给机器人输入一串指令command，机器人就会无限循环这条指令的步骤进行移动。指令有两种：   U: 向y轴正方向移动一格 R: 向x轴正方向移动一格。   不幸的是，在xy平面上还有一些障碍物，他们的坐标用obstacles表示。机器人一旦碰到障碍物就会被损毁。 给定终点坐标(x,y)，返回机器人能否完好地到达终点。如果能，返回true；否则返回false。  示例 1： 输入：command = \x26quot;URR\x26quot;, obstacles = [], x = 3, y = 2 输出：true 解释：U(0, 1) -\x26gt; R(1, 1) -\x26gt; R(2, 1) -\x26gt; U(2, 2) -\x26gt; R(3, 2)。  示例 2： 输入：command = \x26quot;URR\x26quot;, obstacles = [[2, 2]], x = 3, y = 2 输出：false 解释：机器人在到达终点前会碰到(2, 2)的障碍物。  示例 3： 输入：command = \x26quot;URR\x26quot;, obstacles = [[4, 2]], x = 3, y = 2 输出：true 解释：到达终点后，再碰到障碍物也不影响返回结果。  限制：  2 \x26lt;= command的长度\x26lt;= 1000 command由U，R构成，且至少有一个U，至少有一个R 0 \x26lt;= x \x26lt;= 1e9,0 \x26lt;= y \x26lt;= 1e9 0 \x26lt;= obstacles的长度\x26lt;= 1000 obstacles[i]不为原点或者终点  来源：力扣（LeetCode）LCP.",
+    "inLanguage" : "zh-CN",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-10-01 21:40:38 \x2b0800 CST",
+    "dateModified" : "2019-10-01 21:40:38 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%A4%A7%E5%86%92%E9%99%A9\/",
+    "wordCount" : "290",
+    "keywords" : [ "算法求解思想","BFS", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">机器人大冒险</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-10-01 itemprop="datePublished">October 1, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-机器人大冒险">题目：机器人大冒险</h1>
+
+<ul>
+<li>力扣团队买了一个可编程机器人，机器人初始位置在原点<code>(0, 0)</code>。小伙伴事先给机器人输入一串指令<code>command</code>，机器人就会无限循环这条指令的步骤进行移动。指令有两种：</li>
+</ul>
+
+<ol>
+<li><code>U</code>: 向<code>y</code>轴正方向移动一格</li>
+<li><code>R</code>: 向<code>x</code>轴正方向移动一格。</li>
+</ol>
+
+<ul>
+<li>不幸的是，在xy平面上还有一些障碍物，他们的坐标用<code>obstacles</code>表示。机器人一旦碰到障碍物就会被损毁。</li>
+<li>给定终点坐标<code>(x,y)</code>，返回机器人能否完好地到达终点。如果能，返回<code>true</code>；否则返回<code>false</code>。</li>
+</ul>
+
+<h5 id="示例-1">示例 1：</h5>
+
+<pre><code>输入：command = &quot;URR&quot;, obstacles = [], x = 3, y = 2
+输出：true
+解释：U(0, 1) -&gt; R(1, 1) -&gt; R(2, 1) -&gt; U(2, 2) -&gt; R(3, 2)。
+</code></pre>
+
+<h5 id="示例-2">示例 2：</h5>
+
+<pre><code>输入：command = &quot;URR&quot;, obstacles = [[2, 2]], x = 3, y = 2
+输出：false
+解释：机器人在到达终点前会碰到(2, 2)的障碍物。
+</code></pre>
+
+<h5 id="示例-3">示例 3：</h5>
+
+<pre><code>输入：command = &quot;URR&quot;, obstacles = [[4, 2]], x = 3, y = 2
+输出：true
+解释：到达终点后，再碰到障碍物也不影响返回结果。
+</code></pre>
+
+<h5 id="限制">限制：</h5>
+
+<ul>
+<li><code>2 &lt;= command</code>的长度<code>&lt;= 1000</code></li>
+<li>command由U，R构成，且至少有一个U，至少有一个R</li>
+<li><code>0 &lt;= x &lt;= 1e9</code>,<code>0 &lt;= y &lt;= 1e9</code></li>
+<li><code>0 &lt;= obstacles</code>的长度<code>&lt;= 1000</code></li>
+<li><code>obstacles[i]</code>不为原点或者终点</li>
+</ul>
+
+<h4 id="来源-力扣-leetcode-lcp-3">来源：力扣（LeetCode）LCP.3</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/programmable-robot" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/programmable-robot</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<ul>
+<li>由于x和y最多10亿，一个一个遍历肯定不现实。</li>
+<li>经过思考发现，我们可以找每一个要找的点的前一行或前一列的最后一个。</li>
+<li>比如终点为<code>(x, y)</code>，我们可以找到x-1或者y-1时的最后一个位置。</li>
+<li>然后再遍历一遍就能判断是否经过该点。因为<code>command</code>至少有一个U和R。</li>
+</ul>
+
+<h2 id="代码">代码：</h2>
+
+<pre><code class="language-java">class Solution {
+    public boolean robot(String command, int[][] obstacles, int x, int y) {
+        int dx = 0, dy = 0;
+        char[] cmd = command.toCharArray(); // 把String转为数组，方便遍历。
+        for (char c : cmd) { // 算出up和right各有多少个。
+            if (c == 'U') dy++;
+            else dx++;
+        }
+        int ans = isPassed(cmd, x, y, dx, dy); // 拿到走到终点的次数。
+        // 先看isPassed函数再往下看。
+        /*
+            为什么isPassed要拿到走的总次数而不直接返回true或false呢
+            比如你发现有一个obstacle是经过的，那么最终答案并不一定是false，
+            因为如果终点在这个点的前面，那么机器人根本不会走到那个点。答案是true。
+        */
+        if (ans == -1) return false; // 终点都没经过，肯定false
+        for (int[] obstacle : obstacles) {
+            int cnt = isPassed(cmd, obstacle[0], obstacle[1], dx, dy);
+            if (cnt != -1 &amp;&amp; cnt &lt; ans) return false; 
+            //不等于-1，说明经过了，然后再看这个点和终点哪个次数多。ans多，说明这个点在ans前面，返回false。
+        }
+        return true;
+    }
+    // 判断是否经过该点，经过返回走的次数，没经过返回-1。
+    public int isPassed(char[] cmd, int x, int y, int dx, int dy) {
+        int round = Math.min(x / dx, y / dy); // 计算走到第x-1或y-1层需要多少轮
+        int cnt = cmd.length * round;  // 前几轮的总次数
+        dx *= round; dy *= round; // 在第x-1或y-1层时的位置。
+        if (dx == x &amp;&amp; dy == y) return cnt; // 正好就是要找的点，直接返回。
+        for (char c : cmd) { // 遍历第x层或y层，如果经过，那么答案一定会遍历到。
+            if (c == 'U') dy++; // 要按command的顺序走
+            else dx++;
+            cnt++; // 不要忘了每遍历一次，次数都要加1
+            if (dx == x &amp;&amp; dy == y) return cnt; // 一旦找到，直接返回所需要的次数。
+        }
+        return -1;
+    }
+}
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%A4%A7%E5%86%92%E9%99%A9/>https://ripple-zjw.github.io/2019/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%A4%A7%E5%86%92%E9%99%A9/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/bfs/">
+                    #BFS</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E4%B8%A4%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8Fascii%E5%88%A0%E9%99%A4%E5%92%8C/" class="prev" rel="prev" title="两个字符串的最小ASCII删除和"><i class="iconfont icon-left"></i>&nbsp;两个字符串的最小ASCII删除和</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA%E5%90%AB%E6%89%8B%E7%BB%AD%E8%B4%B9/" class="next" rel="next" title="买卖股票的最佳时机含手续费">买卖股票的最佳时机含手续费&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

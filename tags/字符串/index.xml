@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>字符串 on LeaveIt</title>
+    <link>https://ripple-zjw.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/</link>
+    <description>Recent content in 字符串 on LeaveIt</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 01 Oct 2019 21:36:41 +0800</lastBuildDate>
+    
+	<atom:link href="https://ripple-zjw.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>两个字符串的最小ASCII删除和</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%B8%A4%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8Fascii%E5%88%A0%E9%99%A4%E5%92%8C/</link>
+      <pubDate>Tue, 01 Oct 2019 21:36:41 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%B8%A4%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8Fascii%E5%88%A0%E9%99%A4%E5%92%8C/</guid>
+      <description>题目：两个字符串的最小ASCII删除和  给定两个字符串s1,s2，找到使两个字符串相等所需删除字符的ASCII值的最小和。  示例 1: 输入: s1 = &amp;quot;sea&amp;quot;, s2 = &amp;quot;eat&amp;quot; 输出: 231 解释: 在 &amp;quot;sea&amp;quot; 中删除 &amp;quot;s&amp;quot; 并将 &amp;quot;s&amp;quot; 的值(115)加入总和。 在 &amp;quot;eat&amp;quot; 中删除 &amp;quot;t&amp;quot; 并将 116 加入总和。 结束时，两个字符串相等，115 + 116 = 231 就是符合条件的最小和。  示例 2: 输入: s1 = &amp;quot;delete&amp;quot;, s2 = &amp;quot;leet&amp;quot; 输出: 403 解释: 在 &amp;quot;delete&amp;quot; 中删除 &amp;quot;dee&amp;quot; 字符串变成 &amp;quot;let&amp;quot;， 将 100[d]+101[e]+101[e] 加入总和。在 &amp;quot;leet&amp;quot; 中删除 &amp;quot;e&amp;quot; 将 101[e] 加入总和。 结束时，两个字符串都等于 &amp;quot;let&amp;quot;，结果即为 100+101+101+101 = 403 。 如果改为将两个字符串转换为 &amp;quot;lee&amp;quot; 或 &amp;quot;eet&amp;quot;，我们会得到 433 或 417 的结果，比答案更大。  注意:  0 &amp;lt; s1.</description>
+    </item>
+    
+  </channel>
+</rss>

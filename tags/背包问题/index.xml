@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>背包问题 on LeaveIt</title>
+    <link>https://ripple-zjw.github.io/tags/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</link>
+    <description>Recent content in 背包问题 on LeaveIt</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 01 Oct 2019 21:49:17 +0800</lastBuildDate>
+    
+	<atom:link href="https://ripple-zjw.github.io/tags/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>大礼包</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%A4%A7%E7%A4%BC%E5%8C%85/</link>
+      <pubDate>Tue, 01 Oct 2019 21:49:17 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%A4%A7%E7%A4%BC%E5%8C%85/</guid>
+      <description>题目：大礼包  在LeetCode商店中， 有许多在售的物品。 然而，也有一些大礼包，每个大礼包以优惠的价格捆绑销售一组物品。 现给定每个物品的价格，每个大礼包包含物品的清单，以及待购物品清单。请输出确切完成待购清单的最低花费。 每个大礼包的由一个数组中的一组数据描述，最后一个数字代表大礼包的价格，其他数字分别表示内含的其他种类物品的数量。 任意大礼包可无限次购买。  示例 1: 输入: [2,5], [[3,0,5],[1,2,10]], [3,2] 输出: 14 解释: 有A和B两种物品，价格分别为¥2和¥5。 大礼包1，你可以以¥5的价格购买3A和0B。 大礼包2， 你可以以¥10的价格购买1A和2B。 你需要购买3个A和2个B， 所以你付了¥10购买了1A和2B（大礼包2），以及¥4购买2A。  示例 2: 输入: [2,3,4], [[1,1,0,4],[2,2,1,9]], [1,2,1] 输出: 11 解释: A，B，C的价格分别为¥2，¥3，¥4. 你可以用¥4购买1A和1B，也可以用¥9购买2A，2B和1C。 你需要买1A，2B和1C，所以你付了¥4买了1A和1B（大礼包1），以及¥3购买1B， ¥4购买1C。 你不可以购买超出待购清单的物品，尽管购买大礼包2更加便宜。  说明:  最多6种物品， 100种大礼包。 每种物品，你最多只需要购买6个。 你不可以购买超出待购清单的物品，即使更便宜。  来源：力扣（LeetCode）第638题  链接：https://leetcode-cn.com/problems/shopping-offers
+ 分析：  动态规划解法，常规解法需要使用六维数组，实在太麻烦，而且每次的维度还不一样。 使用状压dp的思想，把六维数组归为1维。 因为每一维的长度是0-6，所以我们把这7个数变为一个七进制的数字，但是把它变为10进制存在一个一维数组中。 比如111就是57，它表示a,b,c各有1个。如果是4个1，那就是a,b,c,d各有1个，然后它也有对应的十进制数。 因此，我们把needs中的数看成是一个七进制数，然后把它以十进制表示出来。 比如need如果是121，那么结果是64。那么我们就开辟一个65个的数组。最后把dp[64]返回就是最终答案了。  代码： class Solution { public int shoppingOffers(List&amp;lt;Integer&amp;gt; price, List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; special, List&amp;lt;Integer&amp;gt; needs) { int[] Decinal = {1, 7, 49, 343, 2401, 16807, 117649}; // 7的一次方，7的二次方.</description>
+    </item>
+    
+  </channel>
+</rss>

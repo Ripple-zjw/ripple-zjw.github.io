@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E4%B8%80%E5%92%8C%E9%9B%B6/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E5%A1%AB%E5%85%85%E4%B9%A6%E6%9E%B6/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E6%8E%B7%E9%AA%B0%E5%AD%90%E6%A8%A1%E6%8B%9F/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           掷骰子模拟 | LeaveIt
+       
+  </title>
+  <meta name="title" content="掷骰子模拟 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "掷骰子模拟",
+    "headline" : "掷骰子模拟",
+    "description" : "题目：掷骰子模拟  有一个骰子模拟器会每次投掷的时候生成一个 1 到 6 的随机数。 不过我们在使用它时有个约束，就是使得投掷骰子时，连续 掷出数字i的次数不能超过rollMax[i]（i从 1 开始编号）。  现在，给你一个整数数组rollMax和一个整数n，请你来计算掷n次骰子可得到的不同点数序列的数量。\n假如两个序列中至少存在一个元素不同，就认为这两个序列是不同的。由于答案可能很大，所以请返回 模10^9 \x2b 7之后的结果。\n示例 1： 输入：n = 2, rollMax = [1,1,2,2,2,3] 输出：34 解释：我们掷 2 次骰子，如果没有约束的话，共有 6 * 6 = 36 种可能的组合。但是根据 rollMax 数组，数字 1 和 2 最多连续出现一次，所以不会出现序列 (1,1) 和 (2,2)。因此，最终答案是 36-2 = 34。  示例 2： 输入：n = 2, rollMax = [1,1,1,1,1,1] 输出：30 示例 3： 输入：n = 3, rollMax = [1,1,1,2,2,3] 输出：181  提示：  1 \x26lt;= n \x26lt;= 5000 rollMax.",
+    "inLanguage" : "zh-CN",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-10-23 19:26:07 \x2b0800 CST",
+    "dateModified" : "2019-10-23 19:26:07 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E6%8E%B7%E9%AA%B0%E5%AD%90%E6%A8%A1%E6%8B%9F\/",
+    "wordCount" : "218",
+    "keywords" : [ "算法求解思想","动态规划", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">掷骰子模拟</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-10-23 itemprop="datePublished">October 23, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-掷骰子模拟">题目：掷骰子模拟</h1>
+
+<ul>
+<li>有一个骰子模拟器会每次投掷的时候生成一个 1 到 6 的随机数。</li>
+<li>不过我们在使用它时有个约束，就是使得投掷骰子时，<strong>连续</strong> 掷出数字<code>i</code>的次数不能超过<code>rollMax[i]（i</code>从 1 开始编号）。</li>
+</ul>
+
+<p>现在，给你一个整数数组<code>rollMax</code>和一个整数<code>n</code>，请你来计算掷<code>n</code>次骰子可得到的不同点数序列的数量。</p>
+
+<p>假如两个序列中至少存在一个元素不同，就认为这两个序列是不同的。由于答案可能很大，所以请返回 模<code>10^9 + 7</code>之后的结果。</p>
+
+<h5 id="示例-1">示例 1：</h5>
+
+<pre><code>输入：n = 2, rollMax = [1,1,2,2,2,3]
+输出：34
+解释：我们掷 2 次骰子，如果没有约束的话，共有 6 * 6 = 36 种可能的组合。但是根据 rollMax 数组，数字 1 和 2 最多连续出现一次，所以不会出现序列 (1,1) 和 (2,2)。因此，最终答案是 36-2 = 34。
+</code></pre>
+
+<h5 id="示例-2">示例 2：</h5>
+
+<pre><code>输入：n = 2, rollMax = [1,1,1,1,1,1]
+输出：30
+示例 3：
+输入：n = 3, rollMax = [1,1,1,2,2,3]
+输出：181
+</code></pre>
+
+<h5 id="提示">提示：</h5>
+
+<ul>
+<li>1 &lt;= n &lt;= 5000</li>
+<li>rollMax.length == 6</li>
+<li>1 &lt;= rollMax[i] &lt;= 15</li>
+</ul>
+
+<h4 id="来源-力扣-leetcode-第1223题">来源：力扣（LeetCode）第1223题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/dice-roll-simulation" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/dice-roll-simulation</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<ul>
+<li>这是一道动态规划题</li>
+<li>题目有一点要注意，是连续投掷次数不能超过i，而不是总次数不能超过i。</li>
+<li>我们设三个状态，i，j，k。i代表第i轮，j代表投掷了第j个数，k代表第j个数已经连续投出多少次了。</li>
+<li>当k等于1，说明之前一轮没有投出j，因此次数是之前一轮没有投出j的次数之和。</li>
+<li>当k大于1时，说明之前一轮投的也是k，所以次数就是之前一轮投的是j的时候k-1次。</li>
+</ul>
+
+<h2 id="代码">代码：</h2>
+
+<pre><code class="language-java">class Solution {
+    private long mod = (long)1e9 + 7;
+    public int dieSimulator(int n, int[] rollMax) {
+        long[][][] dp = new long[n][6][16];
+        for (int j = 0; j &lt; 6; j++) dp[0][j][1] = 1;
+        for (int i = 1; i &lt; n; i++) {
+            for (int j = 0; j &lt; 6; j++) {
+                for (int l = 0; l &lt; 6; l++) {
+                    for (int k = 1; k &lt;= rollMax[l]; k++) {
+                        if (l == j) continue;
+                        dp[i][j][1] += dp[i-1][l][k];
+                        dp[i][j][1] %= mod;
+                    }
+                }
+
+                for (int k = 2; k &lt;= rollMax[j]; k++) dp[i][j][k] = dp[i-1][j][k-1];
+            }
+        }
+        long ans = 0;
+        for (int j = 0; j &lt; 6; j++) for (int k = 1; k &lt;= 15; k++) {ans += dp[n-1][j][k];ans %= mod;}
+        return (int)ans;
+    }
+}
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E6%8E%B7%E9%AA%B0%E5%AD%90%E6%A8%A1%E6%8B%9F/>https://ripple-zjw.github.io/2019/%E6%8E%B7%E9%AA%B0%E5%AD%90%E6%A8%A1%E6%8B%9F/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                    #动态规划</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E4%B8%80%E5%92%8C%E9%9B%B6/" class="prev" rel="prev" title="一和零"><i class="iconfont icon-left"></i>&nbsp;一和零</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E5%A1%AB%E5%85%85%E4%B9%A6%E6%9E%B6/" class="next" rel="next" title="填充书架">填充书架&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

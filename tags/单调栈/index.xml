@@ -6,10 +6,20 @@
     <description>Recent content in 单调栈 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 23 Aug 2019 12:55:03 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 23 Oct 2019 19:00:35 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/tags/%E5%8D%95%E8%B0%83%E6%A0%88/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>叶值的最小代价生成树</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%8F%B6%E5%80%BC%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BB%A3%E4%BB%B7%E7%94%9F%E6%88%90%E6%A0%91/</link>
+      <pubDate>Wed, 23 Oct 2019 19:00:35 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%8F%B6%E5%80%BC%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BB%A3%E4%BB%B7%E7%94%9F%E6%88%90%E6%A0%91/</guid>
+      <description>题目：叶值的最小代价生成树  给你一个正整数数组arr，考虑所有满足以下条件的二叉树：  每个节点都有 0 个或是 2 个子节点。 数组arr中的值与树的中序遍历中每个叶节点的值一一对应。（知识回顾：如果一个节点有 0 个子节点，那么该节点为叶节点。） 每个非叶节点的值等于其左子树和右子树中叶节点的最大值的乘积。 在所有这样的二叉树中，返回每个非叶节点的值的最小可能总和。这个和的值是一个32 位整数。   示例： 输入：arr = [6,2,4] 输出：32 解释： 有两种可能的树，第一种的非叶节点的总和为 36，第二种非叶节点的总和为 32。 24 24 / \ / \ 12 4 6 8 / \ / \ 6 2 2 4  提示：  2 &amp;lt;= arr.length &amp;lt;= 40 1 &amp;lt;= arr[i] &amp;lt;= 15 答案保证是一个 32 位带符号整数，即小于2^31。  来源：力扣（LeetCode）第1130题  链接：https://leetcode-cn.com/problems/minimum-cost-tree-from-leaf-values
+ 分析：  这道题有两种解法，一种是动态规划，另一种是使用单调栈。  代码： 动态规划：  我们发现数组中的数可以划分为两部分，一半是左子树，一半是右子树，根节点就是左边最大和右边最大的乘积。 而左右子树里面的值就是当数组中的数为左子树的叶子节点时的情况，右边一样。 直到数组中的数只有2个时，答案就是左边右边相乘。 因此我们可以这么看，如果2个数后面又加了一个数，那么我们可以以01为一个节点再和2划分,也可以0一个节点和12划分。 树的左右两边至少有1个叶子结点。 如果有四个数，有0 123, 01 23, 012 3,同时3个数又有之前的情况。 因此我可以这样找状态，i代表起始点,j代表结束位置。如果我想知道4个数的答案，我就把上面划分的情况算出来，每一个情况还要加上左边和右边的最大值的乘积，作为根节点。 于是乎我就是要穷举所有状态。</description>
+    </item>
     
     <item>
       <title>接雨水</title>

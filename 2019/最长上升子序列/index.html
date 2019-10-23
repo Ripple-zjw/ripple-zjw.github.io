@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E6%9C%80%E9%95%BF%E7%9A%84%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E5%AD%90%E5%BA%8F%E5%88%97%E7%9A%84%E9%95%BF%E5%BA%A6/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E9%A9%AC%E5%9C%A8%E6%A3%8B%E7%9B%98%E4%B8%8A%E7%9A%84%E6%A6%82%E7%8E%87/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           最长上升子序列 | LeaveIt
+       
+  </title>
+  <meta name="title" content="最长上升子序列 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "最长上升子序列",
+    "headline" : "最长上升子序列",
+    "description" : "题目：最长上升子序列  给定一个无序的整数数组，找到其中最长上升子序列的长度。  示例: 输入: [10,9,2,5,3,7,101,18] 输出: 4 解释: 最长的上升子序列是[2,3,7,101]，它的长度是 4。  说明:  可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。 你算法的时间复杂度应该为O(n^2)。 进阶: 你能将算法的时间复杂度降低到O(n logn)吗?  来源：力扣（LeetCode）第300题  链接：https:\/\/leetcode-cn.com\/problems\/longest-increasing-subsequence\n 分析：  非常好的一道题目 可以使用动态规划来解决。 除了最常规的一种方法外还有另一种动态规划的方法，使用二分查找的思想。 具体可以看看搜索插入位置(LeetCode第35题) 动态规划：  设1个状态表示到这个数为止，最长上升子序列是多少。 然后遍历数组，当遍历到第i个状态时，查看在dp中到第i个数为止已经有多长了，那么你只要在右边找到比当前数大的值，然后在它的dp数组下加上1。 最后找到dp数组中最大的值，就是答案。  dp \x2b 二分查找：  我们遍历数组，将每个数放进dp数组中。 由于dp数组是单调递增的，所以可以使用二分查找找到插入的位置。 有两种情况，如果找到了这个值，那么直接覆盖就行了，如果没找到这个值，那么将比它大的最小的值覆盖。其实就是插入位置。   代码：  dp\nclass Solution { public int lengthOfLIS(int[] nums) { int len = nums.length; int[] dp = new int[len]; Arrays.fill(dp, 1); for (int i = 0; i \x26lt; len; i\x2b\x2b) { for (int j = i \x2b 1; j \x26lt; len; j\x2b\x2b) { if (nums[i] \x26lt; nums[j]) dp[j] = Math.",
+    "inLanguage" : "zh-CN",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-10-23 20:15:25 \x2b0800 CST",
+    "dateModified" : "2019-10-23 20:15:25 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97\/",
+    "wordCount" : "228",
+    "keywords" : [ "算法求解思想","动态规划","二分查找", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">最长上升子序列</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-10-23 itemprop="datePublished">October 23, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-最长上升子序列">题目：最长上升子序列</h1>
+
+<ul>
+<li>给定一个无序的整数数组，找到其中最长上升子序列的长度。</li>
+</ul>
+
+<h5 id="示例">示例:</h5>
+
+<pre><code>输入: [10,9,2,5,3,7,101,18]
+输出: 4 
+解释: 最长的上升子序列是[2,3,7,101]，它的长度是 4。
+</code></pre>
+
+<h5 id="说明">说明:</h5>
+
+<ul>
+<li>可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。</li>
+<li>你算法的时间复杂度应该为<code>O(n^2)</code>。</li>
+<li>进阶: 你能将算法的时间复杂度降低到<code>O(n logn)</code>吗?</li>
+</ul>
+
+<h4 id="来源-力扣-leetcode-第300题">来源：力扣（LeetCode）第300题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/longest-increasing-subsequence" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/longest-increasing-subsequence</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<ul>
+<li>非常好的一道题目</li>
+<li>可以使用动态规划来解决。</li>
+<li>除了最常规的一种方法外还有另一种动态规划的方法，使用二分查找的思想。</li>
+<li>具体可以看看搜索插入位置(LeetCode第35题)</li>
+<li>动态规划：
+
+<ul>
+<li>设1个状态表示到这个数为止，最长上升子序列是多少。</li>
+<li>然后遍历数组，当遍历到第i个状态时，查看在dp中到第i个数为止已经有多长了，那么你只要在右边找到比当前数大的值，然后在它的dp数组下加上1。</li>
+<li>最后找到dp数组中最大的值，就是答案。</li>
+</ul></li>
+<li>dp + 二分查找：
+
+<ul>
+<li>我们遍历数组，将每个数放进dp数组中。</li>
+<li>由于dp数组是单调递增的，所以可以使用二分查找找到插入的位置。</li>
+<li>有两种情况，如果找到了这个值，那么直接覆盖就行了，如果没找到这个值，那么将比它大的最小的值覆盖。其实就是插入位置。</li>
+</ul></li>
+</ul>
+
+<h2 id="代码">代码：</h2>
+
+<ul>
+<li><p>dp</p>
+
+<pre><code class="language-java">class Solution {
+public int lengthOfLIS(int[] nums) {
+    int len = nums.length;
+    int[] dp = new int[len];
+    Arrays.fill(dp, 1);
+    for (int i = 0; i &lt; len; i++) {
+        for (int j = i + 1; j &lt; len; j++) {
+            if (nums[i] &lt; nums[j]) dp[j] = Math.max(dp[j], dp[i] + 1);
+        }
+    }
+    int ans = 0;
+    for (int i = 0; i &lt; len; i++) ans = Math.max(ans, dp[i]);
+    return ans;
+}
+}
+</code></pre></li>
+
+<li><p>dp + 二分</p>
+
+<pre><code class="language-java">class Solution {
+private int len;
+private int[] dp;
+public int lengthOfLIS(int[] nums) {
+    len = nums.length;
+    dp = new int[len];
+    Arrays.fill(dp, Integer.MAX_VALUE);
+    for (int i = 0; i &lt;len; i++) dp[find(nums[i])] = nums[i];
+    int ans = 0;
+    for (int i = 0; i &lt;len; i++) {if (dp[i] != Integer.MAX_VALUE) ++ans;}
+    return ans;
+}
+
+public int find(int val) {
+    int left = 0, right = len - 1;
+    while (left &lt;= right) {
+        int mid = right + (left - right &gt;&gt; 1);
+        if (dp[mid] == val) {
+            return mid;
+        } else if (dp[mid] &lt; val) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    return left;
+}
+}
+</code></pre></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97/>https://ripple-zjw.github.io/2019/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                    #动态规划</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
+                    #二分查找</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E6%9C%80%E9%95%BF%E7%9A%84%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E5%AD%90%E5%BA%8F%E5%88%97%E7%9A%84%E9%95%BF%E5%BA%A6/" class="prev" rel="prev" title="最长的斐波那契子序列的长度"><i class="iconfont icon-left"></i>&nbsp;最长的斐波那契子序列的长度</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E9%A9%AC%E5%9C%A8%E6%A3%8B%E7%9B%98%E4%B8%8A%E7%9A%84%E6%A6%82%E7%8E%87/" class="next" rel="next" title="“马”在棋盘上的概率">“马”在棋盘上的概率&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

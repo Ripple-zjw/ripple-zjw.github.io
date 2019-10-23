@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E5%88%86%E4%BA%AB%E5%B7%A7%E5%85%8B%E5%8A%9B/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E6%9C%80%E5%A4%A7%E5%B9%B3%E5%9D%87%E5%80%BC%E5%92%8C%E7%9A%84%E5%88%86%E7%BB%84/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E5%88%86%E5%89%B2%E7%AD%89%E5%92%8C%E5%AD%90%E9%9B%86/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           分割等和子集 | LeaveIt
+       
+  </title>
+  <meta name="title" content="分割等和子集 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "分割等和子集",
+    "headline" : "分割等和子集",
+    "description" : " 题目：分割等和子集  给定一个只包含正整数的非空数组。是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。  注意:  每个数组中的元素不会超过 100 数组的大小不会超过 200  示例 1: 输入: [1, 5, 11, 5] 输出: true 解释: 数组可以分割成 [1, 5, 5] 和 [11].  示例2: 输入: [1, 2, 3, 5] 输出: false 解释: 数组不能分割成两个元素和相等的子集.  来源：力扣（LeetCode）第416题  链接：https:\/\/leetcode-cn.com\/problems\/partition-equal-subset-sum\n 分析：  动态规划题 0-1背包问题  代码： class Solution { public boolean canPartition(int[] nums) { int sum = 0; int len = nums.length; for (int num : nums) sum \x2b= num; if ((sum \x26amp; 1) == 1) return false; \/\/ 如果是奇数，不可能分割 sum \x26gt;\x26gt;= 1; \/\/ 要找的答案是总和的一半。 boolean[][] dp = new boolean[len][sum\x2b1]; \/\/ i表示nums中从0到i为止，j表示是否能找到和为j的数。 if (nums[0] \x26lt;= sum) dp[0][nums[0]] = true; \/\/ 第一个数放在j上，其他都是false for (int i = 1; i \x26lt; len; i\x2b\x2b) { for (int j = 0; j \x26lt;= sum; j\x2b\x2b) { if (nums[i] \x26lt;= j) \/\/ 两种选择，一种之前就找到了和为j的数，那么现在还是true。 \/\/ 如果之前没有找到和为j的数，那么我加上这次的数，要找前一次j-nums[i]的和能不能找到。 dp[i][j] = dp[i-1][j] || dp[i-1][j-nums[i]]; else \/\/ 如果当前nums[i] 大于j的话，之前看它前一次是什么状态现在还是什么状态。 dp[i][j] = dp[i-1][j]; } } return dp[len-1][sum]; } }  ",
+    "inLanguage" : "zh-CN",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-10-23 19:58:28 \x2b0800 CST",
+    "dateModified" : "2019-10-23 19:58:28 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E5%88%86%E5%89%B2%E7%AD%89%E5%92%8C%E5%AD%90%E9%9B%86\/",
+    "wordCount" : "140",
+    "keywords" : [ "算法求解思想","动态规划","背包问题", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">分割等和子集</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-10-23 itemprop="datePublished">October 23, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-分割等和子集">题目：分割等和子集</h1>
+
+<ul>
+<li>给定一个只包含正整数的非空数组。是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。</li>
+</ul>
+
+<h5 id="注意">注意:</h5>
+
+<ul>
+<li>每个数组中的元素不会超过 100</li>
+<li>数组的大小不会超过 200</li>
+</ul>
+
+<h5 id="示例-1">示例 1:</h5>
+
+<pre><code>输入: [1, 5, 11, 5]
+输出: true
+解释: 数组可以分割成 [1, 5, 5] 和 [11].
+</code></pre>
+
+<h5 id="示例2">示例2:</h5>
+
+<pre><code>输入: [1, 2, 3, 5]
+输出: false
+解释: 数组不能分割成两个元素和相等的子集.
+</code></pre>
+
+<h4 id="来源-力扣-leetcode-第416题">来源：力扣（LeetCode）第416题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/partition-equal-subset-sum" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/partition-equal-subset-sum</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<ul>
+<li>动态规划题</li>
+<li>0-1背包问题</li>
+</ul>
+
+<h2 id="代码">代码：</h2>
+
+<pre><code class="language-java">class Solution {
+    public boolean canPartition(int[] nums) {
+        int sum = 0;
+        int len = nums.length;
+        for (int num : nums) sum += num;
+        if ((sum &amp; 1) == 1) return false; // 如果是奇数，不可能分割
+        sum &gt;&gt;= 1; // 要找的答案是总和的一半。
+        boolean[][] dp = new boolean[len][sum+1]; // i表示nums中从0到i为止，j表示是否能找到和为j的数。
+        if (nums[0] &lt;= sum) dp[0][nums[0]] = true; // 第一个数放在j上，其他都是false
+        for (int i = 1; i &lt; len; i++) {
+            for (int j = 0; j &lt;= sum; j++) {
+                if (nums[i] &lt;= j) 
+                // 两种选择，一种之前就找到了和为j的数，那么现在还是true。
+                // 如果之前没有找到和为j的数，那么我加上这次的数，要找前一次j-nums[i]的和能不能找到。
+                    dp[i][j] = dp[i-1][j] || dp[i-1][j-nums[i]];
+                else // 如果当前nums[i] 大于j的话，之前看它前一次是什么状态现在还是什么状态。
+                    dp[i][j] = dp[i-1][j];
+            }
+        }
+        return dp[len-1][sum];
+    }
+}
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E5%88%86%E5%89%B2%E7%AD%89%E5%92%8C%E5%AD%90%E9%9B%86/>https://ripple-zjw.github.io/2019/%E5%88%86%E5%89%B2%E7%AD%89%E5%92%8C%E5%AD%90%E9%9B%86/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                    #动态规划</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/">
+                    #背包问题</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E5%88%86%E4%BA%AB%E5%B7%A7%E5%85%8B%E5%8A%9B/" class="prev" rel="prev" title="分享巧克力"><i class="iconfont icon-left"></i>&nbsp;分享巧克力</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E6%9C%80%E5%A4%A7%E5%B9%B3%E5%9D%87%E5%80%BC%E5%92%8C%E7%9A%84%E5%88%86%E7%BB%84/" class="next" rel="next" title="最大平均值和的分组">最大平均值和的分组&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

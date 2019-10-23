@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E5%AE%89%E6%8E%92%E4%BC%9A%E8%AE%AE%E6%97%A5%E7%A8%8B/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E5%88%A0%E9%99%A4%E5%AD%90%E6%96%87%E4%BB%B6%E5%A4%B9/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E6%8A%9B%E6%8E%B7%E7%A1%AC%E5%B8%81/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           抛掷硬币 | LeaveIt
+       
+  </title>
+  <meta name="title" content="抛掷硬币 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "抛掷硬币",
+    "headline" : "抛掷硬币",
+    "description" : " 题目：抛掷硬币  有一些不规则的硬币。在这些硬币中，prob[i]表示第i枚硬币正面朝上的概率。  请对每一枚硬币抛掷一次，然后返回正面朝上的硬币数等于target的概率。\n示例 1： 输入：prob = [0.4], target = 1 输出：0.40000  示例 2： 输入：prob = [0.5,0.5,0.5,0.5,0.5], target = 0 输出：0.03125  提示：  1 \x26lt;= prob.length \x26lt;= 1000 0 \x26lt;= prob[i] \x26lt;= 1 0 \x26lt;= target\x26lt;= prob.length 如果答案与标准答案的误差在10^-5内，则被视为正确答案。  来源：力扣（LeetCode）第5090题(临时)  链接：https:\/\/leetcode-cn.com\/problems\/toss-strange-coins\n 分析：  概率dp 找到两个状态，一个是当前扔了第几个硬币，另一个是有几个正面朝上。  代码： class Solution { public double probabilityOfHeads(double[] prob, int target) { int n = prob.length; \/\/ 滚动数组，由于这个dp只要用到前一个状态，所以没必要把所有的硬币情况都写出来。 \/\/ dp数组表示当前有i个硬币，j个硬币正面朝上。 double[][] dp = new double[2][target\x2b2]; dp[0][0] = 1; \/\/ 当前没有硬币，0个硬币朝上的概率为100% for (int ii = 1; ii \x26lt;= n; ii\x2b\x2b) { int i = ii \x26amp; 1; \/\/ 如果最后一位是1，那么i=1，如果最后一位是0，那么i=0 int pi = i ^ 1; \/\/ 如果i=1，那么异或1得0，如果i=0，那么异或1得1 for (int j = 0; j \x26lt;= target; j\x2b\x2b) dp[i][j] = 0; \/\/ 由于滚动数组，所以要把之前的清空。 for (int j = 0; j \x26lt;= target; j\x2b\x2b) { dp[i][j] \x2b= dp[pi][j] * (1 - prob[ii-1]); \/\/ 当前有i个硬币，如果第i个硬币扔的是反面，那么i-1个硬币必须要有j个是正面。 dp[i][j\x2b1] \x2b= dp[pi][j] * prob[ii-1]; \/\/ 如果扔的是正面，那么i-1个硬币必须要有j-1个时正面。 } } \/\/ n是奇数那么索引就是1，如果n是偶数的话，那么它答案的索引就是0 return dp[n\x26amp;1][target]; } }  ",
+    "inLanguage" : "zh-CN",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-10-23 19:43:25 \x2b0800 CST",
+    "dateModified" : "2019-10-23 19:43:25 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E6%8A%9B%E6%8E%B7%E7%A1%AC%E5%B8%81\/",
+    "wordCount" : "145",
+    "keywords" : [ "算法求解思想","动态规划","概率dp", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">抛掷硬币</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-10-23 itemprop="datePublished">October 23, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-抛掷硬币">题目：抛掷硬币</h1>
+
+<ul>
+<li>有一些不规则的硬币。在这些硬币中，<code>prob[i]</code>表示第<code>i</code>枚硬币正面朝上的概率。</li>
+</ul>
+
+<p>请对每一枚硬币抛掷一次，然后返回正面朝上的硬币数等于<code>target</code>的概率。</p>
+
+<h5 id="示例-1">示例 1：</h5>
+
+<pre><code>输入：prob = [0.4], target = 1
+输出：0.40000
+</code></pre>
+
+<h5 id="示例-2">示例 2：</h5>
+
+<pre><code>输入：prob = [0.5,0.5,0.5,0.5,0.5], target = 0
+输出：0.03125
+</code></pre>
+
+<h5 id="提示">提示：</h5>
+
+<ul>
+<li>1 &lt;= prob.length &lt;= 1000</li>
+<li>0 &lt;= prob[i] &lt;= 1</li>
+<li>0 &lt;= <code>target</code>&lt;= <code>prob.length</code></li>
+<li>如果答案与标准答案的误差在<code>10^-5</code>内，则被视为正确答案。</li>
+</ul>
+
+<h4 id="来源-力扣-leetcode-第5090题-临时">来源：力扣（LeetCode）第5090题(临时)</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/toss-strange-coins" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/toss-strange-coins</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<ul>
+<li>概率dp</li>
+<li>找到两个状态，一个是当前扔了第几个硬币，另一个是有几个正面朝上。</li>
+</ul>
+
+<h2 id="代码">代码：</h2>
+
+<pre><code class="language-java">class Solution {
+    public double probabilityOfHeads(double[] prob, int target) {
+        int n = prob.length;
+        // 滚动数组，由于这个dp只要用到前一个状态，所以没必要把所有的硬币情况都写出来。
+        // dp数组表示当前有i个硬币，j个硬币正面朝上。
+        double[][] dp = new double[2][target+2];
+        dp[0][0] = 1; // 当前没有硬币，0个硬币朝上的概率为100%
+        for (int ii = 1; ii &lt;= n; ii++) {
+            int i = ii &amp; 1; // 如果最后一位是1，那么i=1，如果最后一位是0，那么i=0
+            int pi = i ^ 1; // 如果i=1，那么异或1得0，如果i=0，那么异或1得1
+            for (int j = 0; j &lt;= target; j++) dp[i][j] = 0; // 由于滚动数组，所以要把之前的清空。
+            for (int j = 0; j &lt;= target; j++) {
+                dp[i][j] += dp[pi][j] * (1 - prob[ii-1]);
+                // 当前有i个硬币，如果第i个硬币扔的是反面，那么i-1个硬币必须要有j个是正面。
+                dp[i][j+1] += dp[pi][j] * prob[ii-1];
+                // 如果扔的是正面，那么i-1个硬币必须要有j-1个时正面。
+            }
+        }
+        // n是奇数那么索引就是1，如果n是偶数的话，那么它答案的索引就是0
+        return dp[n&amp;1][target];
+    }
+}
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E6%8A%9B%E6%8E%B7%E7%A1%AC%E5%B8%81/>https://ripple-zjw.github.io/2019/%E6%8A%9B%E6%8E%B7%E7%A1%AC%E5%B8%81/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                    #动态规划</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E6%A6%82%E7%8E%87dp/">
+                    #概率dp</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E5%AE%89%E6%8E%92%E4%BC%9A%E8%AE%AE%E6%97%A5%E7%A8%8B/" class="prev" rel="prev" title="安排会议日程"><i class="iconfont icon-left"></i>&nbsp;安排会议日程</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E5%88%A0%E9%99%A4%E5%AD%90%E6%96%87%E4%BB%B6%E5%A4%B9/" class="next" rel="next" title="删除子文件夹">删除子文件夹&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

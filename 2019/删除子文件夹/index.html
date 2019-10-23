@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E6%8A%9B%E6%8E%B7%E7%A1%AC%E5%B8%81/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E5%88%86%E4%BA%AB%E5%B7%A7%E5%85%8B%E5%8A%9B/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E5%88%A0%E9%99%A4%E5%AD%90%E6%96%87%E4%BB%B6%E5%A4%B9/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           删除子文件夹 | LeaveIt
+       
+  </title>
+  <meta name="title" content="删除子文件夹 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "删除子文件夹",
+    "headline" : "删除子文件夹",
+    "description" : "题目： 删除子文件夹  你是一位系统管理员，手里有一份文件夹列表 folder，你的任务是要删除该列表中的所有 子文件夹，并以 任意顺序 返回剩下的文件夹。 我们这样定义「子文件夹」： 如果文件夹folder[i]位于另一个文件夹folder[j]下，那么folder[i]就是folder[j]的子文件夹。 文件夹的「路径」是由一个或多个按以下格式串联形成的字符串： \/后跟一个或者多个小写英文字母。 例如，\/leetcode和\/leetcode\/problems都是有效的路径，而空字符串和\/不是。  示例 1： 输入：folder = [\x26quot;\/a\x26quot;,\x26quot;\/a\/b\x26quot;,\x26quot;\/c\/d\x26quot;,\x26quot;\/c\/d\/e\x26quot;,\x26quot;\/c\/f\x26quot;] 输出：[\x26quot;\/a\x26quot;,\x26quot;\/c\/d\x26quot;,\x26quot;\/c\/f\x26quot;] 解释：\x26quot;\/a\/b\/\x26quot; 是 \x26quot;\/a\x26quot; 的子文件夹，而 \x26quot;\/c\/d\/e\x26quot; 是 \x26quot;\/c\/d\x26quot; 的子文件夹。  示例 2： 输入：folder = [\x26quot;\/a\x26quot;,\x26quot;\/a\/b\/c\x26quot;,\x26quot;\/a\/b\/d\x26quot;] 输出：[\x26quot;\/a\x26quot;] 解释：文件夹 \x26quot;\/a\/b\/c\x26quot; 和 \x26quot;\/a\/b\/d\/\x26quot; 都会被删除，因为它们都是 \x26quot;\/a\x26quot; 的子文件夹。  示例 3： 输入：folder = [\x26quot;\/a\/b\/c\x26quot;,\x26quot;\/a\/b\/d\x26quot;,\x26quot;\/a\/b\/ca\x26quot;] 输出：[\x26quot;\/a\/b\/c\x26quot;,\x26quot;\/a\/b\/ca\x26quot;,\x26quot;\/a\/b\/d\x26quot;]  提示：  1 \x26lt;= folder.length\x26lt;= 4 * 10^4 2 \x26lt;= folder[i].length \x26lt;= 100 folder[i]只包含小写字母和 \/ folder[i]总是以字符\/起始 每个文件夹名都是唯一的  来源：力扣（LeetCode）第5231题(临时)  链接：https:\/\/leetcode-cn.",
+    "inLanguage" : "zh-CN",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-10-23 19:45:43 \x2b0800 CST",
+    "dateModified" : "2019-10-23 19:45:43 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E5%88%A0%E9%99%A4%E5%AD%90%E6%96%87%E4%BB%B6%E5%A4%B9\/",
+    "wordCount" : "174",
+    "keywords" : [ "算法求解思想","排序", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">删除子文件夹</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-10-23 itemprop="datePublished">October 23, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-删除子文件夹">题目： 删除子文件夹</h1>
+
+<ul>
+<li>你是一位系统管理员，手里有一份文件夹列表 folder，你的任务是要删除该列表中的所有 子文件夹，并以 任意顺序 返回剩下的文件夹。</li>
+<li>我们这样定义「子文件夹」：</li>
+<li>如果文件夹<code>folder[i]</code>位于另一个文件夹<code>folder[j]</code>下，那么<code>folder[i]</code>就是<code>folder[j]</code>的子文件夹。
+文件夹的「路径」是由一个或多个按以下格式串联形成的字符串：</li>
+<li><code>/</code>后跟一个或者多个小写英文字母。
+例如，<code>/leetcode</code>和<code>/leetcode/problems</code>都是有效的路径，而空字符串和<code>/</code>不是。</li>
+</ul>
+
+<h5 id="示例-1">示例 1：</h5>
+
+<pre><code>输入：folder = [&quot;/a&quot;,&quot;/a/b&quot;,&quot;/c/d&quot;,&quot;/c/d/e&quot;,&quot;/c/f&quot;]
+输出：[&quot;/a&quot;,&quot;/c/d&quot;,&quot;/c/f&quot;]
+解释：&quot;/a/b/&quot; 是 &quot;/a&quot; 的子文件夹，而 &quot;/c/d/e&quot; 是 &quot;/c/d&quot; 的子文件夹。
+</code></pre>
+
+<h5 id="示例-2">示例 2：</h5>
+
+<pre><code>输入：folder = [&quot;/a&quot;,&quot;/a/b/c&quot;,&quot;/a/b/d&quot;]
+输出：[&quot;/a&quot;]
+解释：文件夹 &quot;/a/b/c&quot; 和 &quot;/a/b/d/&quot; 都会被删除，因为它们都是 &quot;/a&quot; 的子文件夹。
+</code></pre>
+
+<h5 id="示例-3">示例 3：</h5>
+
+<pre><code>输入：folder = [&quot;/a/b/c&quot;,&quot;/a/b/d&quot;,&quot;/a/b/ca&quot;]
+输出：[&quot;/a/b/c&quot;,&quot;/a/b/ca&quot;,&quot;/a/b/d&quot;]
+</code></pre>
+
+<h5 id="提示">提示：</h5>
+
+<ul>
+<li>1 &lt;= <code>folder.length</code>&lt;= 4 * 10^4</li>
+<li>2 &lt;= <code>folder[i].length</code> &lt;= 100</li>
+<li><code>folder[i]</code>只包含小写字母和 /</li>
+<li><code>folder[i]</code>总是以字符<code>/</code>起始</li>
+<li>每个文件夹名都是唯一的</li>
+</ul>
+
+<h4 id="来源-力扣-leetcode-第5231题-临时">来源：力扣（LeetCode）第5231题(临时)</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/remove-sub-folders-from-the-filesystem" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/remove-sub-folders-from-the-filesystem</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<ul>
+<li>只要将数组排序一下，就能很轻松的解决。</li>
+<li>排序后所有的子文件夹都会跟在父文件夹后面，只要判断一下前缀是否一样就行了。</li>
+</ul>
+
+<h2 id="代码">代码：</h2>
+
+<pre><code class="language-python">class Solution:
+    def removeSubfolders(self, folder: List[str]) -&gt; List[str]:
+        folder.sort() # 先排序，让数组中相同的文件夹从少到多放在一起。
+        res = []
+        t = '//' # 初始化
+        for f in folder:
+            if not f.startswith(t): # 判断是否包含前一个元素的部分
+                res.append(f) # 如果不包含，那么就不是子文件夹，放入答案中
+                t = f + '/' # 将当前元素传给t，用于下一轮循环比较。
+        return res
+</code></pre>
+
+<pre><code class="language-java">class Solution {
+    public List&lt;String&gt; removeSubfolders(String[] folder) {
+        Arrays.sort(folder);
+        List&lt;String&gt; ans = new ArrayList();
+        String str = &quot;//&quot;;
+        for (String f : folder) {
+            if (!startsWith(f, str)) {
+                ans.add(f);
+                str = f + &quot;/&quot;;
+            }
+        }
+        return ans;
+    }
+    
+    public boolean startsWith(String str, String sub) {
+        for (int i = 0; i &lt; sub.length(); i++) {
+            if (str.charAt(i) != sub.charAt(i)) return false;
+        }
+        return true;
+    }
+}
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E5%88%A0%E9%99%A4%E5%AD%90%E6%96%87%E4%BB%B6%E5%A4%B9/>https://ripple-zjw.github.io/2019/%E5%88%A0%E9%99%A4%E5%AD%90%E6%96%87%E4%BB%B6%E5%A4%B9/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E6%8E%92%E5%BA%8F/">
+                    #排序</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E6%8A%9B%E6%8E%B7%E7%A1%AC%E5%B8%81/" class="prev" rel="prev" title="抛掷硬币"><i class="iconfont icon-left"></i>&nbsp;抛掷硬币</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E5%88%86%E4%BA%AB%E5%B7%A7%E5%85%8B%E5%8A%9B/" class="next" rel="next" title="分享巧克力">分享巧克力&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

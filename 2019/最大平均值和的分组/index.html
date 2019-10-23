@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E5%88%86%E5%89%B2%E7%AD%89%E5%92%8C%E5%AD%90%E9%9B%86/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E6%9C%80%E9%95%BF%E7%9A%84%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E5%AD%90%E5%BA%8F%E5%88%97%E7%9A%84%E9%95%BF%E5%BA%A6/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E6%9C%80%E5%A4%A7%E5%B9%B3%E5%9D%87%E5%80%BC%E5%92%8C%E7%9A%84%E5%88%86%E7%BB%84/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           最大平均值和的分组 | LeaveIt
+       
+  </title>
+  <meta name="title" content="最大平均值和的分组 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "最大平均值和的分组",
+    "headline" : "最大平均值和的分组",
+    "description" : "题目： 最大平均值和的分组  我们将给定的数组A分成K个相邻的非空子数组 ，我们的分数由每个子数组内的平均值的总和构成。计算我们所能得到的最大分数是多少。 注意我们必须使用A数组中的每一个数进行分组，并且分数不一定需要是整数。  示例: 输入: A = [9,1,2,3,9] K = 3 输出: 20 解释: A 的最优分组是[9], [1, 2, 3], [9]. 得到的分数是 9 \x2b (1 \x2b 2 \x2b 3) \/ 3 \x2b 9 = 20. 我们也可以把 A 分成[9, 1], [2], [3, 9]. 这样的分组得到的分数为 5 \x2b 2 \x2b 6 = 13, 但不是最大值.  说明:  1 \x26lt;= A.length \x26lt;= 100. 1 \x26lt;= A[i] \x26lt;= 10000. 1 \x26lt;= K \x26lt;= A.",
+    "inLanguage" : "zh-CN",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-10-23 20:03:28 \x2b0800 CST",
+    "dateModified" : "2019-10-23 20:03:28 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E6%9C%80%E5%A4%A7%E5%B9%B3%E5%9D%87%E5%80%BC%E5%92%8C%E7%9A%84%E5%88%86%E7%BB%84\/",
+    "wordCount" : "363",
+    "keywords" : [ "算法求解思想","动态规划", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">最大平均值和的分组</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-10-23 itemprop="datePublished">October 23, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-最大平均值和的分组">题目： 最大平均值和的分组</h1>
+
+<ul>
+<li>我们将给定的数组<code>A</code>分成<code>K</code>个相邻的非空子数组 ，我们的分数由每个子数组内的平均值的总和构成。计算我们所能得到的最大分数是多少。</li>
+<li>注意我们必须使用A数组中的每一个数进行分组，并且分数不一定需要是整数。</li>
+</ul>
+
+<h5 id="示例">示例:</h5>
+
+<pre><code>输入: 
+A = [9,1,2,3,9]
+K = 3
+输出: 20
+解释: 
+A 的最优分组是[9], [1, 2, 3], [9]. 得到的分数是 9 + (1 + 2 + 3) / 3 + 9 = 20.
+我们也可以把 A 分成[9, 1], [2], [3, 9].
+这样的分组得到的分数为 5 + 2 + 6 = 13, 但不是最大值.
+</code></pre>
+
+<h5 id="说明">说明:</h5>
+
+<ul>
+<li>1 &lt;= A.length &lt;= 100.</li>
+<li>1 &lt;= A[i] &lt;= 10000.</li>
+<li>1 &lt;= K &lt;= A.length.</li>
+<li>答案误差在<code>10^-6</code>内被视为是正确的。</li>
+</ul>
+
+<h4 id="来源-力扣-leetcode-第813题">来源：力扣（LeetCode）第813题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/largest-sum-of-averages" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/largest-sum-of-averages</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<ul>
+<li>动态规划题</li>
+<li>这次的状态不算难找，主要是在到底应该用三维dp还是二维就可以搞定了。</li>
+<li>最后发现二维就够了。</li>
+<li>先来说说三维，定义i，j，k分别表示当前为第i份，从数组的下标j开始，到k结束。</li>
+<li>于是我将每一种情况全部都可以算一遍，看看哪儿种最大。可是之后我发现，我并不一定要将所有的j到k的情况都存下来，我只要每次将到k为止，或者从j开始归在一起，把最大的那种情况存起来就可以了。</li>
+<li>因为下一次找的肯定是上一次分割的尾巴。如果都是以k结束的那么我只要知道最大的就行了，小的根本就用不到。</li>
+<li>因此，我们的状态就变成二维的了，即定义i，j为当前为第i份，从0到下标j为止最大的平均数和。</li>
+</ul>
+
+<h2 id="代码">代码：</h2>
+
+<pre><code class="language-java">class Solution {
+    public double largestSumOfAverages(int[] A, int K) {
+        int len = A.length;
+        double[][] dp = new double[K][len];
+        // i 第几份  j 到j为止
+        dp[0][0] = A[0]; // base case
+        // 把第一行的情况拿出来，注意不能到达最后K-1个，因为最少也要分1个，如果还要分两个的话，最少也要留两个才行。
+        for (int i = 1; i &lt; len - K + 1; i++) dp[0][i] = dp[0][i-1] + A[i];
+        // 先取和，再求平均值
+        for (int i = 1; i &lt; len - K + 1; i++) dp[0][i] /= (i + 1);
+        for (int i = 1; i &lt; K; i++) {
+            for (int j = i; j &lt;= len - K + i; j++) {
+                // count 用于算出和后求平均值
+                int count = j - i + 1;
+                // st 即每种情况的开始，我说过把到j结束的归在一起，但还是要计算的，不然怎么得到最大值。
+                for (int st = i; st &lt;= j; st++) {
+                    double sum = 0;
+                    for (int k = st; k &lt;= j; k++) sum += A[k];// 拿到区域和
+                    // 算一下当前区域的平均值是否最大。
+                    // 由于st是当前区域的开始，所以上一次分割最后一定是st-1，那么就找上一次以st-1为结尾的最大值。
+                    dp[i][j] = Math.max(dp[i][j], dp[i-1][st-1] + sum / count);
+                    // 一轮循环结束后，除数也会减少，比如原来是1 2 3，现在是2 3的和那么现在只有两个数了。
+                    --count;
+                }
+            }
+        }
+        // 这里为什么只要len-1而不要其他的情况呢，因为最后一次一定要分到最后，也就是说我不管从谁开始分，一定要以len-1结束。
+        return dp[K-1][len-1];
+    }
+}
+</code></pre>
+
+<ul>
+<li>写完之后发现，这段代码可以写的更简洁，更优化。</li>
+<li>比如我要找区域和，那么我只要先求出所有的前缀和，再将两个前缀和相减就能得到某一个区域的区域和。</li>
+
+<li><p>同时我对count也做了处理，不需要count变量了。</p>
+
+<pre><code class="language-java">class Solution {
+public double largestSumOfAverages(int[] A, int K) {
+    int len = A.length;
+    double[][] dp = new double[K][len];
+    // i 第几份  j 到j为止
+    double[] sum = new double[len];sum[0] = A[0];
+    for (int i = 1; i &lt; len; i++) sum[i] = sum[i-1] + A[i];
+    for (int i = 0; i &lt; len - K + 1; i++) dp[0][i] = sum[i] / (i + 1);
+    for (int i = 1; i &lt; K; i++) {
+        for (int j = i; j &lt;= len - K + i; j++) {
+            for (int st = i; st &lt;= j; st++) 
+                dp[i][j] = Math.max(dp[i][j], dp[i-1][st-1] + (sum[j] - sum[st-1]) / (j - st + 1));
+        }
+    }
+    return dp[K-1][len-1];
+}
+}
+</code></pre></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E6%9C%80%E5%A4%A7%E5%B9%B3%E5%9D%87%E5%80%BC%E5%92%8C%E7%9A%84%E5%88%86%E7%BB%84/>https://ripple-zjw.github.io/2019/%E6%9C%80%E5%A4%A7%E5%B9%B3%E5%9D%87%E5%80%BC%E5%92%8C%E7%9A%84%E5%88%86%E7%BB%84/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                    #动态规划</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E5%88%86%E5%89%B2%E7%AD%89%E5%92%8C%E5%AD%90%E9%9B%86/" class="prev" rel="prev" title="分割等和子集"><i class="iconfont icon-left"></i>&nbsp;分割等和子集</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E6%9C%80%E9%95%BF%E7%9A%84%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E5%AD%90%E5%BA%8F%E5%88%97%E7%9A%84%E9%95%BF%E5%BA%A6/" class="next" rel="next" title="最长的斐波那契子序列的长度">最长的斐波那契子序列的长度&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

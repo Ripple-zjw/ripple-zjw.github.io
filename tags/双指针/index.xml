@@ -6,10 +6,19 @@
     <description>Recent content in 双指针 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 21 Sep 2019 15:50:29 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 23 Oct 2019 19:41:34 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>安排会议日程</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%AE%89%E6%8E%92%E4%BC%9A%E8%AE%AE%E6%97%A5%E7%A8%8B/</link>
+      <pubDate>Wed, 23 Oct 2019 19:41:34 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%AE%89%E6%8E%92%E4%BC%9A%E8%AE%AE%E6%97%A5%E7%A8%8B/</guid>
+      <description>题目：安排会议日程  你是一名行政助理，手里有两位客户的空闲时间表：slots1 和 slots2，以及会议的预计持续时间duration，请你为他们安排合适的会议时间。 「会议时间」是两位客户都有空参加，并且持续时间能够满足预计时间duration的 最早的时间间隔。 如果没有满足要求的会议时间，就请返回一个 空数组。 「空闲时间」的格式是[start, end]，由开始时间start和结束时间end组成，表示从start开始，到end结束。 题目保证数据有效：同一个人的空闲时间不会出现交叠的情况，也就是说，对于同一个人的两个空闲时间[start1, end1]和[start2, end2]，要么start1 &amp;gt; end2，要么start2 &amp;gt; end1。  示例 1： 输入：slots1 = [[10,50],[60,120],[140,210]], slots2 = [[0,15],[60,70]], duration = 8 输出：[60,68]  示例 2： 输入：slots1 = [[10,50],[60,120],[140,210]], slots2 = [[0,15],[60,70]], duration = 12 输出：[]  提示：  1 &amp;lt;= slots1.length, slots2.length &amp;lt;= 10^4 slots1[i].length, slots2[i].length == 2 slots1[i][0] &amp;lt; slots1[i][1] slots2[i][0] &amp;lt; slots2[i][1] 0 &amp;lt;= slots1[i][j], slots2[i][j] &amp;lt;= 10^9 1 &amp;lt;= duration &amp;lt;= 10^6  来源：力扣（LeetCode）第5089题(临时)  链接：https://leetcode-cn.</description>
+    </item>
     
     <item>
       <title>有序链表转换二叉搜索树</title>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E5%8F%B6%E5%80%BC%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BB%A3%E4%BB%B7%E7%94%9F%E6%88%90%E6%A0%91/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E5%88%A0%E9%99%A4%E4%B8%8E%E8%8E%B7%E5%BE%97%E7%82%B9%E6%95%B0/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8Fii/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           石子游戏II | LeaveIt
+       
+  </title>
+  <meta name="title" content="石子游戏II | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "石子游戏II",
+    "headline" : "石子游戏II",
+    "description" : "题目：石子游戏 II  亚历克斯和李继续他们的石子游戏。许多堆石子排成一行，每堆都有正整数颗石子piles[i]。游戏以谁手中的石子最多来决出胜负。 亚历克斯和李轮流进行，亚历克斯先开始。最初，M = 1。 在每个玩家的回合中，该玩家可以拿走剩下的前X堆的所有石子，其中1 \x26lt;= X \x26lt;= 2M。然后，令M = max(M, X)。 游戏一直持续到所有石子都被拿走。 假设亚历克斯和李都发挥出最佳水平，返回亚历克斯可以得到的最大数量的石头。  示例： 输入：piles = [2,7,9,4,4] 输出：10 解释： 如果亚历克斯在开始时拿走一堆石子，李拿走两堆，接着亚历克斯也拿走两堆。在这种情况下，亚历克斯可以拿到 2 \x2b 4 \x2b 4 = 10 颗石子。 如果亚历克斯在开始时拿走两堆石子，那么李就可以拿走剩下全部三堆石子。在这种情况下，亚历克斯可以拿到 2 \x2b 7 = 9 颗石子。 所以我们返回更大的 10。  提示：  1 \x26lt;= piles.length \x26lt;= 100 1 \x26lt;= piles[i] \x26lt;= 10 ^ 4  来源：力扣（LeetCode）第1140题  链接：https:\/\/leetcode-cn.com\/problems\/stone-game-ii\n 分析：  这道题可以采用递归加记忆化搜索的方式进行。 我们需要穷举出所有的状态。 由于重复计算的地方太多，所以使用记忆化搜索，也可以说使用了动态规划。  代码： class Solution { int len; int[] sum;int[][] dp; public int stoneGameII(int[] piles) { dp = new int[150][150]; \/\/ dp数组用来存放算过的值。 len = piles.",
+    "inLanguage" : "zh-CN",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-10-23 19:06:38 \x2b0800 CST",
+    "dateModified" : "2019-10-23 19:06:38 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8Fii\/",
+    "wordCount" : "188",
+    "keywords" : [ "算法求解思想","动态规划","dfs", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">石子游戏II</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-10-23 itemprop="datePublished">October 23, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-石子游戏-ii">题目：石子游戏 II</h1>
+
+<ul>
+<li>亚历克斯和李继续他们的石子游戏。许多堆石子排成一行，每堆都有正整数颗石子<code>piles[i]</code>。游戏以谁手中的石子最多来决出胜负。</li>
+<li>亚历克斯和李轮流进行，亚历克斯先开始。最初，M = 1。</li>
+<li>在每个玩家的回合中，该玩家可以拿走剩下的前<code>X</code>堆的所有石子，其中<code>1 &lt;= X &lt;= 2M</code>。然后，令<code>M = max(M, X)</code>。</li>
+<li>游戏一直持续到所有石子都被拿走。</li>
+<li>假设亚历克斯和李都发挥出最佳水平，返回亚历克斯可以得到的最大数量的石头。</li>
+</ul>
+
+<h5 id="示例">示例：</h5>
+
+<pre><code>输入：piles = [2,7,9,4,4]
+输出：10
+解释：
+如果亚历克斯在开始时拿走一堆石子，李拿走两堆，接着亚历克斯也拿走两堆。在这种情况下，亚历克斯可以拿到 2 + 4 + 4 = 10 颗石子。 
+如果亚历克斯在开始时拿走两堆石子，那么李就可以拿走剩下全部三堆石子。在这种情况下，亚历克斯可以拿到 2 + 7 = 9 颗石子。
+所以我们返回更大的 10。 
+</code></pre>
+
+<h5 id="提示">提示：</h5>
+
+<ul>
+<li>1 &lt;= piles.length &lt;= 100</li>
+<li>1 &lt;= piles[i] &lt;= 10 ^ 4</li>
+</ul>
+
+<h4 id="来源-力扣-leetcode-第1140题">来源：力扣（LeetCode）第1140题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/stone-game-ii" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/stone-game-ii</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<ul>
+<li>这道题可以采用递归加记忆化搜索的方式进行。</li>
+<li>我们需要穷举出所有的状态。</li>
+<li>由于重复计算的地方太多，所以使用记忆化搜索，也可以说使用了动态规划。</li>
+</ul>
+
+<h2 id="代码">代码：</h2>
+
+<pre><code class="language-java">class Solution {
+    int len;
+    int[] sum;int[][] dp;
+    public int stoneGameII(int[] piles) {
+        dp = new int[150][150]; // dp数组用来存放算过的值。
+        len = piles.length;
+        sum = new int[len+1];
+        // 求第i个数到最后的总和。
+        for (int i = len - 1; i &gt;= 0; i--) sum[i] = sum[i+1] + piles[i];
+        return dfs(0, 1);
+    }
+    // 返回从第i个石子堆开始，M为m的最优情况。
+    public int dfs(int i, int m) {
+        if (dp[i][m] != 0) return dp[i][m]; // 如果i，m已经算过了，不用再算了。
+        if (i &gt;= len) return 0; // i超出数组下标，也不用再算了，这是递归的基线条件。
+        if (i + 2 * m &gt;= len) return sum[i]; // 特殊情况，如果剩下的石子堆可以一次拿完，那么肯定全拿了。
+        int best = 0; // 存放最优情况
+        for (int x = 1; x &lt;= 2 * m; x++) 
+            /*
+                如果i之前的石子堆被拿完，那么首先判断在这1-2*m次里Alex能拿到最大的情况是哪次。
+                于是我们穷举每一次情况，找出最大的情况。
+                每一次情况中，我们看从第i堆石子到最后。i + x，也就是你从i开始拿x堆石子，之间的总和。
+                然后还要加上从i+x+1到最后你拿的最优情况，就是值最大的情况。
+                因此，我们减去Lee的最优情况，因为Lee也会取最优，得到的就是Alex的情况。
+            */
+            best = Math.max(best, sum[i] - dfs(i + x, Math.max(m, x)));
+        dp[i][m] = best;
+        return best;
+    }
+}
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8Fii/>https://ripple-zjw.github.io/2019/%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8Fii/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                    #动态规划</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/dfs/">
+                    #dfs</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E5%8F%B6%E5%80%BC%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BB%A3%E4%BB%B7%E7%94%9F%E6%88%90%E6%A0%91/" class="prev" rel="prev" title="叶值的最小代价生成树"><i class="iconfont icon-left"></i>&nbsp;叶值的最小代价生成树</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E5%88%A0%E9%99%A4%E4%B8%8E%E8%8E%B7%E5%BE%97%E7%82%B9%E6%95%B0/" class="next" rel="next" title="删除与获得点数">删除与获得点数&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

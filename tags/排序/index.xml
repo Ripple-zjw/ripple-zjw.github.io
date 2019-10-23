@@ -6,10 +6,19 @@
     <description>Recent content in 排序 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 06 Sep 2019 20:21:39 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 23 Oct 2019 19:45:43 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/tags/%E6%8E%92%E5%BA%8F/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>删除子文件夹</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%88%A0%E9%99%A4%E5%AD%90%E6%96%87%E4%BB%B6%E5%A4%B9/</link>
+      <pubDate>Wed, 23 Oct 2019 19:45:43 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%88%A0%E9%99%A4%E5%AD%90%E6%96%87%E4%BB%B6%E5%A4%B9/</guid>
+      <description>题目： 删除子文件夹  你是一位系统管理员，手里有一份文件夹列表 folder，你的任务是要删除该列表中的所有 子文件夹，并以 任意顺序 返回剩下的文件夹。 我们这样定义「子文件夹」： 如果文件夹folder[i]位于另一个文件夹folder[j]下，那么folder[i]就是folder[j]的子文件夹。 文件夹的「路径」是由一个或多个按以下格式串联形成的字符串： /后跟一个或者多个小写英文字母。 例如，/leetcode和/leetcode/problems都是有效的路径，而空字符串和/不是。  示例 1： 输入：folder = [&amp;quot;/a&amp;quot;,&amp;quot;/a/b&amp;quot;,&amp;quot;/c/d&amp;quot;,&amp;quot;/c/d/e&amp;quot;,&amp;quot;/c/f&amp;quot;] 输出：[&amp;quot;/a&amp;quot;,&amp;quot;/c/d&amp;quot;,&amp;quot;/c/f&amp;quot;] 解释：&amp;quot;/a/b/&amp;quot; 是 &amp;quot;/a&amp;quot; 的子文件夹，而 &amp;quot;/c/d/e&amp;quot; 是 &amp;quot;/c/d&amp;quot; 的子文件夹。  示例 2： 输入：folder = [&amp;quot;/a&amp;quot;,&amp;quot;/a/b/c&amp;quot;,&amp;quot;/a/b/d&amp;quot;] 输出：[&amp;quot;/a&amp;quot;] 解释：文件夹 &amp;quot;/a/b/c&amp;quot; 和 &amp;quot;/a/b/d/&amp;quot; 都会被删除，因为它们都是 &amp;quot;/a&amp;quot; 的子文件夹。  示例 3： 输入：folder = [&amp;quot;/a/b/c&amp;quot;,&amp;quot;/a/b/d&amp;quot;,&amp;quot;/a/b/ca&amp;quot;] 输出：[&amp;quot;/a/b/c&amp;quot;,&amp;quot;/a/b/ca&amp;quot;,&amp;quot;/a/b/d&amp;quot;]  提示：  1 &amp;lt;= folder.length&amp;lt;= 4 * 10^4 2 &amp;lt;= folder[i].length &amp;lt;= 100 folder[i]只包含小写字母和 / folder[i]总是以字符/起始 每个文件夹名都是唯一的  来源：力扣（LeetCode）第5231题(临时)  链接：https://leetcode-cn.</description>
+    </item>
     
     <item>
       <title>缺失数字</title>

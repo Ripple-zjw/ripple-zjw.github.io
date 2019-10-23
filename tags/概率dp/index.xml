@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>概率dp on LeaveIt</title>
+    <link>https://ripple-zjw.github.io/tags/%E6%A6%82%E7%8E%87dp/</link>
+    <description>Recent content in 概率dp on LeaveIt</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 23 Oct 2019 19:43:25 +0800</lastBuildDate>
+    
+	<atom:link href="https://ripple-zjw.github.io/tags/%E6%A6%82%E7%8E%87dp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>抛掷硬币</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%8A%9B%E6%8E%B7%E7%A1%AC%E5%B8%81/</link>
+      <pubDate>Wed, 23 Oct 2019 19:43:25 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%8A%9B%E6%8E%B7%E7%A1%AC%E5%B8%81/</guid>
+      <description> 题目：抛掷硬币  有一些不规则的硬币。在这些硬币中，prob[i]表示第i枚硬币正面朝上的概率。  请对每一枚硬币抛掷一次，然后返回正面朝上的硬币数等于target的概率。
+示例 1： 输入：prob = [0.4], target = 1 输出：0.40000  示例 2： 输入：prob = [0.5,0.5,0.5,0.5,0.5], target = 0 输出：0.03125  提示：  1 &amp;lt;= prob.length &amp;lt;= 1000 0 &amp;lt;= prob[i] &amp;lt;= 1 0 &amp;lt;= target&amp;lt;= prob.length 如果答案与标准答案的误差在10^-5内，则被视为正确答案。  来源：力扣（LeetCode）第5090题(临时)  链接：https://leetcode-cn.com/problems/toss-strange-coins
+ 分析：  概率dp 找到两个状态，一个是当前扔了第几个硬币，另一个是有几个正面朝上。  代码： class Solution { public double probabilityOfHeads(double[] prob, int target) { int n = prob.length; // 滚动数组，由于这个dp只要用到前一个状态，所以没必要把所有的硬币情况都写出来。 // dp数组表示当前有i个硬币，j个硬币正面朝上。 double[][] dp = new double[2][target+2]; dp[0][0] = 1; // 当前没有硬币，0个硬币朝上的概率为100% for (int ii = 1; ii &amp;lt;= n; ii++) { int i = ii &amp;amp; 1; // 如果最后一位是1，那么i=1，如果最后一位是0，那么i=0 int pi = i ^ 1; // 如果i=1，那么异或1得0，如果i=0，那么异或1得1 for (int j = 0; j &amp;lt;= target; j++) dp[i][j] = 0; // 由于滚动数组，所以要把之前的清空。 for (int j = 0; j &amp;lt;= target; j++) { dp[i][j] += dp[pi][j] * (1 - prob[ii-1]); // 当前有i个硬币，如果第i个硬币扔的是反面，那么i-1个硬币必须要有j个是正面。 dp[i][j+1] += dp[pi][j] * prob[ii-1]; // 如果扔的是正面，那么i-1个硬币必须要有j-1个时正面。 } } // n是奇数那么索引就是1，如果n是偶数的话，那么它答案的索引就是0 return dp[n&amp;amp;1][target]; } }  </description>
+    </item>
+    
+  </channel>
+</rss>

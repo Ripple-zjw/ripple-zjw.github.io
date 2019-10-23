@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>等差数列 on LeaveIt</title>
+    <link>https://ripple-zjw.github.io/tags/%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97/</link>
+    <description>Recent content in 等差数列 on LeaveIt</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 23 Oct 2019 19:40:20 +0800</lastBuildDate>
+    
+	<atom:link href="https://ripple-zjw.github.io/tags/%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>等差数列中缺失的数字</title>
+      <link>https://ripple-zjw.github.io/2019/%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%E4%B8%AD%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/</link>
+      <pubDate>Wed, 23 Oct 2019 19:40:20 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%E4%B8%AD%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/</guid>
+      <description>题目：等差数列中缺失的数字  有一个数组，其中的值符合等差数列的数值规律，也就是说： 在0 &amp;lt;= i &amp;lt; arr.length - 1的前提下，arr[i+1] - arr[i]的值都相等。 我们会从该数组中删除一个既不是第一个也不是最后一个的值，得到一个新的数组arr。 给你这个缺值的数组arr，请你帮忙找出被删除的那个数。  示例 1： 输入：arr = [5,7,11,13] 输出：9 解释：原来的数组是 [5,7,9,11,13]。  示例 2： 输入：arr = [15,13,12] 输出：14 解释：原来的数组是 [15,14,13,12]。  提示：  3 &amp;lt;= arr.length &amp;lt;= 1000 0 &amp;lt;= arr[i] &amp;lt;= 10^5  来源：力扣（LeetCode）第5088题(临时)  链接：https://leetcode-cn.com/problems/missing-number-in-arithmetic-progression
+ 分析：  我们算出数组中的总值，然后用等差数列求和公式求出原来的总值，相减一下就得到了答案。  代码： class Solution { public int missingNumber(int[] arr) { int sum = 0; for (int a : arr) sum += a; return (arr.</description>
+    </item>
+    
+  </channel>
+</rss>

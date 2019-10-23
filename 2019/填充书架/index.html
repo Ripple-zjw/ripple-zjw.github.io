@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E6%8E%B7%E9%AA%B0%E5%AD%90%E6%A8%A1%E6%8B%9F/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%E4%B8%AD%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E5%A1%AB%E5%85%85%E4%B9%A6%E6%9E%B6/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           填充书架 | LeaveIt
+       
+  </title>
+  <meta name="title" content="填充书架 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "填充书架",
+    "headline" : "填充书架",
+    "description" : "题目：填充书架  附近的家居城促销，你买回了一直心仪的可调节书架，打算把自己的书都整理到新的书架上。 你把要摆放的书books都整理好，叠成一摞：从上往下，第i本书的厚度为books[i][0]，高度为books[i][1]。 按顺序将这些书摆放到总宽度为shelf_width的书架上。 先选几本书放在书架上（它们的厚度之和小于等于书架的宽度 shelf_width），然后再建一层书架。重复这个过程，直到把所有的书都放在书架上。 需要注意的是，在上述过程的每个步骤中，摆放书的顺序与你整理好的顺序相同。 例如，如果这里有 5 本书，那么可能的一种摆放情况是：第一和第二本书放在第一层书架上，第三本书放在第二层书架上，第四和第五本书放在最后一层书架上。 每一层所摆放的书的最大高度就是这一层书架的层高，书架整体的高度为各层高之和。 以这种方式布置书架，返回书架整体可能的最小高度。  示例： 输入：books = [[1,1],[2,3],[2,3],[1,1],[1,1],[1,1],[1,2]], shelf_width = 4 输出：6 解释： 3 层书架的高度和为 1 \x2b 3 \x2b 2 = 6 。 第 2 本书不必放在第一层书架上。  提示：\n 1 \x26lt;= books.length \x26lt;= 1000 1 \x26lt;= books[i][0] \x26lt;= shelf_width \x26lt;= 1000 1 \x26lt;= books[i][1] \x26lt;= 1000  来源：力扣（LeetCode）第1105题  链接：https:\/\/leetcode-cn.com\/problems\/filling-bookcase-shelves\n 分析：  动态规划题 这道题的状态很简单，却很难想到。 我们设i为到第i本书为止的最优情况。 如果i之前都已是最优情况，那么第i种情况怎么算呢？ 首先直接换行，那么就是i-1时的最优情况加上这本书的高度。 第二种，我们把第i-1本书和第i本书放在一起，那么就是第i本书和第i-1本最高的那本加上i-2时的最优情况。 以此类推，直到把所有书都放在同一行，或者宽度不够了，下一本书放不进去了。  代码： class Solution { public int minHeightShelves(int[][] books, int shelf_width) { int m = books.",
+    "inLanguage" : "zh-CN",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-10-23 19:34:22 \x2b0800 CST",
+    "dateModified" : "2019-10-23 19:34:22 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E5%A1%AB%E5%85%85%E4%B9%A6%E6%9E%B6\/",
+    "wordCount" : "154",
+    "keywords" : [ "算法求解思想","动态规划", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">填充书架</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-10-23 itemprop="datePublished">October 23, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-填充书架">题目：填充书架</h1>
+
+<ul>
+<li>附近的家居城促销，你买回了一直心仪的可调节书架，打算把自己的书都整理到新的书架上。</li>
+<li>你把要摆放的书<code>books</code>都整理好，叠成一摞：从上往下，第<code>i</code>本书的厚度为<code>books[i][0]</code>，高度为<code>books[i][1]</code>。</li>
+<li>按顺序将这些书摆放到总宽度为<code>shelf_width</code>的书架上。</li>
+<li>先选几本书放在书架上（它们的厚度之和小于等于书架的宽度 shelf_width），然后再建一层书架。重复这个过程，直到把所有的书都放在书架上。</li>
+<li>需要注意的是，在上述过程的每个步骤中，摆放书的顺序与你整理好的顺序相同。 例如，如果这里有 5 本书，那么可能的一种摆放情况是：第一和第二本书放在第一层书架上，第三本书放在第二层书架上，第四和第五本书放在最后一层书架上。</li>
+<li>每一层所摆放的书的最大高度就是这一层书架的层高，书架整体的高度为各层高之和。</li>
+<li>以这种方式布置书架，返回书架整体可能的最小高度。</li>
+</ul>
+
+<h5 id="示例">示例：</h5>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/填充书架/shelves.png" alt="image" class="lazyload"><figcaption class="image-caption">image</figcaption></figure></p>
+
+<pre><code>输入：books = [[1,1],[2,3],[2,3],[1,1],[1,1],[1,1],[1,2]], shelf_width = 4
+输出：6
+解释：
+3 层书架的高度和为 1 + 3 + 2 = 6 。
+第 2 本书不必放在第一层书架上。
+</code></pre>
+
+<p>提示：</p>
+
+<ul>
+<li>1 &lt;= <code>books.length</code> &lt;= 1000</li>
+<li>1 &lt;= <code>books[i][0]</code> &lt;= <code>shelf_width</code> &lt;= 1000</li>
+<li>1 &lt;= <code>books[i][1]</code> &lt;= 1000</li>
+</ul>
+
+<h4 id="来源-力扣-leetcode-第1105题">来源：力扣（LeetCode）第1105题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/filling-bookcase-shelves" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/filling-bookcase-shelves</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<ul>
+<li>动态规划题</li>
+<li>这道题的状态很简单，却很难想到。</li>
+<li>我们设i为到第i本书为止的最优情况。</li>
+<li>如果i之前都已是最优情况，那么第i种情况怎么算呢？</li>
+<li>首先直接换行，那么就是i-1时的最优情况加上这本书的高度。</li>
+<li>第二种，我们把第i-1本书和第i本书放在一起，那么就是第i本书和第i-1本最高的那本加上i-2时的最优情况。</li>
+<li>以此类推，直到把所有书都放在同一行，或者宽度不够了，下一本书放不进去了。</li>
+</ul>
+
+<h2 id="代码">代码：</h2>
+
+<pre><code class="language-java">class Solution {
+    public int minHeightShelves(int[][] books, int shelf_width) {
+        int m = books.length;
+        int[] dp = new int[m+1];
+        for (int i = 1; i &lt;= m; i++) dp[i] = Integer.MAX_VALUE;
+        for (int i = 1; i &lt;= m; i++) {
+            int curh = 0;
+            int curw = 0;
+            for (int j = i; j &gt;= 1; j--) {
+                // 一开始是第i本书的高度，接下来是第i本书和第i-1本书高的那个，以此类推。
+                curh = Math.max(curh, books[j-1][1]);
+                // 一开始是第i本书的宽度，接下来是第i-1本书加上第i本书的宽度，以此类推。
+                curw += books[j-1][0];
+                if (curw &gt; shelf_width) break; // 宽度过了就直接退出了。
+                dp[i] = Math.min(dp[i], dp[j-1] + curh); // 看看哪种情况最优。
+            }
+        }
+        return dp[m];
+    }
+}
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E5%A1%AB%E5%85%85%E4%B9%A6%E6%9E%B6/>https://ripple-zjw.github.io/2019/%E5%A1%AB%E5%85%85%E4%B9%A6%E6%9E%B6/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                    #动态规划</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E6%8E%B7%E9%AA%B0%E5%AD%90%E6%A8%A1%E6%8B%9F/" class="prev" rel="prev" title="掷骰子模拟"><i class="iconfont icon-left"></i>&nbsp;掷骰子模拟</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%E4%B8%AD%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/" class="next" rel="next" title="等差数列中缺失的数字">等差数列中缺失的数字&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

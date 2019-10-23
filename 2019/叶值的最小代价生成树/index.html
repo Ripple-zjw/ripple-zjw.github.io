@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E7%BB%9F%E8%AE%A1%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D%E5%BA%8F%E5%88%97%E7%9A%84%E6%95%B0%E7%9B%AE/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8Fii/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E5%8F%B6%E5%80%BC%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BB%A3%E4%BB%B7%E7%94%9F%E6%88%90%E6%A0%91/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           叶值的最小代价生成树 | LeaveIt
+       
+  </title>
+  <meta name="title" content="叶值的最小代价生成树 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "叶值的最小代价生成树",
+    "headline" : "叶值的最小代价生成树",
+    "description" : "题目：叶值的最小代价生成树  给你一个正整数数组arr，考虑所有满足以下条件的二叉树：  每个节点都有 0 个或是 2 个子节点。 数组arr中的值与树的中序遍历中每个叶节点的值一一对应。（知识回顾：如果一个节点有 0 个子节点，那么该节点为叶节点。） 每个非叶节点的值等于其左子树和右子树中叶节点的最大值的乘积。 在所有这样的二叉树中，返回每个非叶节点的值的最小可能总和。这个和的值是一个32 位整数。   示例： 输入：arr = [6,2,4] 输出：32 解释： 有两种可能的树，第一种的非叶节点的总和为 36，第二种非叶节点的总和为 32。 24 24 \/ \\ \/ \\ 12 4 6 8 \/ \\ \/ \\ 6 2 2 4  提示：  2 \x26lt;= arr.length \x26lt;= 40 1 \x26lt;= arr[i] \x26lt;= 15 答案保证是一个 32 位带符号整数，即小于2^31。  来源：力扣（LeetCode）第1130题  链接：https:\/\/leetcode-cn.com\/problems\/minimum-cost-tree-from-leaf-values\n 分析：  这道题有两种解法，一种是动态规划，另一种是使用单调栈。  代码： 动态规划：  我们发现数组中的数可以划分为两部分，一半是左子树，一半是右子树，根节点就是左边最大和右边最大的乘积。 而左右子树里面的值就是当数组中的数为左子树的叶子节点时的情况，右边一样。 直到数组中的数只有2个时，答案就是左边右边相乘。 因此我们可以这么看，如果2个数后面又加了一个数，那么我们可以以01为一个节点再和2划分,也可以0一个节点和12划分。 树的左右两边至少有1个叶子结点。 如果有四个数，有0 123, 01 23, 012 3,同时3个数又有之前的情况。 因此我可以这样找状态，i代表起始点,j代表结束位置。如果我想知道4个数的答案，我就把上面划分的情况算出来，每一个情况还要加上左边和右边的最大值的乘积，作为根节点。 于是乎我就是要穷举所有状态。",
+    "inLanguage" : "zh-CN",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-10-23 19:00:35 \x2b0800 CST",
+    "dateModified" : "2019-10-23 19:00:35 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E5%8F%B6%E5%80%BC%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BB%A3%E4%BB%B7%E7%94%9F%E6%88%90%E6%A0%91\/",
+    "wordCount" : "331",
+    "keywords" : [ "算法求解思想","动态规划","单调栈", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">叶值的最小代价生成树</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-10-23 itemprop="datePublished">October 23, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-叶值的最小代价生成树">题目：叶值的最小代价生成树</h1>
+
+<ul>
+<li>给你一个正整数数组<code>arr</code>，考虑所有满足以下条件的二叉树：
+
+<ul>
+<li>每个节点都有 0 个或是 2 个子节点。</li>
+<li>数组<code>arr</code>中的值与树的中序遍历中每个叶节点的值一一对应。（知识回顾：如果一个节点有 0 个子节点，那么该节点为叶节点。）</li>
+<li>每个非叶节点的值等于其左子树和右子树中叶节点的最大值的乘积。</li>
+<li>在所有这样的二叉树中，返回每个非叶节点的值的最小可能总和。这个和的值是一个32 位整数。</li>
+</ul></li>
+</ul>
+
+<h5 id="示例">示例：</h5>
+
+<pre><code>输入：arr = [6,2,4]
+输出：32
+解释：
+有两种可能的树，第一种的非叶节点的总和为 36，第二种非叶节点的总和为 32。
+    24            24
+   /  \          /  \
+  12   4        6    8
+ /  \               / \
+6    2             2   4
+</code></pre>
+
+<h5 id="提示">提示：</h5>
+
+<ul>
+<li>2 &lt;= arr.length &lt;= 40</li>
+<li>1 &lt;= arr[i] &lt;= 15</li>
+<li>答案保证是一个 32 位带符号整数，即小于<code>2^31</code>。</li>
+</ul>
+
+<h4 id="来源-力扣-leetcode-第1130题">来源：力扣（LeetCode）第1130题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/minimum-cost-tree-from-leaf-values" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/minimum-cost-tree-from-leaf-values</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<ul>
+<li>这道题有两种解法，一种是动态规划，另一种是使用单调栈。</li>
+</ul>
+
+<h2 id="代码">代码：</h2>
+
+<h3 id="动态规划">动态规划：</h3>
+
+<ul>
+<li>我们发现数组中的数可以划分为两部分，一半是左子树，一半是右子树，根节点就是左边最大和右边最大的乘积。</li>
+<li>而左右子树里面的值就是当数组中的数为左子树的叶子节点时的情况，右边一样。</li>
+<li>直到数组中的数只有2个时，答案就是左边右边相乘。</li>
+<li>因此我们可以这么看，如果2个数后面又加了一个数，那么我们可以以<code>01</code>为一个节点再和<code>2</code>划分,也可以<code>0</code>一个节点和<code>12</code>划分。</li>
+<li>树的左右两边至少有1个叶子结点。</li>
+<li>如果有四个数，有<code>0</code> <code>123</code>, <code>01</code> <code>23</code>, <code>012</code> <code>3</code>,同时3个数又有之前的情况。</li>
+<li>因此我可以这样找状态，i代表起始点,j代表结束位置。如果我想知道4个数的答案，我就把上面划分的情况算出来，每一个情况还要加上左边和右边的最大值的乘积，作为根节点。</li>
+
+<li><p>于是乎我就是要穷举所有状态。</p>
+
+<pre><code class="language-java">class Solution {
+public int mctFromLeafValues(int[] arr) {
+    int len = arr.length;
+    int[][] dp = new int[len][len];
+    int[][] maxVal = new int[len][len];
+    for (int i = 0; i &lt; len; i++) {
+        for (int j = 0; j &lt; len; j++) {
+            int max = 0;
+            for (int k = i; k &lt;= j; k++) if (max &lt; arr[k]) max = arr[k];
+            maxVal[i][j] = max;
+        }
+    }
+    for (int i = 0; i &lt; len; i++) for (int j = 0; j &lt; len; j++) dp[i][j] = Integer.MAX_VALUE;
+    for (int i = 0; i &lt; len; i++) dp[i][i] = 0;
+    for (int i = 1; i &lt; len; i++) { // 长度
+        for (int j = 0; j &lt; len - i; j++) { // 起始点
+            for (int k = j; k &lt; j + i; k++) { // 中间点
+                dp[j][j+i] = Math.min(dp[j][j+i], dp[j][k] + dp[k+1][j+i] + maxVal[j][k] * maxVal[k+1][j+i]);
+            }
+        }
+    }
+    return dp[0][len-1];
+}
+}
+</code></pre></li>
+</ul>
+
+<h3 id="单调栈">单调栈：</h3>
+
+<ul>
+<li>单调栈的方法有点讨巧。</li>
+<li>以上是我的个人理解</li>
+<li>我们维护一个单调递减栈，单调递减栈有一个特性。</li>
+<li>如果我们遇到一个比栈顶元素大元素，于是乎就有了两种情况。</li>
+<li>我们就看前面3个。</li>
+<li>第一种情况：大 小 中，这样只会将小出栈。</li>
+<li>我们来算一下：
+
+<ul>
+<li>大小放一块：<code>大 * 小 + 大 * 中</code></li>
+<li>小中放一块：<code>小 * 中 + 大 * 中</code></li>
+<li>所以把小和中放在一起得到的值更小。</li>
+</ul></li>
+<li>第二种情况： 中 小 大， 小 中 都会出栈
+
+<ul>
+<li>中小放在一块：<code>中 * 小 + 中 * 大</code></li>
+<li>小大放在一块：<code>小 * 大 + 中 * 大</code></li>
+<li>因此把中小放在一起得到的值更小。</li>
+</ul></li>
+<li>由此得出结论如果遇到出栈情况，我们将小的那个(也就是栈顶元素)和它左边或右边较小的那个放在一起得到的答案是最优。</li>
+<li>同时，小的那个元素就不再需要了，我们只看大的那个元素可能还会和别的值相乘。</li>
+
+<li><p>最后将值放入栈后，栈内元素单调递减，于是就有了<code>大 中 小</code>,这个可以自己去证。会发现还是把<code>中小</code>放在一起最优。</p>
+
+<pre><code class="language-java">class Solution {
+public int mctFromLeafValues(int[] arr) {
+    Stack&lt;Integer&gt; stack = new Stack();
+    stack.push(Integer.MAX_VALUE);
+    int ans = 0;
+    for (int n : arr) {
+        while (stack.peek() &lt; n) ans += stack.pop() * Math.min(stack.peek(), n);
+        stack.push(n);
+    }
+    while (stack.size() &gt; 2) ans += stack.pop() * stack.peek();
+    return ans;
+}
+}
+</code></pre></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E5%8F%B6%E5%80%BC%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BB%A3%E4%BB%B7%E7%94%9F%E6%88%90%E6%A0%91/>https://ripple-zjw.github.io/2019/%E5%8F%B6%E5%80%BC%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BB%A3%E4%BB%B7%E7%94%9F%E6%88%90%E6%A0%91/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                    #动态规划</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8D%95%E8%B0%83%E6%A0%88/">
+                    #单调栈</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E7%BB%9F%E8%AE%A1%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D%E5%BA%8F%E5%88%97%E7%9A%84%E6%95%B0%E7%9B%AE/" class="prev" rel="prev" title="统计元音字母序列的数目"><i class="iconfont icon-left"></i>&nbsp;统计元音字母序列的数目</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8Fii/" class="next" rel="next" title="石子游戏II">石子游戏II&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

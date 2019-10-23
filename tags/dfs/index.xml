@@ -1,15 +1,43 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>DFS on LeaveIt</title>
+    <title>dfs on LeaveIt</title>
     <link>https://ripple-zjw.github.io/tags/dfs/</link>
-    <description>Recent content in DFS on LeaveIt</description>
+    <description>Recent content in dfs on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 01 Oct 2019 21:49:17 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 23 Oct 2019 20:17:40 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/tags/dfs/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>“马”在棋盘上的概率</title>
+      <link>https://ripple-zjw.github.io/2019/%E9%A9%AC%E5%9C%A8%E6%A3%8B%E7%9B%98%E4%B8%8A%E7%9A%84%E6%A6%82%E7%8E%87/</link>
+      <pubDate>Wed, 23 Oct 2019 20:17:40 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E9%A9%AC%E5%9C%A8%E6%A3%8B%E7%9B%98%E4%B8%8A%E7%9A%84%E6%A6%82%E7%8E%87/</guid>
+      <description>题目：“马”在棋盘上的概率  已知一个NxN的国际象棋棋盘，棋盘的行号和列号都是从 0 开始。即最左上角的格子记为(0, 0)，最右下角的记为(N-1, N-1)。 现有一个 “马”（也译作 “骑士”）位于(r, c)，并打算进行K 次移动。 如下图所示，国际象棋的 “马” 每一步先沿水平或垂直方向移动 2 个格子，然后向与之相垂直的方向再移动 1 个格子，共有 8 个可选的位置。  现在 “马” 每一步都从可选的位置（包括棋盘外部的）中独立随机地选择一个进行移动，直到移动了K次或跳到了棋盘外面。 求移动结束后，“马” 仍留在棋盘上的概率。  示例： 输入: 3, 2, 0, 0 输出: 0.0625 解释: 输入的数据依次为 N, K, r, c 第 1 步时，有且只有 2 种走法令 “马” 可以留在棋盘上（跳到（1,2）或（2,1））。对于以上的两种情况，各自在第2步均有且只有2种走法令 “马” 仍然留在棋盘上。 所以 “马” 在结束后仍在棋盘上的概率为 0.0625。  注意：  N 的取值范围为 [1, 25] K 的取值范围为 [0, 100] 开始时，“马” 总是位于棋盘上  来源：力扣（LeetCode）第688题  链接：https://leetcode-cn.</description>
+    </item>
+    
+    <item>
+      <title>石子游戏II</title>
+      <link>https://ripple-zjw.github.io/2019/%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8Fii/</link>
+      <pubDate>Wed, 23 Oct 2019 19:06:38 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8Fii/</guid>
+      <description>题目：石子游戏 II  亚历克斯和李继续他们的石子游戏。许多堆石子排成一行，每堆都有正整数颗石子piles[i]。游戏以谁手中的石子最多来决出胜负。 亚历克斯和李轮流进行，亚历克斯先开始。最初，M = 1。 在每个玩家的回合中，该玩家可以拿走剩下的前X堆的所有石子，其中1 &amp;lt;= X &amp;lt;= 2M。然后，令M = max(M, X)。 游戏一直持续到所有石子都被拿走。 假设亚历克斯和李都发挥出最佳水平，返回亚历克斯可以得到的最大数量的石头。  示例： 输入：piles = [2,7,9,4,4] 输出：10 解释： 如果亚历克斯在开始时拿走一堆石子，李拿走两堆，接着亚历克斯也拿走两堆。在这种情况下，亚历克斯可以拿到 2 + 4 + 4 = 10 颗石子。 如果亚历克斯在开始时拿走两堆石子，那么李就可以拿走剩下全部三堆石子。在这种情况下，亚历克斯可以拿到 2 + 7 = 9 颗石子。 所以我们返回更大的 10。  提示：  1 &amp;lt;= piles.length &amp;lt;= 100 1 &amp;lt;= piles[i] &amp;lt;= 10 ^ 4  来源：力扣（LeetCode）第1140题  链接：https://leetcode-cn.com/problems/stone-game-ii
+ 分析：  这道题可以采用递归加记忆化搜索的方式进行。 我们需要穷举出所有的状态。 由于重复计算的地方太多，所以使用记忆化搜索，也可以说使用了动态规划。  代码： class Solution { int len; int[] sum;int[][] dp; public int stoneGameII(int[] piles) { dp = new int[150][150]; // dp数组用来存放算过的值。 len = piles.</description>
+    </item>
+    
+    <item>
+      <title>黄金矿工</title>
+      <link>https://ripple-zjw.github.io/2019/%E9%BB%84%E9%87%91%E7%9F%BF%E5%B7%A5/</link>
+      <pubDate>Wed, 23 Oct 2019 18:55:10 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E9%BB%84%E9%87%91%E7%9F%BF%E5%B7%A5/</guid>
+      <description>题目：黄金矿工  你要开发一座金矿，地质勘测学家已经探明了这座金矿中的资源分布，并用大小为m*n的网格grid进行了标注。每个单元格中的整数就表示这一单元格中的黄金数量；如果该单元格是空的，那么就是 0。 为了使收益最大化，矿工需要按以下规则来开采黄金： 每当矿工进入一个单元，就会收集该单元格中的所有黄金。 矿工每次可以从当前位置向上下左右四个方向走。 每个单元格只能被开采（进入）一次。 不得开采（进入）黄金数目为 0 的单元格。 矿工可以从网格中任意一个有黄金的单元格出发或者是停止。  示例 1： 输入：grid = [[0,6,0],[5,8,7],[0,9,0]] 输出：24 解释： [[0,6,0], [5,8,7], [0,9,0]] 一种收集最多黄金的路线是：9 -&amp;gt; 8 -&amp;gt; 7。  示例 2： 输入：grid = [[1,0,7],[2,0,6],[3,4,5],[0,3,0],[9,0,20]] 输出：28 解释： [[1,0,7], [2,0,6], [3,4,5], [0,3,0], [9,0,20]] 一种收集最多黄金的路线是：1 -&amp;gt; 2 -&amp;gt; 3 -&amp;gt; 4 -&amp;gt; 5 -&amp;gt; 6 -&amp;gt; 7。  提示：  1 &amp;lt;= grid.length,grid[i].length &amp;lt;= 15 0 &amp;lt;= grid[i][j] &amp;lt;= 100 最多25个单元格中有黄金。  来源：力扣（LeetCode）第5215题(临时)  链接：https://leetcode-cn.</description>
+    </item>
     
     <item>
       <title>大礼包</title>

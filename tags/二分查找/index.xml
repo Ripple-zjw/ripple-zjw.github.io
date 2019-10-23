@@ -6,10 +6,30 @@
     <description>Recent content in 二分查找 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 10 Sep 2019 22:48:08 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 23 Oct 2019 20:15:25 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>最长上升子序列</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97/</link>
+      <pubDate>Wed, 23 Oct 2019 20:15:25 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97/</guid>
+      <description>题目：最长上升子序列  给定一个无序的整数数组，找到其中最长上升子序列的长度。  示例: 输入: [10,9,2,5,3,7,101,18] 输出: 4 解释: 最长的上升子序列是[2,3,7,101]，它的长度是 4。  说明:  可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。 你算法的时间复杂度应该为O(n^2)。 进阶: 你能将算法的时间复杂度降低到O(n logn)吗?  来源：力扣（LeetCode）第300题  链接：https://leetcode-cn.com/problems/longest-increasing-subsequence
+ 分析：  非常好的一道题目 可以使用动态规划来解决。 除了最常规的一种方法外还有另一种动态规划的方法，使用二分查找的思想。 具体可以看看搜索插入位置(LeetCode第35题) 动态规划：  设1个状态表示到这个数为止，最长上升子序列是多少。 然后遍历数组，当遍历到第i个状态时，查看在dp中到第i个数为止已经有多长了，那么你只要在右边找到比当前数大的值，然后在它的dp数组下加上1。 最后找到dp数组中最大的值，就是答案。  dp + 二分查找：  我们遍历数组，将每个数放进dp数组中。 由于dp数组是单调递增的，所以可以使用二分查找找到插入的位置。 有两种情况，如果找到了这个值，那么直接覆盖就行了，如果没找到这个值，那么将比它大的最小的值覆盖。其实就是插入位置。   代码：  dp
+class Solution { public int lengthOfLIS(int[] nums) { int len = nums.length; int[] dp = new int[len]; Arrays.fill(dp, 1); for (int i = 0; i &amp;lt; len; i++) { for (int j = i + 1; j &amp;lt; len; j++) { if (nums[i] &amp;lt; nums[j]) dp[j] = Math.</description>
+    </item>
+    
+    <item>
+      <title>分享巧克力</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%88%86%E4%BA%AB%E5%B7%A7%E5%85%8B%E5%8A%9B/</link>
+      <pubDate>Wed, 23 Oct 2019 19:48:36 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%88%86%E4%BA%AB%E5%B7%A7%E5%85%8B%E5%8A%9B/</guid>
+      <description>题目：分享巧克力  你有一大块巧克力，它由一些甜度不完全相同的小块组成。我们用数组sweetness来表示每一小块的甜度。 你打算和K名朋友一起分享这块巧克力，所以你需要将切割K次才能得到K+1块，每一块都由一些 连续的小块组成。 为了表现出你的慷慨，你将会吃掉总甜度最小 的一块，并将其余几块分给你的朋友们。 请找出一个最佳的切割策略，使得你所分得的巧克力总甜度最大，并返回这个 最大总甜度。  示例 1： 输入：sweetness = [1,2,3,4,5,6,7,8,9], K = 5 输出：6 解释：你可以把巧克力分成 [1,2,3], [4,5], [6], [7], [8], [9]。  示例 2： 输入：sweetness = [5,6,7,8,9,1,2,3,4], K = 8 输出：1 解释：只有一种办法可以把巧克力分成 9 块。  示例 3： 输入：sweetness = [1,2,2,1,2,2,1,2,2], K = 2 输出：5 解释：你可以把巧克力分成 [1,2,2], [1,2,2], [1,2,2]。  提示：  0 &amp;lt;= K &amp;lt;sweetness.length&amp;lt;= 10^4 1 &amp;lt;= sweetness[i] &amp;lt;= 10^5  来源：力扣（LeetCode）第5111题(临时)  链接：https://leetcode-cn.</description>
+    </item>
     
     <item>
       <title>搜索插入位置</title>

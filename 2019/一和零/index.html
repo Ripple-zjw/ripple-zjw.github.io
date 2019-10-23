@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E5%88%A0%E9%99%A4%E4%B8%8E%E8%8E%B7%E5%BE%97%E7%82%B9%E6%95%B0/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E6%8E%B7%E9%AA%B0%E5%AD%90%E6%A8%A1%E6%8B%9F/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E4%B8%80%E5%92%8C%E9%9B%B6/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           一和零 | LeaveIt
+       
+  </title>
+  <meta name="title" content="一和零 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "一和零",
+    "headline" : "一和零",
+    "description" : "题目： 一和零  在计算机界中，我们总是追求用有限的资源获取最大的收益。 现在，假设你分别支配着 m 个0和 n 个 1。另外，还有一个仅包含 0 和 1 字符串的数组。 你的任务是使用给定的m个0和n 个1，找到能拼出存在于数组中的字符串的最大数量。每个0和1至多被使用一次。  注意:  给定0和1的数量都不会超过100。 给定字符串数组的长度不会超过600。  示例 1: 输入: Array = {\x26quot;10\x26quot;, \x26quot;0001\x26quot;, \x26quot;111001\x26quot;, \x26quot;1\x26quot;, \x26quot;0\x26quot;},m = 5, n = 3 输出: 4 解释: 总共 4 个字符串可以通过 5 个 0 和 3 个 1 拼出，即 \x26quot;10\x26quot;,\x26quot;0001\x26quot;,\x26quot;1\x26quot;,\x26quot;0\x26quot; 。  示例 2: 输入: Array = {\x26quot;10\x26quot;, \x26quot;0\x26quot;, \x26quot;1\x26quot;}, m = 1, n = 1 输出: 2 解释: 你可以拼出 \x26quot;10\x26quot;，但之后就没有剩余数字了。更好的选择是拼出 \x26quot;0\x26quot; 和 \x26quot;1\x26quot; 。  来源：力扣（LeetCode）第474题  链接：https:\/\/leetcode-cn.",
+    "inLanguage" : "zh-CN",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-10-23 19:21:28 \x2b0800 CST",
+    "dateModified" : "2019-10-23 19:21:28 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E4%B8%80%E5%92%8C%E9%9B%B6\/",
+    "wordCount" : "166",
+    "keywords" : [ "算法求解思想","动态规划","背包问题", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">一和零</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-10-23 itemprop="datePublished">October 23, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-一和零">题目： 一和零</h1>
+
+<ul>
+<li>在计算机界中，我们总是追求用有限的资源获取最大的收益。</li>
+<li>现在，假设你分别支配着 m 个<code>0</code>和 n 个 1。另外，还有一个仅包含 0 和 1 字符串的数组。</li>
+<li>你的任务是使用给定的<code>m</code>个<code>0</code>和<code>n</code> 个<code>1</code>，找到能拼出存在于数组中的字符串的最大数量。每个<code>0</code>和<code>1</code>至多被使用一次。</li>
+</ul>
+
+<h5 id="注意">注意:</h5>
+
+<ul>
+<li>给定<code>0</code>和<code>1</code>的数量都不会超过100。</li>
+<li>给定字符串数组的长度不会超过600。</li>
+</ul>
+
+<h5 id="示例-1">示例 1:</h5>
+
+<pre><code>输入: Array = {&quot;10&quot;, &quot;0001&quot;, &quot;111001&quot;, &quot;1&quot;, &quot;0&quot;},m = 5, n = 3
+输出: 4
+解释: 总共 4 个字符串可以通过 5 个 0 和 3 个 1 拼出，即 &quot;10&quot;,&quot;0001&quot;,&quot;1&quot;,&quot;0&quot; 。
+</code></pre>
+
+<h5 id="示例-2">示例 2:</h5>
+
+<pre><code>输入: Array = {&quot;10&quot;, &quot;0&quot;, &quot;1&quot;}, m = 1, n = 1
+输出: 2
+解释: 你可以拼出 &quot;10&quot;，但之后就没有剩余数字了。更好的选择是拼出 &quot;0&quot; 和 &quot;1&quot; 。
+</code></pre>
+
+<h4 id="来源-力扣-leetcode-第474题">来源：力扣（LeetCode）第474题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/ones-and-zeroes" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/ones-and-zeroes</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<ul>
+<li>典型的背包问题，有两个状态，i是当0有i个时，j是当1有j个时。</li>
+<li>我们举出小于m和小于n的0和1的个数。每当一个str进来时有两种选择，一种是放进去，另一种不放。</li>
+<li>如果放进去，那么放完后还要加上<code>i-count(0)</code>和<code>j-count(1)</code>时候的个数，如果不放就不用动它。比较两者谁大，把大的存在当前状态。</li>
+<li>我们每次把所有状态都更新一遍。</li>
+</ul>
+
+<h2 id="代码">代码：</h2>
+
+<pre><code class="language-java">class Solution {
+    public int findMaxForm(String[] strs, int m, int n) {
+        int[][] dp = new int[m+1][n+1];
+        for (String str : strs) {
+            int zero = 0, one = 0;
+            // 找到0 和 1的个数
+            for (int i = 0; i &lt; str.length(); i++) {
+                if (str.charAt(i) == '1') one++;
+                else zero++;
+            }
+            // 如果str的0和1的个数是x，y，那么我们将能够装下x个0，和y个1的状态依次进行比较。
+            // 如果装下x个0， y个1后，然后查看剩下的i-x个0和j-y个1能装下几个，这个状态在上一次已经算过了。
+            for (int i = m; i &gt;= zero; i--) 
+                for (int j = n; j &gt;= one; j--) 
+                    dp[i][j] = Math.max(dp[i][j], dp[i-zero][j-one] + 1);
+        }
+        return dp[m][n];
+    }
+}
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E4%B8%80%E5%92%8C%E9%9B%B6/>https://ripple-zjw.github.io/2019/%E4%B8%80%E5%92%8C%E9%9B%B6/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                    #动态规划</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/">
+                    #背包问题</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E5%88%A0%E9%99%A4%E4%B8%8E%E8%8E%B7%E5%BE%97%E7%82%B9%E6%95%B0/" class="prev" rel="prev" title="删除与获得点数"><i class="iconfont icon-left"></i>&nbsp;删除与获得点数</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E6%8E%B7%E9%AA%B0%E5%AD%90%E6%A8%A1%E6%8B%9F/" class="next" rel="next" title="掷骰子模拟">掷骰子模拟&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

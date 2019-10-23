@@ -6,10 +6,29 @@
     <description>Recent content in 背包问题 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 01 Oct 2019 21:49:17 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 23 Oct 2019 19:58:28 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/tags/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>分割等和子集</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%88%86%E5%89%B2%E7%AD%89%E5%92%8C%E5%AD%90%E9%9B%86/</link>
+      <pubDate>Wed, 23 Oct 2019 19:58:28 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%88%86%E5%89%B2%E7%AD%89%E5%92%8C%E5%AD%90%E9%9B%86/</guid>
+      <description> 题目：分割等和子集  给定一个只包含正整数的非空数组。是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。  注意:  每个数组中的元素不会超过 100 数组的大小不会超过 200  示例 1: 输入: [1, 5, 11, 5] 输出: true 解释: 数组可以分割成 [1, 5, 5] 和 [11].  示例2: 输入: [1, 2, 3, 5] 输出: false 解释: 数组不能分割成两个元素和相等的子集.  来源：力扣（LeetCode）第416题  链接：https://leetcode-cn.com/problems/partition-equal-subset-sum
+ 分析：  动态规划题 0-1背包问题  代码： class Solution { public boolean canPartition(int[] nums) { int sum = 0; int len = nums.length; for (int num : nums) sum += num; if ((sum &amp;amp; 1) == 1) return false; // 如果是奇数，不可能分割 sum &amp;gt;&amp;gt;= 1; // 要找的答案是总和的一半。 boolean[][] dp = new boolean[len][sum+1]; // i表示nums中从0到i为止，j表示是否能找到和为j的数。 if (nums[0] &amp;lt;= sum) dp[0][nums[0]] = true; // 第一个数放在j上，其他都是false for (int i = 1; i &amp;lt; len; i++) { for (int j = 0; j &amp;lt;= sum; j++) { if (nums[i] &amp;lt;= j) // 两种选择，一种之前就找到了和为j的数，那么现在还是true。 // 如果之前没有找到和为j的数，那么我加上这次的数，要找前一次j-nums[i]的和能不能找到。 dp[i][j] = dp[i-1][j] || dp[i-1][j-nums[i]]; else // 如果当前nums[i] 大于j的话，之前看它前一次是什么状态现在还是什么状态。 dp[i][j] = dp[i-1][j]; } } return dp[len-1][sum]; } }  </description>
+    </item>
+    
+    <item>
+      <title>一和零</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%B8%80%E5%92%8C%E9%9B%B6/</link>
+      <pubDate>Wed, 23 Oct 2019 19:21:28 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%B8%80%E5%92%8C%E9%9B%B6/</guid>
+      <description>题目： 一和零  在计算机界中，我们总是追求用有限的资源获取最大的收益。 现在，假设你分别支配着 m 个0和 n 个 1。另外，还有一个仅包含 0 和 1 字符串的数组。 你的任务是使用给定的m个0和n 个1，找到能拼出存在于数组中的字符串的最大数量。每个0和1至多被使用一次。  注意:  给定0和1的数量都不会超过100。 给定字符串数组的长度不会超过600。  示例 1: 输入: Array = {&amp;quot;10&amp;quot;, &amp;quot;0001&amp;quot;, &amp;quot;111001&amp;quot;, &amp;quot;1&amp;quot;, &amp;quot;0&amp;quot;},m = 5, n = 3 输出: 4 解释: 总共 4 个字符串可以通过 5 个 0 和 3 个 1 拼出，即 &amp;quot;10&amp;quot;,&amp;quot;0001&amp;quot;,&amp;quot;1&amp;quot;,&amp;quot;0&amp;quot; 。  示例 2: 输入: Array = {&amp;quot;10&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;1&amp;quot;}, m = 1, n = 1 输出: 2 解释: 你可以拼出 &amp;quot;10&amp;quot;，但之后就没有剩余数字了。更好的选择是拼出 &amp;quot;0&amp;quot; 和 &amp;quot;1&amp;quot; 。  来源：力扣（LeetCode）第474题  链接：https://leetcode-cn.</description>
+    </item>
     
     <item>
       <title>大礼包</title>

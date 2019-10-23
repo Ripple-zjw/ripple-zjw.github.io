@@ -6,10 +6,184 @@
     <description>Recent content in Posts on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 01 Oct 2019 21:49:17 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 23 Oct 2019 20:17:40 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>“马”在棋盘上的概率</title>
+      <link>https://ripple-zjw.github.io/2019/%E9%A9%AC%E5%9C%A8%E6%A3%8B%E7%9B%98%E4%B8%8A%E7%9A%84%E6%A6%82%E7%8E%87/</link>
+      <pubDate>Wed, 23 Oct 2019 20:17:40 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E9%A9%AC%E5%9C%A8%E6%A3%8B%E7%9B%98%E4%B8%8A%E7%9A%84%E6%A6%82%E7%8E%87/</guid>
+      <description>题目：“马”在棋盘上的概率  已知一个NxN的国际象棋棋盘，棋盘的行号和列号都是从 0 开始。即最左上角的格子记为(0, 0)，最右下角的记为(N-1, N-1)。 现有一个 “马”（也译作 “骑士”）位于(r, c)，并打算进行K 次移动。 如下图所示，国际象棋的 “马” 每一步先沿水平或垂直方向移动 2 个格子，然后向与之相垂直的方向再移动 1 个格子，共有 8 个可选的位置。  现在 “马” 每一步都从可选的位置（包括棋盘外部的）中独立随机地选择一个进行移动，直到移动了K次或跳到了棋盘外面。 求移动结束后，“马” 仍留在棋盘上的概率。  示例： 输入: 3, 2, 0, 0 输出: 0.0625 解释: 输入的数据依次为 N, K, r, c 第 1 步时，有且只有 2 种走法令 “马” 可以留在棋盘上（跳到（1,2）或（2,1））。对于以上的两种情况，各自在第2步均有且只有2种走法令 “马” 仍然留在棋盘上。 所以 “马” 在结束后仍在棋盘上的概率为 0.0625。  注意：  N 的取值范围为 [1, 25] K 的取值范围为 [0, 100] 开始时，“马” 总是位于棋盘上  来源：力扣（LeetCode）第688题  链接：https://leetcode-cn.</description>
+    </item>
+    
+    <item>
+      <title>最长上升子序列</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97/</link>
+      <pubDate>Wed, 23 Oct 2019 20:15:25 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97/</guid>
+      <description>题目：最长上升子序列  给定一个无序的整数数组，找到其中最长上升子序列的长度。  示例: 输入: [10,9,2,5,3,7,101,18] 输出: 4 解释: 最长的上升子序列是[2,3,7,101]，它的长度是 4。  说明:  可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。 你算法的时间复杂度应该为O(n^2)。 进阶: 你能将算法的时间复杂度降低到O(n logn)吗?  来源：力扣（LeetCode）第300题  链接：https://leetcode-cn.com/problems/longest-increasing-subsequence
+ 分析：  非常好的一道题目 可以使用动态规划来解决。 除了最常规的一种方法外还有另一种动态规划的方法，使用二分查找的思想。 具体可以看看搜索插入位置(LeetCode第35题) 动态规划：  设1个状态表示到这个数为止，最长上升子序列是多少。 然后遍历数组，当遍历到第i个状态时，查看在dp中到第i个数为止已经有多长了，那么你只要在右边找到比当前数大的值，然后在它的dp数组下加上1。 最后找到dp数组中最大的值，就是答案。  dp + 二分查找：  我们遍历数组，将每个数放进dp数组中。 由于dp数组是单调递增的，所以可以使用二分查找找到插入的位置。 有两种情况，如果找到了这个值，那么直接覆盖就行了，如果没找到这个值，那么将比它大的最小的值覆盖。其实就是插入位置。   代码：  dp
+class Solution { public int lengthOfLIS(int[] nums) { int len = nums.length; int[] dp = new int[len]; Arrays.fill(dp, 1); for (int i = 0; i &amp;lt; len; i++) { for (int j = i + 1; j &amp;lt; len; j++) { if (nums[i] &amp;lt; nums[j]) dp[j] = Math.</description>
+    </item>
+    
+    <item>
+      <title>最长的斐波那契子序列的长度</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%9C%80%E9%95%BF%E7%9A%84%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E5%AD%90%E5%BA%8F%E5%88%97%E7%9A%84%E9%95%BF%E5%BA%A6/</link>
+      <pubDate>Wed, 23 Oct 2019 20:09:39 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%9C%80%E9%95%BF%E7%9A%84%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E5%AD%90%E5%BA%8F%E5%88%97%E7%9A%84%E9%95%BF%E5%BA%A6/</guid>
+      <description>题目：最长的斐波那契子序列的长度  如果序列X_1, X_2, ..., X_n满足下列条件，就说它是斐波那契式的： n &amp;gt;= 3 对于所有i + 2 &amp;lt;= n，都有X_i + X_{i+1} = X_{i+2} 给定一个严格递增的正整数数组形成序列，找到 A 中最长的斐波那契式的子序列的长度。如果一个不存在，返回0 。 （回想一下，子序列是从原序列A中派生出来的，它从A中删掉任意数量的元素（也可以不删），而不改变其余元素的顺序。例如，[3, 5, 8]是[3, 4, 5, 6, 7, 8]的一个子序列）  示例 1： 输入: [1,2,3,4,5,6,7,8] 输出: 5 解释: 最长的斐波那契式子序列为：[1,2,3,5,8] 。  示例2： 输入: [1,3,7,11,12,14,18] 输出: 3 解释: 最长的斐波那契式子序列有： [1,11,12]，[3,11,14] 以及 [7,11,18] 。  提示：  3 &amp;lt;= A.length &amp;lt;= 1000 1 &amp;lt;= A[0] &amp;lt; A[1] &amp;lt; &amp;hellip; &amp;lt; A[A.length - 1] &amp;lt;= 10^9 （对于以 Java，C，C++，以及C# 的提交，时间限制被减少了 50%）  来源：力扣（LeetCode）第873题  链接：https://leetcode-cn.</description>
+    </item>
+    
+    <item>
+      <title>最大平均值和的分组</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%9C%80%E5%A4%A7%E5%B9%B3%E5%9D%87%E5%80%BC%E5%92%8C%E7%9A%84%E5%88%86%E7%BB%84/</link>
+      <pubDate>Wed, 23 Oct 2019 20:03:28 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%9C%80%E5%A4%A7%E5%B9%B3%E5%9D%87%E5%80%BC%E5%92%8C%E7%9A%84%E5%88%86%E7%BB%84/</guid>
+      <description>题目： 最大平均值和的分组  我们将给定的数组A分成K个相邻的非空子数组 ，我们的分数由每个子数组内的平均值的总和构成。计算我们所能得到的最大分数是多少。 注意我们必须使用A数组中的每一个数进行分组，并且分数不一定需要是整数。  示例: 输入: A = [9,1,2,3,9] K = 3 输出: 20 解释: A 的最优分组是[9], [1, 2, 3], [9]. 得到的分数是 9 + (1 + 2 + 3) / 3 + 9 = 20. 我们也可以把 A 分成[9, 1], [2], [3, 9]. 这样的分组得到的分数为 5 + 2 + 6 = 13, 但不是最大值.  说明:  1 &amp;lt;= A.length &amp;lt;= 100. 1 &amp;lt;= A[i] &amp;lt;= 10000. 1 &amp;lt;= K &amp;lt;= A.</description>
+    </item>
+    
+    <item>
+      <title>分割等和子集</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%88%86%E5%89%B2%E7%AD%89%E5%92%8C%E5%AD%90%E9%9B%86/</link>
+      <pubDate>Wed, 23 Oct 2019 19:58:28 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%88%86%E5%89%B2%E7%AD%89%E5%92%8C%E5%AD%90%E9%9B%86/</guid>
+      <description> 题目：分割等和子集  给定一个只包含正整数的非空数组。是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。  注意:  每个数组中的元素不会超过 100 数组的大小不会超过 200  示例 1: 输入: [1, 5, 11, 5] 输出: true 解释: 数组可以分割成 [1, 5, 5] 和 [11].  示例2: 输入: [1, 2, 3, 5] 输出: false 解释: 数组不能分割成两个元素和相等的子集.  来源：力扣（LeetCode）第416题  链接：https://leetcode-cn.com/problems/partition-equal-subset-sum
+ 分析：  动态规划题 0-1背包问题  代码： class Solution { public boolean canPartition(int[] nums) { int sum = 0; int len = nums.length; for (int num : nums) sum += num; if ((sum &amp;amp; 1) == 1) return false; // 如果是奇数，不可能分割 sum &amp;gt;&amp;gt;= 1; // 要找的答案是总和的一半。 boolean[][] dp = new boolean[len][sum+1]; // i表示nums中从0到i为止，j表示是否能找到和为j的数。 if (nums[0] &amp;lt;= sum) dp[0][nums[0]] = true; // 第一个数放在j上，其他都是false for (int i = 1; i &amp;lt; len; i++) { for (int j = 0; j &amp;lt;= sum; j++) { if (nums[i] &amp;lt;= j) // 两种选择，一种之前就找到了和为j的数，那么现在还是true。 // 如果之前没有找到和为j的数，那么我加上这次的数，要找前一次j-nums[i]的和能不能找到。 dp[i][j] = dp[i-1][j] || dp[i-1][j-nums[i]]; else // 如果当前nums[i] 大于j的话，之前看它前一次是什么状态现在还是什么状态。 dp[i][j] = dp[i-1][j]; } } return dp[len-1][sum]; } }  </description>
+    </item>
+    
+    <item>
+      <title>分享巧克力</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%88%86%E4%BA%AB%E5%B7%A7%E5%85%8B%E5%8A%9B/</link>
+      <pubDate>Wed, 23 Oct 2019 19:48:36 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%88%86%E4%BA%AB%E5%B7%A7%E5%85%8B%E5%8A%9B/</guid>
+      <description>题目：分享巧克力  你有一大块巧克力，它由一些甜度不完全相同的小块组成。我们用数组sweetness来表示每一小块的甜度。 你打算和K名朋友一起分享这块巧克力，所以你需要将切割K次才能得到K+1块，每一块都由一些 连续的小块组成。 为了表现出你的慷慨，你将会吃掉总甜度最小 的一块，并将其余几块分给你的朋友们。 请找出一个最佳的切割策略，使得你所分得的巧克力总甜度最大，并返回这个 最大总甜度。  示例 1： 输入：sweetness = [1,2,3,4,5,6,7,8,9], K = 5 输出：6 解释：你可以把巧克力分成 [1,2,3], [4,5], [6], [7], [8], [9]。  示例 2： 输入：sweetness = [5,6,7,8,9,1,2,3,4], K = 8 输出：1 解释：只有一种办法可以把巧克力分成 9 块。  示例 3： 输入：sweetness = [1,2,2,1,2,2,1,2,2], K = 2 输出：5 解释：你可以把巧克力分成 [1,2,2], [1,2,2], [1,2,2]。  提示：  0 &amp;lt;= K &amp;lt;sweetness.length&amp;lt;= 10^4 1 &amp;lt;= sweetness[i] &amp;lt;= 10^5  来源：力扣（LeetCode）第5111题(临时)  链接：https://leetcode-cn.</description>
+    </item>
+    
+    <item>
+      <title>删除子文件夹</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%88%A0%E9%99%A4%E5%AD%90%E6%96%87%E4%BB%B6%E5%A4%B9/</link>
+      <pubDate>Wed, 23 Oct 2019 19:45:43 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%88%A0%E9%99%A4%E5%AD%90%E6%96%87%E4%BB%B6%E5%A4%B9/</guid>
+      <description>题目： 删除子文件夹  你是一位系统管理员，手里有一份文件夹列表 folder，你的任务是要删除该列表中的所有 子文件夹，并以 任意顺序 返回剩下的文件夹。 我们这样定义「子文件夹」： 如果文件夹folder[i]位于另一个文件夹folder[j]下，那么folder[i]就是folder[j]的子文件夹。 文件夹的「路径」是由一个或多个按以下格式串联形成的字符串： /后跟一个或者多个小写英文字母。 例如，/leetcode和/leetcode/problems都是有效的路径，而空字符串和/不是。  示例 1： 输入：folder = [&amp;quot;/a&amp;quot;,&amp;quot;/a/b&amp;quot;,&amp;quot;/c/d&amp;quot;,&amp;quot;/c/d/e&amp;quot;,&amp;quot;/c/f&amp;quot;] 输出：[&amp;quot;/a&amp;quot;,&amp;quot;/c/d&amp;quot;,&amp;quot;/c/f&amp;quot;] 解释：&amp;quot;/a/b/&amp;quot; 是 &amp;quot;/a&amp;quot; 的子文件夹，而 &amp;quot;/c/d/e&amp;quot; 是 &amp;quot;/c/d&amp;quot; 的子文件夹。  示例 2： 输入：folder = [&amp;quot;/a&amp;quot;,&amp;quot;/a/b/c&amp;quot;,&amp;quot;/a/b/d&amp;quot;] 输出：[&amp;quot;/a&amp;quot;] 解释：文件夹 &amp;quot;/a/b/c&amp;quot; 和 &amp;quot;/a/b/d/&amp;quot; 都会被删除，因为它们都是 &amp;quot;/a&amp;quot; 的子文件夹。  示例 3： 输入：folder = [&amp;quot;/a/b/c&amp;quot;,&amp;quot;/a/b/d&amp;quot;,&amp;quot;/a/b/ca&amp;quot;] 输出：[&amp;quot;/a/b/c&amp;quot;,&amp;quot;/a/b/ca&amp;quot;,&amp;quot;/a/b/d&amp;quot;]  提示：  1 &amp;lt;= folder.length&amp;lt;= 4 * 10^4 2 &amp;lt;= folder[i].length &amp;lt;= 100 folder[i]只包含小写字母和 / folder[i]总是以字符/起始 每个文件夹名都是唯一的  来源：力扣（LeetCode）第5231题(临时)  链接：https://leetcode-cn.</description>
+    </item>
+    
+    <item>
+      <title>抛掷硬币</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%8A%9B%E6%8E%B7%E7%A1%AC%E5%B8%81/</link>
+      <pubDate>Wed, 23 Oct 2019 19:43:25 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%8A%9B%E6%8E%B7%E7%A1%AC%E5%B8%81/</guid>
+      <description> 题目：抛掷硬币  有一些不规则的硬币。在这些硬币中，prob[i]表示第i枚硬币正面朝上的概率。  请对每一枚硬币抛掷一次，然后返回正面朝上的硬币数等于target的概率。
+示例 1： 输入：prob = [0.4], target = 1 输出：0.40000  示例 2： 输入：prob = [0.5,0.5,0.5,0.5,0.5], target = 0 输出：0.03125  提示：  1 &amp;lt;= prob.length &amp;lt;= 1000 0 &amp;lt;= prob[i] &amp;lt;= 1 0 &amp;lt;= target&amp;lt;= prob.length 如果答案与标准答案的误差在10^-5内，则被视为正确答案。  来源：力扣（LeetCode）第5090题(临时)  链接：https://leetcode-cn.com/problems/toss-strange-coins
+ 分析：  概率dp 找到两个状态，一个是当前扔了第几个硬币，另一个是有几个正面朝上。  代码： class Solution { public double probabilityOfHeads(double[] prob, int target) { int n = prob.length; // 滚动数组，由于这个dp只要用到前一个状态，所以没必要把所有的硬币情况都写出来。 // dp数组表示当前有i个硬币，j个硬币正面朝上。 double[][] dp = new double[2][target+2]; dp[0][0] = 1; // 当前没有硬币，0个硬币朝上的概率为100% for (int ii = 1; ii &amp;lt;= n; ii++) { int i = ii &amp;amp; 1; // 如果最后一位是1，那么i=1，如果最后一位是0，那么i=0 int pi = i ^ 1; // 如果i=1，那么异或1得0，如果i=0，那么异或1得1 for (int j = 0; j &amp;lt;= target; j++) dp[i][j] = 0; // 由于滚动数组，所以要把之前的清空。 for (int j = 0; j &amp;lt;= target; j++) { dp[i][j] += dp[pi][j] * (1 - prob[ii-1]); // 当前有i个硬币，如果第i个硬币扔的是反面，那么i-1个硬币必须要有j个是正面。 dp[i][j+1] += dp[pi][j] * prob[ii-1]; // 如果扔的是正面，那么i-1个硬币必须要有j-1个时正面。 } } // n是奇数那么索引就是1，如果n是偶数的话，那么它答案的索引就是0 return dp[n&amp;amp;1][target]; } }  </description>
+    </item>
+    
+    <item>
+      <title>安排会议日程</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%AE%89%E6%8E%92%E4%BC%9A%E8%AE%AE%E6%97%A5%E7%A8%8B/</link>
+      <pubDate>Wed, 23 Oct 2019 19:41:34 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%AE%89%E6%8E%92%E4%BC%9A%E8%AE%AE%E6%97%A5%E7%A8%8B/</guid>
+      <description>题目：安排会议日程  你是一名行政助理，手里有两位客户的空闲时间表：slots1 和 slots2，以及会议的预计持续时间duration，请你为他们安排合适的会议时间。 「会议时间」是两位客户都有空参加，并且持续时间能够满足预计时间duration的 最早的时间间隔。 如果没有满足要求的会议时间，就请返回一个 空数组。 「空闲时间」的格式是[start, end]，由开始时间start和结束时间end组成，表示从start开始，到end结束。 题目保证数据有效：同一个人的空闲时间不会出现交叠的情况，也就是说，对于同一个人的两个空闲时间[start1, end1]和[start2, end2]，要么start1 &amp;gt; end2，要么start2 &amp;gt; end1。  示例 1： 输入：slots1 = [[10,50],[60,120],[140,210]], slots2 = [[0,15],[60,70]], duration = 8 输出：[60,68]  示例 2： 输入：slots1 = [[10,50],[60,120],[140,210]], slots2 = [[0,15],[60,70]], duration = 12 输出：[]  提示：  1 &amp;lt;= slots1.length, slots2.length &amp;lt;= 10^4 slots1[i].length, slots2[i].length == 2 slots1[i][0] &amp;lt; slots1[i][1] slots2[i][0] &amp;lt; slots2[i][1] 0 &amp;lt;= slots1[i][j], slots2[i][j] &amp;lt;= 10^9 1 &amp;lt;= duration &amp;lt;= 10^6  来源：力扣（LeetCode）第5089题(临时)  链接：https://leetcode-cn.</description>
+    </item>
+    
+    <item>
+      <title>等差数列中缺失的数字</title>
+      <link>https://ripple-zjw.github.io/2019/%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%E4%B8%AD%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/</link>
+      <pubDate>Wed, 23 Oct 2019 19:40:20 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%E4%B8%AD%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/</guid>
+      <description>题目：等差数列中缺失的数字  有一个数组，其中的值符合等差数列的数值规律，也就是说： 在0 &amp;lt;= i &amp;lt; arr.length - 1的前提下，arr[i+1] - arr[i]的值都相等。 我们会从该数组中删除一个既不是第一个也不是最后一个的值，得到一个新的数组arr。 给你这个缺值的数组arr，请你帮忙找出被删除的那个数。  示例 1： 输入：arr = [5,7,11,13] 输出：9 解释：原来的数组是 [5,7,9,11,13]。  示例 2： 输入：arr = [15,13,12] 输出：14 解释：原来的数组是 [15,14,13,12]。  提示：  3 &amp;lt;= arr.length &amp;lt;= 1000 0 &amp;lt;= arr[i] &amp;lt;= 10^5  来源：力扣（LeetCode）第5088题(临时)  链接：https://leetcode-cn.com/problems/missing-number-in-arithmetic-progression
+ 分析：  我们算出数组中的总值，然后用等差数列求和公式求出原来的总值，相减一下就得到了答案。  代码： class Solution { public int missingNumber(int[] arr) { int sum = 0; for (int a : arr) sum += a; return (arr.</description>
+    </item>
+    
+    <item>
+      <title>填充书架</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%A1%AB%E5%85%85%E4%B9%A6%E6%9E%B6/</link>
+      <pubDate>Wed, 23 Oct 2019 19:34:22 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%A1%AB%E5%85%85%E4%B9%A6%E6%9E%B6/</guid>
+      <description>题目：填充书架  附近的家居城促销，你买回了一直心仪的可调节书架，打算把自己的书都整理到新的书架上。 你把要摆放的书books都整理好，叠成一摞：从上往下，第i本书的厚度为books[i][0]，高度为books[i][1]。 按顺序将这些书摆放到总宽度为shelf_width的书架上。 先选几本书放在书架上（它们的厚度之和小于等于书架的宽度 shelf_width），然后再建一层书架。重复这个过程，直到把所有的书都放在书架上。 需要注意的是，在上述过程的每个步骤中，摆放书的顺序与你整理好的顺序相同。 例如，如果这里有 5 本书，那么可能的一种摆放情况是：第一和第二本书放在第一层书架上，第三本书放在第二层书架上，第四和第五本书放在最后一层书架上。 每一层所摆放的书的最大高度就是这一层书架的层高，书架整体的高度为各层高之和。 以这种方式布置书架，返回书架整体可能的最小高度。  示例： 输入：books = [[1,1],[2,3],[2,3],[1,1],[1,1],[1,1],[1,2]], shelf_width = 4 输出：6 解释： 3 层书架的高度和为 1 + 3 + 2 = 6 。 第 2 本书不必放在第一层书架上。  提示：
+ 1 &amp;lt;= books.length &amp;lt;= 1000 1 &amp;lt;= books[i][0] &amp;lt;= shelf_width &amp;lt;= 1000 1 &amp;lt;= books[i][1] &amp;lt;= 1000  来源：力扣（LeetCode）第1105题  链接：https://leetcode-cn.com/problems/filling-bookcase-shelves
+ 分析：  动态规划题 这道题的状态很简单，却很难想到。 我们设i为到第i本书为止的最优情况。 如果i之前都已是最优情况，那么第i种情况怎么算呢？ 首先直接换行，那么就是i-1时的最优情况加上这本书的高度。 第二种，我们把第i-1本书和第i本书放在一起，那么就是第i本书和第i-1本最高的那本加上i-2时的最优情况。 以此类推，直到把所有书都放在同一行，或者宽度不够了，下一本书放不进去了。  代码： class Solution { public int minHeightShelves(int[][] books, int shelf_width) { int m = books.</description>
+    </item>
+    
+    <item>
+      <title>掷骰子模拟</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%8E%B7%E9%AA%B0%E5%AD%90%E6%A8%A1%E6%8B%9F/</link>
+      <pubDate>Wed, 23 Oct 2019 19:26:07 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%8E%B7%E9%AA%B0%E5%AD%90%E6%A8%A1%E6%8B%9F/</guid>
+      <description>题目：掷骰子模拟  有一个骰子模拟器会每次投掷的时候生成一个 1 到 6 的随机数。 不过我们在使用它时有个约束，就是使得投掷骰子时，连续 掷出数字i的次数不能超过rollMax[i]（i从 1 开始编号）。  现在，给你一个整数数组rollMax和一个整数n，请你来计算掷n次骰子可得到的不同点数序列的数量。
+假如两个序列中至少存在一个元素不同，就认为这两个序列是不同的。由于答案可能很大，所以请返回 模10^9 + 7之后的结果。
+示例 1： 输入：n = 2, rollMax = [1,1,2,2,2,3] 输出：34 解释：我们掷 2 次骰子，如果没有约束的话，共有 6 * 6 = 36 种可能的组合。但是根据 rollMax 数组，数字 1 和 2 最多连续出现一次，所以不会出现序列 (1,1) 和 (2,2)。因此，最终答案是 36-2 = 34。  示例 2： 输入：n = 2, rollMax = [1,1,1,1,1,1] 输出：30 示例 3： 输入：n = 3, rollMax = [1,1,1,2,2,3] 输出：181  提示：  1 &amp;lt;= n &amp;lt;= 5000 rollMax.</description>
+    </item>
+    
+    <item>
+      <title>一和零</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%B8%80%E5%92%8C%E9%9B%B6/</link>
+      <pubDate>Wed, 23 Oct 2019 19:21:28 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%B8%80%E5%92%8C%E9%9B%B6/</guid>
+      <description>题目： 一和零  在计算机界中，我们总是追求用有限的资源获取最大的收益。 现在，假设你分别支配着 m 个0和 n 个 1。另外，还有一个仅包含 0 和 1 字符串的数组。 你的任务是使用给定的m个0和n 个1，找到能拼出存在于数组中的字符串的最大数量。每个0和1至多被使用一次。  注意:  给定0和1的数量都不会超过100。 给定字符串数组的长度不会超过600。  示例 1: 输入: Array = {&amp;quot;10&amp;quot;, &amp;quot;0001&amp;quot;, &amp;quot;111001&amp;quot;, &amp;quot;1&amp;quot;, &amp;quot;0&amp;quot;},m = 5, n = 3 输出: 4 解释: 总共 4 个字符串可以通过 5 个 0 和 3 个 1 拼出，即 &amp;quot;10&amp;quot;,&amp;quot;0001&amp;quot;,&amp;quot;1&amp;quot;,&amp;quot;0&amp;quot; 。  示例 2: 输入: Array = {&amp;quot;10&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;1&amp;quot;}, m = 1, n = 1 输出: 2 解释: 你可以拼出 &amp;quot;10&amp;quot;，但之后就没有剩余数字了。更好的选择是拼出 &amp;quot;0&amp;quot; 和 &amp;quot;1&amp;quot; 。  来源：力扣（LeetCode）第474题  链接：https://leetcode-cn.</description>
+    </item>
+    
+    <item>
+      <title>删除与获得点数</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%88%A0%E9%99%A4%E4%B8%8E%E8%8E%B7%E5%BE%97%E7%82%B9%E6%95%B0/</link>
+      <pubDate>Wed, 23 Oct 2019 19:13:59 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%88%A0%E9%99%A4%E4%B8%8E%E8%8E%B7%E5%BE%97%E7%82%B9%E6%95%B0/</guid>
+      <description>删除与获得点数  给定一个整数数组nums，你可以对它进行一些操作。 每次操作中，选择任意一个nums[i]，删除它并获得nums[i]的点数。之后，你必须删除每个等于nums[i] - 1或nums[i] + 1的元素。 开始你拥有0个点数。返回你能通过这些操作获得的最大点数。  示例 1: 输入: nums = [3, 4, 2] 输出: 6 解释: 删除 4 来获得 4 个点数，因此 3 也被删除。 之后，删除 2 来获得 2 个点数。总共获得 6 个点数。  示例 2: 输入: nums = [2, 2, 3, 3, 3, 4] 输出: 9 解释: 删除 3 来获得 3 个点数，接着要删除两个 2 和 4 。 之后，再次删除 3 获得 3 个点数，再次删除 3 获得 3 个点数。 总共获得 9 个点数。  注意:  nums的长度最大为20000。 每个整数nums[i]的大小都在[1, 10000]范围内。  来源：力扣（LeetCode）第740题  链接：https://leetcode-cn.</description>
+    </item>
+    
+    <item>
+      <title>石子游戏II</title>
+      <link>https://ripple-zjw.github.io/2019/%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8Fii/</link>
+      <pubDate>Wed, 23 Oct 2019 19:06:38 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8Fii/</guid>
+      <description>题目：石子游戏 II  亚历克斯和李继续他们的石子游戏。许多堆石子排成一行，每堆都有正整数颗石子piles[i]。游戏以谁手中的石子最多来决出胜负。 亚历克斯和李轮流进行，亚历克斯先开始。最初，M = 1。 在每个玩家的回合中，该玩家可以拿走剩下的前X堆的所有石子，其中1 &amp;lt;= X &amp;lt;= 2M。然后，令M = max(M, X)。 游戏一直持续到所有石子都被拿走。 假设亚历克斯和李都发挥出最佳水平，返回亚历克斯可以得到的最大数量的石头。  示例： 输入：piles = [2,7,9,4,4] 输出：10 解释： 如果亚历克斯在开始时拿走一堆石子，李拿走两堆，接着亚历克斯也拿走两堆。在这种情况下，亚历克斯可以拿到 2 + 4 + 4 = 10 颗石子。 如果亚历克斯在开始时拿走两堆石子，那么李就可以拿走剩下全部三堆石子。在这种情况下，亚历克斯可以拿到 2 + 7 = 9 颗石子。 所以我们返回更大的 10。  提示：  1 &amp;lt;= piles.length &amp;lt;= 100 1 &amp;lt;= piles[i] &amp;lt;= 10 ^ 4  来源：力扣（LeetCode）第1140题  链接：https://leetcode-cn.com/problems/stone-game-ii
+ 分析：  这道题可以采用递归加记忆化搜索的方式进行。 我们需要穷举出所有的状态。 由于重复计算的地方太多，所以使用记忆化搜索，也可以说使用了动态规划。  代码： class Solution { int len; int[] sum;int[][] dp; public int stoneGameII(int[] piles) { dp = new int[150][150]; // dp数组用来存放算过的值。 len = piles.</description>
+    </item>
+    
+    <item>
+      <title>叶值的最小代价生成树</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%8F%B6%E5%80%BC%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BB%A3%E4%BB%B7%E7%94%9F%E6%88%90%E6%A0%91/</link>
+      <pubDate>Wed, 23 Oct 2019 19:00:35 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%8F%B6%E5%80%BC%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BB%A3%E4%BB%B7%E7%94%9F%E6%88%90%E6%A0%91/</guid>
+      <description>题目：叶值的最小代价生成树  给你一个正整数数组arr，考虑所有满足以下条件的二叉树：  每个节点都有 0 个或是 2 个子节点。 数组arr中的值与树的中序遍历中每个叶节点的值一一对应。（知识回顾：如果一个节点有 0 个子节点，那么该节点为叶节点。） 每个非叶节点的值等于其左子树和右子树中叶节点的最大值的乘积。 在所有这样的二叉树中，返回每个非叶节点的值的最小可能总和。这个和的值是一个32 位整数。   示例： 输入：arr = [6,2,4] 输出：32 解释： 有两种可能的树，第一种的非叶节点的总和为 36，第二种非叶节点的总和为 32。 24 24 / \ / \ 12 4 6 8 / \ / \ 6 2 2 4  提示：  2 &amp;lt;= arr.length &amp;lt;= 40 1 &amp;lt;= arr[i] &amp;lt;= 15 答案保证是一个 32 位带符号整数，即小于2^31。  来源：力扣（LeetCode）第1130题  链接：https://leetcode-cn.com/problems/minimum-cost-tree-from-leaf-values
+ 分析：  这道题有两种解法，一种是动态规划，另一种是使用单调栈。  代码： 动态规划：  我们发现数组中的数可以划分为两部分，一半是左子树，一半是右子树，根节点就是左边最大和右边最大的乘积。 而左右子树里面的值就是当数组中的数为左子树的叶子节点时的情况，右边一样。 直到数组中的数只有2个时，答案就是左边右边相乘。 因此我们可以这么看，如果2个数后面又加了一个数，那么我们可以以01为一个节点再和2划分,也可以0一个节点和12划分。 树的左右两边至少有1个叶子结点。 如果有四个数，有0 123, 01 23, 012 3,同时3个数又有之前的情况。 因此我可以这样找状态，i代表起始点,j代表结束位置。如果我想知道4个数的答案，我就把上面划分的情况算出来，每一个情况还要加上左边和右边的最大值的乘积，作为根节点。 于是乎我就是要穷举所有状态。</description>
+    </item>
+    
+    <item>
+      <title>统计元音字母序列的数目</title>
+      <link>https://ripple-zjw.github.io/2019/%E7%BB%9F%E8%AE%A1%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D%E5%BA%8F%E5%88%97%E7%9A%84%E6%95%B0%E7%9B%AE/</link>
+      <pubDate>Wed, 23 Oct 2019 18:58:05 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E7%BB%9F%E8%AE%A1%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D%E5%BA%8F%E5%88%97%E7%9A%84%E6%95%B0%E7%9B%AE/</guid>
+      <description>题目：统计元音字母序列的数目  给你一个整数n，请你帮忙统计一下我们可以按下述规则形成多少个长度为n的字符串 字符串中的每个字符都应当是小写元音字母（&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;） 每个元音&#39;a&#39;后面都只能跟着&#39;e&#39; 每个元音&#39;e&#39;后面只能跟着&#39;a&#39;或者是&#39;i&#39; 每个元音&#39;i&#39;后面不能再跟着另一个&#39;i&#39; 每个元音&#39;o&#39;后面只能跟着&#39;i&#39;或者是&#39;u&#39; 每个元音&#39;u&#39;后面只能跟着&#39;a&#39; 由于答案可能会很大，所以请你返回 模10^9 + 7之后的结果。  示例 1： 输入：n = 1 输出：5 解释：所有可能的字符串分别是：&amp;quot;a&amp;quot;, &amp;quot;e&amp;quot;, &amp;quot;i&amp;quot; , &amp;quot;o&amp;quot; 和 &amp;quot;u&amp;quot;。  示例 2： 输入：n = 2 输出：10 解释：所有可能的字符串分别是：&amp;quot;ae&amp;quot;, &amp;quot;ea&amp;quot;, &amp;quot;ei&amp;quot;, &amp;quot;ia&amp;quot;, &amp;quot;ie&amp;quot;, &amp;quot;io&amp;quot;, &amp;quot;iu&amp;quot;, &amp;quot;oi&amp;quot;, &amp;quot;ou&amp;quot; 和 &amp;quot;ua&amp;quot;。  示例 3： 输入：n = 5 输出：68  提示：  1 &amp;lt;= n &amp;lt;= 2 * 10^4  来源：力扣（LeetCode）第5216题(临时)  链接：https://leetcode-cn.</description>
+    </item>
+    
+    <item>
+      <title>黄金矿工</title>
+      <link>https://ripple-zjw.github.io/2019/%E9%BB%84%E9%87%91%E7%9F%BF%E5%B7%A5/</link>
+      <pubDate>Wed, 23 Oct 2019 18:55:10 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E9%BB%84%E9%87%91%E7%9F%BF%E5%B7%A5/</guid>
+      <description>题目：黄金矿工  你要开发一座金矿，地质勘测学家已经探明了这座金矿中的资源分布，并用大小为m*n的网格grid进行了标注。每个单元格中的整数就表示这一单元格中的黄金数量；如果该单元格是空的，那么就是 0。 为了使收益最大化，矿工需要按以下规则来开采黄金： 每当矿工进入一个单元，就会收集该单元格中的所有黄金。 矿工每次可以从当前位置向上下左右四个方向走。 每个单元格只能被开采（进入）一次。 不得开采（进入）黄金数目为 0 的单元格。 矿工可以从网格中任意一个有黄金的单元格出发或者是停止。  示例 1： 输入：grid = [[0,6,0],[5,8,7],[0,9,0]] 输出：24 解释： [[0,6,0], [5,8,7], [0,9,0]] 一种收集最多黄金的路线是：9 -&amp;gt; 8 -&amp;gt; 7。  示例 2： 输入：grid = [[1,0,7],[2,0,6],[3,4,5],[0,3,0],[9,0,20]] 输出：28 解释： [[1,0,7], [2,0,6], [3,4,5], [0,3,0], [9,0,20]] 一种收集最多黄金的路线是：1 -&amp;gt; 2 -&amp;gt; 3 -&amp;gt; 4 -&amp;gt; 5 -&amp;gt; 6 -&amp;gt; 7。  提示：  1 &amp;lt;= grid.length,grid[i].length &amp;lt;= 15 0 &amp;lt;= grid[i][j] &amp;lt;= 100 最多25个单元格中有黄金。  来源：力扣（LeetCode）第5215题(临时)  链接：https://leetcode-cn.</description>
+    </item>
     
     <item>
       <title>大礼包</title>

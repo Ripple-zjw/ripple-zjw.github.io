@@ -6,10 +6,21 @@
     <description>Recent content in 贪心算法 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 23 Oct 2019 19:48:36 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 09 Nov 2019 21:28:46 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>摆动序列</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%91%86%E5%8A%A8%E5%BA%8F%E5%88%97/</link>
+      <pubDate>Sat, 09 Nov 2019 21:28:46 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%91%86%E5%8A%A8%E5%BA%8F%E5%88%97/</guid>
+      <description>题目：摆动序列  如果连续数字之间的差严格地在正数和负数之间交替，则数字序列称为摆动序列。第一个差（如果存在的话）可能是正数或负数。少于两个元素的序列也是摆动序列。 例如，[1,7,4,9,2,5]是一个摆动序列，因为差值(6,-3,5,-7,3)是正负交替出现的。相反, [1,4,7,2,5]和[1,7,4,5,5] 不是摆动序列，第一个序列是因为它的前两个差值都是正数，第二个序列是因为它的最后一个差值为零。 给定一个整数序列，返回作为摆动序列的最长子序列的长度。 通过从原始序列中删除一些（也可以不删除）元素来获得子序列，剩下的元素保持其原始顺序。  示例 1: 输入: [1,7,4,9,2,5] 输出: 6 解释: 整个序列均为摆动序列。  示例 2: 输入: [1,17,5,10,13,15,10,5,16,8] 输出: 7 解释: 这个序列包含几个长度为 7 摆动序列，其中一个可为[1,17,10,13,10,16,8]。  示例 3: 输入: [1,2,3,4,5,6,7,8,9] 输出: 2  进阶:  你能否用O(n)时间复杂度完成此题?  来源：力扣（LeetCode）第376题  链接：https://leetcode-cn.com/problems/wiggle-subsequence
+ 分析：  首先这道题的方法实在是太多了。 我首先使用了二维dp做出了O(n^2)的方法。 一个状态是以数组i为结尾的最优情况，第二个状态是当前是处于递增还是递减状态。 如果是递增状态，那么就是前几次里的递减状态 + 1。 如果是递减状态，那么就是前几次里的递增状态 + 1。 再来说说进阶。 我们发现如果数组把它分为一段递增，一段递减，那么这一段内的所有数的答案都是一样的，因为，都是递减，前一段的最后那个数都比他们大，选哪个都可以，可是一旦选择了一个，这一段里都不能再选择第二个，下一个一定在下一段里。而这一段递增那么下一段就是递减。(所谓一段，就是一段数组内连续的数) 那这每一段内我要选择什么才合适呢？我们发现，如果是递减，我们就选择最小的那个，如果是递增就选择最大的那个。因为如果你选择最小的那个，那么下一个数要比它大，你选择的越小下一个找到比它大的数的可能性就越高，递增同理。 于是乎我们每一段都要贪心的去取最小或最大的数，也就是这一段单调的最后一个数。  代码：  dp
+class Solution { public int wiggleMaxLength(int[] nums) { int len = nums.</description>
+    </item>
     
     <item>
       <title>分享巧克力</title>

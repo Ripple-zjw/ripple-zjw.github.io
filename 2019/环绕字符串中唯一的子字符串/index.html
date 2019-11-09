@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E6%9C%80%E5%90%8E%E4%B8%80%E5%9D%97%E7%9F%B3%E5%A4%B4%E7%9A%84%E9%87%8D%E9%87%8Fii/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E5%99%A8/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E7%8E%AF%E7%BB%95%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%94%AF%E4%B8%80%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           环绕字符串中唯一的子字符串 | LeaveIt
+       
+  </title>
+  <meta name="title" content="环绕字符串中唯一的子字符串 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "环绕字符串中唯一的子字符串",
+    "headline" : "环绕字符串中唯一的子字符串",
+    "description" : "题目：环绕字符串中唯一的子字符串  把字符串s看作是“abcdefghijklmnopqrstuvwxyz”的无限环绕字符串，所以s 看起来是这样的：\x26rdquo;\x26hellip;zabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcd\x26hellip;.\x26ldquo;. 现在我们有了另一个字符串 p 。你需要的是找出 s 中有多少个唯一的 p 的非空子串，尤其是当你的输入是字符串 p ，你需要输出字符串s中p的不同的非空子串的数目。 注意:p仅由小写的英文字母组成，p 的大小可能超过 10000。  示例1: 输入: \x26quot;a\x26quot; 输出: 1 解释: 字符串 S 中只有一个\x26quot;a\x26quot;子字符。  示例 2: 输入: \x26quot;cac\x26quot; 输出: 2 解释: 字符串 S 中的字符串“cac”只有两个子串“a”、“c”。.  示例 3: 输入: \x26quot;zab\x26quot; 输出: 6 解释: 在字符串 S 中有六个子串“z”、“a”、“b”、“za”、“ab”、“zab”。.  来源：力扣（LeetCode）第467题  链接：https:\/\/leetcode-cn.com\/problems\/unique-substrings-in-wraparound-string\n 分析：  动态规划问题 遇到这种子字符串问题，我们可以考虑状态为以第i个结尾时有多少种情况。 例如abcd,a结尾时只有1种情况，b结尾时只有2种情况，c结尾时有3种情况，d结尾时有4中情况。 我们把这些值存在一个长度为26的dp数组中，按顺序放进来。 如果例子为abcdbcde，其中bcd都是重复的，不应该重复计算。我们可以进行比较，把相同状态下(都是以i结尾)值较大的那个更新进去。 例如b，它在abcd中值是2，ab,b。而在bcd中只有b，所以我们只要选择较大的2，那么后者的情况也会包含在内。 再比如c在前者有3个，abc,bc,c。后者有2个，bc,c,前者依然包括后者。 dp数组算出后，我们将dp数组中赋过值的数相加求和，就是最终答案。  代码： class Solution { public int findSubstringInWraproundString(String p) { int len = p.",
+    "inLanguage" : "zh-CN",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-11-09 21:47:30 \x2b0800 CST",
+    "dateModified" : "2019-11-09 21:47:30 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E7%8E%AF%E7%BB%95%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%94%AF%E4%B8%80%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2\/",
+    "wordCount" : "299",
+    "keywords" : [ "算法求解思想","动态规划", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">环绕字符串中唯一的子字符串</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-11-09 itemprop="datePublished">November 9, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-环绕字符串中唯一的子字符串">题目：环绕字符串中唯一的子字符串</h1>
+
+<ul>
+<li>把字符串<code>s</code>看作是“abcdefghijklmnopqrstuvwxyz”的无限环绕字符串，所以<code>s</code> 看起来是这样的：&rdquo;&hellip;zabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcd&hellip;.&ldquo;.</li>
+<li>现在我们有了另一个字符串 p 。你需要的是找出 s 中有多少个唯一的 p 的非空子串，尤其是当你的输入是字符串 p ，你需要输出字符串<code>s</code>中<code>p</code>的不同的非空子串的数目。</li>
+<li>注意:<code>p</code>仅由小写的英文字母组成，p 的大小可能超过 10000。</li>
+</ul>
+
+<h5 id="示例1">示例1:</h5>
+
+<pre><code>输入: &quot;a&quot;
+输出: 1
+解释: 字符串 S 中只有一个&quot;a&quot;子字符。
+</code></pre>
+
+<h5 id="示例-2">示例 2:</h5>
+
+<pre><code>输入: &quot;cac&quot;
+输出: 2
+解释: 字符串 S 中的字符串“cac”只有两个子串“a”、“c”。.
+</code></pre>
+
+<h5 id="示例-3">示例 3:</h5>
+
+<pre><code>输入: &quot;zab&quot;
+输出: 6
+解释: 在字符串 S 中有六个子串“z”、“a”、“b”、“za”、“ab”、“zab”。.
+</code></pre>
+
+<h4 id="来源-力扣-leetcode-第467题">来源：力扣（LeetCode）第467题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/unique-substrings-in-wraparound-string" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/unique-substrings-in-wraparound-string</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<ul>
+<li>动态规划问题</li>
+<li>遇到这种子字符串问题，我们可以考虑状态为以第i个结尾时有多少种情况。</li>
+<li>例如<code>abcd</code>,<code>a</code>结尾时只有1种情况，<code>b</code>结尾时只有2种情况，<code>c</code>结尾时有3种情况，<code>d</code>结尾时有4中情况。</li>
+<li>我们把这些值存在一个长度为26的dp数组中，按顺序放进来。</li>
+<li>如果例子为<code>abcdbcde</code>，其中bcd都是重复的，不应该重复计算。我们可以进行比较，把相同状态下(都是以<code>i</code>结尾)值较大的那个更新进去。</li>
+<li>例如<code>b</code>，它在<code>abcd</code>中值是2，<code>ab</code>,<code>b</code>。而在<code>bcd</code>中只有<code>b</code>，所以我们只要选择较大的2，那么后者的情况也会包含在内。</li>
+<li>再比如<code>c</code>在前者有3个，<code>abc</code>,<code>bc</code>,<code>c</code>。后者有2个，<code>bc</code>,<code>c</code>,前者依然包括后者。</li>
+<li>dp数组算出后，我们将dp数组中赋过值的数相加求和，就是最终答案。</li>
+</ul>
+
+<h2 id="代码">代码：</h2>
+
+<pre><code class="language-java">class Solution {
+    public int findSubstringInWraproundString(String p) {
+        int len = p.length();
+        if (len == 0) return 0;
+        int[] dp = new int[26];
+        char[] pchar = p.toCharArray();
+        int succession = 1;
+        dp[pchar[0]-'a'] = succession;
+        for (int i = 1; i &lt; len; i++) {
+            if (pchar[i] - pchar[i-1] == 1 || pchar[i-1] - pchar[i] == 25) {
+                succession++;
+            } else {
+                succession = 1;
+            }
+            dp[pchar[i]-'a'] = Math.max(dp[pchar[i]-'a'], succession);
+        }
+        int ans = 0;
+        for (int i : dp) ans += i;
+        return ans;
+    }
+}
+</code></pre>
+
+<pre><code class="language-python">class Solution:
+    def findSubstringInWraproundString(self, p: str) -&gt; int:
+        l = len(p)
+        if l == 0: return 0
+        dp = [0 for _ in range(26)]
+        dp[ord(p[0])-97] = 1
+        succession = 1
+        for i in range(1, l):
+            if ord(p[i]) - ord(p[i-1]) == 1 or ord(p[i-1]) - ord(p[i]) == 25:
+                succession += 1
+            else:
+                succession = 1
+            dp[ord(p[i])-97] = max(dp[ord(p[i])-97], succession)
+        return sum(dp);
+</code></pre>
+
+<pre><code class="language-cpp">class Solution {
+public:
+    int findSubstringInWraproundString(string p) {
+        int len = p.length();
+        if (len == 0) return 0;
+        int ans = 0, curLen = 1;
+        int* dp = new int[26];
+        for (int i = 0; i &lt; 26; i++) dp[i] = 0;
+        dp[p[0]-'a'] = 1;
+        for (int i = 1; i &lt; len; i++) {
+            if (p[i] - p[i-1] == 1 || p[i-1] - p[i] == 25) {
+                ++curLen;
+            } else {
+                curLen = 1;
+            }
+            dp[p[i]-'a'] = max(dp[p[i]-'a'], curLen);
+        }
+        for (int i = 0; i &lt; 26; i++) ans += dp[i];
+        return ans;
+    }
+};
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E7%8E%AF%E7%BB%95%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%94%AF%E4%B8%80%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2/>https://ripple-zjw.github.io/2019/%E7%8E%AF%E7%BB%95%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%94%AF%E4%B8%80%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                    #动态规划</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E6%9C%80%E5%90%8E%E4%B8%80%E5%9D%97%E7%9F%B3%E5%A4%B4%E7%9A%84%E9%87%8D%E9%87%8Fii/" class="prev" rel="prev" title="最后一块石头的重量II"><i class="iconfont icon-left"></i>&nbsp;最后一块石头的重量II</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E5%99%A8/" class="next" rel="next" title="基本计算器">基本计算器&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E7%8E%AF%E7%BB%95%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%94%AF%E4%B8%80%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E6%9C%80%E9%95%BF%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E5%99%A8/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           基本计算器 | LeaveIt
+       
+  </title>
+  <meta name="title" content="基本计算器 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "基本计算器",
+    "headline" : "基本计算器",
+    "description" : "题目：基本计算器  实现一个基本的计算器来计算一个简单的字符串表达式的值。 字符串表达式可以包含左括号(，右括号)，加号\x2b，减号-，非负整数和空格。  示例 1: 输入: \x26quot;1 \x2b 1\x26quot; 输出: 2  示例 2: 输入: \x26quot; 2-1 \x2b 2 \x26quot; 输出: 3  示例 3: 输入: \x26quot;(1\x2b(4\x2b5\x2b2)-3)\x2b(6\x2b8)\x26quot; 输出: 23  说明：  你可以假设所给定的表达式都是有效的。 请不要使用内置的库函数 eval。  来源：力扣（LeetCode）  链接：https:\/\/leetcode-cn.com\/problems\/basic-calculator\n 分析：  这道题思路不难，就是使用一个栈，就像判断括号是否有效那题一样。 只不过，遇到右括号不仅需要找到左括号并删除它，还需要把括号内的值全都计算出来，并把计算好的值再放回栈中。 这样，当所有的括号都删除后，你就能把括号内的数字都计算出来。 不过，如果一个式子它的最外层没有括号,比如例题1和2。你还要在最后再计算一下剩下没有括号时的情况。 好了，思路说完了，但是这道题想要实现真的很麻烦。  代码： class Solution: def calculate(self, s: str) -\x26gt; int: return eval(s)   开个玩笑，如果使用这个方法会MemoryError,别问我怎么知道的。\nclass Solution { public int calculate(String s) { Stack\x26lt;Integer\x26gt; stack = new Stack(); for (char ch : s.",
+    "inLanguage" : "zh-CN",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-11-09 21:49:53 \x2b0800 CST",
+    "dateModified" : "2019-11-09 21:49:53 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E5%99%A8\/",
+    "wordCount" : "239",
+    "keywords" : [ "算法求解思想","栈", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">基本计算器</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-11-09 itemprop="datePublished">November 9, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-基本计算器">题目：基本计算器</h1>
+
+<ul>
+<li>实现一个基本的计算器来计算一个简单的字符串表达式的值。</li>
+<li>字符串表达式可以包含左括号<code>(</code>，右括号<code>)</code>，加号<code>+</code>，减号<code>-</code>，非负整数和空格。</li>
+</ul>
+
+<h5 id="示例-1">示例 1:</h5>
+
+<pre><code>输入: &quot;1 + 1&quot;
+输出: 2
+</code></pre>
+
+<h5 id="示例-2">示例 2:</h5>
+
+<pre><code>输入: &quot; 2-1 + 2 &quot;
+输出: 3
+</code></pre>
+
+<h5 id="示例-3">示例 3:</h5>
+
+<pre><code>输入: &quot;(1+(4+5+2)-3)+(6+8)&quot;
+输出: 23
+</code></pre>
+
+<h5 id="说明">说明：</h5>
+
+<ul>
+<li>你可以假设所给定的表达式都是有效的。</li>
+<li>请不要使用内置的库函数 eval。</li>
+</ul>
+
+<h4 id="来源-力扣-leetcode">来源：力扣（LeetCode）</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/basic-calculator" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/basic-calculator</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<ul>
+<li>这道题思路不难，就是使用一个栈，就像判断括号是否有效那题一样。</li>
+<li>只不过，遇到右括号不仅需要找到左括号并删除它，还需要把括号内的值全都计算出来，并把计算好的值再放回栈中。</li>
+<li>这样，当所有的括号都删除后，你就能把括号内的数字都计算出来。</li>
+<li>不过，如果一个式子它的最外层没有括号,比如例题1和2。你还要在最后再计算一下剩下没有括号时的情况。</li>
+<li>好了，思路说完了，但是这道题想要实现真的很麻烦。</li>
+</ul>
+
+<h2 id="代码">代码：</h2>
+
+<pre><code class="language-python">class Solution:
+    def calculate(self, s: str) -&gt; int:
+        return eval(s)
+</code></pre>
+
+<ul>
+<li><p>开个玩笑，如果使用这个方法会<code>MemoryError</code>,别问我怎么知道的。</p>
+
+<pre><code class="language-java">class Solution {
+public int calculate(String s) {
+    Stack&lt;Integer&gt; stack = new Stack();
+    for (char ch : s.toCharArray()) {
+        if (ch == ' ') continue;
+        if (ch == ')') {//遇到右括号就去找栈内最近的左括号，并把括号内的值计算出来后再放回栈中。
+            int sum = 0;// 当前括号计算的值
+            while (stack.size() &gt; 0 &amp;&amp; stack.peek() != -111111111) {
+                int num = stack.pop();// 一个数字的值
+                if (stack.size() &gt; 0 &amp;&amp; stack.peek() == -333333333) sum -= num;//如果是减号就减
+                else sum += num;// 否则是加号就加。
+                if (stack.peek() != -111111111)stack.pop();//把加号或者减号弹出，注意别把左括号也弹出去了，否则就出问题了。
+            }
+            if (stack.size() &gt; 0 &amp;&amp; stack.peek() == -111111111) stack.pop();// 删除左括号
+            stack.push(sum);//把括号内算得的数字再入栈。
+        } else {
+            //   ( -111111111    + -222222222    - -333333333
+            if (Character.isDigit(ch)) {//如果是数字的话比较麻烦，因为数字可能不止个位数。
+                //这里取数字写的不好，一直在入栈出栈，欢迎你写出更好的代码一起交流。
+                if (stack.size() &gt; 0 &amp;&amp; stack.peek() &gt;= 0) {//由于都是正整数，所以小于0的都是符号，而且不可能有两个算好的数字相连
+                    stack.push(stack.pop() * 10 + (int)(ch - '0'));
+                } else {//否则说明这是一个个位数数字。
+                    stack.push((int)(ch - '0'));
+                }
+            } else if (ch == '+') {
+                stack.push(-222222222);
+            } else if (ch == '-'){
+                stack.push(-333333333);
+            } else { // 左括号
+                stack.push(-111111111);
+            }
+        }
+    }
+    if (stack.size() == 1) return stack.peek();
+    //如果栈内只有一种元素，那么只可能是数字，并且是最终答案，因为如果有符号一定不止一个，如果有括号，之前一定将他们都消掉了，因为括号一定是成对出现的。
+    int sum = 0;
+    while (stack.size() &gt; 0) {//如果不止一个，说明最外层没有括号，之前只会算括号内的数字，然后自己再计算最后一遍，得到答案。
+        int num = stack.pop();// 一个数字的值
+        if (stack.size() &gt; 0 &amp;&amp; stack.peek() == -333333333) sum -= num;
+        else sum += num;
+        if (stack.size() &gt; 0) stack.pop();
+    }
+    return sum;
+}
+}
+</code></pre></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E5%99%A8/>https://ripple-zjw.github.io/2019/%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E5%99%A8/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E6%A0%88/">
+                    #栈</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E7%8E%AF%E7%BB%95%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%94%AF%E4%B8%80%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="prev" rel="prev" title="环绕字符串中唯一的子字符串"><i class="iconfont icon-left"></i>&nbsp;环绕字符串中唯一的子字符串</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E6%9C%80%E9%95%BF%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97/" class="next" rel="next" title="最长等差数列">最长等差数列&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

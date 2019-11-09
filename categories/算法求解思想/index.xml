@@ -6,10 +6,171 @@
     <description>Recent content in 算法求解思想 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 23 Oct 2019 20:17:40 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 09 Nov 2019 21:51:32 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>最长等差数列</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%9C%80%E9%95%BF%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97/</link>
+      <pubDate>Sat, 09 Nov 2019 21:51:32 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%9C%80%E9%95%BF%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97/</guid>
+      <description>题目：最长等差数列  给定一个整数数组A，返回 A中最长等差子序列的长度。 回想一下，A的子序列是列表A[i_1], A[i_2], ..., A[i_k] 其中0 &amp;lt;= i_1 &amp;lt; i_2 &amp;lt; ... &amp;lt; i_k &amp;lt;= A.length - 1。并且如果B[i+1] - B[i](0 &amp;lt;= i &amp;lt; B.length - 1) 的值都相同，那么序列B是等差的。  示例 1： 输入：[3,6,9,12] 输出：4 解释： 整个数组是公差为 3 的等差数列。  示例 2： 输入：[9,4,7,2,10] 输出：3 解释： 最长的等差子序列是 [4,7,10]。  示例 3： 输入：[20,1,15,3,10,5,8] 输出：4 解释： 最长的等差子序列是 [20,15,10,5]。  提示：  2 &amp;lt;= A.length &amp;lt;= 2000 0 &amp;lt;= A[i] &amp;lt;= 10000  来源：力扣（LeetCode）第1027题  链接：https://leetcode-cn.</description>
+    </item>
+    
+    <item>
+      <title>基本计算器</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E5%99%A8/</link>
+      <pubDate>Sat, 09 Nov 2019 21:49:53 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E5%99%A8/</guid>
+      <description>题目：基本计算器  实现一个基本的计算器来计算一个简单的字符串表达式的值。 字符串表达式可以包含左括号(，右括号)，加号+，减号-，非负整数和空格。  示例 1: 输入: &amp;quot;1 + 1&amp;quot; 输出: 2  示例 2: 输入: &amp;quot; 2-1 + 2 &amp;quot; 输出: 3  示例 3: 输入: &amp;quot;(1+(4+5+2)-3)+(6+8)&amp;quot; 输出: 23  说明：  你可以假设所给定的表达式都是有效的。 请不要使用内置的库函数 eval。  来源：力扣（LeetCode）  链接：https://leetcode-cn.com/problems/basic-calculator
+ 分析：  这道题思路不难，就是使用一个栈，就像判断括号是否有效那题一样。 只不过，遇到右括号不仅需要找到左括号并删除它，还需要把括号内的值全都计算出来，并把计算好的值再放回栈中。 这样，当所有的括号都删除后，你就能把括号内的数字都计算出来。 不过，如果一个式子它的最外层没有括号,比如例题1和2。你还要在最后再计算一下剩下没有括号时的情况。 好了，思路说完了，但是这道题想要实现真的很麻烦。  代码： class Solution: def calculate(self, s: str) -&amp;gt; int: return eval(s)   开个玩笑，如果使用这个方法会MemoryError,别问我怎么知道的。
+class Solution { public int calculate(String s) { Stack&amp;lt;Integer&amp;gt; stack = new Stack(); for (char ch : s.</description>
+    </item>
+    
+    <item>
+      <title>环绕字符串中唯一的子字符串</title>
+      <link>https://ripple-zjw.github.io/2019/%E7%8E%AF%E7%BB%95%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%94%AF%E4%B8%80%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2/</link>
+      <pubDate>Sat, 09 Nov 2019 21:47:30 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E7%8E%AF%E7%BB%95%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%94%AF%E4%B8%80%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2/</guid>
+      <description>题目：环绕字符串中唯一的子字符串  把字符串s看作是“abcdefghijklmnopqrstuvwxyz”的无限环绕字符串，所以s 看起来是这样的：&amp;rdquo;&amp;hellip;zabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcd&amp;hellip;.&amp;ldquo;. 现在我们有了另一个字符串 p 。你需要的是找出 s 中有多少个唯一的 p 的非空子串，尤其是当你的输入是字符串 p ，你需要输出字符串s中p的不同的非空子串的数目。 注意:p仅由小写的英文字母组成，p 的大小可能超过 10000。  示例1: 输入: &amp;quot;a&amp;quot; 输出: 1 解释: 字符串 S 中只有一个&amp;quot;a&amp;quot;子字符。  示例 2: 输入: &amp;quot;cac&amp;quot; 输出: 2 解释: 字符串 S 中的字符串“cac”只有两个子串“a”、“c”。.  示例 3: 输入: &amp;quot;zab&amp;quot; 输出: 6 解释: 在字符串 S 中有六个子串“z”、“a”、“b”、“za”、“ab”、“zab”。.  来源：力扣（LeetCode）第467题  链接：https://leetcode-cn.com/problems/unique-substrings-in-wraparound-string
+ 分析：  动态规划问题 遇到这种子字符串问题，我们可以考虑状态为以第i个结尾时有多少种情况。 例如abcd,a结尾时只有1种情况，b结尾时只有2种情况，c结尾时有3种情况，d结尾时有4中情况。 我们把这些值存在一个长度为26的dp数组中，按顺序放进来。 如果例子为abcdbcde，其中bcd都是重复的，不应该重复计算。我们可以进行比较，把相同状态下(都是以i结尾)值较大的那个更新进去。 例如b，它在abcd中值是2，ab,b。而在bcd中只有b，所以我们只要选择较大的2，那么后者的情况也会包含在内。 再比如c在前者有3个，abc,bc,c。后者有2个，bc,c,前者依然包括后者。 dp数组算出后，我们将dp数组中赋过值的数相加求和，就是最终答案。  代码： class Solution { public int findSubstringInWraproundString(String p) { int len = p.</description>
+    </item>
+    
+    <item>
+      <title>最后一块石头的重量II</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%9C%80%E5%90%8E%E4%B8%80%E5%9D%97%E7%9F%B3%E5%A4%B4%E7%9A%84%E9%87%8D%E9%87%8Fii/</link>
+      <pubDate>Sat, 09 Nov 2019 21:46:25 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%9C%80%E5%90%8E%E4%B8%80%E5%9D%97%E7%9F%B3%E5%A4%B4%E7%9A%84%E9%87%8D%E9%87%8Fii/</guid>
+      <description>题目：最后一块石头的重量 II  有一堆石头，每块石头的重量都是正整数。 每一回合，从中选出任意两块石头，然后将它们一起粉碎。假设石头的重量分别为x和y，且x&amp;lt;= y。那么粉碎的可能结果如下：  如果x == y，那么两块石头都会被完全粉碎； 如果x != y，那么重量为x的石头将会完全粉碎，而重量为y的石头新重量为y-x。  最后，最多只会剩下一块石头。返回此石头最小的可能重量。如果没有石头剩下，就返回 0。  示例： 输入：[2,7,4,1,8,1] 输出：1 解释： 组合 2 和 4，得到 2，所以数组转化为 [2,7,1,8,1]， 组合 7 和 8，得到 1，所以数组转化为 [2,1,1,1]， 组合 2 和 1，得到 1，所以数组转化为 [1,1,1]， 组合 1 和 1，得到 0，所以数组转化为 [1]，这就是最优值。  提示：  1 &amp;lt;= stones.length &amp;lt;= 30 1 &amp;lt;= stones[i] &amp;lt;= 1000  来源：力扣（LeetCode）第1049题  链接：https://leetcode-cn.com/problems/last-stone-weight-ii
+ 分析：  这道题一开始看好像没有什么思路，我们不妨把问题抽象出来。 题目要求最后把两块石头撞完后，剩下的重量要最小。那我们怎么才能让重量最小呢？这是关键点。 我们发现，只要每次相撞的两块石头，他们的大小都差不多，那么他们相撞之后得到的重量肯定是最小的。 因此，我们不妨把整个石子分成两块，只要我们把这两堆石子分的重量越接近，那么撞出来的重量一定会最小。 有人可能会想如果两边石子的数量不一样怎么办？不管两边数量有多不平衡，你都可以用一堆去撞另一堆，一定会把其中一堆装完的。 至此，我们把目的改一改，我们现在要找出两堆石子，他们的重量最接近。 如何找呢？ 我们把所有石子的重量和算一下，然后除以一半，最好的情况下正好分成了两堆重量一样的石子，直接撞完就等于0了。 如果不行呢？ 我们把石子的总重量叫sum,把一半的重量叫half。 我们一定能找到其中一堆小于half的(不管这一堆长度是多少，一定能找到),那么另一堆的重量肯定是大于half的。 所以我们只要找到一堆越接近half就行了，如果等于half最好。 参考LeetCode第416题，分割等和子集。 我们这次不是要分割等和子集，而是要找到越接近half的子集。 设置两个状态，见第一个代码。第一个是当前的位置，第二个是求得的和。 每次判断当前的和是否达到，有两种选择，使用这个位置，或者不使用这个位置。 进阶：我们可以使用dfs改写这段dp，从half开始，依次往0判断能否组成这个和，如果能那么这个和就是最大和。dfs更加快，因为只要找到最大和就直接返回答案就行了，不用再算下去。 进阶2：我们把dp变为一维dp，去掉当前位置的状态，只保留求得的和，问题转化为一个经典的0-1背包问题。  代码：  常规二维dp：</description>
+    </item>
+    
+    <item>
+      <title>子数组的最小值之和</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC%E4%B9%8B%E5%92%8C/</link>
+      <pubDate>Sat, 09 Nov 2019 21:39:28 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC%E4%B9%8B%E5%92%8C/</guid>
+      <description>题目：子数组的最小值之和  给定一个整数数组 A，找到min(B)的总和，其中 B 的范围为A的每个（连续）子数组。 由于答案可能很大，因此返回答案模 10^9 + 7。  示例： 输入：[3,1,2,4] 输出：17 解释： 子数组为 [3]，[1]，[2]，[4]，[3,1]，[1,2]，[2,4]，[3,1,2]，[1,2,4]，[3,1,2,4]。 最小值为 3，1，2，4，1，1，2，1，1，1，和为 17。  提示：  1 &amp;lt;= A &amp;lt;= 30000 1 &amp;lt;= A[i] &amp;lt;= 30000  来源：力扣（LeetCode）第907题  链接：https://leetcode-cn.com/problems/sum-of-subarray-minimums
+ 分析：  我们要找到所有子数组的最小值之和，就要找到当每个数作为最小数时这样的子数组有多少个。 既然是子树组，那一定是连续的，这题一开始以为可以使用动态规划，结果数据量很大，显然dp会超时。 我们先找当这个数为最小数时最大的子数组是多少。也就是说以这个数i开始，它的左边和右边第一个比它小的数，中间这段就是最长的子数组。 这一段子数组中的每一个子数组都是以i为最小数的子数组。那这一段的子数组又有多少个子数组呢，以i这个下标为分割线，将(i - left[i]) * (right[i ]- i) * A[i],前两个是子数组的个数，最后那个是子数组的最小值。 那现在的问题是如果找到left[]和right[]的值。left和right的值是某一个数的左边和右边最小的那个数在A中的下标。 我们可以使用单调栈在O(n)的时间复杂度下找到。  代码： class Solution { public int sumSubarrayMins(int[] A) { long mod = (long)1e9 + 7; int len = A.</description>
+    </item>
+    
+    <item>
+      <title>树的直径</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/</link>
+      <pubDate>Sat, 09 Nov 2019 21:38:09 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/</guid>
+      <description>题目：树的直径  给你这棵「无向树」，请你测算并返回它的「直径」：这棵树上最长简单路径的 边数。 我们用一个由所有「边」组成的数组edges来表示一棵无向树，其中edges[i] = [u, v]表示节点u和v之间的双向边。 树上的节点都已经用{0, 1, ..., edges.length}中的数做了标记，每个节点上的标记都是独一无二的。  示例 1： 输入：edges = [[0,1],[0,2]] 输出：2 解释： 这棵树上最长的路径是 1 - 0 - 2，边数为 2。  示例 2： 输入：edges = [[0,1],[1,2],[2,3],[1,4],[4,5]] 输出：4 解释： 这棵树上最长的路径是 3 - 2 - 1 - 4 - 5，边数为 4。  提示：  0 &amp;lt;=edges.length&amp;lt;10^4 edges[i][0] != edges[i][1] 0 &amp;lt;= edges[i][j] &amp;lt;= edges.length edges会形成一棵无向树  来源：力扣（LeetCode）第5098题  链接：https://leetcode-cn.com/problems/tree-diameter
+ 分析：  使用两遍bfs 第一遍找到树中最深的节点。 第二遍从这个节点开始，找到它的简单路径有多长。  代码： class Pair { // 存两个值。 int key; // 代表最远的点 int value;// 代表这个点的距离。 } class Solution { int len; public int treeDiameter(int[][] edges) { len = edges.</description>
+    </item>
+    
+    <item>
+      <title>串联字符串的最大长度</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%B8%B2%E8%81%94%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%A4%A7%E9%95%BF%E5%BA%A6/</link>
+      <pubDate>Sat, 09 Nov 2019 21:35:43 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%B8%B2%E8%81%94%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%A4%A7%E9%95%BF%E5%BA%A6/</guid>
+      <description>题目：串联字符串的最大长度  给定一个字符串数组arr，字符串s是将arr 某一子序列字符串连接所得的字符串，如果s 中的每一个字符都只出现过一次，那么它就是一个可行解。 请返回所有可行解s中最长长度。  示例 1： 输入：arr = [&amp;quot;un&amp;quot;,&amp;quot;iq&amp;quot;,&amp;quot;ue&amp;quot;] 输出：4 解释：所有可能的串联组合是 &amp;quot;&amp;quot;,&amp;quot;un&amp;quot;,&amp;quot;iq&amp;quot;,&amp;quot;ue&amp;quot;,&amp;quot;uniq&amp;quot; 和 &amp;quot;ique&amp;quot;，最大长度为 4。  示例 2： 输入：arr = [&amp;quot;cha&amp;quot;,&amp;quot;r&amp;quot;,&amp;quot;act&amp;quot;,&amp;quot;ers&amp;quot;] 输出：6 解释：可能的解答有 &amp;quot;chaers&amp;quot; 和 &amp;quot;acters&amp;quot;。  示例 3： 输入：arr = [&amp;quot;abcdefghijklmnopqrstuvwxyz&amp;quot;] 输出：26  提示：  1 &amp;lt;= arr.length &amp;lt;= 16 1 &amp;lt;= arr[i].length &amp;lt;= 26 arr[i]中只含有小写英文字母  来源：力扣（LeetCode）第1239题  链接：https://leetcode-cn.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters
+ 分析：  使用位压缩和回溯就可以完成这道题。 每一个字符串我们有两种选择，一种是用这个字符串，另一个是不用这个字符串。 我们用一个int类型的整数代表字符串每一个字符的使用情况。int总共有32位，而小写字母总共有26个，因此我可以把26个字母都存在每一个位上，1代表已经使用了，0代表未使用。 如果用这个字符串，我们就要把当前的字符串长度加上，然后再去往下找下一个字符串。 如果不用这个字符串，我们不用加上当前字符串的长度，只需要找下一个字符串就行了。 然后比较一下两者哪个大。 需要注意的是，如果这个字符不能使用，就是用了会有重复的字符，那么这种情况只有一个选择，就是不用这个字符串。 其实这道题和dp很像，但是由于有一个状态的范围不确定，所以用dp稍有难度。  代码： class Solution { int len; public int maxLength(List&amp;lt;String&amp;gt; arr) { len = arr.</description>
+    </item>
+    
+    <item>
+      <title>最大的以</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%9C%80%E5%A4%A7%E7%9A%84%E4%BB%A5-1-%E4%B8%BA%E8%BE%B9%E7%95%8C%E7%9A%84%E6%AD%A3%E6%96%B9%E5%BD%A2/</link>
+      <pubDate>Sat, 09 Nov 2019 21:34:34 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%9C%80%E5%A4%A7%E7%9A%84%E4%BB%A5-1-%E4%B8%BA%E8%BE%B9%E7%95%8C%E7%9A%84%E6%AD%A3%E6%96%B9%E5%BD%A2/</guid>
+      <description>题目：最大的以 1 为边界的正方形  给你一个由若干0和1 组成的二维网格grid，请你找出边界全部由1组成的最大 正方形 子网格，并返回该子网格中的元素数量。如果不存在，则返回0。  示例 1： 输入：grid = [[1,1,1],[1,0,1],[1,1,1]] 输出：9  示例 2： 输入：grid = [[1,1,0,0]] 输出：1  提示：  1 &amp;lt;= grid.length &amp;lt;= 100 1 &amp;lt;= grid[0].length &amp;lt;= 100 grid[i][j] 为0或1  来源：力扣（LeetCode）第1139题  链接：https://leetcode-cn.com/problems/largest-1-bordered-square
+ 分析：  动态规划题 我们使用up和left两个状态来表示每一个格子上的情况。 up和left是当前格子向上的连续数量和向左的连续数量。 当我们算出一个格子的up和left之后分别向上和向左一个一个去找，直到up和left的最小长度为止，每找一次之后都要判断另外两条边是否大于等于当前长度。  代码： class Solution { public int largest1BorderedSquare(int[][] grid) { int m = grid.length, n = grid[0].length; int[][][] dp = new int[m+1][n+1][2]; // 0 up 1 left; int ans = 0; for (int i = 1; i &amp;lt;= m; i++) { for (int j = 1; j &amp;lt;= n; j++) { if (grid[i-1][j-1] == 0) continue; // 如果是0则不要继续了 dp[i][j][0] = dp[i-1][j][0] + 1; // 求出up情况下连续的个数 dp[i][j][1] = dp[i][j-1][1] + 1; // 求出left情况下连续的个数 int min = Math.</description>
+    </item>
+    
+    <item>
+      <title>最大正方形</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%9C%80%E5%A4%A7%E6%AD%A3%E6%96%B9%E5%BD%A2/</link>
+      <pubDate>Sat, 09 Nov 2019 21:33:05 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%9C%80%E5%A4%A7%E6%AD%A3%E6%96%B9%E5%BD%A2/</guid>
+      <description>题目：最大正方形  在一个由 0 和 1 组成的二维矩阵内，找到只包含 1 的最大正方形，并返回其面积。  示例: 输入: 1 0 1 0 0 1 0 1 1 1 1 1 1 1 1 1 0 0 1 0 输出: 4  来源：力扣（LeetCode）第221题  链接：https://leetcode-cn.com/problems/maximal-square
+ 分析：  dp题 首先正方形的面积一定是根号后还为正数的。 首先面积为1,这很简单，只要出现了1那肯定有1。 然后是面积为4的，也就是边长为2的，如果边长为2，那么这个数组的左边，上边和左上肯定不能是0，以及自己也不能是0。 最后来看看面积是9的情况，边长为3。如果边长为3，那么同样也是左边，右边和左上，他们的值不仅要不等于0，而且每个值都至少得是2，因为他们的三个方向也依然不能是0。 所以我们每次都找这三个方向，算出他们的最小值。然后再加上1，这样就能得到这个点最大的面积了。  代码： class Solution { public int maximalSquare(char[][] matrix) { int m = matrix.length; if (m == 0) return 0; int n = matrix[0].</description>
+    </item>
+    
+    <item>
+      <title>划分为k个相等的子集</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%88%92%E5%88%86%E4%B8%BAk%E4%B8%AA%E7%9B%B8%E7%AD%89%E7%9A%84%E5%AD%90%E9%9B%86/</link>
+      <pubDate>Sat, 09 Nov 2019 21:31:18 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%88%92%E5%88%86%E4%B8%BAk%E4%B8%AA%E7%9B%B8%E7%AD%89%E7%9A%84%E5%AD%90%E9%9B%86/</guid>
+      <description>题目：划分为k个相等的子集  给定一个整数数组nums和一个正整数 k，找出是否有可能把这个数组分成 k 个非空子集，其总和都相等。  示例 1： 输入： nums = [4, 3, 2, 3, 5, 2, 1], k = 4 输出： True 说明： 有可能将其分成 4 个子集（5），（1,4），（2,3），（2,3）等于总和。  注意:  1 &amp;lt;= k &amp;lt;= len(nums) &amp;lt;= 16 0 &amp;lt; nums[i] &amp;lt; 10000  来源：力扣（LeetCode）第698题  链接：https://leetcode-cn.com/problems/partition-to-k-equal-sum-subsets
+ 分析：  这道题LeetCode官方给出的标签为dp和递归。 但是好像没有一个人用dp写出来，基本用的都是回溯算法。 由于数据范围不大，就可以穷举所有的可能，如果不对，再回来计算下一种可能。  代码： class Solution { int[] bucket; public boolean canPartitionKSubsets(int[] nums, int k) { if (k == 1) return true; //如果k是1，直接返回true。 int len = nums.</description>
+    </item>
+    
+    <item>
+      <title>分汤</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%88%86%E6%B1%A4/</link>
+      <pubDate>Sat, 09 Nov 2019 21:30:11 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%88%86%E6%B1%A4/</guid>
+      <description>题目：分汤  有A和B两种类型的汤。一开始每种类型的汤有N毫升。有四种分配操作： 提供 100ml 的汤A 和 0ml 的汤B。 提供 75ml 的汤A 和 25ml 的汤B。 提供 50ml 的汤A 和 50ml 的汤B。 提供 25ml 的汤A 和 75ml 的汤B。 当我们把汤分配给某人之后，汤就没有了。每个回合，我们将从四种概率同为0.25的操作中进行分配选择。如果汤的剩余量不足以完成某次操作，我们将尽可能分配。当两种类型的汤都分配完时，停止操作。 注意不存在先分配100 ml汤B的操作。 需要返回的值：汤A先分配完的概率 + 汤A和汤B同时分配完的概率 / 2。  示例: 输入: N = 50 输出: 0.625 解释: 如果我们选择前两个操作，A将首先变为空。 对于第三个操作，A和B会同时变为空。 对于第四个操作，B将首先变为空。 所以A变为空的总概率加上A和B同时变为空的概率的一半是 0.25 *(1 + 1 + 0.5 + 0)= 0.625。  注释:  0 &amp;lt;= N &amp;lt;= 10^9。 返回值在10^-6的范围将被认为是正确的。  来源：力扣（LeetCode）第808题  链接：https://leetcode-cn.</description>
+    </item>
+    
+    <item>
+      <title>摆动序列</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%91%86%E5%8A%A8%E5%BA%8F%E5%88%97/</link>
+      <pubDate>Sat, 09 Nov 2019 21:28:46 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%91%86%E5%8A%A8%E5%BA%8F%E5%88%97/</guid>
+      <description>题目：摆动序列  如果连续数字之间的差严格地在正数和负数之间交替，则数字序列称为摆动序列。第一个差（如果存在的话）可能是正数或负数。少于两个元素的序列也是摆动序列。 例如，[1,7,4,9,2,5]是一个摆动序列，因为差值(6,-3,5,-7,3)是正负交替出现的。相反, [1,4,7,2,5]和[1,7,4,5,5] 不是摆动序列，第一个序列是因为它的前两个差值都是正数，第二个序列是因为它的最后一个差值为零。 给定一个整数序列，返回作为摆动序列的最长子序列的长度。 通过从原始序列中删除一些（也可以不删除）元素来获得子序列，剩下的元素保持其原始顺序。  示例 1: 输入: [1,7,4,9,2,5] 输出: 6 解释: 整个序列均为摆动序列。  示例 2: 输入: [1,17,5,10,13,15,10,5,16,8] 输出: 7 解释: 这个序列包含几个长度为 7 摆动序列，其中一个可为[1,17,10,13,10,16,8]。  示例 3: 输入: [1,2,3,4,5,6,7,8,9] 输出: 2  进阶:  你能否用O(n)时间复杂度完成此题?  来源：力扣（LeetCode）第376题  链接：https://leetcode-cn.com/problems/wiggle-subsequence
+ 分析：  首先这道题的方法实在是太多了。 我首先使用了二维dp做出了O(n^2)的方法。 一个状态是以数组i为结尾的最优情况，第二个状态是当前是处于递增还是递减状态。 如果是递增状态，那么就是前几次里的递减状态 + 1。 如果是递减状态，那么就是前几次里的递增状态 + 1。 再来说说进阶。 我们发现如果数组把它分为一段递增，一段递减，那么这一段内的所有数的答案都是一样的，因为，都是递减，前一段的最后那个数都比他们大，选哪个都可以，可是一旦选择了一个，这一段里都不能再选择第二个，下一个一定在下一段里。而这一段递增那么下一段就是递减。(所谓一段，就是一段数组内连续的数) 那这每一段内我要选择什么才合适呢？我们发现，如果是递减，我们就选择最小的那个，如果是递增就选择最大的那个。因为如果你选择最小的那个，那么下一个数要比它大，你选择的越小下一个找到比它大的数的可能性就越高，递增同理。 于是乎我们每一段都要贪心的去取最小或最大的数，也就是这一段单调的最后一个数。  代码：  dp
+class Solution { public int wiggleMaxLength(int[] nums) { int len = nums.</description>
+    </item>
+    
+    <item>
+      <title>多边形三角剖分的最低得分</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%A4%9A%E8%BE%B9%E5%BD%A2%E4%B8%89%E8%A7%92%E5%89%96%E5%88%86%E7%9A%84%E6%9C%80%E4%BD%8E%E5%BE%97%E5%88%86/</link>
+      <pubDate>Sat, 09 Nov 2019 21:25:31 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%A4%9A%E8%BE%B9%E5%BD%A2%E4%B8%89%E8%A7%92%E5%89%96%E5%88%86%E7%9A%84%E6%9C%80%E4%BD%8E%E5%BE%97%E5%88%86/</guid>
+      <description>题目：多边形三角剖分的最低得分  给定N，想象一个凸N边多边形，其顶点按顺时针顺序依次标记为A[0], A[i], ..., A[N-1]。 假设您将多边形剖分为N-2个三角形。对于每个三角形，该三角形的值是顶点标记的乘积，三角剖分的分数是进行三角剖分后所有N-2个三角形的值之和。 返回多边形进行三角剖分后可以得到的最低分。  示例 1： 输入：[1,2,3] 输出：6 解释：多边形已经三角化，唯一三角形的分数为 6。  示例 2： 输入：[3,7,4,5] 输出：144 解释：有两种三角剖分，可能得分分别为：3*7*5 + 4*5*7 = 245，或 3*4*5 + 3*4*7 = 144。最低分数为 144。  示例 3： 输入：[1,3,1,4,1,5] 输出：13 解释：最低分数三角剖分的得分情况为 1*1*3 + 1*1*4 + 1*1*5 + 1*1*1 = 13。  提示：  3 &amp;lt;= A.length &amp;lt;= 50 1 &amp;lt;= A[i] &amp;lt;= 100  来源：力扣（LeetCode）第1039题  链接：https://leetcode-cn.com/problems/minimum-score-triangulation-of-polygon
+ 分析：  可以使用dp或者dfs两种方法(好像很多题我都会这么讲。。。) 这两种方式的思路完全一致，唯一的不同就是一个是递归一个是dp。 我们声明两个状态i，j为从第i个位置开始，到第j个位置为止。 我们发现如果i==j-1的话，是不可能会有答案的，因为中间还要有第三个位置。 至少要i+2==j才行，这样中间才能有一个位置放第三个点。 也就是说如果中间有两个位置，那么第三个点就有两种可能，以此类推。 如果中间有多个位置，我们随便选择其中的一个，一个三角形的三个点就是i,j,k(中间的那个点)，那么另外n-3个三角形的顶点的值要怎么算呢？我们发现除去i,j,k这个三角形外，其他的三角形的值我们在小一维的dp里已经算过了(就是长度比当前长度小1的那些值)。 比如现在我们要找其他的三角形那么其他的三角形的值就是dp[i][k]和dp[k][j]里面，而这两个值肯定已经算过了，因为这两个值所代表的状态肯定比当前状态的长度要小。  代码：  dp</description>
+    </item>
+    
+    <item>
+      <title>组合总和</title>
+      <link>https://ripple-zjw.github.io/2019/%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C4/</link>
+      <pubDate>Sat, 09 Nov 2019 21:23:14 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C4/</guid>
+      <description>题目：组合总和 Ⅳ  给定一个由正整数组成且不存在重复数字的数组，找出和为给定目标正整数的组合的个数。  示例: nums = [1, 2, 3] target = 4 所有可能的组合为： (1, 1, 1, 1) (1, 1, 2) (1, 2, 1) (1, 3) (2, 1, 1) (2, 2) (3, 1) 请注意，顺序不同的序列被视作不同的组合。 因此输出为 7。  进阶：  如果给定的数组中含有负数会怎么样？ 问题会产生什么变化？ 我们需要在题目中添加什么限制来允许负数的出现？  来源：力扣（LeetCode）第377题  链接：https://leetcode-cn.com/problems/combination-sum-iv
+ 分析：  dp和dfs两种方法。  代码：  dp
+class Solution { public int combinationSum4(int[] nums, int target) { int len = nums.length; int[] dp = new int[target+1]; dp[0] = 1; for (int i = 1; i &amp;lt;= target; i++) { for (int num : nums) if (i &amp;gt;= num) dp[i] += dp[i-num]; } return dp[target]; } }  dfs + 记忆化</description>
+    </item>
+    
+    <item>
+      <title>推多米诺</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%8E%A8%E5%A4%9A%E7%B1%B3%E8%AF%BA/</link>
+      <pubDate>Sat, 09 Nov 2019 21:17:02 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%8E%A8%E5%A4%9A%E7%B1%B3%E8%AF%BA/</guid>
+      <description>题目：推多米诺  一行中有N张多米诺骨牌，我们将每张多米诺骨牌垂直竖立。 在开始时，我们同时把一些多米诺骨牌向左或向右推。  每过一秒，倒向左边的多米诺骨牌会推动其左侧相邻的多米诺骨牌。 同样地，倒向右边的多米诺骨牌也会推动竖立在其右侧的相邻多米诺骨牌。 如果同时有多米诺骨牌落在一张垂直竖立的多米诺骨牌的两边，由于受力平衡， 该骨牌仍然保持不变。 就这个问题而言，我们会认为正在下降的多米诺骨牌不会对其它正在下降或已经下降的多米诺骨牌施加额外的力。 给定表示初始状态的字符串 &amp;ldquo;S&amp;rdquo; 。如果第 i 张多米诺骨牌被推向左边，则S[i] = &#39;L&#39;；如果第 i 张多米诺骨牌被推向右边，则S[i] = &#39;R&#39;；如果第 i 张多米诺骨牌没有被推动，则S[i] = &#39;.&#39;。 返回表示最终状态的字符串。  示例 1： 输入：&amp;quot;.L.R...LR..L..&amp;quot; 输出：&amp;quot;LL.RR.LLRRLL..&amp;quot;  示例 2： 输入：&amp;quot;RR.L&amp;quot; 输出：&amp;quot;RR.L&amp;quot; 说明：第一张多米诺骨牌没有给第二张施加额外的力。  提示：  0 &amp;lt;= N &amp;lt;= 10^5 表示多米诺骨牌状态的字符串只含有 &amp;lsquo;L&amp;rsquo;，&amp;rsquo;R&amp;rsquo;; 以及 &amp;lsquo;.&amp;rsquo;;  来源：力扣（LeetCode）第838题  链接：https://leetcode-cn.com/problems/push-dominoes
+ 分析：  首先这道题只有&amp;rsquo;L&amp;rsquo; &amp;lsquo;R&amp;rsquo; &amp;lsquo;.&amp;rsquo; 这三个值，一开始没想到怎么用动态规划 然后想着想着灵光一闪，发现我只要把R变为1，L变为-1，.变为0，就可以使用dp来求解了。 第四行我们先开辟一个和字符串长度一样的dp数组，状态就是当前的位置，值是当前连续的次数。 就是从本来就为L或R的那个数开始，你是第几个倒的。比如有一个&amp;rsquo;R&amp;rsquo;,它的右边为2，再右边为3，以此类推。 5-8行为base case，本来就会倒的肯定是1，我们姑且把他们叫做源头，源头如果往旁边移动，则源头的值就变为移到的那个值。 9-21行为解题的主要部分，我们分几种情况 第10行为遍历到源头为R的时候，即dp对应的索引的值大于0，我们判断下一个元素的情况。 只有下一个为.的情况才可以连续，因为如果出现了RR的情况，依然不能连续，根据官方给出的第2个示例，一个点的左边有两个R,右边有1个L时，点不会改变。 11-20行为遍历到源头为L的时候，dp[i] 小于0，我们判断上一个元素的情况。 第11行由于判断源头L需要往前找，所以声明一个变量j，用于往前找。 第12行和前面第10行正好相反，需要注意的是，12行最后多了一个条件，这是因为如果源头R一直向右加，加到了L，那么L应该也要向左减，可是原来可能是0的值被源头R覆盖了，所以我们要做一个判断。 首先如果对于源头L,左边为0，那么可以过去，其次源头R的值比源头L的值大，我们也可以移，直到源头R和源头L的绝对值相等，那么左右两边就平衡了。 不过，还有一种情况，就是中间这个点既不是源头左的，也不是源头右的。 我们在13-15行做一次特殊情况的判断，如果中间有一个值不属于两个源头而是.</description>
+    </item>
+    
+    <item>
+      <title>目标和</title>
+      <link>https://ripple-zjw.github.io/2019/%E7%9B%AE%E6%A0%87%E5%92%8C/</link>
+      <pubDate>Sat, 09 Nov 2019 21:14:39 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E7%9B%AE%E6%A0%87%E5%92%8C/</guid>
+      <description>题目：目标和  给定一个非负整数数组，a1, a2, &amp;hellip;, an, 和一个目标数，S。现在你有两个符号+和-。对于数组中的任意一个整数，你都可以从+或-中选择一个符号添加在前面。 返回可以使最终数组和为目标数 S 的所有添加符号的方法数。  示例 1: 输入: nums: [1, 1, 1, 1, 1], S: 3 输出: 5 解释: -1+1+1+1+1 = 3 +1-1+1+1+1 = 3 +1+1-1+1+1 = 3 +1+1+1-1+1 = 3 +1+1+1+1-1 = 3 一共有5种方法让最终目标和为3。  注意:  数组非空，且长度不会超过20。 初始的数组的和不会超过1000。 保证返回的最终结果能被32位整数存下。  来源：力扣（LeetCode）第494题  链接：https://leetcode-cn.com/problems/target-sum
+ 分析：  这是一道动态规划题，也可以使用dfs完成。 此外，还有一种使用数学方法来简化的dp。 常规dp很简单，第一个状态是当前为第几个，第二个状态为当前的和是多少。 我们有两种选择，第一种是当前为+号，那么用当前的和减去当前的值去找上一次的和。 如果当前是-号，就用当前的和加上当前的值去找上一次的和。 然后来看看数学方法简化dp。 设x为其中一个解的正数和，y为其中一个解的负数和的绝对值。 因此我们可以得到两个公式 x + y = sum(sum是整个数组的和) x - y = S(S是目标值) 上下一相加，得x = (sum + S) / 2 因此我们只要知道x有多少种可能就行了 所以问题转化为01背包问题，找到当长度为数组长度时，x有多少种可能。状态直接转为一维。 x也就是符号为正的情况。  代码：  先放上常规dp</description>
+    </item>
     
     <item>
       <title>“马”在棋盘上的概率</title>

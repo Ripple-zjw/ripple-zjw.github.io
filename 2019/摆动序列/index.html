@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E5%A4%9A%E8%BE%B9%E5%BD%A2%E4%B8%89%E8%A7%92%E5%89%96%E5%88%86%E7%9A%84%E6%9C%80%E4%BD%8E%E5%BE%97%E5%88%86/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E5%88%86%E6%B1%A4/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E6%91%86%E5%8A%A8%E5%BA%8F%E5%88%97/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           摆动序列 | LeaveIt
+       
+  </title>
+  <meta name="title" content="摆动序列 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "摆动序列",
+    "headline" : "摆动序列",
+    "description" : "题目：摆动序列  如果连续数字之间的差严格地在正数和负数之间交替，则数字序列称为摆动序列。第一个差（如果存在的话）可能是正数或负数。少于两个元素的序列也是摆动序列。 例如，[1,7,4,9,2,5]是一个摆动序列，因为差值(6,-3,5,-7,3)是正负交替出现的。相反, [1,4,7,2,5]和[1,7,4,5,5] 不是摆动序列，第一个序列是因为它的前两个差值都是正数，第二个序列是因为它的最后一个差值为零。 给定一个整数序列，返回作为摆动序列的最长子序列的长度。 通过从原始序列中删除一些（也可以不删除）元素来获得子序列，剩下的元素保持其原始顺序。  示例 1: 输入: [1,7,4,9,2,5] 输出: 6 解释: 整个序列均为摆动序列。  示例 2: 输入: [1,17,5,10,13,15,10,5,16,8] 输出: 7 解释: 这个序列包含几个长度为 7 摆动序列，其中一个可为[1,17,10,13,10,16,8]。  示例 3: 输入: [1,2,3,4,5,6,7,8,9] 输出: 2  进阶:  你能否用O(n)时间复杂度完成此题?  来源：力扣（LeetCode）第376题  链接：https:\/\/leetcode-cn.com\/problems\/wiggle-subsequence\n 分析：  首先这道题的方法实在是太多了。 我首先使用了二维dp做出了O(n^2)的方法。 一个状态是以数组i为结尾的最优情况，第二个状态是当前是处于递增还是递减状态。 如果是递增状态，那么就是前几次里的递减状态 \x2b 1。 如果是递减状态，那么就是前几次里的递增状态 \x2b 1。 再来说说进阶。 我们发现如果数组把它分为一段递增，一段递减，那么这一段内的所有数的答案都是一样的，因为，都是递减，前一段的最后那个数都比他们大，选哪个都可以，可是一旦选择了一个，这一段里都不能再选择第二个，下一个一定在下一段里。而这一段递增那么下一段就是递减。(所谓一段，就是一段数组内连续的数) 那这每一段内我要选择什么才合适呢？我们发现，如果是递减，我们就选择最小的那个，如果是递增就选择最大的那个。因为如果你选择最小的那个，那么下一个数要比它大，你选择的越小下一个找到比它大的数的可能性就越高，递增同理。 于是乎我们每一段都要贪心的去取最小或最大的数，也就是这一段单调的最后一个数。  代码：  dp\nclass Solution { public int wiggleMaxLength(int[] nums) { int len = nums.",
+    "inLanguage" : "zh-CN",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-11-09 21:28:46 \x2b0800 CST",
+    "dateModified" : "2019-11-09 21:28:46 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E6%91%86%E5%8A%A8%E5%BA%8F%E5%88%97\/",
+    "wordCount" : "526",
+    "keywords" : [ "算法求解思想","动态规划","贪心算法", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">摆动序列</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-11-09 itemprop="datePublished">November 9, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-摆动序列">题目：摆动序列</h1>
+
+<ul>
+<li>如果连续数字之间的差严格地在正数和负数之间交替，则数字序列称为<strong>摆动序列</strong>。第一个差（如果存在的话）可能是正数或负数。少于两个元素的序列也是摆动序列。</li>
+<li>例如，<code>[1,7,4,9,2,5]</code>是一个摆动序列，因为差值<code>(6,-3,5,-7,3)</code>是正负交替出现的。相反, <code>[1,4,7,2,5]</code>和<code>[1,7,4,5,5]</code> 不是摆动序列，第一个序列是因为它的前两个差值都是正数，第二个序列是因为它的最后一个差值为零。</li>
+<li>给定一个整数序列，返回作为摆动序列的最长子序列的长度。 通过从原始序列中删除一些（也可以不删除）元素来获得子序列，剩下的元素保持其原始顺序。</li>
+</ul>
+
+<h5 id="示例-1">示例 1:</h5>
+
+<pre><code>输入: [1,7,4,9,2,5]
+输出: 6 
+解释: 整个序列均为摆动序列。
+</code></pre>
+
+<h5 id="示例-2">示例 2:</h5>
+
+<pre><code>输入: [1,17,5,10,13,15,10,5,16,8]
+输出: 7
+解释: 这个序列包含几个长度为 7 摆动序列，其中一个可为[1,17,10,13,10,16,8]。
+</code></pre>
+
+<h5 id="示例-3">示例 3:</h5>
+
+<pre><code>输入: [1,2,3,4,5,6,7,8,9]
+输出: 2
+</code></pre>
+
+<h5 id="进阶">进阶:</h5>
+
+<ul>
+<li>你能否用<code>O(n)</code>时间复杂度完成此题?</li>
+</ul>
+
+<h4 id="来源-力扣-leetcode-第376题">来源：力扣（LeetCode）第376题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/wiggle-subsequence" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/wiggle-subsequence</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<ul>
+<li>首先这道题的方法实在是太多了。</li>
+<li>我首先使用了二维dp做出了<code>O(n^2)</code>的方法。</li>
+<li>一个状态是以数组i为结尾的最优情况，第二个状态是当前是处于递增还是递减状态。</li>
+<li>如果是递增状态，那么就是前几次里的递减状态 + 1。</li>
+<li>如果是递减状态，那么就是前几次里的递增状态 + 1。</li>
+<li>再来说说进阶。</li>
+<li>我们发现如果数组把它分为一段递增，一段递减，那么这一段内的所有数的答案都是一样的，因为，都是递减，前一段的最后那个数都比他们大，选哪个都可以，可是一旦选择了一个，这一段里都不能再选择第二个，下一个一定在下一段里。而这一段递增那么下一段就是递减。(所谓一段，就是一段数组内连续的数)</li>
+<li>那这每一段内我要选择什么才合适呢？我们发现，如果是递减，我们就选择最小的那个，如果是递增就选择最大的那个。因为如果你选择最小的那个，那么下一个数要比它大，你选择的越小下一个找到比它大的数的可能性就越高，递增同理。</li>
+<li>于是乎我们每一段都要贪心的去取最小或最大的数，也就是这一段单调的最后一个数。</li>
+</ul>
+
+<h2 id="代码">代码：</h2>
+
+<ul>
+<li><p>dp</p>
+
+<pre><code class="language-java">class Solution {
+public int wiggleMaxLength(int[] nums) {
+    int len = nums.length;
+    if (len &lt; 2) return len;
+    int[][] dp = new int[len][2];
+    // 0 正数 1 负数
+    for (int i = 0; i &lt; len; i++) {
+        for (int j = i + 1; j &lt; len; j++) {
+            if (nums[j] &gt; nums[i]) dp[j][1] = Math.max(dp[j][1], dp[i][0] + 1);
+            else if (nums[j] &lt; nums[i]) dp[j][0] = Math.max(dp[j][0], dp[i][1] + 1);
+        }
+    }
+    return 1 + (dp[len-1][0] &gt; dp[len-1][1] ? dp[len-1][0] : dp[len-1][1]);
+}
+}
+</code></pre></li>
+
+<li><p>贪心算法</p>
+
+<pre><code class="language-java">class Solution {
+public int wiggleMaxLength(int[] nums) {
+    int len = nums.length;int ans1 = 1, ans2 = 1;
+    if (len &lt; 2) return len;
+    int i = 0;
+    while (i + 1 &lt; len) {
+        while (i + 1 &lt; len &amp;&amp; nums[i] &lt;= nums[i+1]) ++i;
+        if (i + 1 &lt; len &amp;&amp; nums[i] &gt; nums[i+1]) ++ans1;
+        while (i + 1 &lt; len &amp;&amp; nums[i] &gt;= nums[i+1]) ++i;
+        if (i + 1 &lt; len &amp;&amp; nums[i] &lt; nums[i+1]) ++ans1;
+    }
+    i = 0;
+    while (i + 1 &lt; len) {
+        while (i + 1 &lt; len &amp;&amp; nums[i] &gt;= nums[i+1]) ++i;
+        if (i + 1 &lt; len &amp;&amp; nums[i] &lt; nums[i+1]) ++ans2;
+        while (i + 1 &lt; len &amp;&amp; nums[i] &lt;= nums[i+1]) ++i;
+        if (i + 1 &lt; len &amp;&amp; nums[i] &gt; nums[i+1]) ++ans2;
+    }
+    return ans1 &gt; ans2 ? ans1 : ans2;
+}
+}
+</code></pre></li>
+</ul>
+
+<h2 id="leetcode官方题解">LeetCode官方题解：</h2>
+
+<ul>
+<li><p>暴力</p>
+
+<pre><code class="language-java">public class Solution {
+private int calculate(int[] nums, int index, boolean isUp) {
+    int maxcount = 0;
+    for (int i = index + 1; i &lt; nums.length; i++) {
+        if ((isUp &amp;&amp; nums[i] &gt; nums[index]) || (!isUp &amp;&amp; nums[i] &lt; nums[index]))
+            maxcount = Math.max(maxcount, 1 + calculate(nums, i, !isUp));
+    }
+    return maxcount;
+}
+
+public int wiggleMaxLength(int[] nums) {
+    if (nums.length &lt; 2)
+        return nums.length;
+    return 1 + Math.max(calculate(nums, 0, true), calculate(nums, 0, false));
+}
+}
+</code></pre></li>
+
+<li><p>线性动态规划</p>
+
+<pre><code class="language-java">public class Solution {
+public int wiggleMaxLength(int[] nums) {
+    if (nums.length &lt; 2)
+        return nums.length;
+    int[] up = new int[nums.length];
+    int[] down = new int[nums.length];
+    up[0] = down[0] = 1;
+    for (int i = 1; i &lt; nums.length; i++) {
+        if (nums[i] &gt; nums[i - 1]) {
+            up[i] = down[i - 1] + 1;
+            down[i] = down[i - 1];
+        } else if (nums[i] &lt; nums[i - 1]) {
+            down[i] = up[i - 1] + 1;
+            up[i] = up[i - 1];
+        } else {
+            down[i] = down[i - 1];
+            up[i] = up[i - 1];
+        }
+    }
+    return Math.max(down[nums.length - 1], up[nums.length - 1]);
+}
+}
+</code></pre></li>
+
+<li><p>空间优化的动态规划</p>
+
+<pre><code class="language-java">public class Solution {
+public int wiggleMaxLength(int[] nums) {
+    if (nums.length &lt; 2)
+        return nums.length;
+    int down = 1, up = 1;
+    for (int i = 1; i &lt; nums.length; i++) {
+        if (nums[i] &gt; nums[i - 1])
+            up = down + 1;
+        else if (nums[i] &lt; nums[i - 1])
+            down = up + 1;
+    }
+    return Math.max(down, up);
+}
+}
+</code></pre></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E6%91%86%E5%8A%A8%E5%BA%8F%E5%88%97/>https://ripple-zjw.github.io/2019/%E6%91%86%E5%8A%A8%E5%BA%8F%E5%88%97/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                    #动态规划</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">
+                    #贪心算法</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E5%A4%9A%E8%BE%B9%E5%BD%A2%E4%B8%89%E8%A7%92%E5%89%96%E5%88%86%E7%9A%84%E6%9C%80%E4%BD%8E%E5%BE%97%E5%88%86/" class="prev" rel="prev" title="多边形三角剖分的最低得分"><i class="iconfont icon-left"></i>&nbsp;多边形三角剖分的最低得分</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E5%88%86%E6%B1%A4/" class="next" rel="next" title="分汤">分汤&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

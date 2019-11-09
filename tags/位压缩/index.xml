@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>位压缩 on LeaveIt</title>
+    <link>https://ripple-zjw.github.io/tags/%E4%BD%8D%E5%8E%8B%E7%BC%A9/</link>
+    <description>Recent content in 位压缩 on LeaveIt</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 09 Nov 2019 21:35:43 +0800</lastBuildDate>
+    
+	<atom:link href="https://ripple-zjw.github.io/tags/%E4%BD%8D%E5%8E%8B%E7%BC%A9/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>串联字符串的最大长度</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%B8%B2%E8%81%94%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%A4%A7%E9%95%BF%E5%BA%A6/</link>
+      <pubDate>Sat, 09 Nov 2019 21:35:43 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E4%B8%B2%E8%81%94%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%A4%A7%E9%95%BF%E5%BA%A6/</guid>
+      <description>题目：串联字符串的最大长度  给定一个字符串数组arr，字符串s是将arr 某一子序列字符串连接所得的字符串，如果s 中的每一个字符都只出现过一次，那么它就是一个可行解。 请返回所有可行解s中最长长度。  示例 1： 输入：arr = [&amp;quot;un&amp;quot;,&amp;quot;iq&amp;quot;,&amp;quot;ue&amp;quot;] 输出：4 解释：所有可能的串联组合是 &amp;quot;&amp;quot;,&amp;quot;un&amp;quot;,&amp;quot;iq&amp;quot;,&amp;quot;ue&amp;quot;,&amp;quot;uniq&amp;quot; 和 &amp;quot;ique&amp;quot;，最大长度为 4。  示例 2： 输入：arr = [&amp;quot;cha&amp;quot;,&amp;quot;r&amp;quot;,&amp;quot;act&amp;quot;,&amp;quot;ers&amp;quot;] 输出：6 解释：可能的解答有 &amp;quot;chaers&amp;quot; 和 &amp;quot;acters&amp;quot;。  示例 3： 输入：arr = [&amp;quot;abcdefghijklmnopqrstuvwxyz&amp;quot;] 输出：26  提示：  1 &amp;lt;= arr.length &amp;lt;= 16 1 &amp;lt;= arr[i].length &amp;lt;= 26 arr[i]中只含有小写英文字母  来源：力扣（LeetCode）第1239题  链接：https://leetcode-cn.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters
+ 分析：  使用位压缩和回溯就可以完成这道题。 每一个字符串我们有两种选择，一种是用这个字符串，另一个是不用这个字符串。 我们用一个int类型的整数代表字符串每一个字符的使用情况。int总共有32位，而小写字母总共有26个，因此我可以把26个字母都存在每一个位上，1代表已经使用了，0代表未使用。 如果用这个字符串，我们就要把当前的字符串长度加上，然后再去往下找下一个字符串。 如果不用这个字符串，我们不用加上当前字符串的长度，只需要找下一个字符串就行了。 然后比较一下两者哪个大。 需要注意的是，如果这个字符不能使用，就是用了会有重复的字符，那么这种情况只有一个选择，就是不用这个字符串。 其实这道题和dp很像，但是由于有一个状态的范围不确定，所以用dp稍有难度。  代码： class Solution { int len; public int maxLength(List&amp;lt;String&amp;gt; arr) { len = arr.</description>
+    </item>
+    
+  </channel>
+</rss>

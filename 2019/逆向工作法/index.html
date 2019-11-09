@@ -218,50 +218,52 @@ S 以字母开头。
 
 <h3 id="上代码看一下">上代码看一下：</h3>
 
-<p>先来一个不用栈实现的官方解法</p>
+<ul>
+<li><p>先来一个不用栈实现的官方解法</p>
 
 <pre><code class="language-Python">class Solution:
-    def decodeAtIndex(self, S: str, K: int) -&gt; str:
-        size = 0
-        for c in S:
-            if c.isdigit():
-                size *= int(c)
-            else:
-                size += 1
+def decodeAtIndex(self, S: str, K: int) -&gt; str:
+    size = 0
+    for c in S:
+        if c.isdigit():
+            size *= int(c)
+        else:
+            size += 1
 
-        for c in reversed(S):
-            K %= size
-            if K == 0 and c.isalpha():
-                return c
-            if c.isdigit():
-                size /= int(c)
-            else:
-                size -= 1
-</code></pre>
+    for c in reversed(S):
+        K %= size
+        if K == 0 and c.isalpha():
+            return c
+        if c.isdigit():
+            size /= int(c)
+        else:
+            size -= 1
+</code></pre></li>
 
-<p>然后是使用栈实现的，其实是一样的，从后往前遍历就是在模拟出栈，不过不用真的出栈，节省了时间</p>
+<li><p>然后是使用栈实现的，其实是一样的，从后往前遍历就是在模拟出栈，不过不用真的出栈，节省了时间</p>
 
 <pre><code class="language-Python">class Solution(object):
-    def decodeAtIndex(self, S, K):
-        stack = []
-        add = 0
-        for i in range(len(S)):
-            if S[i].isdigit():
-                add *= int(S[i])
-            else:
-                add += 1
-            stack.append(S[i])
-        while stack:
-            K = K % add
-            if K == 0 and stack[-1].isalpha():
-                return stack[-1]
+def decodeAtIndex(self, S, K):
+    stack = []
+    add = 0
+    for i in range(len(S)):
+        if S[i].isdigit():
+            add *= int(S[i])
+        else:
+            add += 1
+        stack.append(S[i])
+    while stack:
+        K = K % add
+        if K == 0 and stack[-1].isalpha():
+            return stack[-1]
             
-            if stack[-1].isdigit():
-                add = add // int(stack.pop())
-            else:
-                add -= 1
-                stack.pop()
-</code></pre>
+        if stack[-1].isdigit():
+            add = add // int(stack.pop())
+        else:
+            add -= 1
+            stack.pop()
+</code></pre></li>
+</ul>
 
 <h3 id="复杂度分析">复杂度分析：</h3>
 

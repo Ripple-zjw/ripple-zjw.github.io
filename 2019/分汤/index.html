@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E6%91%86%E5%8A%A8%E5%BA%8F%E5%88%97/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E5%88%92%E5%88%86%E4%B8%BAk%E4%B8%AA%E7%9B%B8%E7%AD%89%E7%9A%84%E5%AD%90%E9%9B%86/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E5%88%86%E6%B1%A4/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           分汤 | LeaveIt
+       
+  </title>
+  <meta name="title" content="分汤 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "分汤",
+    "headline" : "分汤",
+    "description" : "题目：分汤  有A和B两种类型的汤。一开始每种类型的汤有N毫升。有四种分配操作： 提供 100ml 的汤A 和 0ml 的汤B。 提供 75ml 的汤A 和 25ml 的汤B。 提供 50ml 的汤A 和 50ml 的汤B。 提供 25ml 的汤A 和 75ml 的汤B。 当我们把汤分配给某人之后，汤就没有了。每个回合，我们将从四种概率同为0.25的操作中进行分配选择。如果汤的剩余量不足以完成某次操作，我们将尽可能分配。当两种类型的汤都分配完时，停止操作。 注意不存在先分配100 ml汤B的操作。 需要返回的值：汤A先分配完的概率 \x2b 汤A和汤B同时分配完的概率 \/ 2。  示例: 输入: N = 50 输出: 0.625 解释: 如果我们选择前两个操作，A将首先变为空。 对于第三个操作，A和B会同时变为空。 对于第四个操作，B将首先变为空。 所以A变为空的总概率加上A和B同时变为空的概率的一半是 0.25 *(1 \x2b 1 \x2b 0.5 \x2b 0)= 0.625。  注释:  0 \x26lt;= N \x26lt;= 10^9。 返回值在10^-6的范围将被认为是正确的。  来源：力扣（LeetCode）第808题  链接：https:\/\/leetcode-cn.",
+    "inLanguage" : "zh-CN",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-11-09 21:30:11 \x2b0800 CST",
+    "dateModified" : "2019-11-09 21:30:11 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E5%88%86%E6%B1%A4\/",
+    "wordCount" : "351",
+    "keywords" : [ "算法求解思想","动态规划","dfs","记忆化搜索", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">分汤</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-11-09 itemprop="datePublished">November 9, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-分汤">题目：分汤</h1>
+
+<ul>
+<li>有<code>A</code>和<code>B</code>两种类型的汤。一开始每种类型的汤有<code>N</code>毫升。有四种分配操作：</li>
+<li>提供 100ml 的汤A 和 0ml 的汤B。</li>
+<li>提供 75ml 的汤A 和 25ml 的汤B。</li>
+<li>提供 50ml 的汤A 和 50ml 的汤B。</li>
+<li>提供 25ml 的汤A 和 75ml 的汤B。</li>
+<li>当我们把汤分配给某人之后，汤就没有了。每个回合，我们将从四种概率同为0.25的操作中进行分配选择。如果汤的剩余量不足以完成某次操作，我们将尽可能分配。当两种类型的汤都分配完时，停止操作。</li>
+<li>注意不存在先分配100 ml汤B的操作。</li>
+<li>需要返回的值：汤A先分配完的概率 + 汤A和汤B同时分配完的概率 / 2。</li>
+</ul>
+
+<h5 id="示例">示例:</h5>
+
+<pre><code>输入: N = 50
+输出: 0.625
+解释:
+如果我们选择前两个操作，A将首先变为空。
+对于第三个操作，A和B会同时变为空。
+对于第四个操作，B将首先变为空。
+所以A变为空的总概率加上A和B同时变为空的概率的一半是 0.25 *(1 + 1 + 0.5 + 0)= 0.625。
+</code></pre>
+
+<h5 id="注释">注释:</h5>
+
+<ul>
+<li>0 &lt;= N &lt;= 10^9。</li>
+<li>返回值在<code>10^-6</code>的范围将被认为是正确的。</li>
+</ul>
+
+<h4 id="来源-力扣-leetcode-第808题">来源：力扣（LeetCode）第808题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/soup-servings" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/soup-servings</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<ul>
+<li>动态规划题,也可以用dfs。这道题使用dfs更加的好，因为不用判断数组越界的情况。</li>
+<li>声明两个状态，一个是A的剩余量，一个是B的剩余量。</li>
+</ul>
+
+<h2 id="代码">代码：</h2>
+
+<ul>
+<li><p>dp</p>
+
+<pre><code class="language-java">class Solution {
+public double soupServings(int N) {
+    if (N &gt; 4450) return 1.0; // 如果不加，LeetCode会超出内存限制。
+    int cnt = (int)Math.ceil(N / 25.0); // N太大了，由于每一个选择都是25的倍数，因此最多要分cnt次就能出现0的情况。
+    double[][] dp = new double[cnt+1][cnt+1];// 左边是A汤剩余量，右边是B汤剩余量。
+    Arrays.fill(dp[0], 1); // 如果A先到0，那么就加1次，同样如果B先到0，那么就是0。
+    dp[0][0] = 0.5; // 如果同时到0，那么就是概率的一半。
+    for (int i = 1; i &lt;= cnt; i++) {
+        // 除以25以后，100就是4,75就是3,50是2,25是1。
+        int i1 = i - 4 &gt; 0 ? i - 4 : 0, i2 = i - 3 &gt; 0 ? i - 3 : 0;
+        int i3 = i - 2 &gt; 0 ? i - 2 : 0, i4 = i - 1 &gt; 0 ? i - 1 : 0;
+        for (int j = 1; j &lt;= cnt; j++) {
+            int j1 = j - 1 &gt; 0 ? j - 1 : 0, j2 = j - 2 &gt; 0 ? j - 2 : 0, j3 = j - 3 &gt; 0 ? j - 3 : 0;
+            //dp内存的是你当前的四种情况有几种是A先0,有几种是B先0,有几种是同时为0。
+            //同时为0要除以2，所以dp[0][0]=0.5。B先0就是0，A先0就是1。四种情况加起来除以4就是要求的概率。
+            dp[i][j] = 0.25 * (dp[i1][j] + dp[i2][j1] + dp[i3][j2] + dp[i4][j3]);
+        }
+    }
+    return dp[cnt][cnt];
+}
+}
+</code></pre></li>
+
+<li><p>dfs + 记忆化搜索</p>
+
+<pre><code class="language-java">class Solution {
+double[][] memo;
+public double soupServings(int N) {
+    if (N &gt; 4450) return 1.0;
+    int cnt = (int)Math.ceil(N / 25.0);
+    memo = new double[cnt+1][cnt+1];
+    return dfs(cnt, cnt);
+}
+
+public double dfs(int A, int B) {
+    if (A &lt;= 0 &amp;&amp; B &lt;= 0) return 0.5;
+    if (A &lt;= 0) return 1;
+    if (B &lt;= 0) return 0;
+    if (memo[A][B] != 0) return memo[A][B];
+    double ans = 0;
+    ans = 0.25 * (dfs(A - 4, B) + dfs(A - 3, B - 1) + dfs(A - 2, B - 2) + dfs(A - 1, B - 3));
+    memo[A][B] = ans;
+    return ans;
+}
+}
+</code></pre></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E5%88%86%E6%B1%A4/>https://ripple-zjw.github.io/2019/%E5%88%86%E6%B1%A4/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                    #动态规划</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/dfs/">
+                    #dfs</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2/">
+                    #记忆化搜索</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E6%91%86%E5%8A%A8%E5%BA%8F%E5%88%97/" class="prev" rel="prev" title="摆动序列"><i class="iconfont icon-left"></i>&nbsp;摆动序列</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E5%88%92%E5%88%86%E4%B8%BAk%E4%B8%AA%E7%9B%B8%E7%AD%89%E7%9A%84%E5%AD%90%E9%9B%86/" class="next" rel="next" title="划分为k个相等的子集">划分为k个相等的子集&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

@@ -6,10 +6,20 @@
     <description>Recent content in 单调栈 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 23 Oct 2019 19:00:35 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 09 Nov 2019 21:39:28 +0800</lastBuildDate>
     
 	<atom:link href="https://ripple-zjw.github.io/tags/%E5%8D%95%E8%B0%83%E6%A0%88/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>子数组的最小值之和</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC%E4%B9%8B%E5%92%8C/</link>
+      <pubDate>Sat, 09 Nov 2019 21:39:28 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC%E4%B9%8B%E5%92%8C/</guid>
+      <description>题目：子数组的最小值之和  给定一个整数数组 A，找到min(B)的总和，其中 B 的范围为A的每个（连续）子数组。 由于答案可能很大，因此返回答案模 10^9 + 7。  示例： 输入：[3,1,2,4] 输出：17 解释： 子数组为 [3]，[1]，[2]，[4]，[3,1]，[1,2]，[2,4]，[3,1,2]，[1,2,4]，[3,1,2,4]。 最小值为 3，1，2，4，1，1，2，1，1，1，和为 17。  提示：  1 &amp;lt;= A &amp;lt;= 30000 1 &amp;lt;= A[i] &amp;lt;= 30000  来源：力扣（LeetCode）第907题  链接：https://leetcode-cn.com/problems/sum-of-subarray-minimums
+ 分析：  我们要找到所有子数组的最小值之和，就要找到当每个数作为最小数时这样的子数组有多少个。 既然是子树组，那一定是连续的，这题一开始以为可以使用动态规划，结果数据量很大，显然dp会超时。 我们先找当这个数为最小数时最大的子数组是多少。也就是说以这个数i开始，它的左边和右边第一个比它小的数，中间这段就是最长的子数组。 这一段子数组中的每一个子数组都是以i为最小数的子数组。那这一段的子数组又有多少个子数组呢，以i这个下标为分割线，将(i - left[i]) * (right[i ]- i) * A[i],前两个是子数组的个数，最后那个是子数组的最小值。 那现在的问题是如果找到left[]和right[]的值。left和right的值是某一个数的左边和右边最小的那个数在A中的下标。 我们可以使用单调栈在O(n)的时间复杂度下找到。  代码： class Solution { public int sumSubarrayMins(int[] A) { long mod = (long)1e9 + 7; int len = A.</description>
+    </item>
     
     <item>
       <title>叶值的最小代价生成树</title>

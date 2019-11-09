@@ -5,406 +5,129 @@
     <description>Recent content in LeaveIt on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 23 Oct 2019 20:17:40 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 09 Nov 2019 21:51:32 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>“马”在棋盘上的概率</title>
-      <link>https://ripple-zjw.github.io/2019/%E9%A9%AC%E5%9C%A8%E6%A3%8B%E7%9B%98%E4%B8%8A%E7%9A%84%E6%A6%82%E7%8E%87/</link>
-      <pubDate>Wed, 23 Oct 2019 20:17:40 +0800</pubDate>
+      <title>最长等差数列</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%9C%80%E9%95%BF%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97/</link>
+      <pubDate>Sat, 09 Nov 2019 21:51:32 +0800</pubDate>
       
-      <guid>https://ripple-zjw.github.io/2019/%E9%A9%AC%E5%9C%A8%E6%A3%8B%E7%9B%98%E4%B8%8A%E7%9A%84%E6%A6%82%E7%8E%87/</guid>
+      <guid>https://ripple-zjw.github.io/2019/%E6%9C%80%E9%95%BF%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97/</guid>
       <description>
 
-&lt;h1 id=&#34;题目-马-在棋盘上的概率&#34;&gt;题目：“马”在棋盘上的概率&lt;/h1&gt;
+&lt;h1 id=&#34;题目-最长等差数列&#34;&gt;题目：最长等差数列&lt;/h1&gt;
 
 &lt;ul&gt;
-&lt;li&gt;已知一个&lt;code&gt;NxN&lt;/code&gt;的国际象棋棋盘，棋盘的行号和列号都是从 0 开始。即最左上角的格子记为&lt;code&gt;(0, 0)&lt;/code&gt;，最右下角的记为&lt;code&gt;(N-1, N-1)&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;现有一个 “马”（也译作 “骑士”）位于&lt;code&gt;(r, c)&lt;/code&gt;，并打算进行&lt;code&gt;K 次移动。&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;如下图所示，国际象棋的 “马” 每一步先沿水平或垂直方向移动 2 个格子，然后向与之相垂直的方向再移动 1 个格子，共有 8 个可选的位置。&lt;/li&gt;
-&lt;li&gt;&lt;img src=&#34;https://ripple-zjw.github.io/images/马在棋盘上的概率/knight.png&#34; alt=&#34;image&#34; /&gt;&lt;/li&gt;
-&lt;li&gt;现在 “马” 每一步都从可选的位置（包括棋盘外部的）中独立随机地选择一个进行移动，直到移动了&lt;code&gt;K&lt;/code&gt;次或跳到了棋盘外面。&lt;/li&gt;
-&lt;li&gt;求移动结束后，“马” 仍留在棋盘上的概率。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;示例&#34;&gt;示例：&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入: 3, 2, 0, 0
-输出: 0.0625
-解释: 
-输入的数据依次为 N, K, r, c
-第 1 步时，有且只有 2 种走法令 “马” 可以留在棋盘上（跳到（1,2）或（2,1））。对于以上的两种情况，各自在第2步均有且只有2种走法令 “马” 仍然留在棋盘上。
-所以 “马” 在结束后仍在棋盘上的概率为 0.0625。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;注意&#34;&gt;注意：&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;N 的取值范围为 [1, 25]&lt;/li&gt;
-&lt;li&gt;K 的取值范围为 [0, 100]&lt;/li&gt;
-&lt;li&gt;开始时，“马” 总是位于棋盘上&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第688题&#34;&gt;来源：力扣（LeetCode）第688题&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/knight-probability-in-chessboard&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/knight-probability-in-chessboard&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;这道题的概率计算首先要先找到分子和分母，分母就是所有的情况，即K=1就是8种，K=2就是64种。&lt;/li&gt;
-&lt;li&gt;然后是分子，分子是到第K步所有可能的情况。比如示例里面K=1有两种情况，k=2总共有4种可能，所以概率就是&lt;code&gt;4/64&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;因此这道题可以使用dp或者dfs来做。&lt;/li&gt;
-&lt;li&gt;基本都是一些老套路。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;dfs+记忆化搜索&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-private int[] dx = {1, 1, -1, -1, 2, 2, -2, -2};
-private int[] dy = {2, -2, 2, -2, 1, -1, 1, -1};
-double[][][] memo;
-public double knightProbability(int N, int K, int r, int c) {
-    memo = new double[K+1][N][N];
-    return dfs(N, K, r, c) / Math.pow(8, K);
-}
-
-public double dfs(int N, int K, int r, int c) {
-    if (K == 0) return 1;
-    if (memo[K][r][c] != 0) return memo[K][r][c];
-    double ans = 0;
-    for (int i = 0; i &amp;lt; 8; i++)
-        if (r + dx[i] &amp;gt;= 0 &amp;amp;&amp;amp; r + dx[i] &amp;lt; N &amp;amp;&amp;amp; c + dy[i] &amp;gt;= 0 &amp;amp;&amp;amp; c + dy[i] &amp;lt; N)
-            ans += dfs(N, K-1, r + dx[i], c + dy[i]);
-            memo[K][r][c] = ans;
-    return ans;
-}
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;动态规划&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-public double knightProbability(int N, int K, int r, int c) {
-    int[] dx = {1, 1, -1, -1, 2, 2, -2, -2};
-    int[] dy = {2, -2, 2, -2, 1, -1, 1, -1};
-    double[][][] dp = new double[K+1][N][N];
-    // i 第几步  j x位置 k y位置
-    dp[0][r][c] = 1;
-    for (int i = 1; i &amp;lt;= K; i++) {
-        for (int j = 0; j &amp;lt; N; j++) {
-            for (int k = 0; k &amp;lt; N; k++) {
-                if (dp[i-1][j][k] != 0) {
-                    for (int l = 0; l &amp;lt; 8; l++) 
-                        if (j+dx[l] &amp;gt;= 0 &amp;amp;&amp;amp; j+dx[l] &amp;lt; N &amp;amp;&amp;amp; k+dy[l] &amp;gt;= 0 &amp;amp;&amp;amp; k+dy[l] &amp;lt; N)
-                            dp[i][j+dx[l]][k+dy[l]] += dp[i-1][j][k] / 8;
-                }
-            }
-        }
-    }
-    double ans = 0;
-    for (int i = 0; i &amp;lt; N; i++) for (int j = 0; j &amp;lt; N; j++) ans += dp[K][i][j];
-    return ans;
-}
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;另外，为了节约空间，可以使用滚动数组。大幅度节省空间，速度还快了一点。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-public double knightProbability(int N, int K, int r, int c) {
-    int[] dx = {1, 1, -1, -1, 2, 2, -2, -2};
-    int[] dy = {2, -2, 2, -2, 1, -1, 1, -1};
-    double[][][] dp = new double[2][N][N];
-    // i 第几步  j x位置 k y位置
-    dp[0][r][c] = 1;
-    for (int ii = 1; ii &amp;lt;= K; ii++) {
-        int i = ii &amp;amp; 1;
-        int pi = i ^ 1;
-        for (int j = 0; j &amp;lt; N; j++) for (int k = 0; k &amp;lt; N; k++) dp[i][j][k] = 0;
-        for (int j = 0; j &amp;lt; N; j++) {
-            for (int k = 0; k &amp;lt; N; k++) {
-                if (dp[pi][j][k] != 0) {
-                    for (int l = 0; l &amp;lt; 8; l++)
-                        if (j+dx[l] &amp;gt;= 0 &amp;amp;&amp;amp; j+dx[l] &amp;lt; N &amp;amp;&amp;amp; k+dy[l] &amp;gt;= 0 &amp;amp;&amp;amp; k+dy[l] &amp;lt; N)
-                            dp[i][j+dx[l]][k+dy[l]] += dp[pi][j][k] / 8;
-                }
-            }
-        }
-    }
-    double ans = 0;
-    for (int i = 0; i &amp;lt; N; i++) for (int j = 0; j &amp;lt; N; j++) ans += dp[K&amp;amp;1][i][j];
-    return ans;
-}
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>最长上升子序列</title>
-      <link>https://ripple-zjw.github.io/2019/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97/</link>
-      <pubDate>Wed, 23 Oct 2019 20:15:25 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97/</guid>
-      <description>
-
-&lt;h1 id=&#34;题目-最长上升子序列&#34;&gt;题目：最长上升子序列&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;给定一个无序的整数数组，找到其中最长上升子序列的长度。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;示例&#34;&gt;示例:&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入: [10,9,2,5,3,7,101,18]
-输出: 4 
-解释: 最长的上升子序列是[2,3,7,101]，它的长度是 4。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;说明&#34;&gt;说明:&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。&lt;/li&gt;
-&lt;li&gt;你算法的时间复杂度应该为&lt;code&gt;O(n^2)&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;进阶: 你能将算法的时间复杂度降低到&lt;code&gt;O(n logn)&lt;/code&gt;吗?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第300题&#34;&gt;来源：力扣（LeetCode）第300题&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/longest-increasing-subsequence&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/longest-increasing-subsequence&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;非常好的一道题目&lt;/li&gt;
-&lt;li&gt;可以使用动态规划来解决。&lt;/li&gt;
-&lt;li&gt;除了最常规的一种方法外还有另一种动态规划的方法，使用二分查找的思想。&lt;/li&gt;
-&lt;li&gt;具体可以看看搜索插入位置(LeetCode第35题)&lt;/li&gt;
-&lt;li&gt;动态规划：
-
-&lt;ul&gt;
-&lt;li&gt;设1个状态表示到这个数为止，最长上升子序列是多少。&lt;/li&gt;
-&lt;li&gt;然后遍历数组，当遍历到第i个状态时，查看在dp中到第i个数为止已经有多长了，那么你只要在右边找到比当前数大的值，然后在它的dp数组下加上1。&lt;/li&gt;
-&lt;li&gt;最后找到dp数组中最大的值，就是答案。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;dp + 二分查找：
-
-&lt;ul&gt;
-&lt;li&gt;我们遍历数组，将每个数放进dp数组中。&lt;/li&gt;
-&lt;li&gt;由于dp数组是单调递增的，所以可以使用二分查找找到插入的位置。&lt;/li&gt;
-&lt;li&gt;有两种情况，如果找到了这个值，那么直接覆盖就行了，如果没找到这个值，那么将比它大的最小的值覆盖。其实就是插入位置。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;dp&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-public int lengthOfLIS(int[] nums) {
-    int len = nums.length;
-    int[] dp = new int[len];
-    Arrays.fill(dp, 1);
-    for (int i = 0; i &amp;lt; len; i++) {
-        for (int j = i + 1; j &amp;lt; len; j++) {
-            if (nums[i] &amp;lt; nums[j]) dp[j] = Math.max(dp[j], dp[i] + 1);
-        }
-    }
-    int ans = 0;
-    for (int i = 0; i &amp;lt; len; i++) ans = Math.max(ans, dp[i]);
-    return ans;
-}
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;dp + 二分&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-private int len;
-private int[] dp;
-public int lengthOfLIS(int[] nums) {
-    len = nums.length;
-    dp = new int[len];
-    Arrays.fill(dp, Integer.MAX_VALUE);
-    for (int i = 0; i &amp;lt;len; i++) dp[find(nums[i])] = nums[i];
-    int ans = 0;
-    for (int i = 0; i &amp;lt;len; i++) {if (dp[i] != Integer.MAX_VALUE) ++ans;}
-    return ans;
-}
-
-public int find(int val) {
-    int left = 0, right = len - 1;
-    while (left &amp;lt;= right) {
-        int mid = right + (left - right &amp;gt;&amp;gt; 1);
-        if (dp[mid] == val) {
-            return mid;
-        } else if (dp[mid] &amp;lt; val) {
-            left = mid + 1;
-        } else {
-            right = mid - 1;
-        }
-    }
-    return left;
-}
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>最长的斐波那契子序列的长度</title>
-      <link>https://ripple-zjw.github.io/2019/%E6%9C%80%E9%95%BF%E7%9A%84%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E5%AD%90%E5%BA%8F%E5%88%97%E7%9A%84%E9%95%BF%E5%BA%A6/</link>
-      <pubDate>Wed, 23 Oct 2019 20:09:39 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E6%9C%80%E9%95%BF%E7%9A%84%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E5%AD%90%E5%BA%8F%E5%88%97%E7%9A%84%E9%95%BF%E5%BA%A6/</guid>
-      <description>
-
-&lt;h1 id=&#34;题目-最长的斐波那契子序列的长度&#34;&gt;题目：最长的斐波那契子序列的长度&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;如果序列&lt;code&gt;X_1, X_2, ..., X_n&lt;/code&gt;满足下列条件，就说它是&lt;code&gt;斐波那契式&lt;/code&gt;的：&lt;/li&gt;
-&lt;li&gt;n &amp;gt;= 3&lt;/li&gt;
-&lt;li&gt;对于所有&lt;code&gt;i + 2 &amp;lt;= n&lt;/code&gt;，都有&lt;code&gt;X_i + X_{i+1} = X_{i+2}&lt;/code&gt;
-给定一个严格递增的正整数数组形成序列，找到 A 中最长的斐波那契式的子序列的长度。如果一个不存在，返回0 。&lt;/li&gt;
-&lt;li&gt;（回想一下，子序列是从原序列&lt;code&gt;A&lt;/code&gt;中派生出来的，它从&lt;code&gt;A&lt;/code&gt;中删掉任意数量的元素（也可以不删），而不改变其余元素的顺序。例如，&lt;code&gt;[3, 5, 8]&lt;/code&gt;是&lt;code&gt;[3, 4, 5, 6, 7, 8]&lt;/code&gt;的一个子序列）&lt;/li&gt;
+&lt;li&gt;给定一个整数数组&lt;code&gt;A&lt;/code&gt;，返回 &lt;code&gt;A&lt;/code&gt;中最长等差子序列的&lt;strong&gt;长度&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;回想一下，&lt;code&gt;A&lt;/code&gt;的子序列是列表&lt;code&gt;A[i_1], A[i_2], ..., A[i_k]&lt;/code&gt; 其中&lt;code&gt;0 &amp;lt;= i_1 &amp;lt; i_2 &amp;lt; ... &amp;lt; i_k &amp;lt;= A.length - 1&lt;/code&gt;。并且如果&lt;code&gt;B[i+1] - B[i]&lt;/code&gt;(&lt;code&gt;0 &amp;lt;= i &amp;lt; B.length - 1&lt;/code&gt;) 的值都相同，那么序列&lt;code&gt;B&lt;/code&gt;是等差的。&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h5 id=&#34;示例-1&#34;&gt;示例 1：&lt;/h5&gt;
 
-&lt;pre&gt;&lt;code&gt;输入: [1,2,3,4,5,6,7,8]
-输出: 5
-解释:
-最长的斐波那契式子序列为：[1,2,3,5,8] 。
+&lt;pre&gt;&lt;code&gt;输入：[3,6,9,12]
+输出：4
+解释： 
+整个数组是公差为 3 的等差数列。
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h5 id=&#34;示例2&#34;&gt;示例2：&lt;/h5&gt;
+&lt;h5 id=&#34;示例-2&#34;&gt;示例 2：&lt;/h5&gt;
 
-&lt;pre&gt;&lt;code&gt;输入: [1,3,7,11,12,14,18]
-输出: 3
-解释:
-最长的斐波那契式子序列有：
-[1,11,12]，[3,11,14] 以及 [7,11,18] 。
+&lt;pre&gt;&lt;code&gt;输入：[9,4,7,2,10]
+输出：3
+解释：
+最长的等差子序列是 [4,7,10]。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-3&#34;&gt;示例 3：&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入：[20,1,15,3,10,5,8]
+输出：4
+解释：
+最长的等差子序列是 [20,15,10,5]。
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h5 id=&#34;提示&#34;&gt;提示：&lt;/h5&gt;
 
 &lt;ul&gt;
-&lt;li&gt;3 &amp;lt;= A.length &amp;lt;= 1000&lt;/li&gt;
-&lt;li&gt;1 &amp;lt;= A[0] &amp;lt; A[1] &amp;lt; &amp;hellip; &amp;lt; A[A.length - 1] &amp;lt;= 10^9&lt;/li&gt;
-&lt;li&gt;（对于以 Java，C，C++，以及C# 的提交，时间限制被减少了 50%）&lt;/li&gt;
+&lt;li&gt;2 &amp;lt;= A.length &amp;lt;= 2000&lt;/li&gt;
+&lt;li&gt;0 &amp;lt;= A[i] &amp;lt;= 10000&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&#34;来源-力扣-leetcode-第873题&#34;&gt;来源：力扣（LeetCode）第873题&lt;/h4&gt;
+&lt;h4 id=&#34;来源-力扣-leetcode-第1027题&#34;&gt;来源：力扣（LeetCode）第1027题&lt;/h4&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/length-of-longest-fibonacci-subsequence&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/length-of-longest-fibonacci-subsequence&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/longest-arithmetic-sequence&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/longest-arithmetic-sequence&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;做法有暴力查询或者dp简化。&lt;/li&gt;
-&lt;li&gt;暴力查就没什么好说的了，时间复杂度O(n^2logn)&lt;/li&gt;
-&lt;li&gt;dp法复杂度也是O(n^2),就是系数比暴力法稍短一点。&lt;/li&gt;
-&lt;li&gt;在这里直接给出LeetCode官方题解。&lt;/li&gt;
-&lt;li&gt;&amp;gt; &lt;a href=&#34;https://leetcode-cn.com/problems/length-of-longest-fibonacci-subsequence/solution/zui-chang-de-fei-bo-na-qi-zi-xu-lie-de-chang-du-by/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/length-of-longest-fibonacci-subsequence/solution/zui-chang-de-fei-bo-na-qi-zi-xu-lie-de-chang-du-by/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;外来题解&#34;&gt;外来题解：&lt;/h2&gt;
-
-&lt;h3 id=&#34;方法一-使用-set-的暴力法&#34;&gt;方法一：使用 Set 的暴力法&lt;/h3&gt;
-
-&lt;h4 id=&#34;思路&#34;&gt;思路&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;每个斐波那契式的子序列都依靠两个相邻项来确定下一个预期项。例如，对于&lt;code&gt;2, 5&lt;/code&gt;我们所期望的子序列必定以&lt;code&gt;7, 12, 19, 31&lt;/code&gt;等继续。&lt;/li&gt;
-&lt;li&gt;我们可以使用 Set 结构来快速确定下一项是否在数组 A 中。由于这些项的值以指数形式增长，最大值&lt;code&gt;10^9≤10^9&lt;/code&gt;
-的斐波那契式的子序列最多有 43 项。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;算法&#34;&gt;算法&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;对于每个起始对&lt;code&gt;A[i], A[j]&lt;/code&gt;，我们保持下一个预期值&lt;code&gt;y = A[i] + A[j]&lt;/code&gt;和此前看到的最大值 x = A[j]。如果 y 在数组中，我们可以更新这些值&lt;code&gt;(x, y) -&amp;gt; (y, x+y)&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;此外，由于子序列的长度大于等于 3 只能是斐波那契式的，所以我们必须在最后进行检查 ans &amp;gt;= 3 ? ans : 0。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;方法二-动态规划&#34;&gt;方法二：动态规划&lt;/h3&gt;
-
-&lt;h4 id=&#34;思路-1&#34;&gt;思路&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;将斐波那契式的子序列中的两个连续项 A[i], A[j] 视为单个结点 (i, j)，整个子序列是这些连续结点之间的路径。&lt;/li&gt;
-&lt;li&gt;例如，对于斐波那契式的子序列&lt;code&gt;(A[1] = 2, A[2] = 3, A[4] = 5, A[7] = 8, A[10] = 13)&lt;/code&gt;，结点之间的路径为 &lt;code&gt;(1, 2) &amp;lt;-&amp;gt; (2, 4) &amp;lt;-&amp;gt; (4, 7) &amp;lt;-&amp;gt; (7, 10)&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;这样做的动机是，只有当&lt;code&gt;A[i] + A[j] == A[k]&lt;/code&gt; 时，两结点 (i, j) 和 (j, k) 才是连通的，我们需要这些信息才能知道这一连通。现在我们得到一个类似于 最长上升子序列 的问题。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;算法-1&#34;&gt;算法&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;设 longest[i, j] 是结束在 [i, j] 的最长路径。那么 如果 (i, j) 和 (j, k) 是连通的， longest[j, k] = longest[i, j] + 1。&lt;/li&gt;
-&lt;li&gt;由于 i 由 A.index(A[k] - A[j]) 唯一确定，所以这是有效的：我们在 i 潜在时检查每组 j &amp;lt; k，并相应地更新 longest[j, k]。&lt;/li&gt;
+&lt;li&gt;动态规划&lt;/li&gt;
+&lt;li&gt;我们定义两个状态，以&lt;code&gt;i&lt;/code&gt;和&lt;code&gt;j&lt;/code&gt;为最后两个数时的状态。&lt;/li&gt;
+&lt;li&gt;我们可以穷举所有以&lt;code&gt;i&lt;/code&gt;，&lt;code&gt;j&lt;/code&gt;结尾时的状态。&lt;/li&gt;
+&lt;li&gt;如果知道后两位数，我们可以计算出前一位数，然后去找一下在前面有没有这个数。如果有，我们就计算&lt;code&gt;i&lt;/code&gt;,&lt;code&gt;j&lt;/code&gt;为前两个数+1。&lt;/li&gt;
+&lt;li&gt;不过这样需要定义两个状态，还有一种节省空间的做法，只用一个状态，就是以&lt;code&gt;i&lt;/code&gt;为结尾时的个数。&lt;/li&gt;
+&lt;li&gt;不过这样会提升时间复杂度，因为有许多重复的计算。&lt;/li&gt;
+&lt;li&gt;我们每次以一个数开头，再把另外的数不停的把符合公差的数加入dp数组。&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;暴力查询法：&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;dp(二维)&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-public int lenLongestFibSubseq(int[] A) {
-    int len = A.length;int ans = 0;
-    Set&amp;lt;Integer&amp;gt; hs = new HashSet();
-    for (int i = 0; i &amp;lt; len; i++) hs.add(A[i]);
+public int longestArithSeqLength(int[] A) {
+    int len = A.length;
+    int ans = 2;
+    int[][] dp = new int[len][len];
+    int[] index = new int[10001];// 存下标的数组
+    for (int i = 0; i &amp;lt; len - 1; i++) {
+        Arrays.fill(dp[i], 2);//一开始至少长度是2。
+        for (int j = i + 1; j &amp;lt; len; j++) {
+            int pre = 2 * A[i] - A[j];// 算出前一位数
+            if (pre &amp;lt; 0 || pre &amp;gt; 10000 || index[pre] == 0) continue;// 尝试去找这个前一位数，如果找不到就不用算下去了。
+            dp[i][j] = dp[index[pre]-1][i] + 1;//当前情况下的长度加1，不需要max，因为每一次计算等差数列都是独立计算的。
+            ans = Math.max(ans, dp[i][j]);//把每次的最长情况存下来。
+        }
+        index[A[i]] = i + 1;//因为是子序列，所以还要注意顺序。
+    }
+    return ans;
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;dp(一维)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+int len;
+public int longestArithSeqLength(int[] A) {
+    len = A.length;
+    int ans = 2;
+    int[] dp = new int[len];
     for (int i = 0; i &amp;lt; len; i++) {
         for (int j = i + 1; j &amp;lt; len; j++) {
-            int x = A[j], y = A[i] + A[j];
-            int cout = 2;
-            while (hs.contains(y)) {
-                cout++;
-                int tmp = x;
-                x = y;
-                y += tmp;
-            }
-            ans = Math.max(ans, cout);
-        }
-    }
-    return ans &amp;gt; 2 ? ans : 0;
-}
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;dp&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-public int lenLongestFibSubseq(int[] A) {
-    int len = A.length;int ans = 0;
-    Map&amp;lt;Integer, Integer&amp;gt; index = new HashMap();
-    for (int i = 0; i &amp;lt; len; i++) index.put(A[i], i);
-    Map&amp;lt;Integer, Integer&amp;gt; dp = new HashMap();
-    for (int k = 0; k &amp;lt; len; k++) {
-        for (int j = 0; j &amp;lt; k; j++) {
-            int i = index.getOrDefault(A[k] - A[j], -1);
-            if (i &amp;gt;= 0 &amp;amp;&amp;amp; i &amp;lt; j) {
-                // 这个地方要注意，i乘以len再加上j是为了区分i和j的顺序，因为i+j和j+i是一样的
-                int cout = dp.getOrDefault(i * len + j, 2) + 1;
-                dp.put(j * len + k, cout);
-                ans = Math.max(ans, cout);
+            int d = A[j] - A[i];
+            dp[j] = 2;
+            ans = Math.max(ans, dp[j]);
+            int next = find(A, A[j] + d, j);
+            int pre = j;
+            while (next != -1) {
+                dp[next] = dp[pre] + 1;
+                pre = next;
+                next = find(A, A[next] + d, next);
+                if (pre != -1) ans = Math.max(ans, dp[pre]);
             }
         }
     }
-    return ans &amp;gt; 2 ? ans : 0;
+    return ans;
+}
+
+public int find(int[] A, int tar, int cur) {
+    for (int i = cur + 1; i &amp;lt; len; i++) 
+        if (A[i] == tar) return i;
+    return -1;
 }
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
@@ -413,1049 +136,1515 @@ public int lenLongestFibSubseq(int[] A) {
     </item>
     
     <item>
-      <title>最大平均值和的分组</title>
-      <link>https://ripple-zjw.github.io/2019/%E6%9C%80%E5%A4%A7%E5%B9%B3%E5%9D%87%E5%80%BC%E5%92%8C%E7%9A%84%E5%88%86%E7%BB%84/</link>
-      <pubDate>Wed, 23 Oct 2019 20:03:28 +0800</pubDate>
+      <title>基本计算器</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E5%99%A8/</link>
+      <pubDate>Sat, 09 Nov 2019 21:49:53 +0800</pubDate>
       
-      <guid>https://ripple-zjw.github.io/2019/%E6%9C%80%E5%A4%A7%E5%B9%B3%E5%9D%87%E5%80%BC%E5%92%8C%E7%9A%84%E5%88%86%E7%BB%84/</guid>
+      <guid>https://ripple-zjw.github.io/2019/%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E5%99%A8/</guid>
       <description>
 
-&lt;h1 id=&#34;题目-最大平均值和的分组&#34;&gt;题目： 最大平均值和的分组&lt;/h1&gt;
+&lt;h1 id=&#34;题目-基本计算器&#34;&gt;题目：基本计算器&lt;/h1&gt;
 
 &lt;ul&gt;
-&lt;li&gt;我们将给定的数组&lt;code&gt;A&lt;/code&gt;分成&lt;code&gt;K&lt;/code&gt;个相邻的非空子数组 ，我们的分数由每个子数组内的平均值的总和构成。计算我们所能得到的最大分数是多少。&lt;/li&gt;
-&lt;li&gt;注意我们必须使用A数组中的每一个数进行分组，并且分数不一定需要是整数。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;示例&#34;&gt;示例:&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入: 
-A = [9,1,2,3,9]
-K = 3
-输出: 20
-解释: 
-A 的最优分组是[9], [1, 2, 3], [9]. 得到的分数是 9 + (1 + 2 + 3) / 3 + 9 = 20.
-我们也可以把 A 分成[9, 1], [2], [3, 9].
-这样的分组得到的分数为 5 + 2 + 6 = 13, 但不是最大值.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;说明&#34;&gt;说明:&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;1 &amp;lt;= A.length &amp;lt;= 100.&lt;/li&gt;
-&lt;li&gt;1 &amp;lt;= A[i] &amp;lt;= 10000.&lt;/li&gt;
-&lt;li&gt;1 &amp;lt;= K &amp;lt;= A.length.&lt;/li&gt;
-&lt;li&gt;答案误差在&lt;code&gt;10^-6&lt;/code&gt;内被视为是正确的。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第813题&#34;&gt;来源：力扣（LeetCode）第813题&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/largest-sum-of-averages&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/largest-sum-of-averages&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;动态规划题&lt;/li&gt;
-&lt;li&gt;这次的状态不算难找，主要是在到底应该用三维dp还是二维就可以搞定了。&lt;/li&gt;
-&lt;li&gt;最后发现二维就够了。&lt;/li&gt;
-&lt;li&gt;先来说说三维，定义i，j，k分别表示当前为第i份，从数组的下标j开始，到k结束。&lt;/li&gt;
-&lt;li&gt;于是我将每一种情况全部都可以算一遍，看看哪儿种最大。可是之后我发现，我并不一定要将所有的j到k的情况都存下来，我只要每次将到k为止，或者从j开始归在一起，把最大的那种情况存起来就可以了。&lt;/li&gt;
-&lt;li&gt;因为下一次找的肯定是上一次分割的尾巴。如果都是以k结束的那么我只要知道最大的就行了，小的根本就用不到。&lt;/li&gt;
-&lt;li&gt;因此，我们的状态就变成二维的了，即定义i，j为当前为第i份，从0到下标j为止最大的平均数和。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    public double largestSumOfAverages(int[] A, int K) {
-        int len = A.length;
-        double[][] dp = new double[K][len];
-        // i 第几份  j 到j为止
-        dp[0][0] = A[0]; // base case
-        // 把第一行的情况拿出来，注意不能到达最后K-1个，因为最少也要分1个，如果还要分两个的话，最少也要留两个才行。
-        for (int i = 1; i &amp;lt; len - K + 1; i++) dp[0][i] = dp[0][i-1] + A[i];
-        // 先取和，再求平均值
-        for (int i = 1; i &amp;lt; len - K + 1; i++) dp[0][i] /= (i + 1);
-        for (int i = 1; i &amp;lt; K; i++) {
-            for (int j = i; j &amp;lt;= len - K + i; j++) {
-                // count 用于算出和后求平均值
-                int count = j - i + 1;
-                // st 即每种情况的开始，我说过把到j结束的归在一起，但还是要计算的，不然怎么得到最大值。
-                for (int st = i; st &amp;lt;= j; st++) {
-                    double sum = 0;
-                    for (int k = st; k &amp;lt;= j; k++) sum += A[k];// 拿到区域和
-                    // 算一下当前区域的平均值是否最大。
-                    // 由于st是当前区域的开始，所以上一次分割最后一定是st-1，那么就找上一次以st-1为结尾的最大值。
-                    dp[i][j] = Math.max(dp[i][j], dp[i-1][st-1] + sum / count);
-                    // 一轮循环结束后，除数也会减少，比如原来是1 2 3，现在是2 3的和那么现在只有两个数了。
-                    --count;
-                }
-            }
-        }
-        // 这里为什么只要len-1而不要其他的情况呢，因为最后一次一定要分到最后，也就是说我不管从谁开始分，一定要以len-1结束。
-        return dp[K-1][len-1];
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;写完之后发现，这段代码可以写的更简洁，更优化。&lt;/li&gt;
-&lt;li&gt;比如我要找区域和，那么我只要先求出所有的前缀和，再将两个前缀和相减就能得到某一个区域的区域和。&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;同时我对count也做了处理，不需要count变量了。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-public double largestSumOfAverages(int[] A, int K) {
-    int len = A.length;
-    double[][] dp = new double[K][len];
-    // i 第几份  j 到j为止
-    double[] sum = new double[len];sum[0] = A[0];
-    for (int i = 1; i &amp;lt; len; i++) sum[i] = sum[i-1] + A[i];
-    for (int i = 0; i &amp;lt; len - K + 1; i++) dp[0][i] = sum[i] / (i + 1);
-    for (int i = 1; i &amp;lt; K; i++) {
-        for (int j = i; j &amp;lt;= len - K + i; j++) {
-            for (int st = i; st &amp;lt;= j; st++) 
-                dp[i][j] = Math.max(dp[i][j], dp[i-1][st-1] + (sum[j] - sum[st-1]) / (j - st + 1));
-        }
-    }
-    return dp[K-1][len-1];
-}
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>分割等和子集</title>
-      <link>https://ripple-zjw.github.io/2019/%E5%88%86%E5%89%B2%E7%AD%89%E5%92%8C%E5%AD%90%E9%9B%86/</link>
-      <pubDate>Wed, 23 Oct 2019 19:58:28 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E5%88%86%E5%89%B2%E7%AD%89%E5%92%8C%E5%AD%90%E9%9B%86/</guid>
-      <description>
-
-&lt;h1 id=&#34;题目-分割等和子集&#34;&gt;题目：分割等和子集&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;给定一个只包含正整数的非空数组。是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;注意&#34;&gt;注意:&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;每个数组中的元素不会超过 100&lt;/li&gt;
-&lt;li&gt;数组的大小不会超过 200&lt;/li&gt;
+&lt;li&gt;实现一个基本的计算器来计算一个简单的字符串表达式的值。&lt;/li&gt;
+&lt;li&gt;字符串表达式可以包含左括号&lt;code&gt;(&lt;/code&gt;，右括号&lt;code&gt;)&lt;/code&gt;，加号&lt;code&gt;+&lt;/code&gt;，减号&lt;code&gt;-&lt;/code&gt;，非负整数和空格。&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h5 id=&#34;示例-1&#34;&gt;示例 1:&lt;/h5&gt;
 
-&lt;pre&gt;&lt;code&gt;输入: [1, 5, 11, 5]
-输出: true
-解释: 数组可以分割成 [1, 5, 5] 和 [11].
+&lt;pre&gt;&lt;code&gt;输入: &amp;quot;1 + 1&amp;quot;
+输出: 2
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h5 id=&#34;示例2&#34;&gt;示例2:&lt;/h5&gt;
+&lt;h5 id=&#34;示例-2&#34;&gt;示例 2:&lt;/h5&gt;
 
-&lt;pre&gt;&lt;code&gt;输入: [1, 2, 3, 5]
-输出: false
-解释: 数组不能分割成两个元素和相等的子集.
+&lt;pre&gt;&lt;code&gt;输入: &amp;quot; 2-1 + 2 &amp;quot;
+输出: 3
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;来源-力扣-leetcode-第416题&#34;&gt;来源：力扣（LeetCode）第416题&lt;/h4&gt;
+&lt;h5 id=&#34;示例-3&#34;&gt;示例 3:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: &amp;quot;(1+(4+5+2)-3)+(6+8)&amp;quot;
+输出: 23
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;说明&#34;&gt;说明：&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;你可以假设所给定的表达式都是有效的。&lt;/li&gt;
+&lt;li&gt;请不要使用内置的库函数 eval。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode&#34;&gt;来源：力扣（LeetCode）&lt;/h4&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/partition-equal-subset-sum&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/partition-equal-subset-sum&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/basic-calculator&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/basic-calculator&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;动态规划题&lt;/li&gt;
-&lt;li&gt;0-1背包问题&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    public boolean canPartition(int[] nums) {
-        int sum = 0;
-        int len = nums.length;
-        for (int num : nums) sum += num;
-        if ((sum &amp;amp; 1) == 1) return false; // 如果是奇数，不可能分割
-        sum &amp;gt;&amp;gt;= 1; // 要找的答案是总和的一半。
-        boolean[][] dp = new boolean[len][sum+1]; // i表示nums中从0到i为止，j表示是否能找到和为j的数。
-        if (nums[0] &amp;lt;= sum) dp[0][nums[0]] = true; // 第一个数放在j上，其他都是false
-        for (int i = 1; i &amp;lt; len; i++) {
-            for (int j = 0; j &amp;lt;= sum; j++) {
-                if (nums[i] &amp;lt;= j) 
-                // 两种选择，一种之前就找到了和为j的数，那么现在还是true。
-                // 如果之前没有找到和为j的数，那么我加上这次的数，要找前一次j-nums[i]的和能不能找到。
-                    dp[i][j] = dp[i-1][j] || dp[i-1][j-nums[i]];
-                else // 如果当前nums[i] 大于j的话，之前看它前一次是什么状态现在还是什么状态。
-                    dp[i][j] = dp[i-1][j];
-            }
-        }
-        return dp[len-1][sum];
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>分享巧克力</title>
-      <link>https://ripple-zjw.github.io/2019/%E5%88%86%E4%BA%AB%E5%B7%A7%E5%85%8B%E5%8A%9B/</link>
-      <pubDate>Wed, 23 Oct 2019 19:48:36 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E5%88%86%E4%BA%AB%E5%B7%A7%E5%85%8B%E5%8A%9B/</guid>
-      <description>
-
-&lt;h1 id=&#34;题目-分享巧克力&#34;&gt;题目：分享巧克力&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;你有一大块巧克力，它由一些甜度不完全相同的小块组成。我们用数组&lt;code&gt;sweetness&lt;/code&gt;来表示每一小块的甜度。&lt;/li&gt;
-&lt;li&gt;你打算和&lt;code&gt;K&lt;/code&gt;名朋友一起分享这块巧克力，所以你需要将切割&lt;code&gt;K&lt;/code&gt;次才能得到&lt;code&gt;K+1&lt;/code&gt;块，每一块都由一些 连续的小块组成。&lt;/li&gt;
-&lt;li&gt;为了表现出你的慷慨，你将会吃掉总甜度最小 的一块，并将其余几块分给你的朋友们。&lt;/li&gt;
-&lt;li&gt;请找出一个最佳的切割策略，使得你所分得的巧克力总甜度最大，并返回这个 最大总甜度。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;示例-1&#34;&gt;示例 1：&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入：sweetness = [1,2,3,4,5,6,7,8,9], K = 5
-输出：6
-解释：你可以把巧克力分成 [1,2,3], [4,5], [6], [7], [8], [9]。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;示例-2&#34;&gt;示例 2：&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入：sweetness = [5,6,7,8,9,1,2,3,4], K = 8
-输出：1
-解释：只有一种办法可以把巧克力分成 9 块。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;示例-3&#34;&gt;示例 3：&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入：sweetness = [1,2,2,1,2,2,1,2,2], K = 2
-输出：5
-解释：你可以把巧克力分成 [1,2,2], [1,2,2], [1,2,2]。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;提示&#34;&gt;提示：&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;0 &amp;lt;= &lt;code&gt;K&lt;/code&gt; &amp;lt;&lt;code&gt;sweetness.length&lt;/code&gt;&amp;lt;= 10^4&lt;/li&gt;
-&lt;li&gt;1 &amp;lt;= &lt;code&gt;sweetness[i]&lt;/code&gt; &amp;lt;= 10^5&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第5111题-临时&#34;&gt;来源：力扣（LeetCode）第5111题(临时)&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/divide-chocolate&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/divide-chocolate&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;二分查找 + 贪心算法&lt;/li&gt;
-&lt;li&gt;如果最大甜度是mid，那么小于mid的甜度都能分到，大于mid的甜度都分不到。&lt;/li&gt;
-&lt;li&gt;这就像一个排好序的数组，我们要做的就是不断逼近可以分到的最大值。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    public int maximizeSweetness(int[] sweetness, int K) {
-        int len = sweetness.length;++K; // 切割K次得到K+1块巧克力
-        int ans = 0;
-        int left = 0, right = (int)1e9 + 50; // 最大情况，全部是10^5，总共有10^4个。
-        while (left &amp;lt;= right) { // 二分查找符合的情况
-            int mid = right + (left - right &amp;gt;&amp;gt; 1); // mid是你自己分到的最小的那个甜度
-            if (check(mid, K, sweetness)) { // 如果自己拿到mid，那么检查能不能至少分到K+1份并且mid是最小的。
-                left = mid + 1; // 如果能，那么可能还可以分到更大的甜度。
-                ans = Math.max(ans, mid); // 先将符合条件的情况保存下来。
-            } else {
-                right = mid - 1; // 如果不能，那么只能减少甜度。
-            }
-        }
-        return ans;
-    }
-
-    public boolean check(int swt, int K, int[] s) { // 检查甜度是否符合
-        int sum = 0, cur = 0;
-        for (int x : s) { // 不停的放进去，贪心的去分，只要一符合条件，就切一刀。
-            sum += x;
-            if (sum &amp;gt;= swt) { // 如果分到这个发现甜度比mid大了，那么直接切一刀。
-                ++cur; // 分到一块符合条件，+1.
-                sum = 0; // 下一块又从0开始加了。
-            }
-        }
-        return cur &amp;gt;= K;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>删除子文件夹</title>
-      <link>https://ripple-zjw.github.io/2019/%E5%88%A0%E9%99%A4%E5%AD%90%E6%96%87%E4%BB%B6%E5%A4%B9/</link>
-      <pubDate>Wed, 23 Oct 2019 19:45:43 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E5%88%A0%E9%99%A4%E5%AD%90%E6%96%87%E4%BB%B6%E5%A4%B9/</guid>
-      <description>
-
-&lt;h1 id=&#34;题目-删除子文件夹&#34;&gt;题目： 删除子文件夹&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;你是一位系统管理员，手里有一份文件夹列表 folder，你的任务是要删除该列表中的所有 子文件夹，并以 任意顺序 返回剩下的文件夹。&lt;/li&gt;
-&lt;li&gt;我们这样定义「子文件夹」：&lt;/li&gt;
-&lt;li&gt;如果文件夹&lt;code&gt;folder[i]&lt;/code&gt;位于另一个文件夹&lt;code&gt;folder[j]&lt;/code&gt;下，那么&lt;code&gt;folder[i]&lt;/code&gt;就是&lt;code&gt;folder[j]&lt;/code&gt;的子文件夹。
-文件夹的「路径」是由一个或多个按以下格式串联形成的字符串：&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/&lt;/code&gt;后跟一个或者多个小写英文字母。
-例如，&lt;code&gt;/leetcode&lt;/code&gt;和&lt;code&gt;/leetcode/problems&lt;/code&gt;都是有效的路径，而空字符串和&lt;code&gt;/&lt;/code&gt;不是。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;示例-1&#34;&gt;示例 1：&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入：folder = [&amp;quot;/a&amp;quot;,&amp;quot;/a/b&amp;quot;,&amp;quot;/c/d&amp;quot;,&amp;quot;/c/d/e&amp;quot;,&amp;quot;/c/f&amp;quot;]
-输出：[&amp;quot;/a&amp;quot;,&amp;quot;/c/d&amp;quot;,&amp;quot;/c/f&amp;quot;]
-解释：&amp;quot;/a/b/&amp;quot; 是 &amp;quot;/a&amp;quot; 的子文件夹，而 &amp;quot;/c/d/e&amp;quot; 是 &amp;quot;/c/d&amp;quot; 的子文件夹。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;示例-2&#34;&gt;示例 2：&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入：folder = [&amp;quot;/a&amp;quot;,&amp;quot;/a/b/c&amp;quot;,&amp;quot;/a/b/d&amp;quot;]
-输出：[&amp;quot;/a&amp;quot;]
-解释：文件夹 &amp;quot;/a/b/c&amp;quot; 和 &amp;quot;/a/b/d/&amp;quot; 都会被删除，因为它们都是 &amp;quot;/a&amp;quot; 的子文件夹。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;示例-3&#34;&gt;示例 3：&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入：folder = [&amp;quot;/a/b/c&amp;quot;,&amp;quot;/a/b/d&amp;quot;,&amp;quot;/a/b/ca&amp;quot;]
-输出：[&amp;quot;/a/b/c&amp;quot;,&amp;quot;/a/b/ca&amp;quot;,&amp;quot;/a/b/d&amp;quot;]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;提示&#34;&gt;提示：&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;1 &amp;lt;= &lt;code&gt;folder.length&lt;/code&gt;&amp;lt;= 4 * 10^4&lt;/li&gt;
-&lt;li&gt;2 &amp;lt;= &lt;code&gt;folder[i].length&lt;/code&gt; &amp;lt;= 100&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;folder[i]&lt;/code&gt;只包含小写字母和 /&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;folder[i]&lt;/code&gt;总是以字符&lt;code&gt;/&lt;/code&gt;起始&lt;/li&gt;
-&lt;li&gt;每个文件夹名都是唯一的&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第5231题-临时&#34;&gt;来源：力扣（LeetCode）第5231题(临时)&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/remove-sub-folders-from-the-filesystem&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/remove-sub-folders-from-the-filesystem&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;只要将数组排序一下，就能很轻松的解决。&lt;/li&gt;
-&lt;li&gt;排序后所有的子文件夹都会跟在父文件夹后面，只要判断一下前缀是否一样就行了。&lt;/li&gt;
+&lt;li&gt;这道题思路不难，就是使用一个栈，就像判断括号是否有效那题一样。&lt;/li&gt;
+&lt;li&gt;只不过，遇到右括号不仅需要找到左括号并删除它，还需要把括号内的值全都计算出来，并把计算好的值再放回栈中。&lt;/li&gt;
+&lt;li&gt;这样，当所有的括号都删除后，你就能把括号内的数字都计算出来。&lt;/li&gt;
+&lt;li&gt;不过，如果一个式子它的最外层没有括号,比如例题1和2。你还要在最后再计算一下剩下没有括号时的情况。&lt;/li&gt;
+&lt;li&gt;好了，思路说完了，但是这道题想要实现真的很麻烦。&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
-    def removeSubfolders(self, folder: List[str]) -&amp;gt; List[str]:
-        folder.sort() # 先排序，让数组中相同的文件夹从少到多放在一起。
-        res = []
-        t = &#39;//&#39; # 初始化
-        for f in folder:
-            if not f.startswith(t): # 判断是否包含前一个元素的部分
-                res.append(f) # 如果不包含，那么就不是子文件夹，放入答案中
-                t = f + &#39;/&#39; # 将当前元素传给t，用于下一轮循环比较。
-        return res
+    def calculate(self, s: str) -&amp;gt; int:
+        return eval(s)
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;开个玩笑，如果使用这个方法会&lt;code&gt;MemoryError&lt;/code&gt;,别问我怎么知道的。&lt;/p&gt;
+
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    public List&amp;lt;String&amp;gt; removeSubfolders(String[] folder) {
-        Arrays.sort(folder);
-        List&amp;lt;String&amp;gt; ans = new ArrayList();
-        String str = &amp;quot;//&amp;quot;;
-        for (String f : folder) {
-            if (!startsWith(f, str)) {
-                ans.add(f);
-                str = f + &amp;quot;/&amp;quot;;
+public int calculate(String s) {
+    Stack&amp;lt;Integer&amp;gt; stack = new Stack();
+    for (char ch : s.toCharArray()) {
+        if (ch == &#39; &#39;) continue;
+        if (ch == &#39;)&#39;) {//遇到右括号就去找栈内最近的左括号，并把括号内的值计算出来后再放回栈中。
+            int sum = 0;// 当前括号计算的值
+            while (stack.size() &amp;gt; 0 &amp;amp;&amp;amp; stack.peek() != -111111111) {
+                int num = stack.pop();// 一个数字的值
+                if (stack.size() &amp;gt; 0 &amp;amp;&amp;amp; stack.peek() == -333333333) sum -= num;//如果是减号就减
+                else sum += num;// 否则是加号就加。
+                if (stack.peek() != -111111111)stack.pop();//把加号或者减号弹出，注意别把左括号也弹出去了，否则就出问题了。
+            }
+            if (stack.size() &amp;gt; 0 &amp;amp;&amp;amp; stack.peek() == -111111111) stack.pop();// 删除左括号
+            stack.push(sum);//把括号内算得的数字再入栈。
+        } else {
+            //   ( -111111111    + -222222222    - -333333333
+            if (Character.isDigit(ch)) {//如果是数字的话比较麻烦，因为数字可能不止个位数。
+                //这里取数字写的不好，一直在入栈出栈，欢迎你写出更好的代码一起交流。
+                if (stack.size() &amp;gt; 0 &amp;amp;&amp;amp; stack.peek() &amp;gt;= 0) {//由于都是正整数，所以小于0的都是符号，而且不可能有两个算好的数字相连
+                    stack.push(stack.pop() * 10 + (int)(ch - &#39;0&#39;));
+                } else {//否则说明这是一个个位数数字。
+                    stack.push((int)(ch - &#39;0&#39;));
+                }
+            } else if (ch == &#39;+&#39;) {
+                stack.push(-222222222);
+            } else if (ch == &#39;-&#39;){
+                stack.push(-333333333);
+            } else { // 左括号
+                stack.push(-111111111);
+            }
+        }
+    }
+    if (stack.size() == 1) return stack.peek();
+    //如果栈内只有一种元素，那么只可能是数字，并且是最终答案，因为如果有符号一定不止一个，如果有括号，之前一定将他们都消掉了，因为括号一定是成对出现的。
+    int sum = 0;
+    while (stack.size() &amp;gt; 0) {//如果不止一个，说明最外层没有括号，之前只会算括号内的数字，然后自己再计算最后一遍，得到答案。
+        int num = stack.pop();// 一个数字的值
+        if (stack.size() &amp;gt; 0 &amp;amp;&amp;amp; stack.peek() == -333333333) sum -= num;
+        else sum += num;
+        if (stack.size() &amp;gt; 0) stack.pop();
+    }
+    return sum;
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>环绕字符串中唯一的子字符串</title>
+      <link>https://ripple-zjw.github.io/2019/%E7%8E%AF%E7%BB%95%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%94%AF%E4%B8%80%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2/</link>
+      <pubDate>Sat, 09 Nov 2019 21:47:30 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E7%8E%AF%E7%BB%95%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%94%AF%E4%B8%80%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-环绕字符串中唯一的子字符串&#34;&gt;题目：环绕字符串中唯一的子字符串&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;把字符串&lt;code&gt;s&lt;/code&gt;看作是“abcdefghijklmnopqrstuvwxyz”的无限环绕字符串，所以&lt;code&gt;s&lt;/code&gt; 看起来是这样的：&amp;rdquo;&amp;hellip;zabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcd&amp;hellip;.&amp;ldquo;.&lt;/li&gt;
+&lt;li&gt;现在我们有了另一个字符串 p 。你需要的是找出 s 中有多少个唯一的 p 的非空子串，尤其是当你的输入是字符串 p ，你需要输出字符串&lt;code&gt;s&lt;/code&gt;中&lt;code&gt;p&lt;/code&gt;的不同的非空子串的数目。&lt;/li&gt;
+&lt;li&gt;注意:&lt;code&gt;p&lt;/code&gt;仅由小写的英文字母组成，p 的大小可能超过 10000。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例1&#34;&gt;示例1:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: &amp;quot;a&amp;quot;
+输出: 1
+解释: 字符串 S 中只有一个&amp;quot;a&amp;quot;子字符。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-2&#34;&gt;示例 2:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: &amp;quot;cac&amp;quot;
+输出: 2
+解释: 字符串 S 中的字符串“cac”只有两个子串“a”、“c”。.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-3&#34;&gt;示例 3:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: &amp;quot;zab&amp;quot;
+输出: 6
+解释: 在字符串 S 中有六个子串“z”、“a”、“b”、“za”、“ab”、“zab”。.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第467题&#34;&gt;来源：力扣（LeetCode）第467题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/unique-substrings-in-wraparound-string&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/unique-substrings-in-wraparound-string&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;动态规划问题&lt;/li&gt;
+&lt;li&gt;遇到这种子字符串问题，我们可以考虑状态为以第i个结尾时有多少种情况。&lt;/li&gt;
+&lt;li&gt;例如&lt;code&gt;abcd&lt;/code&gt;,&lt;code&gt;a&lt;/code&gt;结尾时只有1种情况，&lt;code&gt;b&lt;/code&gt;结尾时只有2种情况，&lt;code&gt;c&lt;/code&gt;结尾时有3种情况，&lt;code&gt;d&lt;/code&gt;结尾时有4中情况。&lt;/li&gt;
+&lt;li&gt;我们把这些值存在一个长度为26的dp数组中，按顺序放进来。&lt;/li&gt;
+&lt;li&gt;如果例子为&lt;code&gt;abcdbcde&lt;/code&gt;，其中bcd都是重复的，不应该重复计算。我们可以进行比较，把相同状态下(都是以&lt;code&gt;i&lt;/code&gt;结尾)值较大的那个更新进去。&lt;/li&gt;
+&lt;li&gt;例如&lt;code&gt;b&lt;/code&gt;，它在&lt;code&gt;abcd&lt;/code&gt;中值是2，&lt;code&gt;ab&lt;/code&gt;,&lt;code&gt;b&lt;/code&gt;。而在&lt;code&gt;bcd&lt;/code&gt;中只有&lt;code&gt;b&lt;/code&gt;，所以我们只要选择较大的2，那么后者的情况也会包含在内。&lt;/li&gt;
+&lt;li&gt;再比如&lt;code&gt;c&lt;/code&gt;在前者有3个，&lt;code&gt;abc&lt;/code&gt;,&lt;code&gt;bc&lt;/code&gt;,&lt;code&gt;c&lt;/code&gt;。后者有2个，&lt;code&gt;bc&lt;/code&gt;,&lt;code&gt;c&lt;/code&gt;,前者依然包括后者。&lt;/li&gt;
+&lt;li&gt;dp数组算出后，我们将dp数组中赋过值的数相加求和，就是最终答案。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public int findSubstringInWraproundString(String p) {
+        int len = p.length();
+        if (len == 0) return 0;
+        int[] dp = new int[26];
+        char[] pchar = p.toCharArray();
+        int succession = 1;
+        dp[pchar[0]-&#39;a&#39;] = succession;
+        for (int i = 1; i &amp;lt; len; i++) {
+            if (pchar[i] - pchar[i-1] == 1 || pchar[i-1] - pchar[i] == 25) {
+                succession++;
+            } else {
+                succession = 1;
+            }
+            dp[pchar[i]-&#39;a&#39;] = Math.max(dp[pchar[i]-&#39;a&#39;], succession);
+        }
+        int ans = 0;
+        for (int i : dp) ans += i;
+        return ans;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+    def findSubstringInWraproundString(self, p: str) -&amp;gt; int:
+        l = len(p)
+        if l == 0: return 0
+        dp = [0 for _ in range(26)]
+        dp[ord(p[0])-97] = 1
+        succession = 1
+        for i in range(1, l):
+            if ord(p[i]) - ord(p[i-1]) == 1 or ord(p[i-1]) - ord(p[i]) == 25:
+                succession += 1
+            else:
+                succession = 1
+            dp[ord(p[i])-97] = max(dp[ord(p[i])-97], succession)
+        return sum(dp);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;class Solution {
+public:
+    int findSubstringInWraproundString(string p) {
+        int len = p.length();
+        if (len == 0) return 0;
+        int ans = 0, curLen = 1;
+        int* dp = new int[26];
+        for (int i = 0; i &amp;lt; 26; i++) dp[i] = 0;
+        dp[p[0]-&#39;a&#39;] = 1;
+        for (int i = 1; i &amp;lt; len; i++) {
+            if (p[i] - p[i-1] == 1 || p[i-1] - p[i] == 25) {
+                ++curLen;
+            } else {
+                curLen = 1;
+            }
+            dp[p[i]-&#39;a&#39;] = max(dp[p[i]-&#39;a&#39;], curLen);
+        }
+        for (int i = 0; i &amp;lt; 26; i++) ans += dp[i];
+        return ans;
+    }
+};
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>最后一块石头的重量II</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%9C%80%E5%90%8E%E4%B8%80%E5%9D%97%E7%9F%B3%E5%A4%B4%E7%9A%84%E9%87%8D%E9%87%8Fii/</link>
+      <pubDate>Sat, 09 Nov 2019 21:46:25 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%9C%80%E5%90%8E%E4%B8%80%E5%9D%97%E7%9F%B3%E5%A4%B4%E7%9A%84%E9%87%8D%E9%87%8Fii/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-最后一块石头的重量-ii&#34;&gt;题目：最后一块石头的重量 II&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;有一堆石头，每块石头的重量都是正整数。&lt;/li&gt;
+&lt;li&gt;每一回合，从中选出任意两块石头，然后将它们一起粉碎。假设石头的重量分别为&lt;code&gt;x&lt;/code&gt;和&lt;code&gt;y&lt;/code&gt;，且&lt;code&gt;x&lt;/code&gt;&amp;lt;= &lt;code&gt;y&lt;/code&gt;。那么粉碎的可能结果如下：
+
+&lt;ul&gt;
+&lt;li&gt;如果&lt;code&gt;x == y&lt;/code&gt;，那么两块石头都会被完全粉碎；&lt;/li&gt;
+&lt;li&gt;如果&lt;code&gt;x != y&lt;/code&gt;，那么重量为&lt;code&gt;x&lt;/code&gt;的石头将会完全粉碎，而重量为&lt;code&gt;y&lt;/code&gt;的石头新重量为&lt;code&gt;y-x&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;最后，最多只会剩下一块石头。返回此石头最小的可能重量。如果没有石头剩下，就返回 0。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例&#34;&gt;示例：&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入：[2,7,4,1,8,1]
+输出：1
+解释：
+组合 2 和 4，得到 2，所以数组转化为 [2,7,1,8,1]，
+组合 7 和 8，得到 1，所以数组转化为 [2,1,1,1]，
+组合 2 和 1，得到 1，所以数组转化为 [1,1,1]，
+组合 1 和 1，得到 0，所以数组转化为 [1]，这就是最优值。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;提示&#34;&gt;提示：&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1 &amp;lt;= stones.length &amp;lt;= 30&lt;/li&gt;
+&lt;li&gt;1 &amp;lt;= stones[i] &amp;lt;= 1000&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第1049题&#34;&gt;来源：力扣（LeetCode）第1049题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/last-stone-weight-ii&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/last-stone-weight-ii&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;这道题一开始看好像没有什么思路，我们不妨把问题抽象出来。&lt;/li&gt;
+&lt;li&gt;题目要求最后把两块石头撞完后，剩下的重量要最小。那我们怎么才能让重量最小呢？这是关键点。&lt;/li&gt;
+&lt;li&gt;我们发现，只要每次相撞的两块石头，他们的大小都差不多，那么他们相撞之后得到的重量肯定是最小的。&lt;/li&gt;
+&lt;li&gt;因此，我们不妨把整个石子分成两块，只要我们把这两堆石子分的重量越接近，那么撞出来的重量一定会最小。&lt;/li&gt;
+&lt;li&gt;有人可能会想如果两边石子的数量不一样怎么办？不管两边数量有多不平衡，你都可以用一堆去撞另一堆，一定会把其中一堆装完的。&lt;/li&gt;
+&lt;li&gt;至此，我们把目的改一改，我们现在要找出两堆石子，他们的重量最接近。&lt;/li&gt;
+&lt;li&gt;如何找呢？&lt;/li&gt;
+&lt;li&gt;我们把所有石子的重量和算一下，然后除以一半，最好的情况下正好分成了两堆重量一样的石子，直接撞完就等于0了。&lt;/li&gt;
+&lt;li&gt;如果不行呢？&lt;/li&gt;
+&lt;li&gt;我们把石子的总重量叫&lt;code&gt;sum&lt;/code&gt;,把一半的重量叫&lt;code&gt;half&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;我们一定能找到其中一堆小于half的(不管这一堆长度是多少，一定能找到),那么另一堆的重量肯定是大于half的。&lt;/li&gt;
+&lt;li&gt;所以我们只要找到一堆越接近half就行了，如果等于half最好。&lt;/li&gt;
+&lt;li&gt;参考LeetCode第416题，分割等和子集。&lt;/li&gt;
+&lt;li&gt;我们这次不是要分割等和子集，而是要找到越接近half的子集。&lt;/li&gt;
+&lt;li&gt;设置两个状态，见第一个代码。第一个是当前的位置，第二个是求得的和。&lt;/li&gt;
+&lt;li&gt;每次判断当前的和是否达到，有两种选择，使用这个位置，或者不使用这个位置。&lt;/li&gt;
+&lt;li&gt;进阶：我们可以使用dfs改写这段dp，从half开始，依次往0判断能否组成这个和，如果能那么这个和就是最大和。dfs更加快，因为只要找到最大和就直接返回答案就行了，不用再算下去。&lt;/li&gt;
+&lt;li&gt;进阶2：我们把dp变为一维dp，去掉当前位置的状态，只保留求得的和，问题转化为一个经典的0-1背包问题。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;常规二维dp：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+public int lastStoneWeightII(int[] stones) {
+    int len = stones.length;
+    int sum = 0;
+    for (int stone : stones) sum += stone;
+    int half = sum / 2;
+    boolean[][] dp = new boolean[len][half+1];
+    int max = 0;
+    for (int i = 0; i &amp;lt; len; i++) {
+        if (stones[i] &amp;lt;= half) {
+            dp[i][stones[i]] = true;
+            max = Math.max(max, stones[i]);
+        }
+    }
+        
+    for (int i = 1; i &amp;lt; len; i++) {
+        for (int j = 1; j &amp;lt;= half; j++) {
+            if (dp[i][j] == false) {
+                if (stones[i] &amp;lt;= j) dp[i][j] = dp[i-1][j] || dp[i-1][j-stones[i]];
+                else dp[i][j] = dp[i-1][j];
+            }
+            if (dp[i][j]) max = Math.max(max, j);
+        }
+    }
+    return sum - max - max;
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;dfs,三者最快的方法。没有加记忆化是因为数据量不大，加了之后可以更快。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+int len;
+public int lastStoneWeightII(int[] stones) {
+    len = stones.length;
+    int sum = 0;
+    for (int stone : stones) sum += stone;
+    int half = sum &amp;gt;&amp;gt; 1;
+    for (int i = half; i &amp;gt;= 0; i--) {
+        if (dfs(stones, 0, i, 0)) return sum - 2 * i;
+    }
+    return 0;
+}
+
+public boolean dfs(int[] stones, int ind, int sum, int target) {
+    if (target == sum) return true;
+    if (target &amp;gt; sum) return false;
+    if (ind == len) return false;
+    return dfs(stones, ind + 1, sum, target + stones[ind]) || dfs(stones, ind + 1, sum, target);
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;一维dp，由于少了一维，比二维dp要快一点。码量也最少。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+public int lastStoneWeightII(int[] stones) {
+    int len = stones.length;
+    int sum = 0;
+    for (int stone : stones) sum += stone;
+    int half = sum / 2;
+    int[] dp = new int[half+1];
+    for (int stone : stones) {
+        for (int i = half; i &amp;gt;= stone; i--) {
+            dp[i] = Math.max(dp[i], dp[i-stone] + stone);
+        }
+    }
+    return sum - dp[half] - dp[half];
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>子数组的最小值之和</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC%E4%B9%8B%E5%92%8C/</link>
+      <pubDate>Sat, 09 Nov 2019 21:39:28 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC%E4%B9%8B%E5%92%8C/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-子数组的最小值之和&#34;&gt;题目：子数组的最小值之和&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;给定一个整数数组 A，找到&lt;code&gt;min(B)&lt;/code&gt;的总和，其中 B 的范围为&lt;code&gt;A&lt;/code&gt;的每个（连续）子数组。&lt;/li&gt;
+&lt;li&gt;由于答案可能很大，因此返回答案模 10^9 + 7。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例&#34;&gt;示例：&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入：[3,1,2,4]
+输出：17
+解释：
+子数组为 [3]，[1]，[2]，[4]，[3,1]，[1,2]，[2,4]，[3,1,2]，[1,2,4]，[3,1,2,4]。 
+最小值为 3，1，2，4，1，1，2，1，1，1，和为 17。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;提示&#34;&gt;提示：&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1 &amp;lt;= A &amp;lt;= 30000&lt;/li&gt;
+&lt;li&gt;1 &amp;lt;= A[i] &amp;lt;= 30000&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第907题&#34;&gt;来源：力扣（LeetCode）第907题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/sum-of-subarray-minimums&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/sum-of-subarray-minimums&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;我们要找到所有子数组的最小值之和，就要找到当每个数作为最小数时这样的子数组有多少个。&lt;/li&gt;
+&lt;li&gt;既然是子树组，那一定是连续的，这题一开始以为可以使用动态规划，结果数据量很大，显然dp会超时。&lt;/li&gt;
+&lt;li&gt;我们先找当这个数为最小数时最大的子数组是多少。也就是说以这个数&lt;code&gt;i&lt;/code&gt;开始，它的左边和右边第一个比它小的数，中间这段就是最长的子数组。&lt;/li&gt;
+&lt;li&gt;这一段子数组中的每一个子数组都是以&lt;code&gt;i&lt;/code&gt;为最小数的子数组。那这一段的子数组又有多少个子数组呢，以i这个下标为分割线，将&lt;code&gt;(i - left[i]) * (right[i ]- i) * A[i]&lt;/code&gt;,前两个是子数组的个数，最后那个是子数组的最小值。&lt;/li&gt;
+&lt;li&gt;那现在的问题是如果找到left[]和right[]的值。left和right的值是某一个数的左边和右边最小的那个数在A中的下标。&lt;/li&gt;
+&lt;li&gt;我们可以使用单调栈在O(n)的时间复杂度下找到。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public int sumSubarrayMins(int[] A) {
+        long mod = (long)1e9 + 7;
+        int len = A.length;
+        Stack&amp;lt;Integer&amp;gt; stack = new Stack();
+        int[] left = new int[len], right = new int[len];
+        for (int i = 0; i &amp;lt; len; i++) {
+            while (stack.size() &amp;gt; 0 &amp;amp;&amp;amp; A[stack.peek()] &amp;gt; A[i]) stack.pop();
+            left[i] = stack.size() &amp;gt; 0 ? stack.peek() : -1;
+            stack.push(i);
+        }
+        stack.clear();
+        for (int i = len - 1; i &amp;gt;= 0; i--) {
+            while (stack.size() &amp;gt; 0 &amp;amp;&amp;amp; A[stack.peek()] &amp;gt;= A[i]) stack.pop();
+            right[i] = stack.size() &amp;gt; 0 ? stack.peek() : len;
+            stack.push(i);
+        }
+        long ans = 0;
+        for (int i = 0; i &amp;lt; len; i++)
+            ans += (i - left[i]) * (right[i] - i) * A[i];
+        return (int)(ans % mod);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>树的直径</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/</link>
+      <pubDate>Sat, 09 Nov 2019 21:38:09 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-树的直径&#34;&gt;题目：树的直径&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;给你这棵「无向树」，请你测算并返回它的「直径」：这棵树上最长简单路径的 边数。&lt;/li&gt;
+&lt;li&gt;我们用一个由所有「边」组成的数组&lt;code&gt;edges&lt;/code&gt;来表示一棵无向树，其中&lt;code&gt;edges[i] = [u, v]&lt;/code&gt;表示节点&lt;code&gt;u&lt;/code&gt;和&lt;code&gt;v&lt;/code&gt;之间的双向边。&lt;/li&gt;
+&lt;li&gt;树上的节点都已经用&lt;code&gt;{0, 1, ..., edges.length}&lt;/code&gt;中的数做了标记，每个节点上的标记都是独一无二的。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例-1&#34;&gt;示例 1：&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入：edges = [[0,1],[0,2]]
+输出：2
+解释：
+这棵树上最长的路径是 1 - 0 - 2，边数为 2。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-2&#34;&gt;示例 2：&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入：edges = [[0,1],[1,2],[2,3],[1,4],[4,5]]
+输出：4
+解释： 
+这棵树上最长的路径是 3 - 2 - 1 - 4 - 5，边数为 4。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;提示&#34;&gt;提示：&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;0 &amp;lt;=&lt;code&gt;edges.length&lt;/code&gt;&amp;lt;10^4&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;edges[i][0]&lt;/code&gt; != &lt;code&gt;edges[i][1]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;0 &amp;lt;= &lt;code&gt;edges[i][j]&lt;/code&gt; &amp;lt;= edges.length&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;edges&lt;/code&gt;会形成一棵无向树&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第5098题&#34;&gt;来源：力扣（LeetCode）第5098题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/tree-diameter&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/tree-diameter&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;使用两遍bfs&lt;/li&gt;
+&lt;li&gt;第一遍找到树中最深的节点。&lt;/li&gt;
+&lt;li&gt;第二遍从这个节点开始，找到它的简单路径有多长。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Pair { // 存两个值。
+    int key; // 代表最远的点
+    int value;// 代表这个点的距离。
+}
+
+class Solution {
+    int len;
+    public int treeDiameter(int[][] edges) {
+        len = edges.length + 1;
+        List&amp;lt;Integer&amp;gt;[] e = new ArrayList[len];//e是一个数组，里面存的是和下标数值连通的点。
+        for (int i = 0; i &amp;lt; len; i++) e[i] = new ArrayList();//初始化
+        for (int[] edge : edges) {// 将连通的点都放进来，注意由于是无向图，所以两边都要连通。
+            e[edge[0]].add(edge[1]);
+            e[edge[1]].add(edge[0]);
+        }
+        Pair ans;
+        ans = bfs(e, 0);//从一个点开始，先找到离这个点最远的那个点。
+        ans = bfs(e, ans.key);//从最远的这个点开始，计算他的最长的路径。
+        return ans.value;
+    }
+
+    public Pair bfs(List&amp;lt;Integer&amp;gt;[] e, int start) {
+        Queue&amp;lt;Integer&amp;gt; q = new LinkedList();//bfs队列
+        q.add(start);
+        int[] d = new int[len];//每一个点到start的距离
+        //d[start] = 0;//第一个点到这个点的距离是0
+        Pair ans = new Pair();
+        while (q.size() &amp;gt; 0) {
+            ans.key = q.remove();//拿出这个点放在key中
+            ans.value = d[ans.key];//再把这个点的距离放在value中
+            for (int v : e[ans.key]) {//将这个点与他连通的点都入队，注意不要走回去了。
+                if (d[v] == 0) {
+                    q.add(v);
+                    d[v] = d[ans.key] + 1;//每次将连通的点的距离加上1。
+                }
             }
         }
         return ans;
     }
-    
-    public boolean startsWith(String str, String sub) {
-        for (int i = 0; i &amp;lt; sub.length(); i++) {
-            if (str.charAt(i) != sub.charAt(i)) return false;
-        }
-        return true;
-    }
 }
 &lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
     <item>
-      <title>抛掷硬币</title>
-      <link>https://ripple-zjw.github.io/2019/%E6%8A%9B%E6%8E%B7%E7%A1%AC%E5%B8%81/</link>
-      <pubDate>Wed, 23 Oct 2019 19:43:25 +0800</pubDate>
+      <title>串联字符串的最大长度</title>
+      <link>https://ripple-zjw.github.io/2019/%E4%B8%B2%E8%81%94%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%A4%A7%E9%95%BF%E5%BA%A6/</link>
+      <pubDate>Sat, 09 Nov 2019 21:35:43 +0800</pubDate>
       
-      <guid>https://ripple-zjw.github.io/2019/%E6%8A%9B%E6%8E%B7%E7%A1%AC%E5%B8%81/</guid>
+      <guid>https://ripple-zjw.github.io/2019/%E4%B8%B2%E8%81%94%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%A4%A7%E9%95%BF%E5%BA%A6/</guid>
       <description>
 
-&lt;h1 id=&#34;题目-抛掷硬币&#34;&gt;题目：抛掷硬币&lt;/h1&gt;
+&lt;h1 id=&#34;题目-串联字符串的最大长度&#34;&gt;题目：串联字符串的最大长度&lt;/h1&gt;
 
 &lt;ul&gt;
-&lt;li&gt;有一些不规则的硬币。在这些硬币中，&lt;code&gt;prob[i]&lt;/code&gt;表示第&lt;code&gt;i&lt;/code&gt;枚硬币正面朝上的概率。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;请对每一枚硬币抛掷一次，然后返回正面朝上的硬币数等于&lt;code&gt;target&lt;/code&gt;的概率。&lt;/p&gt;
-
-&lt;h5 id=&#34;示例-1&#34;&gt;示例 1：&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入：prob = [0.4], target = 1
-输出：0.40000
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;示例-2&#34;&gt;示例 2：&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入：prob = [0.5,0.5,0.5,0.5,0.5], target = 0
-输出：0.03125
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;提示&#34;&gt;提示：&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;1 &amp;lt;= prob.length &amp;lt;= 1000&lt;/li&gt;
-&lt;li&gt;0 &amp;lt;= prob[i] &amp;lt;= 1&lt;/li&gt;
-&lt;li&gt;0 &amp;lt;= &lt;code&gt;target&lt;/code&gt;&amp;lt;= &lt;code&gt;prob.length&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;如果答案与标准答案的误差在&lt;code&gt;10^-5&lt;/code&gt;内，则被视为正确答案。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第5090题-临时&#34;&gt;来源：力扣（LeetCode）第5090题(临时)&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/toss-strange-coins&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/toss-strange-coins&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;概率dp&lt;/li&gt;
-&lt;li&gt;找到两个状态，一个是当前扔了第几个硬币，另一个是有几个正面朝上。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    public double probabilityOfHeads(double[] prob, int target) {
-        int n = prob.length;
-        // 滚动数组，由于这个dp只要用到前一个状态，所以没必要把所有的硬币情况都写出来。
-        // dp数组表示当前有i个硬币，j个硬币正面朝上。
-        double[][] dp = new double[2][target+2];
-        dp[0][0] = 1; // 当前没有硬币，0个硬币朝上的概率为100%
-        for (int ii = 1; ii &amp;lt;= n; ii++) {
-            int i = ii &amp;amp; 1; // 如果最后一位是1，那么i=1，如果最后一位是0，那么i=0
-            int pi = i ^ 1; // 如果i=1，那么异或1得0，如果i=0，那么异或1得1
-            for (int j = 0; j &amp;lt;= target; j++) dp[i][j] = 0; // 由于滚动数组，所以要把之前的清空。
-            for (int j = 0; j &amp;lt;= target; j++) {
-                dp[i][j] += dp[pi][j] * (1 - prob[ii-1]);
-                // 当前有i个硬币，如果第i个硬币扔的是反面，那么i-1个硬币必须要有j个是正面。
-                dp[i][j+1] += dp[pi][j] * prob[ii-1];
-                // 如果扔的是正面，那么i-1个硬币必须要有j-1个时正面。
-            }
-        }
-        // n是奇数那么索引就是1，如果n是偶数的话，那么它答案的索引就是0
-        return dp[n&amp;amp;1][target];
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>安排会议日程</title>
-      <link>https://ripple-zjw.github.io/2019/%E5%AE%89%E6%8E%92%E4%BC%9A%E8%AE%AE%E6%97%A5%E7%A8%8B/</link>
-      <pubDate>Wed, 23 Oct 2019 19:41:34 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E5%AE%89%E6%8E%92%E4%BC%9A%E8%AE%AE%E6%97%A5%E7%A8%8B/</guid>
-      <description>
-
-&lt;h1 id=&#34;题目-安排会议日程&#34;&gt;题目：安排会议日程&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;你是一名行政助理，手里有两位客户的空闲时间表：slots1 和 slots2，以及会议的预计持续时间&lt;code&gt;duration&lt;/code&gt;，请你为他们安排合适的会议时间。&lt;/li&gt;
-&lt;li&gt;「会议时间」是两位客户都有空参加，并且持续时间能够满足预计时间&lt;code&gt;duration&lt;/code&gt;的 最早的时间间隔。&lt;/li&gt;
-&lt;li&gt;如果没有满足要求的会议时间，就请返回一个 空数组。
-「空闲时间」的格式是&lt;code&gt;[start, end]&lt;/code&gt;，由开始时间&lt;code&gt;start&lt;/code&gt;和结束时间&lt;code&gt;end&lt;/code&gt;组成，表示从&lt;code&gt;start&lt;/code&gt;开始，到&lt;code&gt;end&lt;/code&gt;结束。&lt;/li&gt;
-&lt;li&gt;题目保证数据有效：同一个人的空闲时间不会出现交叠的情况，也就是说，对于同一个人的两个空闲时间&lt;code&gt;[start1, end1]&lt;/code&gt;和&lt;code&gt;[start2, end2]&lt;/code&gt;，要么&lt;code&gt;start1 &amp;gt; end2&lt;/code&gt;，要么&lt;code&gt;start2 &amp;gt; end1&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;给定一个字符串数组&lt;code&gt;arr&lt;/code&gt;，字符串&lt;code&gt;s&lt;/code&gt;是将&lt;code&gt;arr&lt;/code&gt; 某一子序列字符串连接所得的字符串，如果&lt;code&gt;s&lt;/code&gt; 中的每一个字符都只出现过一次，那么它就是一个可行解。&lt;/li&gt;
+&lt;li&gt;请返回所有可行解&lt;code&gt;s&lt;/code&gt;中最长长度。&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h5 id=&#34;示例-1&#34;&gt;示例 1：&lt;/h5&gt;
 
-&lt;pre&gt;&lt;code&gt;输入：slots1 = [[10,50],[60,120],[140,210]], slots2 = [[0,15],[60,70]], duration = 8
-输出：[60,68]
+&lt;pre&gt;&lt;code&gt;输入：arr = [&amp;quot;un&amp;quot;,&amp;quot;iq&amp;quot;,&amp;quot;ue&amp;quot;]
+输出：4
+解释：所有可能的串联组合是 &amp;quot;&amp;quot;,&amp;quot;un&amp;quot;,&amp;quot;iq&amp;quot;,&amp;quot;ue&amp;quot;,&amp;quot;uniq&amp;quot; 和 &amp;quot;ique&amp;quot;，最大长度为 4。
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h5 id=&#34;示例-2&#34;&gt;示例 2：&lt;/h5&gt;
 
-&lt;pre&gt;&lt;code&gt;输入：slots1 = [[10,50],[60,120],[140,210]], slots2 = [[0,15],[60,70]], duration = 12
-输出：[]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;提示&#34;&gt;提示：&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;1 &amp;lt;= slots1.length, slots2.length &amp;lt;= 10^4&lt;/li&gt;
-&lt;li&gt;slots1[i].length, slots2[i].length == 2&lt;/li&gt;
-&lt;li&gt;slots1[i][0] &amp;lt; slots1[i][1]&lt;/li&gt;
-&lt;li&gt;slots2[i][0] &amp;lt; slots2[i][1]&lt;/li&gt;
-&lt;li&gt;0 &amp;lt;= slots1[i][j], slots2[i][j] &amp;lt;= 10^9&lt;/li&gt;
-&lt;li&gt;1 &amp;lt;= duration &amp;lt;= 10^6&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第5089题-临时&#34;&gt;来源：力扣（LeetCode）第5089题(临时)&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/meeting-scheduler&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/meeting-scheduler&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;我们使用两个指针分别指向&lt;code&gt;slots1&lt;/code&gt;和&lt;code&gt;slots2&lt;/code&gt;，计作i，j。&lt;/li&gt;
-&lt;li&gt;我们判断当前i和j指向的那个时间段最大的开始时间和最小的结束时间之内是否可以容纳&lt;code&gt;duration&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;如果可以容纳的话就直接返回结果，如果不行，我们将结束时间小的那个指针向前走一个位置，让他比另一个指针的结束时间大。&lt;/li&gt;
-&lt;li&gt;如果没找到的话，返回空。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution(object):
-    def minAvailableDuration(self, slots1, slots2, duration):
-        slots1.sort(key=lambda x : x[0]) # 先将两个数组排序一下。
-        slots2.sort(key=lambda x : x[0])
-        m1, m2 = len(slots1), len(slots2)
-        i = j = 0
-        while i &amp;lt; m1 and j &amp;lt; m2: # 双指针的结束条件
-            st = max(slots1[i][0], slots2[j][0]) # 找到开始时间大的那个
-            en = min(slots1[i][1], slots2[j][1]) # 找到结束时间小的那个。
-            if st + duration &amp;lt;= en: # 看一下st到en之间是否可以容纳duration
-                return [st, st+duration]
-            if slots1[i][1] &amp;lt; slots2[j][1]: # 谁的结束时间小，谁就往前走。
-                i += 1
-            else:
-                j += 1
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>等差数列中缺失的数字</title>
-      <link>https://ripple-zjw.github.io/2019/%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%E4%B8%AD%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/</link>
-      <pubDate>Wed, 23 Oct 2019 19:40:20 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%E4%B8%AD%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/</guid>
-      <description>
-
-&lt;h1 id=&#34;题目-等差数列中缺失的数字&#34;&gt;题目：等差数列中缺失的数字&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;有一个数组，其中的值符合等差数列的数值规律，也就是说：&lt;/li&gt;
-&lt;li&gt;在&lt;code&gt;0 &amp;lt;= i &amp;lt; arr.length - 1&lt;/code&gt;的前提下，&lt;code&gt;arr[i+1] - arr[i]&lt;/code&gt;的值都相等。&lt;/li&gt;
-&lt;li&gt;我们会从该数组中删除一个既不是第一个也不是最后一个的值，得到一个新的数组arr。&lt;/li&gt;
-&lt;li&gt;给你这个缺值的数组&lt;code&gt;arr&lt;/code&gt;，请你帮忙找出被删除的那个数。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;示例-1&#34;&gt;示例 1：&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入：arr = [5,7,11,13]
-输出：9
-解释：原来的数组是 [5,7,9,11,13]。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;示例-2&#34;&gt;示例 2：&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入：arr = [15,13,12]
-输出：14
-解释：原来的数组是 [15,14,13,12]。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;提示&#34;&gt;提示：&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;3 &amp;lt;= arr.length &amp;lt;= 1000&lt;/li&gt;
-&lt;li&gt;0 &amp;lt;= arr[i] &amp;lt;= 10^5&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第5088题-临时&#34;&gt;来源：力扣（LeetCode）第5088题(临时)&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/missing-number-in-arithmetic-progression&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/missing-number-in-arithmetic-progression&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;我们算出数组中的总值，然后用等差数列求和公式求出原来的总值，相减一下就得到了答案。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    public int missingNumber(int[] arr) {
-        int sum = 0;
-        for (int a : arr) sum += a;
-        return (arr.length + 1) * (arr[0] + arr[arr.length-1]) / 2 - sum;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>填充书架</title>
-      <link>https://ripple-zjw.github.io/2019/%E5%A1%AB%E5%85%85%E4%B9%A6%E6%9E%B6/</link>
-      <pubDate>Wed, 23 Oct 2019 19:34:22 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E5%A1%AB%E5%85%85%E4%B9%A6%E6%9E%B6/</guid>
-      <description>
-
-&lt;h1 id=&#34;题目-填充书架&#34;&gt;题目：填充书架&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;附近的家居城促销，你买回了一直心仪的可调节书架，打算把自己的书都整理到新的书架上。&lt;/li&gt;
-&lt;li&gt;你把要摆放的书&lt;code&gt;books&lt;/code&gt;都整理好，叠成一摞：从上往下，第&lt;code&gt;i&lt;/code&gt;本书的厚度为&lt;code&gt;books[i][0]&lt;/code&gt;，高度为&lt;code&gt;books[i][1]&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;按顺序将这些书摆放到总宽度为&lt;code&gt;shelf_width&lt;/code&gt;的书架上。&lt;/li&gt;
-&lt;li&gt;先选几本书放在书架上（它们的厚度之和小于等于书架的宽度 shelf_width），然后再建一层书架。重复这个过程，直到把所有的书都放在书架上。&lt;/li&gt;
-&lt;li&gt;需要注意的是，在上述过程的每个步骤中，摆放书的顺序与你整理好的顺序相同。 例如，如果这里有 5 本书，那么可能的一种摆放情况是：第一和第二本书放在第一层书架上，第三本书放在第二层书架上，第四和第五本书放在最后一层书架上。&lt;/li&gt;
-&lt;li&gt;每一层所摆放的书的最大高度就是这一层书架的层高，书架整体的高度为各层高之和。&lt;/li&gt;
-&lt;li&gt;以这种方式布置书架，返回书架整体可能的最小高度。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;示例&#34;&gt;示例：&lt;/h5&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://ripple-zjw.github.io/images/填充书架/shelves.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;输入：books = [[1,1],[2,3],[2,3],[1,1],[1,1],[1,1],[1,2]], shelf_width = 4
+&lt;pre&gt;&lt;code&gt;输入：arr = [&amp;quot;cha&amp;quot;,&amp;quot;r&amp;quot;,&amp;quot;act&amp;quot;,&amp;quot;ers&amp;quot;]
 输出：6
-解释：
-3 层书架的高度和为 1 + 3 + 2 = 6 。
-第 2 本书不必放在第一层书架上。
+解释：可能的解答有 &amp;quot;chaers&amp;quot; 和 &amp;quot;acters&amp;quot;。
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;提示：&lt;/p&gt;
+&lt;h5 id=&#34;示例-3&#34;&gt;示例 3：&lt;/h5&gt;
 
-&lt;ul&gt;
-&lt;li&gt;1 &amp;lt;= &lt;code&gt;books.length&lt;/code&gt; &amp;lt;= 1000&lt;/li&gt;
-&lt;li&gt;1 &amp;lt;= &lt;code&gt;books[i][0]&lt;/code&gt; &amp;lt;= &lt;code&gt;shelf_width&lt;/code&gt; &amp;lt;= 1000&lt;/li&gt;
-&lt;li&gt;1 &amp;lt;= &lt;code&gt;books[i][1]&lt;/code&gt; &amp;lt;= 1000&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第1105题&#34;&gt;来源：力扣（LeetCode）第1105题&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/filling-bookcase-shelves&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/filling-bookcase-shelves&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;动态规划题&lt;/li&gt;
-&lt;li&gt;这道题的状态很简单，却很难想到。&lt;/li&gt;
-&lt;li&gt;我们设i为到第i本书为止的最优情况。&lt;/li&gt;
-&lt;li&gt;如果i之前都已是最优情况，那么第i种情况怎么算呢？&lt;/li&gt;
-&lt;li&gt;首先直接换行，那么就是i-1时的最优情况加上这本书的高度。&lt;/li&gt;
-&lt;li&gt;第二种，我们把第i-1本书和第i本书放在一起，那么就是第i本书和第i-1本最高的那本加上i-2时的最优情况。&lt;/li&gt;
-&lt;li&gt;以此类推，直到把所有书都放在同一行，或者宽度不够了，下一本书放不进去了。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    public int minHeightShelves(int[][] books, int shelf_width) {
-        int m = books.length;
-        int[] dp = new int[m+1];
-        for (int i = 1; i &amp;lt;= m; i++) dp[i] = Integer.MAX_VALUE;
-        for (int i = 1; i &amp;lt;= m; i++) {
-            int curh = 0;
-            int curw = 0;
-            for (int j = i; j &amp;gt;= 1; j--) {
-                // 一开始是第i本书的高度，接下来是第i本书和第i-1本书高的那个，以此类推。
-                curh = Math.max(curh, books[j-1][1]);
-                // 一开始是第i本书的宽度，接下来是第i-1本书加上第i本书的宽度，以此类推。
-                curw += books[j-1][0];
-                if (curw &amp;gt; shelf_width) break; // 宽度过了就直接退出了。
-                dp[i] = Math.min(dp[i], dp[j-1] + curh); // 看看哪种情况最优。
-            }
-        }
-        return dp[m];
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>掷骰子模拟</title>
-      <link>https://ripple-zjw.github.io/2019/%E6%8E%B7%E9%AA%B0%E5%AD%90%E6%A8%A1%E6%8B%9F/</link>
-      <pubDate>Wed, 23 Oct 2019 19:26:07 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E6%8E%B7%E9%AA%B0%E5%AD%90%E6%A8%A1%E6%8B%9F/</guid>
-      <description>
-
-&lt;h1 id=&#34;题目-掷骰子模拟&#34;&gt;题目：掷骰子模拟&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;有一个骰子模拟器会每次投掷的时候生成一个 1 到 6 的随机数。&lt;/li&gt;
-&lt;li&gt;不过我们在使用它时有个约束，就是使得投掷骰子时，&lt;strong&gt;连续&lt;/strong&gt; 掷出数字&lt;code&gt;i&lt;/code&gt;的次数不能超过&lt;code&gt;rollMax[i]（i&lt;/code&gt;从 1 开始编号）。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;现在，给你一个整数数组&lt;code&gt;rollMax&lt;/code&gt;和一个整数&lt;code&gt;n&lt;/code&gt;，请你来计算掷&lt;code&gt;n&lt;/code&gt;次骰子可得到的不同点数序列的数量。&lt;/p&gt;
-
-&lt;p&gt;假如两个序列中至少存在一个元素不同，就认为这两个序列是不同的。由于答案可能很大，所以请返回 模&lt;code&gt;10^9 + 7&lt;/code&gt;之后的结果。&lt;/p&gt;
-
-&lt;h5 id=&#34;示例-1&#34;&gt;示例 1：&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入：n = 2, rollMax = [1,1,2,2,2,3]
-输出：34
-解释：我们掷 2 次骰子，如果没有约束的话，共有 6 * 6 = 36 种可能的组合。但是根据 rollMax 数组，数字 1 和 2 最多连续出现一次，所以不会出现序列 (1,1) 和 (2,2)。因此，最终答案是 36-2 = 34。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;示例-2&#34;&gt;示例 2：&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入：n = 2, rollMax = [1,1,1,1,1,1]
-输出：30
-示例 3：
-输入：n = 3, rollMax = [1,1,1,2,2,3]
-输出：181
+&lt;pre&gt;&lt;code&gt;输入：arr = [&amp;quot;abcdefghijklmnopqrstuvwxyz&amp;quot;]
+输出：26
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h5 id=&#34;提示&#34;&gt;提示：&lt;/h5&gt;
 
 &lt;ul&gt;
-&lt;li&gt;1 &amp;lt;= n &amp;lt;= 5000&lt;/li&gt;
-&lt;li&gt;rollMax.length == 6&lt;/li&gt;
-&lt;li&gt;1 &amp;lt;= rollMax[i] &amp;lt;= 15&lt;/li&gt;
+&lt;li&gt;1 &amp;lt;= &lt;code&gt;arr.length&lt;/code&gt; &amp;lt;= 16&lt;/li&gt;
+&lt;li&gt;1 &amp;lt;= &lt;code&gt;arr[i].length&lt;/code&gt; &amp;lt;= 26&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;arr[i]&lt;/code&gt;中只含有小写英文字母&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&#34;来源-力扣-leetcode-第1223题&#34;&gt;来源：力扣（LeetCode）第1223题&lt;/h4&gt;
+&lt;h4 id=&#34;来源-力扣-leetcode-第1239题&#34;&gt;来源：力扣（LeetCode）第1239题&lt;/h4&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/dice-roll-simulation&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/dice-roll-simulation&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;这是一道动态规划题&lt;/li&gt;
-&lt;li&gt;题目有一点要注意，是连续投掷次数不能超过i，而不是总次数不能超过i。&lt;/li&gt;
-&lt;li&gt;我们设三个状态，i，j，k。i代表第i轮，j代表投掷了第j个数，k代表第j个数已经连续投出多少次了。&lt;/li&gt;
-&lt;li&gt;当k等于1，说明之前一轮没有投出j，因此次数是之前一轮没有投出j的次数之和。&lt;/li&gt;
-&lt;li&gt;当k大于1时，说明之前一轮投的也是k，所以次数就是之前一轮投的是j的时候k-1次。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    private long mod = (long)1e9 + 7;
-    public int dieSimulator(int n, int[] rollMax) {
-        long[][][] dp = new long[n][6][16];
-        for (int j = 0; j &amp;lt; 6; j++) dp[0][j][1] = 1;
-        for (int i = 1; i &amp;lt; n; i++) {
-            for (int j = 0; j &amp;lt; 6; j++) {
-                for (int l = 0; l &amp;lt; 6; l++) {
-                    for (int k = 1; k &amp;lt;= rollMax[l]; k++) {
-                        if (l == j) continue;
-                        dp[i][j][1] += dp[i-1][l][k];
-                        dp[i][j][1] %= mod;
-                    }
-                }
-
-                for (int k = 2; k &amp;lt;= rollMax[j]; k++) dp[i][j][k] = dp[i-1][j][k-1];
-            }
-        }
-        long ans = 0;
-        for (int j = 0; j &amp;lt; 6; j++) for (int k = 1; k &amp;lt;= 15; k++) {ans += dp[n-1][j][k];ans %= mod;}
-        return (int)ans;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>一和零</title>
-      <link>https://ripple-zjw.github.io/2019/%E4%B8%80%E5%92%8C%E9%9B%B6/</link>
-      <pubDate>Wed, 23 Oct 2019 19:21:28 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E4%B8%80%E5%92%8C%E9%9B%B6/</guid>
-      <description>
-
-&lt;h1 id=&#34;题目-一和零&#34;&gt;题目： 一和零&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;在计算机界中，我们总是追求用有限的资源获取最大的收益。&lt;/li&gt;
-&lt;li&gt;现在，假设你分别支配着 m 个&lt;code&gt;0&lt;/code&gt;和 n 个 1。另外，还有一个仅包含 0 和 1 字符串的数组。&lt;/li&gt;
-&lt;li&gt;你的任务是使用给定的&lt;code&gt;m&lt;/code&gt;个&lt;code&gt;0&lt;/code&gt;和&lt;code&gt;n&lt;/code&gt; 个&lt;code&gt;1&lt;/code&gt;，找到能拼出存在于数组中的字符串的最大数量。每个&lt;code&gt;0&lt;/code&gt;和&lt;code&gt;1&lt;/code&gt;至多被使用一次。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;注意&#34;&gt;注意:&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;给定&lt;code&gt;0&lt;/code&gt;和&lt;code&gt;1&lt;/code&gt;的数量都不会超过100。&lt;/li&gt;
-&lt;li&gt;给定字符串数组的长度不会超过600。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;示例-1&#34;&gt;示例 1:&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入: Array = {&amp;quot;10&amp;quot;, &amp;quot;0001&amp;quot;, &amp;quot;111001&amp;quot;, &amp;quot;1&amp;quot;, &amp;quot;0&amp;quot;},m = 5, n = 3
-输出: 4
-解释: 总共 4 个字符串可以通过 5 个 0 和 3 个 1 拼出，即 &amp;quot;10&amp;quot;,&amp;quot;0001&amp;quot;,&amp;quot;1&amp;quot;,&amp;quot;0&amp;quot; 。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;示例-2&#34;&gt;示例 2:&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入: Array = {&amp;quot;10&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;1&amp;quot;}, m = 1, n = 1
-输出: 2
-解释: 你可以拼出 &amp;quot;10&amp;quot;，但之后就没有剩余数字了。更好的选择是拼出 &amp;quot;0&amp;quot; 和 &amp;quot;1&amp;quot; 。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第474题&#34;&gt;来源：力扣（LeetCode）第474题&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/ones-and-zeroes&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/ones-and-zeroes&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;典型的背包问题，有两个状态，i是当0有i个时，j是当1有j个时。&lt;/li&gt;
-&lt;li&gt;我们举出小于m和小于n的0和1的个数。每当一个str进来时有两种选择，一种是放进去，另一种不放。&lt;/li&gt;
-&lt;li&gt;如果放进去，那么放完后还要加上&lt;code&gt;i-count(0)&lt;/code&gt;和&lt;code&gt;j-count(1)&lt;/code&gt;时候的个数，如果不放就不用动它。比较两者谁大，把大的存在当前状态。&lt;/li&gt;
-&lt;li&gt;我们每次把所有状态都更新一遍。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    public int findMaxForm(String[] strs, int m, int n) {
-        int[][] dp = new int[m+1][n+1];
-        for (String str : strs) {
-            int zero = 0, one = 0;
-            // 找到0 和 1的个数
-            for (int i = 0; i &amp;lt; str.length(); i++) {
-                if (str.charAt(i) == &#39;1&#39;) one++;
-                else zero++;
-            }
-            // 如果str的0和1的个数是x，y，那么我们将能够装下x个0，和y个1的状态依次进行比较。
-            // 如果装下x个0， y个1后，然后查看剩下的i-x个0和j-y个1能装下几个，这个状态在上一次已经算过了。
-            for (int i = m; i &amp;gt;= zero; i--) 
-                for (int j = n; j &amp;gt;= one; j--) 
-                    dp[i][j] = Math.max(dp[i][j], dp[i-zero][j-one] + 1);
-        }
-        return dp[m][n];
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>删除与获得点数</title>
-      <link>https://ripple-zjw.github.io/2019/%E5%88%A0%E9%99%A4%E4%B8%8E%E8%8E%B7%E5%BE%97%E7%82%B9%E6%95%B0/</link>
-      <pubDate>Wed, 23 Oct 2019 19:13:59 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E5%88%A0%E9%99%A4%E4%B8%8E%E8%8E%B7%E5%BE%97%E7%82%B9%E6%95%B0/</guid>
-      <description>
-
-&lt;h1 id=&#34;删除与获得点数&#34;&gt;删除与获得点数&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;给定一个整数数组&lt;code&gt;nums&lt;/code&gt;，你可以对它进行一些操作。&lt;/li&gt;
-&lt;li&gt;每次操作中，选择任意一个&lt;code&gt;nums[i]&lt;/code&gt;，删除它并获得&lt;code&gt;nums[i]&lt;/code&gt;的点数。之后，你必须删除每个等于&lt;code&gt;nums[i] - 1&lt;/code&gt;或&lt;code&gt;nums[i] + 1&lt;/code&gt;的元素。&lt;/li&gt;
-&lt;li&gt;开始你拥有0个点数。返回你能通过这些操作获得的最大点数。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;示例-1&#34;&gt;示例 1:&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入: nums = [3, 4, 2]
-输出: 6
-解释: 
-删除 4 来获得 4 个点数，因此 3 也被删除。
-之后，删除 2 来获得 2 个点数。总共获得 6 个点数。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;示例-2&#34;&gt;示例 2:&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入: nums = [2, 2, 3, 3, 3, 4]
-输出: 9
-解释: 
-删除 3 来获得 3 个点数，接着要删除两个 2 和 4 。
-之后，再次删除 3 获得 3 个点数，再次删除 3 获得 3 个点数。
-总共获得 9 个点数。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;注意&#34;&gt;注意:&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;nums&lt;/code&gt;的长度最大为&lt;code&gt;20000&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;每个整数&lt;code&gt;nums[i]&lt;/code&gt;的大小都在&lt;code&gt;[1, 10000]&lt;/code&gt;范围内。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第740题&#34;&gt;来源：力扣（LeetCode）第740题&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/delete-and-earn&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/delete-and-earn&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;这道题与另一道动态规划题打家劫舍几乎一模一样，状态转移方程基本没差。&lt;/li&gt;
-&lt;li&gt;首先，我们应当使用一个计数方法把相同值放在一起。&lt;/li&gt;
-&lt;li&gt;我们先来看最通俗版本，我们用两个状态，在当前第i位时拿或不拿，拿为0，不拿为1。
-
-&lt;ul&gt;
-&lt;li&gt;如果当前位置拿，那么要么是前一个位置没拿，要么是前两个位置拿了现在再拿。&lt;/li&gt;
-&lt;li&gt;如果当前位置不拿，那么要么是前一个位置拿了，要么是前一个位置不拿现在依然不拿。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;再来看看优化后的版本，我们发现不管拿或不拿，我们都要判断前一个位置不拿的情况。因此我们可以直接判断出最优情况，也就是说，拿与不拿的状态可以省略，可以直接比较拿或不拿找到当前位置的最优解。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;初始版本：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-public int deleteAndEarn(int[] nums) {
-    int len = nums.length;
-    if (len == 0) return 0;
-    int max = nums[0];
-    for (int i = 0; i &amp;lt; len; i++) if (max &amp;lt; nums[i]) max = nums[i];max++;
-    int[] arr = new int[max];
-    int[][] dp = new int[max][2];
-    for (int i = 0; i &amp;lt; len; i++) arr[nums[i]]++;
-    // 0 获取 1 不获取
-    dp[1][0] = arr[1];
- // dp[1][1] = 0;
-    for (int i = 2; i &amp;lt; max; i++) {
-        // 这两句代码中的其中一个比较是相同的。
-        dp[i][0] = Math.max(dp[i-2][0] , dp[i-1][1]) + arr[i] * i;
-        dp[i][1] = Math.max(dp[i-1][0], dp[i-1][1]);
-    }
-    return Math.max(dp[max-1][0], dp[max-1][1]);
-}
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;优化后：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-public int deleteAndEarn(int[] nums) {
-    int len = nums.length;
-    if (len == 0) return 0;
-    int max = nums[0];
-    for (int i = 0; i &amp;lt; len; i++) if (max &amp;lt; nums[i]) max = nums[i];max++;
-    int[] arr = new int[max];
-    int[] dp = new int[max];
-    for (int i = 0; i &amp;lt; len; i++) arr[nums[i]]++;
-    dp[1] = arr[1];
-    for (int i = 2; i &amp;lt; max; i++) {
-        dp[i] = Math.max(dp[i-2] + arr[i] * i, dp[i-1]);
-    }
-    return dp[max-1];
-}
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>石子游戏II</title>
-      <link>https://ripple-zjw.github.io/2019/%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8Fii/</link>
-      <pubDate>Wed, 23 Oct 2019 19:06:38 +0800</pubDate>
-      
-      <guid>https://ripple-zjw.github.io/2019/%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8Fii/</guid>
-      <description>
-
-&lt;h1 id=&#34;题目-石子游戏-ii&#34;&gt;题目：石子游戏 II&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;亚历克斯和李继续他们的石子游戏。许多堆石子排成一行，每堆都有正整数颗石子&lt;code&gt;piles[i]&lt;/code&gt;。游戏以谁手中的石子最多来决出胜负。&lt;/li&gt;
-&lt;li&gt;亚历克斯和李轮流进行，亚历克斯先开始。最初，M = 1。&lt;/li&gt;
-&lt;li&gt;在每个玩家的回合中，该玩家可以拿走剩下的前&lt;code&gt;X&lt;/code&gt;堆的所有石子，其中&lt;code&gt;1 &amp;lt;= X &amp;lt;= 2M&lt;/code&gt;。然后，令&lt;code&gt;M = max(M, X)&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;游戏一直持续到所有石子都被拿走。&lt;/li&gt;
-&lt;li&gt;假设亚历克斯和李都发挥出最佳水平，返回亚历克斯可以得到的最大数量的石头。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;示例&#34;&gt;示例：&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;输入：piles = [2,7,9,4,4]
-输出：10
-解释：
-如果亚历克斯在开始时拿走一堆石子，李拿走两堆，接着亚历克斯也拿走两堆。在这种情况下，亚历克斯可以拿到 2 + 4 + 4 = 10 颗石子。 
-如果亚历克斯在开始时拿走两堆石子，那么李就可以拿走剩下全部三堆石子。在这种情况下，亚历克斯可以拿到 2 + 7 = 9 颗石子。
-所以我们返回更大的 10。 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;提示&#34;&gt;提示：&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;1 &amp;lt;= piles.length &amp;lt;= 100&lt;/li&gt;
-&lt;li&gt;1 &amp;lt;= piles[i] &amp;lt;= 10 ^ 4&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;来源-力扣-leetcode-第1140题&#34;&gt;来源：力扣（LeetCode）第1140题&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/stone-game-ii&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/stone-game-ii&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;这道题可以采用递归加记忆化搜索的方式进行。&lt;/li&gt;
-&lt;li&gt;我们需要穷举出所有的状态。&lt;/li&gt;
-&lt;li&gt;由于重复计算的地方太多，所以使用记忆化搜索，也可以说使用了动态规划。&lt;/li&gt;
+&lt;li&gt;使用位压缩和回溯就可以完成这道题。&lt;/li&gt;
+&lt;li&gt;每一个字符串我们有两种选择，一种是用这个字符串，另一个是不用这个字符串。&lt;/li&gt;
+&lt;li&gt;我们用一个int类型的整数代表字符串每一个字符的使用情况。int总共有32位，而小写字母总共有26个，因此我可以把26个字母都存在每一个位上，1代表已经使用了，0代表未使用。&lt;/li&gt;
+&lt;li&gt;如果用这个字符串，我们就要把当前的字符串长度加上，然后再去往下找下一个字符串。&lt;/li&gt;
+&lt;li&gt;如果不用这个字符串，我们不用加上当前字符串的长度，只需要找下一个字符串就行了。&lt;/li&gt;
+&lt;li&gt;然后比较一下两者哪个大。&lt;/li&gt;
+&lt;li&gt;需要注意的是，如果这个字符不能使用，就是用了会有重复的字符，那么这种情况只有一个选择，就是不用这个字符串。&lt;/li&gt;
+&lt;li&gt;其实这道题和dp很像，但是由于有一个状态的范围不确定，所以用dp稍有难度。&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     int len;
-    int[] sum;int[][] dp;
-    public int stoneGameII(int[] piles) {
-        dp = new int[150][150]; // dp数组用来存放算过的值。
-        len = piles.length;
-        sum = new int[len+1];
-        // 求第i个数到最后的总和。
-        for (int i = len - 1; i &amp;gt;= 0; i--) sum[i] = sum[i+1] + piles[i];
-        return dfs(0, 1);
+    public int maxLength(List&amp;lt;String&amp;gt; arr) {
+        len = arr.size();
+        return dfs(arr, 0, 0);
     }
-    // 返回从第i个石子堆开始，M为m的最优情况。
-    public int dfs(int i, int m) {
-        if (dp[i][m] != 0) return dp[i][m]; // 如果i，m已经算过了，不用再算了。
-        if (i &amp;gt;= len) return 0; // i超出数组下标，也不用再算了，这是递归的基线条件。
-        if (i + 2 * m &amp;gt;= len) return sum[i]; // 特殊情况，如果剩下的石子堆可以一次拿完，那么肯定全拿了。
-        int best = 0; // 存放最优情况
-        for (int x = 1; x &amp;lt;= 2 * m; x++) 
-            /*
-                如果i之前的石子堆被拿完，那么首先判断在这1-2*m次里Alex能拿到最大的情况是哪次。
-                于是我们穷举每一次情况，找出最大的情况。
-                每一次情况中，我们看从第i堆石子到最后。i + x，也就是你从i开始拿x堆石子，之间的总和。
-                然后还要加上从i+x+1到最后你拿的最优情况，就是值最大的情况。
-                因此，我们减去Lee的最优情况，因为Lee也会取最优，得到的就是Alex的情况。
-            */
-            best = Math.max(best, sum[i] - dfs(i + x, Math.max(m, x)));
-        dp[i][m] = best;
-        return best;
+
+    public int dfs(List&amp;lt;String&amp;gt; arr, int index, int m) {
+        if (index == len) return 0;
+        int t = isJoin(arr.get(index), m);// 判断字符串是否有重复,t就是当前26个字母是否有重复，0没有，1有。
+        if (t != -1) { // 一条路是用这个字符串，另一条路是不用这个字符串。比较他们谁的值更大
+            return Math.max(arr.get(index).length() + dfs(arr, index + 1, t), dfs(arr, index + 1, m));
+        }
+        return dfs(arr, index + 1, m);// 如果有重复，那么只能选择不用这个字符串。
+    }
+
+    public int isJoin(String s, int t) {
+        for (char c : s.toCharArray()) {
+            int tmp = c - &#39;a&#39;; // tmp的值不会超过26，因为只有小写字母。
+            if ((t &amp;amp; (1 &amp;lt;&amp;lt; tmp)) != 0) return -1;//1&amp;lt;&amp;lt;tmp意思是2的tmp次方，检查tmp位上是否是0,如果不是0说明已经有了这个字母。
+            t |= (1 &amp;lt;&amp;lt; tmp);//如果tmp位上是0，那么就变成1。
+        }
+        return t;//将当前每个字母的次数返回。
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>最大的以</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%9C%80%E5%A4%A7%E7%9A%84%E4%BB%A5-1-%E4%B8%BA%E8%BE%B9%E7%95%8C%E7%9A%84%E6%AD%A3%E6%96%B9%E5%BD%A2/</link>
+      <pubDate>Sat, 09 Nov 2019 21:34:34 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%9C%80%E5%A4%A7%E7%9A%84%E4%BB%A5-1-%E4%B8%BA%E8%BE%B9%E7%95%8C%E7%9A%84%E6%AD%A3%E6%96%B9%E5%BD%A2/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-最大的以-1-为边界的正方形&#34;&gt;题目：最大的以 1 为边界的正方形&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;给你一个由若干&lt;code&gt;0&lt;/code&gt;和&lt;code&gt;1&lt;/code&gt; 组成的二维网格&lt;code&gt;grid&lt;/code&gt;，请你找出边界全部由&lt;code&gt;1&lt;/code&gt;组成的最大 正方形 子网格，并返回该子网格中的元素数量。如果不存在，则返回&lt;code&gt;0&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例-1&#34;&gt;示例 1：&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入：grid = [[1,1,1],[1,0,1],[1,1,1]]
+输出：9
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-2&#34;&gt;示例 2：&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入：grid = [[1,1,0,0]]
+输出：1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;提示&#34;&gt;提示：&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1 &amp;lt;= grid.length &amp;lt;= 100&lt;/li&gt;
+&lt;li&gt;1 &amp;lt;= grid[0].length &amp;lt;= 100&lt;/li&gt;
+&lt;li&gt;grid[i][j] 为&lt;code&gt;0&lt;/code&gt;或&lt;code&gt;1&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第1139题&#34;&gt;来源：力扣（LeetCode）第1139题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/largest-1-bordered-square&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/largest-1-bordered-square&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;动态规划题&lt;/li&gt;
+&lt;li&gt;我们使用up和left两个状态来表示每一个格子上的情况。&lt;/li&gt;
+&lt;li&gt;up和left是当前格子向上的连续数量和向左的连续数量。&lt;/li&gt;
+&lt;li&gt;当我们算出一个格子的up和left之后分别向上和向左一个一个去找，直到up和left的最小长度为止，每找一次之后都要判断另外两条边是否大于等于当前长度。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public int largest1BorderedSquare(int[][] grid) {
+        int m = grid.length, n = grid[0].length;
+        int[][][] dp = new int[m+1][n+1][2];
+        // 0 up 1 left;
+        int ans = 0;
+        for (int i = 1; i &amp;lt;= m; i++) {
+            for (int j = 1; j &amp;lt;= n; j++) {
+                if (grid[i-1][j-1] == 0) continue; // 如果是0则不要继续了
+                dp[i][j][0] = dp[i-1][j][0] + 1; // 求出up情况下连续的个数
+                dp[i][j][1] = dp[i][j-1][1] + 1; // 求出left情况下连续的个数
+                int min = Math.min(dp[i][j][0], dp[i][j][1]); // 拿出两者较小的长度，因为四条边都要相等。
+                for (int k = 0; k &amp;lt; min; k++) {//拿出后并不一定就是min这个长度，有可能另外两条边比较短，没有min长，所以要一个一个判断。
+                    // 判断另外的两条边是否都比当前长度大。
+                    if (dp[i-k][j][1] &amp;gt;= k + 1 &amp;amp;&amp;amp; dp[i][j-k][0] &amp;gt;= k + 1) ans = Math.max(ans, k + 1);
+                }
+            }
+        }
+        return ans * ans;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>最大正方形</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%9C%80%E5%A4%A7%E6%AD%A3%E6%96%B9%E5%BD%A2/</link>
+      <pubDate>Sat, 09 Nov 2019 21:33:05 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%9C%80%E5%A4%A7%E6%AD%A3%E6%96%B9%E5%BD%A2/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-最大正方形&#34;&gt;题目：最大正方形&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在一个由 0 和 1 组成的二维矩阵内，找到只包含 1 的最大正方形，并返回其面积。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例&#34;&gt;示例:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: 
+1 0 1 0 0
+1 0 1 1 1
+1 1 1 1 1
+1 0 0 1 0
+输出: 4
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第221题&#34;&gt;来源：力扣（LeetCode）第221题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/maximal-square&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/maximal-square&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;dp题&lt;/li&gt;
+&lt;li&gt;首先正方形的面积一定是根号后还为正数的。&lt;/li&gt;
+&lt;li&gt;首先面积为1,这很简单，只要出现了1那肯定有1。&lt;/li&gt;
+&lt;li&gt;然后是面积为4的，也就是边长为2的，如果边长为2，那么这个数组的左边，上边和左上肯定不能是0，以及自己也不能是0。&lt;/li&gt;
+&lt;li&gt;最后来看看面积是9的情况，边长为3。如果边长为3，那么同样也是左边，右边和左上，他们的值不仅要不等于0，而且每个值都至少得是2，因为他们的三个方向也依然不能是0。&lt;/li&gt;
+&lt;li&gt;所以我们每次都找这三个方向，算出他们的最小值。然后再加上1，这样就能得到这个点最大的面积了。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public int maximalSquare(char[][] matrix) {
+        int m = matrix.length;
+        if (m == 0) return 0;
+        int n = matrix[0].length;
+        int[][] dp = new int[m+1][n+1];
+        int ans = 0;
+        for (int i = 1; i &amp;lt;= m; i++) {
+            for (int j = 1; j &amp;lt;= n; j++) {
+                if (matrix[i-1][j-1] == &#39;1&#39;) {
+                    dp[i][j] = Math.min(dp[i-1][j], Math.min(dp[i][j-1], dp[i-1][j-1])) + 1;
+                    ans = Math.max(ans, dp[i][j]);
+                }
+            }
+        }
+        return ans * ans;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;然后还可以用滚动数组优化&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+public int maximalSquare(char[][] matrix) {
+    int m = matrix.length;
+    if (m == 0) return 0;
+    int n = matrix[0].length;
+    int[][] dp = new int[2][n+1];
+    int ans = 0;
+    for (int ii = 1; ii &amp;lt;= m; ii++) {
+        int i = ii &amp;amp; 1, pi = i ^ 1;
+        for (int j = 0; j &amp;lt;= n; j++) dp[i][j] = 0;
+        for (int j = 1; j &amp;lt;= n; j++) {
+            if (matrix[ii-1][j-1] == &#39;1&#39;) {
+                dp[i][j] = Math.min(dp[pi][j], Math.min(dp[i][j-1], dp[pi][j-1])) + 1;
+                ans = Math.max(ans, dp[i][j]);
+            }
+        }
+    }
+    return ans * ans;
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>划分为k个相等的子集</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%88%92%E5%88%86%E4%B8%BAk%E4%B8%AA%E7%9B%B8%E7%AD%89%E7%9A%84%E5%AD%90%E9%9B%86/</link>
+      <pubDate>Sat, 09 Nov 2019 21:31:18 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%88%92%E5%88%86%E4%B8%BAk%E4%B8%AA%E7%9B%B8%E7%AD%89%E7%9A%84%E5%AD%90%E9%9B%86/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-划分为k个相等的子集&#34;&gt;题目：划分为k个相等的子集&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;给定一个整数数组&lt;code&gt;nums&lt;/code&gt;和一个正整数 k，找出是否有可能把这个数组分成 k 个非空子集，其总和都相等。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例-1&#34;&gt;示例 1：&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入： nums = [4, 3, 2, 3, 5, 2, 1], k = 4
+输出： True
+说明： 有可能将其分成 4 个子集（5），（1,4），（2,3），（2,3）等于总和。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;注意&#34;&gt;注意:&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1 &amp;lt;= k &amp;lt;= len(nums) &amp;lt;= 16&lt;/li&gt;
+&lt;li&gt;0 &amp;lt; nums[i] &amp;lt; 10000&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第698题&#34;&gt;来源：力扣（LeetCode）第698题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/partition-to-k-equal-sum-subsets&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/partition-to-k-equal-sum-subsets&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;这道题LeetCode官方给出的标签为dp和递归。&lt;/li&gt;
+&lt;li&gt;但是好像没有一个人用dp写出来，基本用的都是回溯算法。&lt;/li&gt;
+&lt;li&gt;由于数据范围不大，就可以穷举所有的可能，如果不对，再回来计算下一种可能。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    int[] bucket;
+    public boolean canPartitionKSubsets(int[] nums, int k) {
+        if (k == 1) return true; //如果k是1，直接返回true。
+        int len = nums.length;
+        int sum = 0;
+        for (int num : nums) sum += num; // 算出nums的总和。
+        if (sum % k != 0) return false; //子集分不出k份，直接false。
+        sum /= k;// sum变为每个子集的和。
+        Arrays.sort(nums);
+        /*
+            为什么要排序呢，其实不排序这道题也能做对，但是由于时间的关系就t了。
+            排序就是为了优化时间，怎么优化呢？
+            我们从nums中最大的数开始找，如果最大的数比子集和都要大，或者装下它后没到子集和的大小但是装不下nums中最小的值了，
+            那么这个nums绝对是false，因为有一个这么大的数在nums里，你把它放在哪个子集里都不合适。
+        */
+        bucket = new int[k];//这个数组里放的是子集和，总共有k个。相当于k个桶，元素一个一个往里面放。
+        Arrays.fill(bucket, sum);
+        return dfs(k, nums, len - 1);
+    }
+
+    public boolean dfs(int k, int[] nums, int cur) {//cur为当前的位置，从最后开始往前走。
+        if (cur &amp;lt; 0) return true;// cur走到-1时，说明所有的数全部都放进桶里了。这时一定是true
+        for (int i = 0; i &amp;lt; k; i++) {
+            //两种可能，这个数正好是桶当前的容量，或者将这个数放进桶后这个桶还能再放别的数。
+            if (bucket[i] == nums[cur] || bucket[i] - nums[cur] &amp;gt;= nums[0]) {
+                //将cur放进第一个桶里，如果不行，拿出来再放进第二个桶里。
+                //区别就是如果cur放进第一个桶，那么下一个数如果符合也会放在第一个桶，可是最后发现是false，那么可能我应该把这两个数分开来放。
+                bucket[i] -= nums[cur];
+                if (dfs(k, nums, cur - 1)) return true;
+                bucket[i] += nums[cur];
+            }
+        }
+        return false;
+    }
+    //这里讨论一种问题，为什么只要判断cur&amp;lt;0就能说明true，而不需要判断一下bucket数组中的值是否全部都是0。
+    /*
+        有没有可能bucket数组中的数有剩余但是cur已经小于0了呢？答案是不可能。
+        因为如果cur&amp;lt;0,那么说明nums中的所有数全部都放进去了，如果全部都放进去，bucket中的数尽管可能不全为0，但是数组中的和一定是0。
+        因为bucket的和与nums的和是一样的，所以我用nums中的数在不重复的状态下去减bucket中的数，全部减去的情况下bucket中的和一定是0。
+        可是真的可能有负数吗，第26行我们的if条件严格判断如果没有一个桶内剩余的空间能放下这个数的话是不会执行递归的，只会返回一个false,
+        因此cur一旦有一个递归没下去cur就不可能为-1，只能换其他的情况再去试。
+    */
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>分汤</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%88%86%E6%B1%A4/</link>
+      <pubDate>Sat, 09 Nov 2019 21:30:11 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%88%86%E6%B1%A4/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-分汤&#34;&gt;题目：分汤&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;有&lt;code&gt;A&lt;/code&gt;和&lt;code&gt;B&lt;/code&gt;两种类型的汤。一开始每种类型的汤有&lt;code&gt;N&lt;/code&gt;毫升。有四种分配操作：&lt;/li&gt;
+&lt;li&gt;提供 100ml 的汤A 和 0ml 的汤B。&lt;/li&gt;
+&lt;li&gt;提供 75ml 的汤A 和 25ml 的汤B。&lt;/li&gt;
+&lt;li&gt;提供 50ml 的汤A 和 50ml 的汤B。&lt;/li&gt;
+&lt;li&gt;提供 25ml 的汤A 和 75ml 的汤B。&lt;/li&gt;
+&lt;li&gt;当我们把汤分配给某人之后，汤就没有了。每个回合，我们将从四种概率同为0.25的操作中进行分配选择。如果汤的剩余量不足以完成某次操作，我们将尽可能分配。当两种类型的汤都分配完时，停止操作。&lt;/li&gt;
+&lt;li&gt;注意不存在先分配100 ml汤B的操作。&lt;/li&gt;
+&lt;li&gt;需要返回的值：汤A先分配完的概率 + 汤A和汤B同时分配完的概率 / 2。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例&#34;&gt;示例:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: N = 50
+输出: 0.625
+解释:
+如果我们选择前两个操作，A将首先变为空。
+对于第三个操作，A和B会同时变为空。
+对于第四个操作，B将首先变为空。
+所以A变为空的总概率加上A和B同时变为空的概率的一半是 0.25 *(1 + 1 + 0.5 + 0)= 0.625。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;注释&#34;&gt;注释:&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;0 &amp;lt;= N &amp;lt;= 10^9。&lt;/li&gt;
+&lt;li&gt;返回值在&lt;code&gt;10^-6&lt;/code&gt;的范围将被认为是正确的。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第808题&#34;&gt;来源：力扣（LeetCode）第808题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/soup-servings&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/soup-servings&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;动态规划题,也可以用dfs。这道题使用dfs更加的好，因为不用判断数组越界的情况。&lt;/li&gt;
+&lt;li&gt;声明两个状态，一个是A的剩余量，一个是B的剩余量。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;dp&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+public double soupServings(int N) {
+    if (N &amp;gt; 4450) return 1.0; // 如果不加，LeetCode会超出内存限制。
+    int cnt = (int)Math.ceil(N / 25.0); // N太大了，由于每一个选择都是25的倍数，因此最多要分cnt次就能出现0的情况。
+    double[][] dp = new double[cnt+1][cnt+1];// 左边是A汤剩余量，右边是B汤剩余量。
+    Arrays.fill(dp[0], 1); // 如果A先到0，那么就加1次，同样如果B先到0，那么就是0。
+    dp[0][0] = 0.5; // 如果同时到0，那么就是概率的一半。
+    for (int i = 1; i &amp;lt;= cnt; i++) {
+        // 除以25以后，100就是4,75就是3,50是2,25是1。
+        int i1 = i - 4 &amp;gt; 0 ? i - 4 : 0, i2 = i - 3 &amp;gt; 0 ? i - 3 : 0;
+        int i3 = i - 2 &amp;gt; 0 ? i - 2 : 0, i4 = i - 1 &amp;gt; 0 ? i - 1 : 0;
+        for (int j = 1; j &amp;lt;= cnt; j++) {
+            int j1 = j - 1 &amp;gt; 0 ? j - 1 : 0, j2 = j - 2 &amp;gt; 0 ? j - 2 : 0, j3 = j - 3 &amp;gt; 0 ? j - 3 : 0;
+            //dp内存的是你当前的四种情况有几种是A先0,有几种是B先0,有几种是同时为0。
+            //同时为0要除以2，所以dp[0][0]=0.5。B先0就是0，A先0就是1。四种情况加起来除以4就是要求的概率。
+            dp[i][j] = 0.25 * (dp[i1][j] + dp[i2][j1] + dp[i3][j2] + dp[i4][j3]);
+        }
+    }
+    return dp[cnt][cnt];
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;dfs + 记忆化搜索&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+double[][] memo;
+public double soupServings(int N) {
+    if (N &amp;gt; 4450) return 1.0;
+    int cnt = (int)Math.ceil(N / 25.0);
+    memo = new double[cnt+1][cnt+1];
+    return dfs(cnt, cnt);
+}
+
+public double dfs(int A, int B) {
+    if (A &amp;lt;= 0 &amp;amp;&amp;amp; B &amp;lt;= 0) return 0.5;
+    if (A &amp;lt;= 0) return 1;
+    if (B &amp;lt;= 0) return 0;
+    if (memo[A][B] != 0) return memo[A][B];
+    double ans = 0;
+    ans = 0.25 * (dfs(A - 4, B) + dfs(A - 3, B - 1) + dfs(A - 2, B - 2) + dfs(A - 1, B - 3));
+    memo[A][B] = ans;
+    return ans;
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>摆动序列</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%91%86%E5%8A%A8%E5%BA%8F%E5%88%97/</link>
+      <pubDate>Sat, 09 Nov 2019 21:28:46 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%91%86%E5%8A%A8%E5%BA%8F%E5%88%97/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-摆动序列&#34;&gt;题目：摆动序列&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;如果连续数字之间的差严格地在正数和负数之间交替，则数字序列称为&lt;strong&gt;摆动序列&lt;/strong&gt;。第一个差（如果存在的话）可能是正数或负数。少于两个元素的序列也是摆动序列。&lt;/li&gt;
+&lt;li&gt;例如，&lt;code&gt;[1,7,4,9,2,5]&lt;/code&gt;是一个摆动序列，因为差值&lt;code&gt;(6,-3,5,-7,3)&lt;/code&gt;是正负交替出现的。相反, &lt;code&gt;[1,4,7,2,5]&lt;/code&gt;和&lt;code&gt;[1,7,4,5,5]&lt;/code&gt; 不是摆动序列，第一个序列是因为它的前两个差值都是正数，第二个序列是因为它的最后一个差值为零。&lt;/li&gt;
+&lt;li&gt;给定一个整数序列，返回作为摆动序列的最长子序列的长度。 通过从原始序列中删除一些（也可以不删除）元素来获得子序列，剩下的元素保持其原始顺序。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例-1&#34;&gt;示例 1:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: [1,7,4,9,2,5]
+输出: 6 
+解释: 整个序列均为摆动序列。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-2&#34;&gt;示例 2:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: [1,17,5,10,13,15,10,5,16,8]
+输出: 7
+解释: 这个序列包含几个长度为 7 摆动序列，其中一个可为[1,17,10,13,10,16,8]。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-3&#34;&gt;示例 3:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入: [1,2,3,4,5,6,7,8,9]
+输出: 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;进阶&#34;&gt;进阶:&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;你能否用&lt;code&gt;O(n)&lt;/code&gt;时间复杂度完成此题?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第376题&#34;&gt;来源：力扣（LeetCode）第376题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/wiggle-subsequence&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/wiggle-subsequence&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;首先这道题的方法实在是太多了。&lt;/li&gt;
+&lt;li&gt;我首先使用了二维dp做出了&lt;code&gt;O(n^2)&lt;/code&gt;的方法。&lt;/li&gt;
+&lt;li&gt;一个状态是以数组i为结尾的最优情况，第二个状态是当前是处于递增还是递减状态。&lt;/li&gt;
+&lt;li&gt;如果是递增状态，那么就是前几次里的递减状态 + 1。&lt;/li&gt;
+&lt;li&gt;如果是递减状态，那么就是前几次里的递增状态 + 1。&lt;/li&gt;
+&lt;li&gt;再来说说进阶。&lt;/li&gt;
+&lt;li&gt;我们发现如果数组把它分为一段递增，一段递减，那么这一段内的所有数的答案都是一样的，因为，都是递减，前一段的最后那个数都比他们大，选哪个都可以，可是一旦选择了一个，这一段里都不能再选择第二个，下一个一定在下一段里。而这一段递增那么下一段就是递减。(所谓一段，就是一段数组内连续的数)&lt;/li&gt;
+&lt;li&gt;那这每一段内我要选择什么才合适呢？我们发现，如果是递减，我们就选择最小的那个，如果是递增就选择最大的那个。因为如果你选择最小的那个，那么下一个数要比它大，你选择的越小下一个找到比它大的数的可能性就越高，递增同理。&lt;/li&gt;
+&lt;li&gt;于是乎我们每一段都要贪心的去取最小或最大的数，也就是这一段单调的最后一个数。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;dp&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+public int wiggleMaxLength(int[] nums) {
+    int len = nums.length;
+    if (len &amp;lt; 2) return len;
+    int[][] dp = new int[len][2];
+    // 0 正数 1 负数
+    for (int i = 0; i &amp;lt; len; i++) {
+        for (int j = i + 1; j &amp;lt; len; j++) {
+            if (nums[j] &amp;gt; nums[i]) dp[j][1] = Math.max(dp[j][1], dp[i][0] + 1);
+            else if (nums[j] &amp;lt; nums[i]) dp[j][0] = Math.max(dp[j][0], dp[i][1] + 1);
+        }
+    }
+    return 1 + (dp[len-1][0] &amp;gt; dp[len-1][1] ? dp[len-1][0] : dp[len-1][1]);
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;贪心算法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+public int wiggleMaxLength(int[] nums) {
+    int len = nums.length;int ans1 = 1, ans2 = 1;
+    if (len &amp;lt; 2) return len;
+    int i = 0;
+    while (i + 1 &amp;lt; len) {
+        while (i + 1 &amp;lt; len &amp;amp;&amp;amp; nums[i] &amp;lt;= nums[i+1]) ++i;
+        if (i + 1 &amp;lt; len &amp;amp;&amp;amp; nums[i] &amp;gt; nums[i+1]) ++ans1;
+        while (i + 1 &amp;lt; len &amp;amp;&amp;amp; nums[i] &amp;gt;= nums[i+1]) ++i;
+        if (i + 1 &amp;lt; len &amp;amp;&amp;amp; nums[i] &amp;lt; nums[i+1]) ++ans1;
+    }
+    i = 0;
+    while (i + 1 &amp;lt; len) {
+        while (i + 1 &amp;lt; len &amp;amp;&amp;amp; nums[i] &amp;gt;= nums[i+1]) ++i;
+        if (i + 1 &amp;lt; len &amp;amp;&amp;amp; nums[i] &amp;lt; nums[i+1]) ++ans2;
+        while (i + 1 &amp;lt; len &amp;amp;&amp;amp; nums[i] &amp;lt;= nums[i+1]) ++i;
+        if (i + 1 &amp;lt; len &amp;amp;&amp;amp; nums[i] &amp;gt; nums[i+1]) ++ans2;
+    }
+    return ans1 &amp;gt; ans2 ? ans1 : ans2;
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;leetcode官方题解&#34;&gt;LeetCode官方题解：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;暴力&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Solution {
+private int calculate(int[] nums, int index, boolean isUp) {
+    int maxcount = 0;
+    for (int i = index + 1; i &amp;lt; nums.length; i++) {
+        if ((isUp &amp;amp;&amp;amp; nums[i] &amp;gt; nums[index]) || (!isUp &amp;amp;&amp;amp; nums[i] &amp;lt; nums[index]))
+            maxcount = Math.max(maxcount, 1 + calculate(nums, i, !isUp));
+    }
+    return maxcount;
+}
+
+public int wiggleMaxLength(int[] nums) {
+    if (nums.length &amp;lt; 2)
+        return nums.length;
+    return 1 + Math.max(calculate(nums, 0, true), calculate(nums, 0, false));
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;线性动态规划&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Solution {
+public int wiggleMaxLength(int[] nums) {
+    if (nums.length &amp;lt; 2)
+        return nums.length;
+    int[] up = new int[nums.length];
+    int[] down = new int[nums.length];
+    up[0] = down[0] = 1;
+    for (int i = 1; i &amp;lt; nums.length; i++) {
+        if (nums[i] &amp;gt; nums[i - 1]) {
+            up[i] = down[i - 1] + 1;
+            down[i] = down[i - 1];
+        } else if (nums[i] &amp;lt; nums[i - 1]) {
+            down[i] = up[i - 1] + 1;
+            up[i] = up[i - 1];
+        } else {
+            down[i] = down[i - 1];
+            up[i] = up[i - 1];
+        }
+    }
+    return Math.max(down[nums.length - 1], up[nums.length - 1]);
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;空间优化的动态规划&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Solution {
+public int wiggleMaxLength(int[] nums) {
+    if (nums.length &amp;lt; 2)
+        return nums.length;
+    int down = 1, up = 1;
+    for (int i = 1; i &amp;lt; nums.length; i++) {
+        if (nums[i] &amp;gt; nums[i - 1])
+            up = down + 1;
+        else if (nums[i] &amp;lt; nums[i - 1])
+            down = up + 1;
+    }
+    return Math.max(down, up);
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>多边形三角剖分的最低得分</title>
+      <link>https://ripple-zjw.github.io/2019/%E5%A4%9A%E8%BE%B9%E5%BD%A2%E4%B8%89%E8%A7%92%E5%89%96%E5%88%86%E7%9A%84%E6%9C%80%E4%BD%8E%E5%BE%97%E5%88%86/</link>
+      <pubDate>Sat, 09 Nov 2019 21:25:31 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E5%A4%9A%E8%BE%B9%E5%BD%A2%E4%B8%89%E8%A7%92%E5%89%96%E5%88%86%E7%9A%84%E6%9C%80%E4%BD%8E%E5%BE%97%E5%88%86/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-多边形三角剖分的最低得分&#34;&gt;题目：多边形三角剖分的最低得分&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;给定&lt;code&gt;N&lt;/code&gt;，想象一个凸&lt;code&gt;N&lt;/code&gt;边多边形，其顶点按顺时针顺序依次标记为&lt;code&gt;A[0], A[i], ..., A[N-1]&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;假设您将多边形剖分为&lt;code&gt;N-2&lt;/code&gt;个三角形。对于每个三角形，该三角形的值是顶点标记的乘积，三角剖分的分数是进行三角剖分后所有&lt;code&gt;N-2&lt;/code&gt;个三角形的值之和。&lt;/li&gt;
+&lt;li&gt;返回多边形进行三角剖分后可以得到的最低分。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例-1&#34;&gt;示例 1：&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入：[1,2,3]
+输出：6
+解释：多边形已经三角化，唯一三角形的分数为 6。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-2&#34;&gt;示例 2：&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://ripple-zjw.github.io/images/1039/minimum-score-triangulation-of-polygon-1.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;输入：[3,7,4,5]
+输出：144
+解释：有两种三角剖分，可能得分分别为：3*7*5 + 4*5*7 = 245，或 3*4*5 + 3*4*7 = 144。最低分数为 144。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-3&#34;&gt;示例 3：&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入：[1,3,1,4,1,5]
+输出：13
+解释：最低分数三角剖分的得分情况为 1*1*3 + 1*1*4 + 1*1*5 + 1*1*1 = 13。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;提示&#34;&gt;提示：&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;3 &amp;lt;= A.length &amp;lt;= 50&lt;/li&gt;
+&lt;li&gt;1 &amp;lt;= A[i] &amp;lt;= 100&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第1039题&#34;&gt;来源：力扣（LeetCode）第1039题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/minimum-score-triangulation-of-polygon&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/minimum-score-triangulation-of-polygon&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;可以使用dp或者dfs两种方法(好像很多题我都会这么讲。。。)&lt;/li&gt;
+&lt;li&gt;这两种方式的思路完全一致，唯一的不同就是一个是递归一个是dp。&lt;/li&gt;
+&lt;li&gt;我们声明两个状态i，j为从第i个位置开始，到第j个位置为止。&lt;/li&gt;
+&lt;li&gt;我们发现如果&lt;code&gt;i==j-1&lt;/code&gt;的话，是不可能会有答案的，因为中间还要有第三个位置。&lt;/li&gt;
+&lt;li&gt;至少要&lt;code&gt;i+2==j&lt;/code&gt;才行，这样中间才能有一个位置放第三个点。&lt;/li&gt;
+&lt;li&gt;也就是说如果中间有两个位置，那么第三个点就有两种可能，以此类推。&lt;/li&gt;
+&lt;li&gt;如果中间有多个位置，我们随便选择其中的一个，一个三角形的三个点就是&lt;code&gt;i,j,k(中间的那个点)&lt;/code&gt;，那么另外&lt;code&gt;n-3&lt;/code&gt;个三角形的顶点的值要怎么算呢？我们发现除去&lt;code&gt;i,j,k&lt;/code&gt;这个三角形外，其他的三角形的值我们在小一维的dp里已经算过了(就是长度比当前长度小1的那些值)。&lt;/li&gt;
+&lt;li&gt;比如现在我们要找其他的三角形那么其他的三角形的值就是dp[i][k]和dp[k][j]里面，而这两个值肯定已经算过了，因为这两个值所代表的状态肯定比当前状态的长度要小。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;dp&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+public int minScoreTriangulation(int[] A) {
+    int len = A.length;
+    int[][] dp = new int[len][len];
+    for (int i = 0; i &amp;lt; len; i++) for (int j = 0; j &amp;lt; len; j++) dp[i][j] = Integer.MAX_VALUE;
+    for (int i = 0; i &amp;lt; len - 1; i++) dp[i][i+1] = 0;
+    for (int d = 2; d &amp;lt; len; d++) { // 长度
+        for (int i = 0; i &amp;lt; len - d; i++) {
+            int j = i + d;
+            for (int k = i + 1; k &amp;lt; j; k++)
+                dp[i][j] = Math.min(dp[i][j], dp[i][k] + dp[k][j] + A[i] * A[k] * A[j]);
+        }
+    }
+    return dp[0][len-1];
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;dfs + 记忆化(不加记忆化会超时)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+private int[][] memo;
+public int minScoreTriangulation(int[] A) {
+    int len = A.length;
+    memo = new int[len][len];
+    return dfs(0, len - 1, A);
+}
+
+public int dfs(int left, int right, int[] A) {
+    if (left + 1 == right) return 0;
+    if (memo[left][right] != 0) return memo[left][right];
+    int ans = Integer.MAX_VALUE;
+    for (int k = left + 1; k &amp;lt; right; k++)
+        ans = Math.min(ans, dfs(left, k, A) + dfs(k, right, A) + A[left] * A[k] * A[right]);
+    memo[left][right] = ans;
+    return ans;
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>组合总和</title>
+      <link>https://ripple-zjw.github.io/2019/%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C4/</link>
+      <pubDate>Sat, 09 Nov 2019 21:23:14 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C4/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-组合总和-ⅳ&#34;&gt;题目：组合总和 Ⅳ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;给定一个由正整数组成且不存在重复数字的数组，找出和为给定目标正整数的组合的个数。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例&#34;&gt;示例:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;nums = [1, 2, 3]
+target = 4
+所有可能的组合为：
+(1, 1, 1, 1)
+(1, 1, 2)
+(1, 2, 1)
+(1, 3)
+(2, 1, 1)
+(2, 2)
+(3, 1)
+请注意，顺序不同的序列被视作不同的组合。
+因此输出为 7。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;进阶&#34;&gt;进阶：&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;如果给定的数组中含有负数会怎么样？&lt;/li&gt;
+&lt;li&gt;问题会产生什么变化？&lt;/li&gt;
+&lt;li&gt;我们需要在题目中添加什么限制来允许负数的出现？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第377题&#34;&gt;来源：力扣（LeetCode）第377题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/combination-sum-iv&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/combination-sum-iv&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;dp和dfs两种方法。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;dp&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+public int combinationSum4(int[] nums, int target) {
+    int len = nums.length;
+    int[] dp = new int[target+1];
+    dp[0] = 1;
+    for (int i = 1; i &amp;lt;= target; i++) {
+        for (int num : nums) if (i &amp;gt;= num) dp[i] += dp[i-num];
+    }
+    return dp[target];
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;dfs + 记忆化&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;另外强调这种方法用java会超时，用c++要注意不要把数组初始化为0，就用数组的原数。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;class Solution {
+public:
+int len;
+int* memo;
+int combinationSum4(vector&amp;lt;int&amp;gt;&amp;amp; nums, int target) {
+    len = nums.size();
+    memo = new int[target];
+    return dfs(nums, 0, target);
+}
+int dfs(vector&amp;lt;int&amp;gt;&amp;amp; nums, int sum, int target) {
+    if (sum == target) return 1;
+    if (sum &amp;gt; target) return 0;
+    if (memo[sum] != -1094795586) return memo[sum];
+    int ans = 0;
+    for (int i = 0; i &amp;lt; len; i++) 
+        ans += dfs(nums, sum + nums[i], target);
+    memo[sum] = ans;
+    return ans;
+}
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>推多米诺</title>
+      <link>https://ripple-zjw.github.io/2019/%E6%8E%A8%E5%A4%9A%E7%B1%B3%E8%AF%BA/</link>
+      <pubDate>Sat, 09 Nov 2019 21:17:02 +0800</pubDate>
+      
+      <guid>https://ripple-zjw.github.io/2019/%E6%8E%A8%E5%A4%9A%E7%B1%B3%E8%AF%BA/</guid>
+      <description>
+
+&lt;h1 id=&#34;题目-推多米诺&#34;&gt;题目：推多米诺&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一行中有&lt;code&gt;N&lt;/code&gt;张多米诺骨牌，我们将每张多米诺骨牌垂直竖立。&lt;/li&gt;
+&lt;li&gt;在开始时，我们同时把一些多米诺骨牌向左或向右推。&lt;/li&gt;
+&lt;li&gt;&lt;img src=&#34;https://ripple-zjw.github.io/images/838/domino.png&#34; alt=&#34;image&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;每过一秒，倒向左边的多米诺骨牌会推动其左侧相邻的多米诺骨牌。&lt;/li&gt;
+&lt;li&gt;同样地，倒向右边的多米诺骨牌也会推动竖立在其右侧的相邻多米诺骨牌。&lt;/li&gt;
+&lt;li&gt;如果同时有多米诺骨牌落在一张垂直竖立的多米诺骨牌的两边，由于受力平衡， 该骨牌仍然保持不变。&lt;/li&gt;
+&lt;li&gt;就这个问题而言，我们会认为正在下降的多米诺骨牌不会对其它正在下降或已经下降的多米诺骨牌施加额外的力。&lt;/li&gt;
+&lt;li&gt;给定表示初始状态的字符串 &amp;ldquo;S&amp;rdquo; 。如果第 i 张多米诺骨牌被推向左边，则&lt;code&gt;S[i] = &#39;L&#39;&lt;/code&gt;；如果第 i 张多米诺骨牌被推向右边，则&lt;code&gt;S[i] = &#39;R&#39;&lt;/code&gt;；如果第 i 张多米诺骨牌没有被推动，则&lt;code&gt;S[i] = &#39;.&#39;&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;返回表示最终状态的字符串。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;示例-1&#34;&gt;示例 1：&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入：&amp;quot;.L.R...LR..L..&amp;quot;
+输出：&amp;quot;LL.RR.LLRRLL..&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;示例-2&#34;&gt;示例 2：&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;输入：&amp;quot;RR.L&amp;quot;
+输出：&amp;quot;RR.L&amp;quot;
+说明：第一张多米诺骨牌没有给第二张施加额外的力。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;提示&#34;&gt;提示：&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;0 &amp;lt;= N &amp;lt;= 10^5&lt;/li&gt;
+&lt;li&gt;表示多米诺骨牌状态的字符串只含有 &amp;lsquo;L&amp;rsquo;，&amp;rsquo;R&amp;rsquo;; 以及 &amp;lsquo;.&amp;rsquo;;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;来源-力扣-leetcode-第838题&#34;&gt;来源：力扣（LeetCode）第838题&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;链接：&lt;a href=&#34;https://leetcode-cn.com/problems/push-dominoes&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://leetcode-cn.com/problems/push-dominoes&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;分析&#34;&gt;分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;首先这道题只有&amp;rsquo;L&amp;rsquo; &amp;lsquo;R&amp;rsquo; &amp;lsquo;.&amp;rsquo; 这三个值，一开始没想到怎么用动态规划&lt;/li&gt;
+&lt;li&gt;然后想着想着灵光一闪，发现我只要把&lt;code&gt;R&lt;/code&gt;变为1，&lt;code&gt;L&lt;/code&gt;变为-1，&lt;code&gt;.&lt;/code&gt;变为0，就可以使用dp来求解了。&lt;/li&gt;
+&lt;li&gt;第四行我们先开辟一个和字符串长度一样的dp数组，状态就是当前的位置，值是当前连续的次数。&lt;/li&gt;
+&lt;li&gt;就是从本来就为&lt;code&gt;L&lt;/code&gt;或&lt;code&gt;R&lt;/code&gt;的那个数开始，你是第几个倒的。比如有一个&amp;rsquo;R&amp;rsquo;,它的右边为2，再右边为3，以此类推。&lt;/li&gt;
+&lt;li&gt;5-8行为base case，本来就会倒的肯定是1，我们姑且把他们叫做源头，源头如果往旁边移动，则源头的值就变为移到的那个值。&lt;/li&gt;
+&lt;li&gt;9-21行为解题的主要部分，我们分几种情况&lt;/li&gt;
+&lt;li&gt;第10行为遍历到源头为&lt;code&gt;R&lt;/code&gt;的时候，即dp对应的索引的值大于0，我们判断下一个元素的情况。&lt;/li&gt;
+&lt;li&gt;只有下一个为&lt;code&gt;.&lt;/code&gt;的情况才可以连续，因为如果出现了&lt;code&gt;RR&lt;/code&gt;的情况，依然不能连续，根据官方给出的第2个示例，一个点的左边有两个&lt;code&gt;R&lt;/code&gt;,右边有1个&lt;code&gt;L&lt;/code&gt;时，点不会改变。&lt;/li&gt;
+&lt;li&gt;11-20行为遍历到源头为&lt;code&gt;L&lt;/code&gt;的时候，dp[i] 小于0，我们判断上一个元素的情况。&lt;/li&gt;
+&lt;li&gt;第11行由于判断源头&lt;code&gt;L&lt;/code&gt;需要往前找，所以声明一个变量j，用于往前找。&lt;/li&gt;
+&lt;li&gt;第12行和前面第10行正好相反，需要注意的是，12行最后多了一个条件，这是因为如果源头&lt;code&gt;R&lt;/code&gt;一直向右加，加到了&lt;code&gt;L&lt;/code&gt;，那么&lt;code&gt;L&lt;/code&gt;应该也要向左减，可是原来可能是0的值被源头&lt;code&gt;R&lt;/code&gt;覆盖了，所以我们要做一个判断。&lt;/li&gt;
+&lt;li&gt;首先如果对于源头&lt;code&gt;L&lt;/code&gt;,左边为0，那么可以过去，其次源头&lt;code&gt;R&lt;/code&gt;的值比源头&lt;code&gt;L&lt;/code&gt;的值大，我们也可以移，直到源头&lt;code&gt;R&lt;/code&gt;和源头&lt;code&gt;L&lt;/code&gt;的绝对值相等，那么左右两边就平衡了。&lt;/li&gt;
+&lt;li&gt;不过，还有一种情况，就是中间这个点既不是源头左的，也不是源头右的。&lt;/li&gt;
+&lt;li&gt;我们在13-15行做一次特殊情况的判断，如果中间有一个值不属于两个源头而是&lt;code&gt;.&lt;/code&gt;，我们把这个值叫中间值。&lt;/li&gt;
+&lt;li&gt;我们先把源头&lt;code&gt;R&lt;/code&gt;向右推，再把源头&lt;code&gt;L&lt;/code&gt;向左推，那么如果中间存在这个中间值，当左源头不停向左时，在接近中间点的前一个位置，中间点当前的值和它相加一定等于1，因为当前中间点被认为是右源头的。&lt;/li&gt;
+&lt;li&gt;比如现在是&lt;code&gt;1 2 3 4 -1&lt;/code&gt;,左源头往做移动，变为&lt;code&gt;1 2 3 -2 -1&lt;/code&gt;。这时我们不能再移了，因为如果移了左右两塬头也不会平衡。因此中间的那个点一定是中间的。所以把它改为0即可。&lt;/li&gt;
+&lt;li&gt;22-24行为把dp再变为String然后返回，我选择使用StringBuilder,23行用了一个嵌套的三目运算符。&lt;/li&gt;
+&lt;li&gt;代码的排版可能写的不好看，主要是因为一开始写的时候没想这么多问题，后面想到的时候懒得再去整理代码了。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码&#34;&gt;代码：&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public String pushDominoes(String dominoes) {
+        int len = dominoes.length();
+        int[] dp = new int[len];
+        for (int i = 0; i &amp;lt; len; i++) {
+            if (dominoes.charAt(i) == &#39;R&#39;) dp[i] = 1;
+            else if (dominoes.charAt(i) == &#39;L&#39;) dp[i] = -1;
+        }
+        for (int i = 0; i &amp;lt; len; i++) {
+            if (dp[i] &amp;gt; 0 &amp;amp;&amp;amp;  i + 1 &amp;lt; len &amp;amp;&amp;amp; dp[i+1] == 0) dp[i+1] = dp[i] + 1;
+            int j = i;
+            while (dp[j] &amp;lt; 0 &amp;amp;&amp;amp; j - 1 &amp;gt;= 0 &amp;amp;&amp;amp; (dp[j-1] == 0 || dp[j] + dp[j-1] &amp;gt; 0)) {
+                if (dp[j] + dp[j-1] == 1) {
+                    dp[j-1] = 0;
+                    break;
+                } else {
+                    dp[j-1] = dp[j] - 1;
+                }
+                --j;
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i &amp;lt; len; i++) sb.append(dp[i] &amp;gt; 0 ? &#39;R&#39; : dp[i] &amp;lt; 0 ? &#39;L&#39; : &#39;.&#39;);
+        return sb.toString();
     }
 }
 &lt;/code&gt;&lt;/pre&gt;

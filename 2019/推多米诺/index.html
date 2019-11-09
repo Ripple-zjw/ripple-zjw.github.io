@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E7%9B%AE%E6%A0%87%E5%92%8C/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C4/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E6%8E%A8%E5%A4%9A%E7%B1%B3%E8%AF%BA/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           推多米诺 | LeaveIt
+       
+  </title>
+  <meta name="title" content="推多米诺 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "推多米诺",
+    "headline" : "推多米诺",
+    "description" : "题目：推多米诺  一行中有N张多米诺骨牌，我们将每张多米诺骨牌垂直竖立。 在开始时，我们同时把一些多米诺骨牌向左或向右推。  每过一秒，倒向左边的多米诺骨牌会推动其左侧相邻的多米诺骨牌。 同样地，倒向右边的多米诺骨牌也会推动竖立在其右侧的相邻多米诺骨牌。 如果同时有多米诺骨牌落在一张垂直竖立的多米诺骨牌的两边，由于受力平衡， 该骨牌仍然保持不变。 就这个问题而言，我们会认为正在下降的多米诺骨牌不会对其它正在下降或已经下降的多米诺骨牌施加额外的力。 给定表示初始状态的字符串 \x26ldquo;S\x26rdquo; 。如果第 i 张多米诺骨牌被推向左边，则S[i] = \x27L\x27；如果第 i 张多米诺骨牌被推向右边，则S[i] = \x27R\x27；如果第 i 张多米诺骨牌没有被推动，则S[i] = \x27.\x27。 返回表示最终状态的字符串。  示例 1： 输入：\x26quot;.L.R...LR..L..\x26quot; 输出：\x26quot;LL.RR.LLRRLL..\x26quot;  示例 2： 输入：\x26quot;RR.L\x26quot; 输出：\x26quot;RR.L\x26quot; 说明：第一张多米诺骨牌没有给第二张施加额外的力。  提示：  0 \x26lt;= N \x26lt;= 10^5 表示多米诺骨牌状态的字符串只含有 \x26lsquo;L\x26rsquo;，\x26rsquo;R\x26rsquo;; 以及 \x26lsquo;.\x26rsquo;;  来源：力扣（LeetCode）第838题  链接：https:\/\/leetcode-cn.com\/problems\/push-dominoes\n 分析：  首先这道题只有\x26rsquo;L\x26rsquo; \x26lsquo;R\x26rsquo; \x26lsquo;.\x26rsquo; 这三个值，一开始没想到怎么用动态规划 然后想着想着灵光一闪，发现我只要把R变为1，L变为-1，.变为0，就可以使用dp来求解了。 第四行我们先开辟一个和字符串长度一样的dp数组，状态就是当前的位置，值是当前连续的次数。 就是从本来就为L或R的那个数开始，你是第几个倒的。比如有一个\x26rsquo;R\x26rsquo;,它的右边为2，再右边为3，以此类推。 5-8行为base case，本来就会倒的肯定是1，我们姑且把他们叫做源头，源头如果往旁边移动，则源头的值就变为移到的那个值。 9-21行为解题的主要部分，我们分几种情况 第10行为遍历到源头为R的时候，即dp对应的索引的值大于0，我们判断下一个元素的情况。 只有下一个为.的情况才可以连续，因为如果出现了RR的情况，依然不能连续，根据官方给出的第2个示例，一个点的左边有两个R,右边有1个L时，点不会改变。 11-20行为遍历到源头为L的时候，dp[i] 小于0，我们判断上一个元素的情况。 第11行由于判断源头L需要往前找，所以声明一个变量j，用于往前找。 第12行和前面第10行正好相反，需要注意的是，12行最后多了一个条件，这是因为如果源头R一直向右加，加到了L，那么L应该也要向左减，可是原来可能是0的值被源头R覆盖了，所以我们要做一个判断。 首先如果对于源头L,左边为0，那么可以过去，其次源头R的值比源头L的值大，我们也可以移，直到源头R和源头L的绝对值相等，那么左右两边就平衡了。 不过，还有一种情况，就是中间这个点既不是源头左的，也不是源头右的。 我们在13-15行做一次特殊情况的判断，如果中间有一个值不属于两个源头而是.",
+    "inLanguage" : "zh-CN",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-11-09 21:17:02 \x2b0800 CST",
+    "dateModified" : "2019-11-09 21:17:02 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E6%8E%A8%E5%A4%9A%E7%B1%B3%E8%AF%BA\/",
+    "wordCount" : "229",
+    "keywords" : [ "算法求解思想","动态规划", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">推多米诺</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-11-09 itemprop="datePublished">November 9, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-推多米诺">题目：推多米诺</h1>
+
+<ul>
+<li>一行中有<code>N</code>张多米诺骨牌，我们将每张多米诺骨牌垂直竖立。</li>
+<li>在开始时，我们同时把一些多米诺骨牌向左或向右推。</li>
+<li><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/838/domino.png" alt="image" class="lazyload"><figcaption class="image-caption">image</figcaption></figure></li>
+<li>每过一秒，倒向左边的多米诺骨牌会推动其左侧相邻的多米诺骨牌。</li>
+<li>同样地，倒向右边的多米诺骨牌也会推动竖立在其右侧的相邻多米诺骨牌。</li>
+<li>如果同时有多米诺骨牌落在一张垂直竖立的多米诺骨牌的两边，由于受力平衡， 该骨牌仍然保持不变。</li>
+<li>就这个问题而言，我们会认为正在下降的多米诺骨牌不会对其它正在下降或已经下降的多米诺骨牌施加额外的力。</li>
+<li>给定表示初始状态的字符串 &ldquo;S&rdquo; 。如果第 i 张多米诺骨牌被推向左边，则<code>S[i] = 'L'</code>；如果第 i 张多米诺骨牌被推向右边，则<code>S[i] = 'R'</code>；如果第 i 张多米诺骨牌没有被推动，则<code>S[i] = '.'</code>。</li>
+<li>返回表示最终状态的字符串。</li>
+</ul>
+
+<h5 id="示例-1">示例 1：</h5>
+
+<pre><code>输入：&quot;.L.R...LR..L..&quot;
+输出：&quot;LL.RR.LLRRLL..&quot;
+</code></pre>
+
+<h5 id="示例-2">示例 2：</h5>
+
+<pre><code>输入：&quot;RR.L&quot;
+输出：&quot;RR.L&quot;
+说明：第一张多米诺骨牌没有给第二张施加额外的力。
+</code></pre>
+
+<h5 id="提示">提示：</h5>
+
+<ul>
+<li>0 &lt;= N &lt;= 10^5</li>
+<li>表示多米诺骨牌状态的字符串只含有 &lsquo;L&rsquo;，&rsquo;R&rsquo;; 以及 &lsquo;.&rsquo;;</li>
+</ul>
+
+<h4 id="来源-力扣-leetcode-第838题">来源：力扣（LeetCode）第838题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/push-dominoes" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/push-dominoes</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<ul>
+<li>首先这道题只有&rsquo;L&rsquo; &lsquo;R&rsquo; &lsquo;.&rsquo; 这三个值，一开始没想到怎么用动态规划</li>
+<li>然后想着想着灵光一闪，发现我只要把<code>R</code>变为1，<code>L</code>变为-1，<code>.</code>变为0，就可以使用dp来求解了。</li>
+<li>第四行我们先开辟一个和字符串长度一样的dp数组，状态就是当前的位置，值是当前连续的次数。</li>
+<li>就是从本来就为<code>L</code>或<code>R</code>的那个数开始，你是第几个倒的。比如有一个&rsquo;R&rsquo;,它的右边为2，再右边为3，以此类推。</li>
+<li>5-8行为base case，本来就会倒的肯定是1，我们姑且把他们叫做源头，源头如果往旁边移动，则源头的值就变为移到的那个值。</li>
+<li>9-21行为解题的主要部分，我们分几种情况</li>
+<li>第10行为遍历到源头为<code>R</code>的时候，即dp对应的索引的值大于0，我们判断下一个元素的情况。</li>
+<li>只有下一个为<code>.</code>的情况才可以连续，因为如果出现了<code>RR</code>的情况，依然不能连续，根据官方给出的第2个示例，一个点的左边有两个<code>R</code>,右边有1个<code>L</code>时，点不会改变。</li>
+<li>11-20行为遍历到源头为<code>L</code>的时候，dp[i] 小于0，我们判断上一个元素的情况。</li>
+<li>第11行由于判断源头<code>L</code>需要往前找，所以声明一个变量j，用于往前找。</li>
+<li>第12行和前面第10行正好相反，需要注意的是，12行最后多了一个条件，这是因为如果源头<code>R</code>一直向右加，加到了<code>L</code>，那么<code>L</code>应该也要向左减，可是原来可能是0的值被源头<code>R</code>覆盖了，所以我们要做一个判断。</li>
+<li>首先如果对于源头<code>L</code>,左边为0，那么可以过去，其次源头<code>R</code>的值比源头<code>L</code>的值大，我们也可以移，直到源头<code>R</code>和源头<code>L</code>的绝对值相等，那么左右两边就平衡了。</li>
+<li>不过，还有一种情况，就是中间这个点既不是源头左的，也不是源头右的。</li>
+<li>我们在13-15行做一次特殊情况的判断，如果中间有一个值不属于两个源头而是<code>.</code>，我们把这个值叫中间值。</li>
+<li>我们先把源头<code>R</code>向右推，再把源头<code>L</code>向左推，那么如果中间存在这个中间值，当左源头不停向左时，在接近中间点的前一个位置，中间点当前的值和它相加一定等于1，因为当前中间点被认为是右源头的。</li>
+<li>比如现在是<code>1 2 3 4 -1</code>,左源头往做移动，变为<code>1 2 3 -2 -1</code>。这时我们不能再移了，因为如果移了左右两塬头也不会平衡。因此中间的那个点一定是中间的。所以把它改为0即可。</li>
+<li>22-24行为把dp再变为String然后返回，我选择使用StringBuilder,23行用了一个嵌套的三目运算符。</li>
+<li>代码的排版可能写的不好看，主要是因为一开始写的时候没想这么多问题，后面想到的时候懒得再去整理代码了。</li>
+</ul>
+
+<h2 id="代码">代码：</h2>
+
+<pre><code class="language-java">class Solution {
+    public String pushDominoes(String dominoes) {
+        int len = dominoes.length();
+        int[] dp = new int[len];
+        for (int i = 0; i &lt; len; i++) {
+            if (dominoes.charAt(i) == 'R') dp[i] = 1;
+            else if (dominoes.charAt(i) == 'L') dp[i] = -1;
+        }
+        for (int i = 0; i &lt; len; i++) {
+            if (dp[i] &gt; 0 &amp;&amp;  i + 1 &lt; len &amp;&amp; dp[i+1] == 0) dp[i+1] = dp[i] + 1;
+            int j = i;
+            while (dp[j] &lt; 0 &amp;&amp; j - 1 &gt;= 0 &amp;&amp; (dp[j-1] == 0 || dp[j] + dp[j-1] &gt; 0)) {
+                if (dp[j] + dp[j-1] == 1) {
+                    dp[j-1] = 0;
+                    break;
+                } else {
+                    dp[j-1] = dp[j] - 1;
+                }
+                --j;
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i &lt; len; i++) sb.append(dp[i] &gt; 0 ? 'R' : dp[i] &lt; 0 ? 'L' : '.');
+        return sb.toString();
+    }
+}
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E6%8E%A8%E5%A4%9A%E7%B1%B3%E8%AF%BA/>https://ripple-zjw.github.io/2019/%E6%8E%A8%E5%A4%9A%E7%B1%B3%E8%AF%BA/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                    #动态规划</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E7%9B%AE%E6%A0%87%E5%92%8C/" class="prev" rel="prev" title="目标和"><i class="iconfont icon-left"></i>&nbsp;目标和</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C4/" class="next" rel="next" title="组合总和">组合总和&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

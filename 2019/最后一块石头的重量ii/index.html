@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC%E4%B9%8B%E5%92%8C/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E7%8E%AF%E7%BB%95%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%94%AF%E4%B8%80%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E6%9C%80%E5%90%8E%E4%B8%80%E5%9D%97%E7%9F%B3%E5%A4%B4%E7%9A%84%E9%87%8D%E9%87%8Fii/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           最后一块石头的重量II | LeaveIt
+       
+  </title>
+  <meta name="title" content="最后一块石头的重量II | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "最后一块石头的重量II",
+    "headline" : "最后一块石头的重量II",
+    "description" : "题目：最后一块石头的重量 II  有一堆石头，每块石头的重量都是正整数。 每一回合，从中选出任意两块石头，然后将它们一起粉碎。假设石头的重量分别为x和y，且x\x26lt;= y。那么粉碎的可能结果如下：  如果x == y，那么两块石头都会被完全粉碎； 如果x != y，那么重量为x的石头将会完全粉碎，而重量为y的石头新重量为y-x。  最后，最多只会剩下一块石头。返回此石头最小的可能重量。如果没有石头剩下，就返回 0。  示例： 输入：[2,7,4,1,8,1] 输出：1 解释： 组合 2 和 4，得到 2，所以数组转化为 [2,7,1,8,1]， 组合 7 和 8，得到 1，所以数组转化为 [2,1,1,1]， 组合 2 和 1，得到 1，所以数组转化为 [1,1,1]， 组合 1 和 1，得到 0，所以数组转化为 [1]，这就是最优值。  提示：  1 \x26lt;= stones.length \x26lt;= 30 1 \x26lt;= stones[i] \x26lt;= 1000  来源：力扣（LeetCode）第1049题  链接：https:\/\/leetcode-cn.com\/problems\/last-stone-weight-ii\n 分析：  这道题一开始看好像没有什么思路，我们不妨把问题抽象出来。 题目要求最后把两块石头撞完后，剩下的重量要最小。那我们怎么才能让重量最小呢？这是关键点。 我们发现，只要每次相撞的两块石头，他们的大小都差不多，那么他们相撞之后得到的重量肯定是最小的。 因此，我们不妨把整个石子分成两块，只要我们把这两堆石子分的重量越接近，那么撞出来的重量一定会最小。 有人可能会想如果两边石子的数量不一样怎么办？不管两边数量有多不平衡，你都可以用一堆去撞另一堆，一定会把其中一堆装完的。 至此，我们把目的改一改，我们现在要找出两堆石子，他们的重量最接近。 如何找呢？ 我们把所有石子的重量和算一下，然后除以一半，最好的情况下正好分成了两堆重量一样的石子，直接撞完就等于0了。 如果不行呢？ 我们把石子的总重量叫sum,把一半的重量叫half。 我们一定能找到其中一堆小于half的(不管这一堆长度是多少，一定能找到),那么另一堆的重量肯定是大于half的。 所以我们只要找到一堆越接近half就行了，如果等于half最好。 参考LeetCode第416题，分割等和子集。 我们这次不是要分割等和子集，而是要找到越接近half的子集。 设置两个状态，见第一个代码。第一个是当前的位置，第二个是求得的和。 每次判断当前的和是否达到，有两种选择，使用这个位置，或者不使用这个位置。 进阶：我们可以使用dfs改写这段dp，从half开始，依次往0判断能否组成这个和，如果能那么这个和就是最大和。dfs更加快，因为只要找到最大和就直接返回答案就行了，不用再算下去。 进阶2：我们把dp变为一维dp，去掉当前位置的状态，只保留求得的和，问题转化为一个经典的0-1背包问题。  代码：  常规二维dp：",
+    "inLanguage" : "zh-CN",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-11-09 21:46:25 \x2b0800 CST",
+    "dateModified" : "2019-11-09 21:46:25 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E6%9C%80%E5%90%8E%E4%B8%80%E5%9D%97%E7%9F%B3%E5%A4%B4%E7%9A%84%E9%87%8D%E9%87%8Fii\/",
+    "wordCount" : "365",
+    "keywords" : [ "算法求解思想","动态规划","dfs", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">最后一块石头的重量II</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-11-09 itemprop="datePublished">November 9, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-最后一块石头的重量-ii">题目：最后一块石头的重量 II</h1>
+
+<ul>
+<li>有一堆石头，每块石头的重量都是正整数。</li>
+<li>每一回合，从中选出任意两块石头，然后将它们一起粉碎。假设石头的重量分别为<code>x</code>和<code>y</code>，且<code>x</code>&lt;= <code>y</code>。那么粉碎的可能结果如下：
+
+<ul>
+<li>如果<code>x == y</code>，那么两块石头都会被完全粉碎；</li>
+<li>如果<code>x != y</code>，那么重量为<code>x</code>的石头将会完全粉碎，而重量为<code>y</code>的石头新重量为<code>y-x</code>。</li>
+</ul></li>
+<li>最后，最多只会剩下一块石头。返回此石头最小的可能重量。如果没有石头剩下，就返回 0。</li>
+</ul>
+
+<h5 id="示例">示例：</h5>
+
+<pre><code>输入：[2,7,4,1,8,1]
+输出：1
+解释：
+组合 2 和 4，得到 2，所以数组转化为 [2,7,1,8,1]，
+组合 7 和 8，得到 1，所以数组转化为 [2,1,1,1]，
+组合 2 和 1，得到 1，所以数组转化为 [1,1,1]，
+组合 1 和 1，得到 0，所以数组转化为 [1]，这就是最优值。
+</code></pre>
+
+<h5 id="提示">提示：</h5>
+
+<ul>
+<li>1 &lt;= stones.length &lt;= 30</li>
+<li>1 &lt;= stones[i] &lt;= 1000</li>
+</ul>
+
+<h4 id="来源-力扣-leetcode-第1049题">来源：力扣（LeetCode）第1049题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/last-stone-weight-ii" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/last-stone-weight-ii</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<ul>
+<li>这道题一开始看好像没有什么思路，我们不妨把问题抽象出来。</li>
+<li>题目要求最后把两块石头撞完后，剩下的重量要最小。那我们怎么才能让重量最小呢？这是关键点。</li>
+<li>我们发现，只要每次相撞的两块石头，他们的大小都差不多，那么他们相撞之后得到的重量肯定是最小的。</li>
+<li>因此，我们不妨把整个石子分成两块，只要我们把这两堆石子分的重量越接近，那么撞出来的重量一定会最小。</li>
+<li>有人可能会想如果两边石子的数量不一样怎么办？不管两边数量有多不平衡，你都可以用一堆去撞另一堆，一定会把其中一堆装完的。</li>
+<li>至此，我们把目的改一改，我们现在要找出两堆石子，他们的重量最接近。</li>
+<li>如何找呢？</li>
+<li>我们把所有石子的重量和算一下，然后除以一半，最好的情况下正好分成了两堆重量一样的石子，直接撞完就等于0了。</li>
+<li>如果不行呢？</li>
+<li>我们把石子的总重量叫<code>sum</code>,把一半的重量叫<code>half</code>。</li>
+<li>我们一定能找到其中一堆小于half的(不管这一堆长度是多少，一定能找到),那么另一堆的重量肯定是大于half的。</li>
+<li>所以我们只要找到一堆越接近half就行了，如果等于half最好。</li>
+<li>参考LeetCode第416题，分割等和子集。</li>
+<li>我们这次不是要分割等和子集，而是要找到越接近half的子集。</li>
+<li>设置两个状态，见第一个代码。第一个是当前的位置，第二个是求得的和。</li>
+<li>每次判断当前的和是否达到，有两种选择，使用这个位置，或者不使用这个位置。</li>
+<li>进阶：我们可以使用dfs改写这段dp，从half开始，依次往0判断能否组成这个和，如果能那么这个和就是最大和。dfs更加快，因为只要找到最大和就直接返回答案就行了，不用再算下去。</li>
+<li>进阶2：我们把dp变为一维dp，去掉当前位置的状态，只保留求得的和，问题转化为一个经典的0-1背包问题。</li>
+</ul>
+
+<h2 id="代码">代码：</h2>
+
+<ul>
+<li><p>常规二维dp：</p>
+
+<pre><code class="language-java">class Solution {
+public int lastStoneWeightII(int[] stones) {
+    int len = stones.length;
+    int sum = 0;
+    for (int stone : stones) sum += stone;
+    int half = sum / 2;
+    boolean[][] dp = new boolean[len][half+1];
+    int max = 0;
+    for (int i = 0; i &lt; len; i++) {
+        if (stones[i] &lt;= half) {
+            dp[i][stones[i]] = true;
+            max = Math.max(max, stones[i]);
+        }
+    }
+        
+    for (int i = 1; i &lt; len; i++) {
+        for (int j = 1; j &lt;= half; j++) {
+            if (dp[i][j] == false) {
+                if (stones[i] &lt;= j) dp[i][j] = dp[i-1][j] || dp[i-1][j-stones[i]];
+                else dp[i][j] = dp[i-1][j];
+            }
+            if (dp[i][j]) max = Math.max(max, j);
+        }
+    }
+    return sum - max - max;
+}
+}
+</code></pre></li>
+
+<li><p>dfs,三者最快的方法。没有加记忆化是因为数据量不大，加了之后可以更快。</p>
+
+<pre><code class="language-java">class Solution {
+int len;
+public int lastStoneWeightII(int[] stones) {
+    len = stones.length;
+    int sum = 0;
+    for (int stone : stones) sum += stone;
+    int half = sum &gt;&gt; 1;
+    for (int i = half; i &gt;= 0; i--) {
+        if (dfs(stones, 0, i, 0)) return sum - 2 * i;
+    }
+    return 0;
+}
+
+public boolean dfs(int[] stones, int ind, int sum, int target) {
+    if (target == sum) return true;
+    if (target &gt; sum) return false;
+    if (ind == len) return false;
+    return dfs(stones, ind + 1, sum, target + stones[ind]) || dfs(stones, ind + 1, sum, target);
+}
+}
+</code></pre></li>
+
+<li><p>一维dp，由于少了一维，比二维dp要快一点。码量也最少。</p>
+
+<pre><code class="language-java">class Solution {
+public int lastStoneWeightII(int[] stones) {
+    int len = stones.length;
+    int sum = 0;
+    for (int stone : stones) sum += stone;
+    int half = sum / 2;
+    int[] dp = new int[half+1];
+    for (int stone : stones) {
+        for (int i = half; i &gt;= stone; i--) {
+            dp[i] = Math.max(dp[i], dp[i-stone] + stone);
+        }
+    }
+    return sum - dp[half] - dp[half];
+}
+}
+</code></pre></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E6%9C%80%E5%90%8E%E4%B8%80%E5%9D%97%E7%9F%B3%E5%A4%B4%E7%9A%84%E9%87%8D%E9%87%8Fii/>https://ripple-zjw.github.io/2019/%E6%9C%80%E5%90%8E%E4%B8%80%E5%9D%97%E7%9F%B3%E5%A4%B4%E7%9A%84%E9%87%8D%E9%87%8Fii/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                    #动态规划</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/dfs/">
+                    #dfs</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC%E4%B9%8B%E5%92%8C/" class="prev" rel="prev" title="子数组的最小值之和"><i class="iconfont icon-left"></i>&nbsp;子数组的最小值之和</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E7%8E%AF%E7%BB%95%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%94%AF%E4%B8%80%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="next" rel="next" title="环绕字符串中唯一的子字符串">环绕字符串中唯一的子字符串&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

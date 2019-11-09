@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Ripple">
+  <meta name="description" content="个人博客网站">
+  
+  
+  <link rel="prev" href="https://ripple-zjw.github.io/2019/%E9%A9%AC%E5%9C%A8%E6%A3%8B%E7%9B%98%E4%B8%8A%E7%9A%84%E6%A6%82%E7%8E%87/" />
+  <link rel="next" href="https://ripple-zjw.github.io/2019/%E6%8E%A8%E5%A4%9A%E7%B1%B3%E8%AF%BA/" />
+  <link rel="canonical" href="https://ripple-zjw.github.io/2019/%E7%9B%AE%E6%A0%87%E5%92%8C/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           目标和 | LeaveIt
+       
+  </title>
+  <meta name="title" content="目标和 | LeaveIt">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/ripple-zjw.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "目标和",
+    "headline" : "目标和",
+    "description" : "题目：目标和  给定一个非负整数数组，a1, a2, \x26hellip;, an, 和一个目标数，S。现在你有两个符号\x2b和-。对于数组中的任意一个整数，你都可以从\x2b或-中选择一个符号添加在前面。 返回可以使最终数组和为目标数 S 的所有添加符号的方法数。  示例 1: 输入: nums: [1, 1, 1, 1, 1], S: 3 输出: 5 解释: -1\x2b1\x2b1\x2b1\x2b1 = 3 \x2b1-1\x2b1\x2b1\x2b1 = 3 \x2b1\x2b1-1\x2b1\x2b1 = 3 \x2b1\x2b1\x2b1-1\x2b1 = 3 \x2b1\x2b1\x2b1\x2b1-1 = 3 一共有5种方法让最终目标和为3。  注意:  数组非空，且长度不会超过20。 初始的数组的和不会超过1000。 保证返回的最终结果能被32位整数存下。  来源：力扣（LeetCode）第494题  链接：https:\/\/leetcode-cn.com\/problems\/target-sum\n 分析：  这是一道动态规划题，也可以使用dfs完成。 此外，还有一种使用数学方法来简化的dp。 常规dp很简单，第一个状态是当前为第几个，第二个状态为当前的和是多少。 我们有两种选择，第一种是当前为\x2b号，那么用当前的和减去当前的值去找上一次的和。 如果当前是-号，就用当前的和加上当前的值去找上一次的和。 然后来看看数学方法简化dp。 设x为其中一个解的正数和，y为其中一个解的负数和的绝对值。 因此我们可以得到两个公式 x \x2b y = sum(sum是整个数组的和) x - y = S(S是目标值) 上下一相加，得x = (sum \x2b S) \/ 2 因此我们只要知道x有多少种可能就行了 所以问题转化为01背包问题，找到当长度为数组长度时，x有多少种可能。状态直接转为一维。 x也就是符号为正的情况。  代码：  先放上常规dp",
+    "inLanguage" : "zh-CN",
+    "author" : "Ripple",
+    "creator" : "Ripple",
+    "publisher": "Ripple",
+    "accountablePerson" : "Ripple",
+    "copyrightHolder" : "Ripple",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-11-09 21:14:39 \x2b0800 CST",
+    "dateModified" : "2019-11-09 21:14:39 \x2b0800 CST",
+    "url" : "https:\/\/ripple-zjw.github.io\/2019\/%E7%9B%AE%E6%A0%87%E5%92%8C\/",
+    "wordCount" : "440",
+    "keywords" : [ "算法求解思想","动态规划","dfs","01背包问题", "LeaveIt"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://ripple-zjw.github.io">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blogs</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">目标和</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://ripple-zjw.github.io" rel="author">Ripple</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-11-09 itemprop="datePublished">November 9, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://ripple-zjw.github.io/categories/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/"> 算法求解思想 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="题目-目标和">题目：目标和</h1>
+
+<ul>
+<li>给定一个非负整数数组，a1, a2, &hellip;, an, 和一个目标数，S。现在你有两个符号<code>+</code>和<code>-</code>。对于数组中的任意一个整数，你都可以从<code>+</code>或<code>-</code>中选择一个符号添加在前面。</li>
+<li>返回可以使最终数组和为目标数 S 的所有添加符号的方法数。</li>
+</ul>
+
+<h5 id="示例-1">示例 1:</h5>
+
+<pre><code>输入: nums: [1, 1, 1, 1, 1], S: 3
+输出: 5
+解释: 
+-1+1+1+1+1 = 3
++1-1+1+1+1 = 3
++1+1-1+1+1 = 3
++1+1+1-1+1 = 3
++1+1+1+1-1 = 3
+
+一共有5种方法让最终目标和为3。
+</code></pre>
+
+<h6 id="注意">注意:</h6>
+
+<ul>
+<li>数组非空，且长度不会超过20。</li>
+<li>初始的数组的和不会超过1000。</li>
+<li>保证返回的最终结果能被32位整数存下。</li>
+</ul>
+
+<h4 id="来源-力扣-leetcode-第494题">来源：力扣（LeetCode）第494题</h4>
+
+<blockquote>
+<p>链接：<a href="https://leetcode-cn.com/problems/target-sum" rel="nofollow noreferrer" target="_blank">https://leetcode-cn.com/problems/target-sum</a></p>
+</blockquote>
+
+<h2 id="分析">分析：</h2>
+
+<ul>
+<li>这是一道动态规划题，也可以使用dfs完成。</li>
+<li>此外，还有一种使用数学方法来简化的dp。</li>
+<li>常规dp很简单，第一个状态是当前为第几个，第二个状态为当前的和是多少。</li>
+<li>我们有两种选择，第一种是当前为+号，那么用当前的和减去当前的值去找上一次的和。</li>
+<li>如果当前是-号，就用当前的和加上当前的值去找上一次的和。</li>
+<li>然后来看看数学方法简化dp。</li>
+<li>设x为其中一个解的正数和，y为其中一个解的负数和的绝对值。</li>
+<li>因此我们可以得到两个公式</li>
+<li><code>x + y = sum</code>(sum是整个数组的和)</li>
+<li><code>x - y = S</code>(S是目标值)</li>
+<li>上下一相加，得<code>x = (sum + S) / 2</code></li>
+<li>因此我们只要知道x有多少种可能就行了</li>
+<li>所以问题转化为01背包问题，找到当长度为数组长度时，x有多少种可能。状态直接转为一维。</li>
+<li>x也就是符号为正的情况。</li>
+</ul>
+
+<h2 id="代码">代码：</h2>
+
+<ul>
+<li><p>先放上常规dp</p>
+
+<pre><code class="language-java">class Solution {
+public int findTargetSumWays(int[] nums, int S) {
+    if (S &lt; 0) S = -S;
+    int sum = 0;
+    for (int num : nums) sum += num;
+    if (sum &lt; S) return 0;
+    int len = nums.length, en = 2 * sum + 50, st = en / 2;
+    int[][] dp = new int[len][en+1];
+    dp[0][st+nums[0]] += 1;dp[0][st-nums[0]] += 1;
+    for (int i = 1; i &lt; len; i++) {
+        for (int j = 0; j &lt;= en; j++) {
+            if (j - nums[i] &gt;= 0)
+                dp[i][j] += dp[i-1][j-nums[i]];
+            if (j + nums[i] &lt;= en)
+                dp[i][j] += dp[i-1][j+nums[i]];
+        }
+    }
+    return dp[len-1][st+S];
+}
+}
+</code></pre></li>
+
+<li><p>顺便放上dfs+记忆化和不加记忆化</p>
+
+<pre><code class="language-java">class Solution {
+private int len, S;
+public int findTargetSumWays(int[] nums, int S) {
+    this.len = nums.length;
+    this.S = S;
+    return dfs(nums, 0, 0);
+}
+
+public int dfs(int[] nums, int curlen, int cursum) {
+    int ans = 0;
+    if (cursum == S &amp;&amp; curlen == len) return 1;
+    if (curlen &gt;= len) return 0;
+    ans = dfs(nums, curlen + 1, cursum + nums[curlen]) + dfs(nums, curlen + 1, cursum - nums[curlen]);
+    return ans;
+}
+}
+</code></pre>
+
+<pre><code class="language-java">class Solution {
+private int len, S, st;
+public int findTargetSumWays(int[] nums, int S) {
+    this.len = nums.length;
+    this.S = S;
+    int sum = 0;
+    for (int num : nums) sum += num;
+    int[][] memo = new int[len][2000];
+    st = 1000;
+    return dfs(nums, 0, 0, memo);
+}
+
+public int dfs(int[] nums, int curlen, int cursum, int[][] memo) {
+    int ans = 0;
+    if (cursum == S &amp;&amp; curlen == len) return 1;
+    if (curlen &gt;= len) return 0;
+    if (memo[curlen][st+cursum] != 0) return memo[curlen][st+cursum];
+    ans = dfs(nums, curlen + 1, cursum + nums[curlen], memo) + dfs(nums, curlen + 1, cursum - nums[curlen], memo);
+    memo[curlen][st+cursum] = ans;
+    return ans;
+}
+}
+</code></pre></li>
+
+<li><p>最后放上数学+dp</p>
+
+<pre><code class="language-java">class Solution {
+public int findTargetSumWays(int[] nums, int S) {
+    int sum = 0;
+    for (int num : nums) sum += num;
+    if (sum &lt; S || (sum + S) % 2 == 1) return 0;
+    sum = (sum + S) &gt;&gt; 1;
+    int[] dp = new int[sum+1];dp[0] = 1;
+    for (int num : nums) 
+        for (int i = sum; i &gt;= num; i--) 
+            dp[i] += dp[i-num];
+    return dp[sum];
+}
+}
+</code></pre></li>
+
+<li><p>两个dp的速度很快，一维dp最快，记忆化+dfs慢了许多。</p></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Ripple </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://ripple-zjw.github.io/2019/%E7%9B%AE%E6%A0%87%E5%92%8C/>https://ripple-zjw.github.io/2019/%E7%9B%AE%E6%A0%87%E5%92%8C/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%80%9D%E6%83%B3/">
+                    #算法求解思想</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                    #动态规划</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/dfs/">
+                    #dfs</a></span>
+            
+            <span class="tag"><a href="https://ripple-zjw.github.io/tags/01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/">
+                    #01背包问题</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://ripple-zjw.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://ripple-zjw.github.io/2019/%E9%A9%AC%E5%9C%A8%E6%A3%8B%E7%9B%98%E4%B8%8A%E7%9A%84%E6%A6%82%E7%8E%87/" class="prev" rel="prev" title="“马”在棋盘上的概率"><i class="iconfont icon-left"></i>&nbsp;“马”在棋盘上的概率</a>
+         
+        
+        <a href="https://ripple-zjw.github.io/2019/%E6%8E%A8%E5%A4%9A%E7%B1%B3%E8%AF%BA/" class="next" rel="next" title="推多米诺">推多米诺&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://ripple-zjw.github.io">Ripple</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
